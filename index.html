@@ -9,6 +9,15 @@
     <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
 </head>
 <body>
+    <!-- LIVE EVENT BANNER -->
+    <div id="live-banner" style="background: linear-gradient(90deg, #0f1923, #1a0a0c, #0f1923); border-bottom: 2px solid var(--val-red); padding: 10px 2rem; text-align: center; position: relative; overflow: hidden; z-index: 2000; animation: bgPulse 3s ease-in-out infinite;">
+        <div style="display: flex; align-items: center; justify-content: center; gap: 1rem; flex-wrap: wrap;">
+            <span style="display: flex; align-items: center; gap: 8px; font-weight: 800; font-size: 1rem; letter-spacing: 2px; color: #53fc18;"><div style="width: 10px; height: 10px; background-color: #53fc18; border-radius: 50%; box-shadow: 0 0 10px #53fc18; animation: pulse 1.2s infinite;"></div> TODAY 19:00 — WOLVESDEN TOURNAMENT</span>
+            <span style="color: var(--val-grey); font-size: 0.9rem;">|</span>
+            <a href="https://kick.com/gczdejwrix" target="_blank" style="background-color: #53fc18; color: #000; padding: 4px 14px; font-weight: 800; font-size: 0.85rem; text-decoration: none; border-radius: 3px; letter-spacing: 1px; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.8'" onmouseout="this.style.opacity='1'">WATCH LIVE ON KICK →</a>
+        </div>
+    </div>
+    
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -36,12 +45,20 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-logo">
-                <!-- Goats CZ Logo -->
                 <img src="logo.png" alt="Goats CZ Logo" class="goat-logo-image" style="width: 200px; height: 200px; border-radius: 50%; border: 4px solid var(--val-white); box-shadow: 0 0 30px rgba(255, 70, 85, 0.4); background-color: #ffffff; object-fit: cover;">
             </div>
             <h1 class="hero-title">DEFY THE LIMITS</h1>
             <p class="hero-subtitle">We are Goats CZ (GCZ). Dominating the Valorant scene.</p>
-            <a href="#roster" class="cta-button">MEET THE TEAM <span class="arrow">→</span></a>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
+                <a href="#roster" class="cta-button">MEET THE TEAM <span class="arrow">→</span></a>
+                <a href="https://discord.gg/W56F3G48xX" target="_blank" class="cta-button" style="background-color: #5865F2; border-color: #5865F2;">JOIN DISCORD <span class="arrow">→</span></a>
+            </div>
+            <div style="display: flex; gap: 2rem; justify-content: center; margin-top: 1rem;">
+                <a href="https://kick.com/gczdejwrix" target="_blank" style="color: #53fc18; font-weight: 700; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; display: flex; align-items: center; gap: 6px; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'"><div style="width: 8px; height: 8px; background-color: #53fc18; border-radius: 50%; box-shadow: 0 0 6px #53fc18;"></div> KICK</a>
+                <a href="https://x.com/dejwrix" target="_blank" style="color: var(--val-grey); font-weight: 700; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s;" onmouseover="this.style.color='var(--val-white)'" onmouseout="this.style.color='var(--val-grey)'">X / TWITTER</a>
+                <a href="https://www.vlr.gg/player/62747/dejwrix" target="_blank" style="color: var(--val-grey); font-weight: 700; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-grey)'">VLR.GG</a>
+                <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" style="color: var(--val-grey); font-weight: 700; text-decoration: none; font-size: 0.9rem; letter-spacing: 1px; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-grey)'">DONATE 💛</a>
+            </div>
         </div>
     </header>
 
@@ -220,6 +237,38 @@
             </div>
         </div>
     </section>
+
+    <!-- TEAM PHILOSOPHY SECTION -->
+    <section style="padding: 100px 2rem; background-color: var(--val-dark); border-top: 1px solid rgba(255,70,85,0.2); border-bottom: 1px solid rgba(255,70,85,0.2);">
+        <div style="max-width: 1200px; margin: 0 auto;">
+            <div style="text-align: center; margin-bottom: 4rem;">
+                <h2 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--val-red); letter-spacing: 2px;">HOW WE PLAY</h2>
+                <div style="height: 4px; width: 100px; background-color: var(--val-white); margin: 1rem auto 0;"></div>
+            </div>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem;">
+                <div class="philosophy-card" style="background: linear-gradient(135deg, #111 0%, #1a0a0c 100%); border: 1px solid rgba(255,70,85,0.3); padding: 2.5rem; text-align: center; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,70,85,0.3)';">
+                    <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">⚡</div>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;">AGGRESSION</h3>
+                    <p style="color: var(--val-grey); line-height: 1.7;">We don't sit back and wait. Our playstyle is built on early pressure, map control, and forcing enemies to react to us — never the other way around.</p>
+                </div>
+                <div class="philosophy-card" style="background: linear-gradient(135deg, #111 0%, #0d1620 100%); border: 1px solid rgba(255,70,85,0.3); padding: 2.5rem; text-align: center; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,70,85,0.3)';">
+                    <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🎯</div>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;">PRECISION</h3>
+                    <p style="color: var(--val-grey); line-height: 1.7;">Every util, every smoke, every push is deliberate. Dejwrix's IGL calls are crafted from hours of VOD review and strategic preparation against every opponent.</p>
+                </div>
+                <div class="philosophy-card" style="background: linear-gradient(135deg, #111 0%, #0a1a0d 100%); border: 1px solid rgba(255,70,85,0.3); padding: 2.5rem; text-align: center; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,70,85,0.3)';">
+                    <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🔄</div>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;">ADAPTABILITY</h3>
+                    <p style="color: var(--val-grey); line-height: 1.7;">Mid-round reads, map switches, counter-strategies. The Herd adapts faster than the enemy can respond. Winning is a mindset, not a plan.</p>
+                </div>
+                <div class="philosophy-card" style="background: linear-gradient(135deg, #111 0%, #1a150a 100%); border: 1px solid rgba(255,70,85,0.3); padding: 2.5rem; text-align: center; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,70,85,0.3)';">
+                    <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🤝</div>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;">BROTHERHOOD</h3>
+                    <p style="color: var(--val-grey); line-height: 1.7;">GCZ is not just a team. We are friends who compete at the highest level. The trust between us on the server translates directly into results every single match.</p>
+                </div>
+            </div>
+        </div>
+    </section>
     <section id="legacy" class="legacy-section roster-section" style="border-top: 1px solid rgba(255, 255, 255, 0.1);">
         <div class="section-header">
             <h2 class="section-title">OUR LEGACY</h2>
@@ -394,16 +443,33 @@
         </div>
     </section>
 
+    <!-- SUPPORT US SECTION -->
+    <section style="padding: 100px 2rem; background: linear-gradient(135deg, var(--val-darker) 0%, #1a0a0c 50%, var(--val-darker) 100%); border-top: 1px solid rgba(255,70,85,0.3); text-align: center; position: relative; overflow: hidden;">
+        <div style="position: absolute; top: 50%; left: 50%; transform: translate(-50%,-50%); width: 600px; height: 600px; background: radial-gradient(circle, rgba(255,70,85,0.06) 0%, transparent 70%); pointer-events: none;"></div>
+        <div style="max-width: 700px; margin: 0 auto; position: relative; z-index: 1;">
+            <div style="font-size: 4rem; margin-bottom: 1.5rem;">💛</div>
+            <h2 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--val-white); letter-spacing: 2px; margin-bottom: 1rem;">BACK THE HERD</h2>
+            <p style="color: var(--val-grey); font-size: 1.2rem; line-height: 1.8; margin-bottom: 3rem;">We're a self-funded Czech team grinding our way to the top. Every donation helps us cover tournament fees, equipment, and keeps the herd running. Every single cent goes back into making GCZ better.</p>
+            <div style="display: flex; gap: 1.5rem; justify-content: center; flex-wrap: wrap;">
+                <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" style="display: inline-block; background-color: var(--val-red); color: white; text-decoration: none; padding: 1.2rem 3rem; font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 2px; transition: transform 0.2s, box-shadow 0.2s; box-shadow: 0 5px 20px rgba(255,70,85,0.3);" onmouseover="this.style.transform='translateY(-3px)'; this.style.boxShadow='0 10px 30px rgba(255,70,85,0.5)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='0 5px 20px rgba(255,70,85,0.3)';">DONATE NOW ❤️</a>
+                <a href="https://discord.gg/W56F3G48xX" target="_blank" style="display: inline-block; background-color: transparent; color: white; text-decoration: none; padding: 1.2rem 3rem; font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 2px; border: 2px solid rgba(255,255,255,0.3); transition: border-color 0.2s;" onmouseover="this.style.borderColor='var(--val-white)';" onmouseout="this.style.borderColor='rgba(255,255,255,0.3)';">JOIN DISCORD</a>
+            </div>
+        </div>
+    </section>
+
     <footer id="contact" class="footer">
         <div class="footer-content">
             <div class="footer-logo">GCZ</div>
-            <p>Join the herd. Follow us on our journey to Champions.</p>
-            <div class="social-links">
-                <a href="#" class="social-link">Twitter</a>
-                <a href="#" class="social-link">Twitch</a>
-                <a href="#" class="social-link">YouTube</a>
+            <p style="color: var(--val-grey); max-width: 500px; margin: 0 auto 2rem; line-height: 1.6;">Goats CZ — Fully Czech Valorant squad competing in Premier Contender. Join the herd on our journey to Challengers.</p>
+            <div class="social-links" style="gap: 2rem; flex-wrap: wrap;">
+                <a href="https://kick.com/gczdejwrix" target="_blank" class="social-link" style="color: #53fc18; font-weight: 700;">KICK</a>
+                <a href="https://x.com/dejwrix" target="_blank" class="social-link">TWITTER</a>
+                <a href="https://discord.gg/W56F3G48xX" target="_blank" class="social-link">DISCORD</a>
+                <a href="https://www.vlr.gg/player/62747/dejwrix" target="_blank" class="social-link">VLR.GG</a>
+                <a href="https://www.vidia-design.cz/" target="_blank" class="social-link">VIDIA DESIGN</a>
+                <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" class="social-link" style="color: var(--val-red); font-weight: 700;">DONATE</a>
             </div>
-            <p class="copyright">&copy; 2026 Goats CZ. All rights reserved.</p>
+            <p class="copyright" style="margin-top: 2rem;">&copy; 2026 Goats CZ. All rights reserved. | Made with ❤️ in Czech Republic 🇨🇿</p>
         </div>
     </footer>
 
