@@ -28,7 +28,6 @@
                 <li><a href="#news">News</a></li>
                 <li><a href="#schedule">Schedule</a></li>
                 <li><a href="#roster">Roster</a></li>
-                <li><a href="#partners">Partners</a></li>
                 <li><a href="#media">VODs</a></li>
                 <li><a href="#merch">Merch</a></li>
                 <li><a href="#tryouts">Tryouts</a></li>
@@ -188,7 +187,7 @@
                 </ul>
             </div>
             <div style="flex: 1 1 250px; display: flex; flex-direction: column; gap: 1rem;">
-                <a href="mailto:goatscz0@gmail.com" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; background-color: var(--val-red); color: white; text-decoration: none; padding: 1.2rem 1rem; font-family: var(--font-heading); font-size: 1.1rem; letter-spacing: 1px; font-weight: 700; transition: transform 0.2s, opacity 0.2s;" onmouseover="this.style.opacity='0.85'; this.style.transform='translateX(5px)';" onmouseout="this.style.opacity='1'; this.style.transform='translateX(0)';">
+                <a href="#" onclick="navigator.clipboard.writeText('goatscz0@gmail.com'); this.innerHTML='<span style=\'font-size: 1.3rem;\'>✔️</span> COPIED!'; setTimeout(() => this.innerHTML='<span style=\'font-size: 1.3rem;\'>📧</span> GOATSCZ0@GMAIL.COM', 2000); return false;" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; background-color: var(--val-red); color: white; text-decoration: none; padding: 1.2rem 1rem; font-family: var(--font-heading); font-size: 1.1rem; letter-spacing: 1px; font-weight: 700; transition: transform 0.2s, opacity 0.2s;" onmouseover="this.style.opacity='0.85'; this.style.transform='translateX(5px)';" onmouseout="this.style.opacity='1'; this.style.transform='translateX(0)';">
                     <span style="font-size: 1.3rem;">📧</span> GOATSCZ0@GMAIL.COM
                 </a>
                 <a href="https://discord.gg/W56F3G48xX" target="_blank" style="display: flex; align-items: center; gap: 1rem; background-color: transparent; color: var(--val-white); text-decoration: none; padding: 1.2rem 1.5rem; font-family: var(--font-heading); font-size: 1.3rem; letter-spacing: 1px; font-weight: 700; border: 2px solid rgba(255,255,255,0.2); transition: transform 0.2s, border-color 0.2s;" onmouseover="this.style.transform='translateX(5px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateX(0)'; this.style.borderColor='rgba(255,255,255,0.2)';">
@@ -324,17 +323,7 @@
         </div>
     </section>
 
-    <!-- PARTNERS SECTION -->
-    <section id="partners" style="padding: 80px 2rem; background-color: var(--val-dark); border-top: 1px solid rgba(255, 255, 255, 0.1);">
-        <div class="section-header" style="text-align: center;">
-            <h2 class="section-title">OUR PARTNERS</h2>
-            <div class="section-line" style="margin: 0 auto;"></div>
-        </div>
-        <div style="max-width: 1000px; margin: 3rem auto 0; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap; opacity: 0.8;">
-            <a href="https://www.vidia-design.cz/" target="_blank" style="text-decoration: none; width: 220px; height: 100px; background-color: #1a1a1a; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.5rem; color: var(--val-white); border: 2px solid rgba(255, 70, 85, 0.3); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">VIDIA DESIGN</a>
-            <div style="width: 220px; height: 100px; background-color: #1a1a1a; display: flex; align-items: center; justify-content: center; font-family: var(--font-heading); font-size: 1.2rem; color: var(--val-grey); border: 2px dashed rgba(255, 255, 255, 0.2);">BECOME A PARTNER</div>
-        </div>
-    </section>
+
 
     <!-- MEDIA / VODS SECTION -->
     <section id="media" style="padding: 100px 2rem; background-color: var(--val-darker); border-top: 1px solid rgba(255, 255, 255, 0.1);">
@@ -393,97 +382,18 @@
         </div>
     </section>
 
-    <section id="media" class="media-section roster-section" style="background-color: var(--val-darker); border-top: 1px solid rgba(255, 255, 255, 0.1);">
+    <!-- GALLERY SECTION -->
+    <section id="gallery" style="padding: 100px 2rem; background-color: var(--val-dark); border-top: 1px solid rgba(255, 255, 255, 0.1);">
         <div class="section-header">
-            <h2 class="section-title">WATCH THE HERD</h2>
+            <h2 class="section-title">BEHIND THE SCENES</h2>
             <div class="section-line"></div>
         </div>
-        <div class="media-container" style="display: flex; gap: 2rem; flex-wrap: wrap; justify-content: center; max-width: 1400px; margin: 0 auto;">
-            <div class="video-wrapper" style="flex: 1 1 500px; background-color: var(--val-dark); border: 2px solid rgba(255, 70, 85, 0.3); aspect-ratio: 16/9; display: flex; align-items: center; justify-content: center; position: relative; transition: border-color 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='var(--val-red)'" onmouseout="this.style.borderColor='rgba(255, 70, 85, 0.3)'">
-                <span style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-grey);">LATEST HIGHLIGHTS / VOD</span>
-                <div style="position: absolute; top: 15px; left: 15px; background-color: var(--val-red); padding: 4px 8px; font-weight: 800; font-size: 0.8rem; letter-spacing: 1px; border-radius: 3px;">REC</div>
-                <div style="position: absolute; width: 60px; height: 60px; background-color: rgba(255, 255, 255, 0.1); border-radius: 50%; display: flex; align-items: center; justify-content: center;"><div style="width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 16px solid var(--val-white); margin-left: 5px;"></div></div>
-            </div>
-            <div class="social-feed" style="flex: 1 1 300px; background-color: var(--val-dark); padding: 2.5rem; border-left: 4px solid var(--val-red);">
-                <h3 style="font-family: var(--font-heading); font-size: 2.5rem; margin-bottom: 1rem; color: var(--val-white);">FOLLOW DEJWRIX</h3>
-                <p style="color: var(--val-grey); margin-bottom: 2rem; line-height: 1.6;">Support our IGL directly! Check out his streams, socials, and setup.</p>
-                <ul style="list-style: none; display: flex; flex-direction: column; gap: 1.2rem;">
-                    <li><a href="https://kick.com/gczdejwrix" target="_blank" style="color: var(--val-white); text-decoration: none; display: flex; align-items: center; gap: 15px; font-weight: 600; font-size: 1.1rem; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-white)'"><div style="width: 12px; height: 12px; background-color: #53fc18; border-radius: 50%; box-shadow: 0 0 10px #53fc18;"></div> Kick.com</a></li>
-                    <li><a href="https://x.com/dejwrix" target="_blank" style="color: var(--val-white); text-decoration: none; display: flex; align-items: center; gap: 15px; font-weight: 600; font-size: 1.1rem; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-white)'"><div style="width: 12px; height: 12px; background-color: #1DA1F2; border-radius: 50%; box-shadow: 0 0 10px #1DA1F2;"></div> X (Twitter)</a></li>
-                    <li><a href="https://www.instagram.com/david_vorel/" target="_blank" style="color: var(--val-white); text-decoration: none; display: flex; align-items: center; gap: 15px; font-weight: 600; font-size: 1.1rem; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-white)'"><div style="width: 12px; height: 12px; background-color: #E1306C; border-radius: 50%; box-shadow: 0 0 10px #E1306C;"></div> Instagram</a></li>
-                    <li><a href="https://guns.lol/gczdejwrix" target="_blank" style="color: var(--val-white); text-decoration: none; display: flex; align-items: center; gap: 15px; font-weight: 600; font-size: 1.1rem; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-white)'"><div style="width: 12px; height: 12px; background-color: #999999; border-radius: 50%; box-shadow: 0 0 10px #999999;"></div> Guns.lol</a></li>
-                    <li><a href="https://www.vlr.gg/player/62747/dejwrix" target="_blank" style="color: var(--val-white); text-decoration: none; display: flex; align-items: center; gap: 15px; font-weight: 600; font-size: 1.1rem; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-white)'"><div style="width: 12px; height: 12px; background-color: #2b2e35; border-radius: 50%; box-shadow: 0 0 10px #2b2e35;"></div> VLR.gg Profile</a></li>
-                </ul>
-            </div>
-        </div>
-    </section>
-
-    <section id="partners" class="partners-section" style="padding: 100px 2rem; background-color: var(--val-white); color: var(--val-darker); text-align: center;">
-        <h2 style="font-family: var(--font-heading); font-size: 3.5rem; margin-bottom: 4rem; letter-spacing: 2px;">PROUDLY SUPPORTED BY</h2>
-        <div style="display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; align-items: center;">
-            <a href="https://www.vidia-design.cz/" target="_blank" style="text-decoration: none; color: inherit; display: block; padding: 2rem 4rem; border: 4px solid var(--val-darker); transition: transform 0.2s, box-shadow 0.2s; box-shadow: 10px 10px 0 var(--val-red);" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='15px 15px 0 var(--val-red)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='10px 10px 0 var(--val-red)';">
-                <h3 style="font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 3px; color: var(--val-red); text-transform: uppercase; margin: 0;">VIDIA DESIGN</h3>
-                <span style="font-weight: bold; color: var(--val-dark); display: block; margin-top: 10px; font-size: 1.2rem; letter-spacing: 1px;">TITLE SPONSOR</span>
-            </a>
-            
-            <div style="padding: 3rem 4rem; border: 4px dashed rgba(15, 25, 35, 0.3); transition: transform 0.2s; cursor: default;" onmouseover="this.style.transform='translateY(-5px)'; this.style.borderColor='var(--val-red)'" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(15, 25, 35, 0.3)'">
-                <h3 style="font-family: var(--font-heading); font-size: 2rem; color: rgba(15, 25, 35, 0.8); margin: 0;">BECOME A PARTNER</h3>
-                <span style="font-weight: bold; color: var(--val-red); display: block; margin-top: 10px; font-size: 1.2rem; user-select: all;">goatscz0@gmail.com</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="community" class="community-section" style="padding: 80px 2rem; background-color: #5865F2; color: white; text-align: center; display: flex; flex-direction: column; align-items: center; justify-content: center; border-top: 1px solid rgba(255, 255, 255, 0.1);">
-        <h2 style="font-family: var(--font-heading); font-size: 3.5rem; margin-bottom: 1rem; text-transform: uppercase; letter-spacing: 2px;">JOIN THE HERD ON DISCORD</h2>
-        <p style="font-size: 1.2rem; margin-bottom: 2rem; max-width: 600px; line-height: 1.6; opacity: 0.9;">Become a part of our community. Talk with the players, find teammates, and get notified every time we play an official match!</p>
-        <a href="https://discord.gg/W56F3G48xX" target="_blank" style="background-color: white; color: #5865F2; padding: 15px 40px; font-family: var(--font-heading); font-size: 1.5rem; text-decoration: none; border-radius: 5px; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(0,0,0,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">JOIN THE SERVER</a>
-    </section>
-
-    <section id="merch" class="merch-section" style="padding: 100px 2rem; background-color: var(--val-darker); border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center; position: relative; overflow: hidden;">
-        <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-image: radial-gradient(circle at center, rgba(255, 70, 85, 0.05) 0%, transparent 70%);"></div>
-        <h2 style="font-family: var(--font-heading); font-size: 3rem; margin-bottom: 1rem; position: relative; z-index: 1;">OFFICIAL MERCH</h2>
-        <p style="color: var(--val-grey); font-size: 1.2rem; margin-bottom: 3rem; position: relative; z-index: 1;">Rep the herd. Official GCZ jerseys and apparel coming soon.</p>
-        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; position: relative; z-index: 1;">
-            <div style="width: 300px; height: 350px; background-color: var(--val-dark); border: 2px dashed rgba(255, 255, 255, 0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0.7; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--val-red)'" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.2)'">
-                <span style="font-size: 4rem; margin-bottom: 1rem;">👕</span>
-                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 1px; color: var(--val-white);">2026 PRO JERSEY</h3>
-                <span style="color: var(--val-red); font-weight: bold; margin-top: 10px;">COMING SOON</span>
-            </div>
-            <div style="width: 300px; height: 350px; background-color: var(--val-dark); border: 2px dashed rgba(255, 255, 255, 0.2); display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0.7; transition: border-color 0.3s;" onmouseover="this.style.borderColor='var(--val-red)'" onmouseout="this.style.borderColor='rgba(255, 255, 255, 0.2)'">
-                <span style="font-size: 4rem; margin-bottom: 1rem;">🧢</span>
-                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 1px; color: var(--val-white);">GCZ SNAPBACK</h3>
-                <span style="color: var(--val-red); font-weight: bold; margin-top: 10px;">COMING SOON</span>
-            </div>
-        </div>
-    </section>
-
-    <section id="contact-form" class="contact-section" style="padding: 100px 2rem; background-color: var(--val-dark); border-top: 1px solid rgba(255, 70, 85, 0.3); text-align: center;">
-        <h2 style="font-family: var(--font-heading); font-size: 3rem; color: var(--val-red); margin-bottom: 1rem;">GET IN TOUCH</h2>
-        <p style="color: var(--val-grey); font-size: 1.2rem; margin-bottom: 3rem;">Interested in scrims, business inquiries, or joining the herd?<br>Fill out the form below or email us directly at <a href="mailto:goatscz0@gmail.com" style="color: var(--val-red); font-weight: bold; text-decoration: none; border-bottom: 1px dashed var(--val-red);">goatscz0@gmail.com</a></p>
-        <form action="mailto:goatscz0@gmail.com" method="post" enctype="text/plain" style="max-width: 600px; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem;">
-            <input type="text" placeholder="Your Name or Team" style="padding: 1rem; background-color: var(--val-darker); border: 1px solid rgba(255, 255, 255, 0.1); color: var(--val-white); font-family: var(--font-body); outline: none;">
-            <input type="email" placeholder="Email Address" style="padding: 1rem; background-color: var(--val-darker); border: 1px solid rgba(255, 255, 255, 0.1); color: var(--val-white); font-family: var(--font-body); outline: none;">
-            <textarea placeholder="Message" rows="5" style="padding: 1rem; background-color: var(--val-darker); border: 1px solid rgba(255, 255, 255, 0.1); color: var(--val-white); font-family: var(--font-body); outline: none; resize: vertical;"></textarea>
-            <button type="submit" class="cta-button" style="border: none; cursor: pointer; align-self: flex-start;">SEND MESSAGE <span class="arrow">→</span></button>
-        </form>
-    </section>
-
-    <section id="media" class="media-section" style="padding: 100px 2rem; background-color: var(--val-dark); border-top: 1px solid rgba(255, 255, 255, 0.1); text-align: center;">
-        <h2 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--val-white); margin-bottom: 3rem;">VODS & HIGHLIGHTS</h2>
-        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap; max-width: 1400px; margin: 0 auto;">
-            <a href="https://www.youtube.com/shorts/Xu_lF4I-r4M" target="_blank" style="text-decoration: none; width: 600px; height: 337px; background-color: #0f1923; border: 2px solid rgba(255, 70, 85, 0.3); display: flex; align-items: center; justify-content: center; position: relative; transition: transform 0.2s; cursor: pointer;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                <span style="font-size: 5rem; color: rgba(255, 255, 255, 0.1);">▶</span>
-                <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.9)); text-align: left;">
-                    <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem;">YOUTUBE HIGHLIGHTS</span>
-                    <h3 style="color: white; font-family: var(--font-heading); font-size: 1.8rem; margin: 0.5rem 0 0;">WOLVESDEN GRAND FINALS</h3>
-                </div>
-            </a>
-            <div style="width: 600px; height: 337px; background-color: #0f1923; border: 2px solid rgba(255, 70, 85, 0.3); display: flex; align-items: center; justify-content: center; position: relative;">
-                <span style="font-size: 5rem; color: rgba(255, 255, 255, 0.1);">▶</span>
-                <div style="position: absolute; bottom: 0; left: 0; right: 0; padding: 1.5rem; background: linear-gradient(transparent, rgba(0,0,0,0.9)); text-align: left;">
-                    <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem;">TWITCH VOD</span>
-                    <h3 style="color: white; font-family: var(--font-heading); font-size: 1.8rem; margin: 0.5rem 0 0; opacity: 0.5;">COMING SOON</h3>
-                </div>
+        <div style="max-width: 1200px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">
+            <div style="background-color: var(--val-darker); height: 250px; background-image: url('dejwrix.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(255,70,85,0.3); transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'"></div>
+            <div style="background-color: var(--val-darker); height: 250px; background-image: url('luky.jpg'); background-size: cover; background-position: center; border: 1px solid rgba(255,70,85,0.3); transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'"></div>
+            <div style="background-color: #0f1923; height: 250px; display: flex; align-items: center; justify-content: center; flex-direction: column; border: 1px solid rgba(255,70,85,0.3); transition: transform 0.3s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
+                <span style="font-size: 3rem; margin-bottom: 1rem;">🔥</span>
+                <span style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--val-white);">MORE COMING SOON</span>
             </div>
         </div>
     </section>
@@ -534,7 +444,7 @@
 
             <div style="margin-bottom: 2.5rem; border-left: 4px solid var(--val-red); padding-left: 1.5rem; background-color: var(--val-dark); padding: 1.5rem; border-radius: 0 8px 8px 0;">
                 <h3 style="font-size: 1.4rem; color: var(--val-white); margin-bottom: 0.8rem;">I have more questions. How can I contact you?</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">If you have any other questions, business inquiries, or just want to say hi, feel free to drop us an email at <span style="color: var(--val-red); font-weight: bold; user-select: all;">goatscz0@gmail.com</span>.</p>
+                <p style="color: var(--val-grey); line-height: 1.6;">If you have any other questions, business inquiries, or just want to say hi, feel free to drop us an email at <span style="color: var(--val-red); font-weight: bold; cursor: pointer;" onclick="navigator.clipboard.writeText('goatscz0@gmail.com'); alert('Email copied to clipboard!');">goatscz0@gmail.com (Click to copy)</span>.</p>
             </div>
         </div>
     </section>
@@ -549,7 +459,7 @@
             </div>
             <div style="flex: 1 1 250px; display: flex; flex-direction: column; gap: 1rem;">
                 <a href="https://discord.gg/W56F3G48xX" target="_blank" style="display: flex; align-items: center; gap: 1rem; background-color: #5865F2; color: white; text-decoration: none; padding: 1rem 1.5rem; font-family: var(--font-heading); font-size: 1.3rem; letter-spacing: 1px; font-weight: 700; transition: transform 0.2s, opacity 0.2s;" onmouseover="this.style.transform='translateX(5px)';" onmouseout="this.style.transform='translateX(0)';"><span style="font-size: 1.5rem;">💬</span> HIT US ON DISCORD</a>
-                <a href="mailto:goatscz0@gmail.com" style="display: flex; align-items: center; gap: 0.5rem; background-color: transparent; color: var(--val-white); text-decoration: none; padding: 1rem 1rem; font-family: var(--font-heading); font-size: 1.1rem; letter-spacing: 1px; font-weight: 700; border: 2px solid rgba(255,255,255,0.2); transition: transform 0.2s, border-color 0.2s;" onmouseover="this.style.transform='translateX(5px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateX(0)'; this.style.borderColor='rgba(255,255,255,0.2)';"><span style="font-size: 1.3rem;">📧</span> GOATSCZ0@GMAIL.COM</a>
+                <a href="#" onclick="navigator.clipboard.writeText('goatscz0@gmail.com'); this.innerHTML='<span style=\'font-size: 1.3rem;\'>✔️</span> COPIED!'; setTimeout(() => this.innerHTML='<span style=\'font-size: 1.3rem;\'>📧</span> GOATSCZ0@GMAIL.COM', 2000); return false;" style="display: flex; align-items: center; gap: 0.5rem; background-color: transparent; color: var(--val-white); text-decoration: none; padding: 1rem 1rem; font-family: var(--font-heading); font-size: 1.1rem; letter-spacing: 1px; font-weight: 700; border: 2px solid rgba(255,255,255,0.2); transition: transform 0.2s, border-color 0.2s;" onmouseover="this.style.transform='translateX(5px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateX(0)'; this.style.borderColor='rgba(255,255,255,0.2)';"><span style="font-size: 1.3rem;">📧</span> GOATSCZ0@GMAIL.COM</a>
             </div>
         </div>
     </section>
