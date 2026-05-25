@@ -465,3 +465,21 @@ h1, h2, h3, .logo-text, .section-title {
         grid-template-columns: 1fr;
     }
 }
+
+/* Match Cards Responsive */
+.match-card { text-decoration: none; display: flex; justify-content: space-between; align-items: center; background-color: var(--val-dark); border: 2px solid rgba(255, 255, 255, 0.1); padding: 1.5rem 2rem; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
+.match-card:hover { transform: translateY(-3px); }
+.match-card.featured { border-color: var(--val-red); box-shadow: 0 0 15px rgba(255, 70, 85, 0.2); }
+.match-card.featured:hover { box-shadow: 0 0 25px rgba(255, 70, 85, 0.4); }
+.match-card-team-1, .match-card-team-2 { flex: 1; font-family: var(--font-heading); font-size: 2rem; }
+.match-card-team-1 { text-align: right; color: var(--val-white); }
+.match-card-team-2 { text-align: left; color: var(--val-white); }
+.match-card-info { flex: 0 0 220px; text-align: center; position: relative; padding: 0 1rem; }
+.match-card-badge { flex: 0 0 100px; text-align: right; }
+@media (max-width: 768px) {
+  .match-card { flex-direction: column; gap: 1.5rem; text-align: center; }
+  .match-card-team-1 { text-align: center; font-size: 2.5rem; }
+  .match-card-team-2 { text-align: center; font-size: 1.8rem; }
+  .match-card-info { flex: auto; }
+  .match-card-badge { flex: auto; text-align: center; }
+}
