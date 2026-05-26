@@ -7,6 +7,7 @@
     <title>Goats CZ | GCZ - Valorant Esports Team</title>
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+    <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
 
@@ -178,7 +179,7 @@
         </div>
     </section>
 
-    <section id="roster" class="roster-section">
+    <section id="roster" class="roster-section fade-in-up">
         <div class="section-header">
             <h2 class="section-title">OUR ROSTER</h2>
             <div class="section-line"></div>
@@ -248,7 +249,7 @@
         </div>
     </section>
 
-    <section id="about" class="about-section">
+    <section id="about" class="about-section fade-in-up">
         <div class="about-container">
             <div class="about-text">
                 <h2>THE HERD</h2>
@@ -309,26 +310,19 @@
 
 
     <!-- MEDIA / VODS SECTION -->
-    <section id="media" style="padding: 100px 2rem; background-color: var(--val-darker); border-top: 1px solid rgba(255, 255, 255, 0.1);">
+    <!-- LIVESTREAM SECTION -->
+    <section id="stream" class="fade-in-up" style="padding: 100px 2rem; background-color: var(--val-darker); border-top: 1px solid rgba(255, 255, 255, 0.1);">
         <div class="section-header">
-            <h2 class="section-title">MEDIA & VODS</h2>
+            <h2 class="section-title">LIVESTREAM</h2>
             <div class="section-line"></div>
         </div>
-        <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: center;">
-            <a href="https://www.youtube.com/shorts/Xu_lF4I-r4M" target="_blank" style="text-decoration: none; width: 600px; height: 337px; background-color: #0f1923; border: 2px solid rgba(255, 70, 85, 0.3); display: flex; align-items: center; justify-content: center; position: relative; box-shadow: 0 10px 30px rgba(0,0,0,0.5); overflow: hidden; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)'" onmouseout="this.style.transform='scale(1)'">
-                <div style="position: absolute; top: 0; left: 0; right: 0; bottom: 0; background-color: var(--val-dark); opacity: 0.8;"></div>
-                <div style="z-index: 10; display: flex; flex-direction: column; align-items: center; gap: 1rem;">
-                    <div style="width: 70px; height: 50px; background-color: #ff0000; border-radius: 10px; display: flex; align-items: center; justify-content: center;">
-                        <div style="width: 0; height: 0; border-top: 10px solid transparent; border-bottom: 10px solid transparent; border-left: 15px solid white; margin-left: 5px;"></div>
-                    </div>
-                    <span style="color: white; font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 1px;">WATCH LATEST HIGHLIGHT</span>
-                </div>
-            </a>
+        <div style="max-width: 1080px; margin: 0 auto; display: flex; justify-content: center; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
+            <iframe src="https://player.kick.com/gczdejwrix" height="600" width="1080" frameborder="0" scrolling="no" allowfullscreen="true" style="max-width: 100%; border: 2px solid var(--val-red);"></iframe>
         </div>
     </section>
 
     <!-- MERCH SECTION -->
-    <section id="merch" style="padding: 100px 2rem; background: linear-gradient(135deg, var(--val-dark) 0%, #1a0a0c 100%); border-top: 1px solid rgba(255, 70, 85, 0.2);">
+    <section id="merch" class="fade-in-up" style="padding: 100px 2rem; background: linear-gradient(135deg, var(--val-dark) 0%, #1a0a0c 100%); border-top: 1px solid rgba(255, 70, 85, 0.2);">
         <div style="max-width: 900px; margin: 0 auto; text-align: center;">
             <span style="color: var(--val-red); font-weight: 800; font-size: 1rem; letter-spacing: 3px;">OFFICIAL GEAR</span>
             <h2 style="font-family: var(--font-heading); font-size: 4rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; line-height: 1;">MERCH DROPPING SOON</h2>
@@ -337,7 +331,7 @@
         </div>
     </section>
 
-    <section id="legacy" class="legacy-section roster-section" style="border-top: 1px solid rgba(255, 255, 255, 0.1);">
+    <section id="legacy" class="legacy-section roster-section fade-in-up" style="border-top: 1px solid rgba(255, 255, 255, 0.1);">
         <div class="section-header">
             <h2 class="section-title">OUR LEGACY</h2>
             <div class="section-line"></div>
@@ -369,7 +363,7 @@
 
 
     <!-- TROPHY CABINET SECTION -->
-    <section id="trophies" style="padding: 100px 2rem; background-color: var(--val-dark); border-top: 1px solid rgba(255, 255, 255, 0.1);">
+    <section id="trophies" class="fade-in-up" style="padding: 100px 2rem; background-color: var(--val-dark); border-top: 1px solid rgba(255, 255, 255, 0.1);">
         <div class="section-header">
             <h2 class="section-title">TROPHY CABINET</h2>
             <div class="section-line"></div>
@@ -418,50 +412,112 @@
     <section id="faq" class="faq-section" style="padding: 100px 2rem; background-color: var(--val-darker); border-top: 1px solid rgba(255, 255, 255, 0.1);">
         <div style="max-width: 800px; margin: 0 auto; text-align: left;">
             <h2 style="font-family: var(--font-heading); font-size: 3rem; color: var(--val-white); margin-bottom: 3rem; text-align: center;">FREQUENTLY ASKED QUESTIONS</h2>
-            
-            <div style="margin-bottom: 2.5rem; border-left: 4px solid var(--val-red); padding-left: 1.5rem; background-color: var(--val-dark); padding: 1.5rem; border-radius: 0 8px 8px 0;">
-                <h3 style="font-size: 1.4rem; color: var(--val-white); margin-bottom: 0.8rem;">Are you looking for new players?</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">Our core roster and subs are currently locked in for the Premier season. However, we always keep an eye out for exceptional High Immortal/Radiant Czech talent to join our practice squad.</p>
+            <div class="faq-item fade-in-up">
+                <div class="faq-question">
+                    Are you looking for new players?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Our core roster and subs are currently locked in for the Premier season. However, we always keep an eye out for exceptional High Immortal/Radiant Czech talent to join our practice squad.
+                    </div>
+                </div>
             </div>
             
-            <div style="margin-bottom: 2.5rem; border-left: 4px solid var(--val-red); padding-left: 1.5rem; background-color: var(--val-dark); padding: 1.5rem; border-radius: 0 8px 8px 0;">
-                <h3 style="font-size: 1.4rem; color: var(--val-white); margin-bottom: 0.8rem;">Who does the in-game calling?</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">Dejwrix is our dedicated IGL (In-Game Leader), orchestrating the mid-round calls, utility combinations, and overall match strategy.</p>
+            <div class="faq-item fade-in-up">
+                <div class="faq-question">
+                    Who does the in-game calling?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Dejwrix is our dedicated IGL (In-Game Leader), orchestrating the mid-round calls, utility combinations, and overall match strategy.
+                    </div>
+                </div>
             </div>
             
-            <div style="margin-bottom: 2.5rem; border-left: 4px solid var(--val-red); padding-left: 1.5rem; background-color: var(--val-dark); padding: 1.5rem; border-radius: 0 8px 8px 0;">
-                <h3 style="font-size: 1.4rem; color: var(--val-white); margin-bottom: 0.8rem;">How often do you practice?</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">We play official Premier matches weekly and run internal scrims against other top-tier Contender teams 3-4 times a week to stay sharp.</p>
+            <div class="faq-item fade-in-up">
+                <div class="faq-question">
+                    How often do you practice?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        We play official Premier matches weekly and run internal scrims against other top-tier Contender teams 3-4 times a week to stay sharp.
+                    </div>
+                </div>
             </div>
             
-            <div style="margin-bottom: 2.5rem; border-left: 4px solid var(--val-red); padding-left: 1.5rem; background-color: var(--val-dark); padding: 1.5rem; border-radius: 0 8px 8px 0;">
-                <h3 style="font-size: 1.4rem; color: var(--val-white); margin-bottom: 0.8rem;">Do you have a dedicated coach?</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">Currently, our IGL and the core team handle VOD reviews and strategy crafting. However, we are open to working with an experienced coach in the future.</p>
+            <div class="faq-item fade-in-up">
+                <div class="faq-question">
+                    Do you have a dedicated coach?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Currently, our IGL and the core team handle VOD reviews and strategy crafting. However, we are open to working with an experienced coach in the future.
+                    </div>
+                </div>
             </div>
             
-            <div style="margin-bottom: 2.5rem; border-left: 4px solid var(--val-red); padding-left: 1.5rem; background-color: var(--val-dark); padding: 1.5rem; border-radius: 0 8px 8px 0;">
-                <h3 style="font-size: 1.4rem; color: var(--val-white); margin-bottom: 0.8rem;">How long have you been playing together?</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">The core of the team has been grinding together since this year (2026), building deep synergy and absolute trust in each other's plays.</p>
+            <div class="faq-item fade-in-up">
+                <div class="faq-question">
+                    How long have you been playing together?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        The core of the team has been grinding together since this year (2026), building deep synergy and absolute trust in each other's plays.
+                    </div>
+                </div>
             </div>
             
-            <div style="margin-bottom: 2.5rem; border-left: 4px solid var(--val-red); padding-left: 1.5rem; background-color: var(--val-dark); padding: 1.5rem; border-radius: 0 8px 8px 0;">
-                <h3 style="font-size: 1.4rem; color: var(--val-white); margin-bottom: 0.8rem;">What are the ultimate goals of the team?</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">Our primary objective is to dominate the Premier Contender division and fight our way into the Challengers league through Ascension.</p>
+            <div class="faq-item fade-in-up">
+                <div class="faq-question">
+                    What are the ultimate goals of the team?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        Our primary objective is to dominate the Premier Contender division and fight our way into the Challengers league through Ascension.
+                    </div>
+                </div>
             </div>
             
-            <div style="margin-bottom: 2.5rem; border-left: 4px solid var(--val-red); padding-left: 1.5rem; background-color: var(--val-dark); padding: 1.5rem; border-radius: 0 8px 8px 0;">
-                <h3 style="font-size: 1.4rem; color: var(--val-white); margin-bottom: 0.8rem;">Where can I watch your official matches?</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">We stream most of our official Premier matches and tournaments directly on our player POVs via Twitch. Follow our Discord to get notified when we go live!</p>
+            <div class="faq-item fade-in-up">
+                <div class="faq-question">
+                    Where can I watch your official matches?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        We stream most of our official Premier matches and tournaments directly on our player POVs via Twitch and Kick. Follow our Discord to get notified when we go live!
+                    </div>
+                </div>
             </div>
 
-            <div style="margin-bottom: 2.5rem; border-left: 4px solid var(--val-red); padding-left: 1.5rem; background-color: var(--val-dark); padding: 1.5rem; border-radius: 0 8px 8px 0;">
-                <h3 style="font-size: 1.4rem; color: var(--val-white); margin-bottom: 0.8rem;">How can I support Goats CZ?</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">The best way to support us right now is by joining our Discord, following our socials, and cheering for us in Twitch chat during match days. You can also support the team directly by <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" style="color: var(--val-red); text-decoration: underline; font-weight: bold;">donating here</a>. Merch is also dropping soon!</p>
+            <div class="faq-item fade-in-up">
+                <div class="faq-question">
+                    How can I support Goats CZ?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        The best way to support us right now is by joining our Discord, following our socials, and cheering for us in stream chats during match days. You can also support the team directly by <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" style="color: var(--val-red); text-decoration: underline; font-weight: bold;">donating here</a>. Merch is also dropping soon!
+                    </div>
+                </div>
             </div>
 
-            <div style="margin-bottom: 2.5rem; border-left: 4px solid var(--val-red); padding-left: 1.5rem; background-color: var(--val-dark); padding: 1.5rem; border-radius: 0 8px 8px 0;">
-                <h3 style="font-size: 1.4rem; color: var(--val-white); margin-bottom: 0.8rem;">I have more questions. How can I contact you?</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">If you have any other questions, business inquiries, or just want to say hi, feel free to drop us an email at <span style="color: var(--val-red); font-weight: bold; cursor: pointer;" onclick="navigator.clipboard.writeText('goatscz0@gmail.com'); alert('Email copied to clipboard!');">goatscz0@gmail.com (Click to copy)</span>.</p>
+            <div class="faq-item fade-in-up">
+                <div class="faq-question">
+                    I have more questions. How can I contact you?
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer">
+                    <div class="faq-answer-inner">
+                        If you have any other questions, business inquiries, or just want to say hi, feel free to drop us an email at <span style="color: var(--val-red); font-weight: bold; cursor: pointer;" onclick="navigator.clipboard.writeText('goatscz0@gmail.com'); alert('Email copied to clipboard!');">goatscz0@gmail.com (Click to copy)</span>.
+                    </div>
+                </div>
             </div>
         </div>
     </section>

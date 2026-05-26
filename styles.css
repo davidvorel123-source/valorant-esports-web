@@ -483,3 +483,53 @@ h1, h2, h3, .logo-text, .section-title {
   .match-card-info { flex: auto; }
   .match-card-badge { flex: auto; text-align: center; }
 }
+
+/* Fade In Up Animations */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+.fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* FAQ Accordion Styles */
+.faq-item {
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--val-red);
+    background-color: var(--val-dark);
+    border-radius: 0 8px 8px 0;
+    overflow: hidden;
+}
+.faq-question {
+    padding: 1.5rem;
+    font-size: 1.4rem;
+    color: var(--val-white);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+.faq-question:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+.faq-icon {
+    color: var(--val-red);
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+}
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+.faq-answer-inner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: var(--val-grey);
+    line-height: 1.6;
+}

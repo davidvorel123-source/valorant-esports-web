@@ -64,4 +64,39 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.5 });
     counters.forEach(c => counterObserver.observe(c));
 
+    // Fade-in-up animation observer
+    const fadeObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('is-visible');
+                fadeObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1, rootMargin: "0px 0px -50px 0px" });
+
+    document.querySelectorAll('.fade-in-up').forEach(el => fadeObserver.observe(el));
+
+    // FAQ Accordion
+    const faqQuestions = document.querySelectorAll('.faq-question');
+    faqQuestions.forEach(question => {
+        question.addEventListener('click', () => {
+            const answer = question.nextElementSibling;
+            const icon = question.querySelector('.faq-icon');
+            const isOpen = answer.style.maxHeight;
+            
+            // Close all others
+            document.querySelectorAll('.faq-answer').forEach(ans => {
+                ans.style.maxHeight = null;
+            });
+            document.querySelectorAll('.faq-icon').forEach(ic => {
+                ic.style.transform = 'rotate(0deg)';
+            });
+            
+            if (!isOpen) {
+                answer.style.maxHeight = answer.scrollHeight + "px";
+                icon.style.transform = 'rotate(45deg)';
+            }
+        });
+    });
+
 });
