@@ -99,4 +99,41 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Dynamic Match Dates
+    function updateDynamicDates() {
+        const elements = document.querySelectorAll('.dynamic-date');
+        const now = new Date();
+        now.setHours(0, 0, 0, 0); // Zero out for accurate day diff
+        
+        elements.forEach(el => {
+            const matchDateStr = el.getAttribute('data-match-date');
+            if (!matchDateStr) return;
+            
+            const matchDate = new Date(matchDateStr);
+            const matchDateZero = new Date(matchDate);
+            matchDateZero.setHours(0, 0, 0, 0);
+            
+            const diffMs = matchDateZero - now;
+            const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
+            
+            let text = '';
+            if (diffDays < 0) {
+                text = 'PLAYED';
+            } else if (diffDays === 0) {
+                text = 'TODAY';
+            } else if (diffDays === 1) {
+                text = 'TOMORROW';
+            } else if (diffDays < 7) {
+                const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+                text = 'THIS ' + days[matchDate.getDay()];
+            } else {
+                text = 'IN ' + diffDays + ' DAYS';
+            }
+            
+            el.textContent = text;
+        });
+    }
+
+    updateDynamicDates();
+    setInterval(updateDynamicDates, 3600000); // Check every hour
 });
