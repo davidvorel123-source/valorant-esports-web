@@ -1,10 +1,17 @@
-/* Base and Variables */
+/* ============================================================
+   VALORANT ESPORTS WEB — PREMIUM ENHANCED STYLESHEET
+   ============================================================ */
+
+/* ── Base and Variables ── */
 :root {
     --val-red: #ff4655;
     --val-dark: #111111;
     --val-darker: #0f1923;
     --val-white: #ece8e1;
     --val-grey: #8b978f;
+    --val-cyan: #00d4ff;
+    --val-red-glow: rgba(255, 70, 85, 0.4);
+    --val-red-glow-soft: rgba(255, 70, 85, 0.2);
     --font-heading: 'Barlow Condensed', sans-serif;
     --font-body: 'Inter', sans-serif;
 }
@@ -15,15 +22,71 @@
     box-sizing: border-box;
 }
 
+/* 17. Smooth scroll */
 html {
-    scroll-padding-top: 100px; /* Zabranuje prekyvavani navbaru */
+    scroll-padding-top: 100px;
+    scroll-behavior: smooth;
 }
 
+/* 16. Selection color */
+::selection {
+    background: var(--val-red);
+    color: var(--val-white);
+}
+::-moz-selection {
+    background: var(--val-red);
+    color: var(--val-white);
+}
+
+/* 6. Custom scrollbar */
+::-webkit-scrollbar {
+    width: 10px;
+}
+::-webkit-scrollbar-track {
+    background: var(--val-darker);
+}
+::-webkit-scrollbar-thumb {
+    background: var(--val-red);
+    border-radius: 5px;
+    border: 2px solid var(--val-darker);
+}
+::-webkit-scrollbar-thumb:hover {
+    background: #ff6673;
+}
+
+/* 1. Custom cursor + 10. Particle grid background */
 body {
     background-color: var(--val-darker);
     color: var(--val-white);
     font-family: var(--font-body);
     overflow-x: hidden;
+    cursor: crosshair;
+    /* 10. Animated dot grid pattern */
+    background-image:
+        radial-gradient(rgba(255, 70, 85, 0.07) 1px, transparent 1px),
+        radial-gradient(rgba(255, 70, 85, 0.05) 1px, transparent 1px);
+    background-size: 40px 40px, 80px 80px;
+    background-position: 0 0, 20px 20px;
+    animation: bgShift 20s linear infinite;
+}
+
+@keyframes bgShift {
+    0%   { background-position: 0 0, 20px 20px; }
+    100% { background-position: 40px 40px, 60px 60px; }
+}
+
+/* 1b. CSS-only animated crosshair cursor overlay (attach via JS to follow mouse, or use as a fixed center reticle) */
+body::after {
+    content: '';
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 2px;
+    height: 2px;
+    pointer-events: none;
+    z-index: 99999;
+    opacity: 0;
+    /* Hidden by default — activate via .cursor-active on body if desired */
 }
 
 /* Typography */
@@ -32,15 +95,21 @@ h1, h2, h3, .logo-text, .section-title {
     text-transform: uppercase;
 }
 
-/* Navbar */
+/* ── Navbar — 4. Glassmorphism upgrade ── */
 .navbar {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(15, 25, 35, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(15, 25, 35, 0.7);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
     z-index: 1000;
     border-bottom: 2px solid var(--val-red);
+    box-shadow:
+        0 1px 0 rgba(255, 70, 85, 0.3),
+        0 4px 30px rgba(0, 0, 0, 0.4),
+        0 1px 20px rgba(255, 70, 85, 0.1);
+    transition: background 0.4s ease, box-shadow 0.4s ease;
 }
 
 .nav-container {
@@ -56,6 +125,12 @@ h1, h2, h3, .logo-text, .section-title {
     font-size: 2rem;
     color: var(--val-red);
     letter-spacing: 2px;
+    text-shadow: 0 0 20px rgba(255, 70, 85, 0.4);
+    transition: text-shadow 0.3s ease;
+}
+
+.logo-text:hover {
+    text-shadow: 0 0 30px rgba(255, 70, 85, 0.7), 0 0 60px rgba(255, 70, 85, 0.3);
 }
 
 .nav-links {
@@ -71,7 +146,7 @@ h1, h2, h3, .logo-text, .section-title {
     font-size: 1.1rem;
     position: relative;
     padding: 0.5rem 0;
-    transition: color 0.3s;
+    transition: color 0.3s, text-shadow 0.3s;
 }
 
 .nav-links a::after {
@@ -81,19 +156,21 @@ h1, h2, h3, .logo-text, .section-title {
     left: 0;
     width: 0;
     height: 2px;
-    background-color: var(--val-red);
+    background: linear-gradient(90deg, var(--val-red), #ff8a94);
     transition: width 0.3s ease;
+    box-shadow: 0 0 8px rgba(255, 70, 85, 0.5);
 }
 
 .nav-links a:hover {
     color: var(--val-red);
+    text-shadow: 0 0 10px rgba(255, 70, 85, 0.3);
 }
 
 .nav-links a:hover::after {
     width: 100%;
 }
 
-/* Hero Section */
+/* ── Hero Section ── */
 .hero {
     height: 100vh;
     display: flex;
@@ -117,9 +194,25 @@ h1, h2, h3, .logo-text, .section-title {
     opacity: 0.05;
 }
 
+/* Subtle scan-line overlay for the hero */
+.hero::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 2;
+}
+
 .hero-content {
     position: relative;
-    z-index: 1;
+    z-index: 3;
     text-align: center;
     max-width: 800px;
     padding: 2rem;
@@ -138,15 +231,95 @@ h1, h2, h3, .logo-text, .section-title {
     border-radius: 50%;
     margin: 0 auto;
     border: 4px solid var(--val-white);
-    box-shadow: 0 0 30px rgba(255, 70, 85, 0.4);
+    box-shadow:
+        0 0 30px rgba(255, 70, 85, 0.4),
+        0 0 60px rgba(255, 70, 85, 0.15),
+        inset 0 0 20px rgba(0, 0, 0, 0.3);
+    transition: box-shadow 0.4s ease, transform 0.4s ease;
+    animation: logoPulse 3s ease-in-out infinite;
 }
 
+.goat-logo-placeholder:hover {
+    box-shadow:
+        0 0 50px rgba(255, 70, 85, 0.6),
+        0 0 100px rgba(255, 70, 85, 0.3),
+        inset 0 0 20px rgba(0, 0, 0, 0.3);
+    transform: scale(1.05);
+}
+
+@keyframes logoPulse {
+    0%, 100% { box-shadow: 0 0 30px rgba(255, 70, 85, 0.4), 0 0 60px rgba(255, 70, 85, 0.15); }
+    50%      { box-shadow: 0 0 45px rgba(255, 70, 85, 0.6), 0 0 80px rgba(255, 70, 85, 0.25); }
+}
+
+/* 2. Hero title with glitch effect on hover */
 .hero-title {
     font-size: 5rem;
     margin-bottom: 1rem;
     letter-spacing: 4px;
     text-shadow: 4px 4px 0 var(--val-red);
     animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1);
+    position: relative;
+    display: inline-block;
+    transition: text-shadow 0.3s;
+}
+
+.hero-title:hover {
+    animation: glitch 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) both infinite;
+}
+
+@keyframes glitch {
+    0% {
+        text-shadow: 4px 4px 0 var(--val-red);
+        transform: translate(0);
+    }
+    10% {
+        text-shadow: -3px -2px 0 var(--val-cyan), 3px 2px 0 var(--val-red);
+        transform: translate(-2px, 1px);
+    }
+    20% {
+        text-shadow: 3px 3px 0 var(--val-red), -3px -3px 0 var(--val-cyan);
+        transform: translate(2px, -1px);
+        clip-path: inset(20% 0 40% 0);
+    }
+    30% {
+        text-shadow: -2px 1px 0 var(--val-cyan), 2px -1px 0 var(--val-red);
+        transform: translate(0);
+        clip-path: inset(60% 0 5% 0);
+    }
+    40% {
+        text-shadow: 4px 4px 0 var(--val-red);
+        transform: translate(3px, 0);
+        clip-path: inset(10% 0 70% 0);
+    }
+    50% {
+        text-shadow: -3px 0 0 var(--val-cyan), 3px 0 0 var(--val-red);
+        transform: translate(-1px, 2px);
+        clip-path: none;
+    }
+    60% {
+        text-shadow: 2px -2px 0 var(--val-red), -2px 2px 0 var(--val-cyan);
+        transform: translate(0);
+    }
+    70% {
+        text-shadow: 4px 4px 0 var(--val-red);
+        transform: translate(-2px, -1px);
+        clip-path: inset(40% 0 20% 0);
+    }
+    80% {
+        text-shadow: -1px 3px 0 var(--val-cyan), 1px -3px 0 var(--val-red);
+        transform: translate(1px, 0);
+        clip-path: none;
+    }
+    90% {
+        text-shadow: 3px 1px 0 var(--val-red);
+        transform: translate(0, 1px);
+    }
+    100% {
+        text-shadow: 4px 4px 0 var(--val-red);
+        transform: translate(0);
+        clip-path: none;
+    }
 }
 
 .hero-subtitle {
@@ -156,6 +329,7 @@ h1, h2, h3, .logo-text, .section-title {
     animation: fadeIn 1.5s ease;
 }
 
+/* 7. Enhanced CTA buttons with pulse and glow */
 .cta-button {
     display: inline-block;
     padding: 1rem 3rem;
@@ -167,8 +341,15 @@ h1, h2, h3, .logo-text, .section-title {
     letter-spacing: 2px;
     position: relative;
     overflow: hidden;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: transform 0.2s, background-color 0.2s, box-shadow 0.3s;
     border: 1px solid var(--val-red);
+    animation: ctaPulse 2.5s ease-in-out infinite;
+    cursor: pointer;
+}
+
+@keyframes ctaPulse {
+    0%, 100% { transform: scale(1); }
+    50%      { transform: scale(1.03); }
 }
 
 .cta-button::before {
@@ -185,13 +366,19 @@ h1, h2, h3, .logo-text, .section-title {
 
 .cta-button:hover {
     color: var(--val-darker);
+    box-shadow:
+        0 0 20px rgba(255, 70, 85, 0.5),
+        0 0 40px rgba(255, 70, 85, 0.25),
+        0 0 80px rgba(255, 70, 85, 0.1);
+    animation: none;
+    transform: scale(1.05);
 }
 
 .cta-button:hover::before {
     left: 0;
 }
 
-/* Sections */
+/* ── Sections ── */
 .roster-section, .about-section {
     padding: 100px 2rem;
     max-width: 1400px;
@@ -207,34 +394,78 @@ h1, h2, h3, .logo-text, .section-title {
     color: var(--val-red);
     position: relative;
     display: inline-block;
+    text-shadow: 0 0 20px rgba(255, 70, 85, 0.2);
 }
 
+/* 5. Animated section dividers — pulsing glow */
 .section-line {
     height: 4px;
     width: 100px;
     background-color: var(--val-white);
     margin-top: 1rem;
+    border-radius: 2px;
+    animation: sectionLinePulse 2s ease-in-out infinite;
 }
 
-/* Roster Grid */
+@keyframes sectionLinePulse {
+    0%, 100% {
+        box-shadow: 0 0 5px rgba(255, 70, 85, 0.2), 0 0 10px rgba(255, 70, 85, 0.1);
+    }
+    50% {
+        box-shadow: 0 0 15px rgba(255, 70, 85, 0.6), 0 0 30px rgba(255, 70, 85, 0.3), 0 0 45px rgba(255, 70, 85, 0.15);
+    }
+}
+
+/* ── Roster Grid ── */
 .roster-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 2rem;
 }
 
+/* 3. Player cards with neon glow + shimmer */
 .player-card {
     background-color: var(--val-dark);
     border: 1px solid rgba(255, 255, 255, 0.1);
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.4s ease;
     cursor: pointer;
+}
+
+/* Shimmer pseudo-element */
+.player-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -75%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(
+        120deg,
+        transparent 0%,
+        rgba(255, 255, 255, 0.03) 30%,
+        rgba(255, 255, 255, 0.08) 50%,
+        rgba(255, 255, 255, 0.03) 70%,
+        transparent 100%
+    );
+    transform: skewX(-20deg);
+    transition: left 0.6s ease;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.player-card:hover::before {
+    left: 125%;
 }
 
 .player-card:hover {
     transform: translateY(-10px);
     border-color: var(--val-red);
+    box-shadow:
+        0 0 30px rgba(255, 70, 85, 0.4),
+        0 0 60px rgba(255, 70, 85, 0.2),
+        0 10px 40px rgba(0, 0, 0, 0.4);
 }
 
 .player-card::after {
@@ -246,14 +477,21 @@ h1, h2, h3, .logo-text, .section-title {
     height: 30px;
     background-color: var(--val-red);
     clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    z-index: 3;
 }
 
+/* 11. Enhanced player image zoom on hover */
 .player-image {
     height: 300px;
     background-size: cover;
     background-position: center;
     position: relative;
     clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+    transition: transform 0.5s ease;
+}
+
+.player-card:hover .player-image {
+    transform: scale(1.05);
 }
 
 .bg-red { background-color: #3b191c; }
@@ -261,6 +499,8 @@ h1, h2, h3, .logo-text, .section-title {
 
 .player-info {
     padding: 1.5rem;
+    position: relative;
+    z-index: 2;
 }
 
 .player-role {
@@ -268,11 +508,17 @@ h1, h2, h3, .logo-text, .section-title {
     font-weight: 800;
     font-size: 0.9rem;
     letter-spacing: 2px;
+    text-shadow: 0 0 8px rgba(255, 70, 85, 0.3);
 }
 
 .player-name {
     font-size: 2.5rem;
     margin: 0.5rem 0;
+    transition: text-shadow 0.3s;
+}
+
+.player-card:hover .player-name {
+    text-shadow: 0 0 15px rgba(255, 70, 85, 0.4);
 }
 
 .player-mains {
@@ -280,7 +526,7 @@ h1, h2, h3, .logo-text, .section-title {
     font-size: 0.9rem;
 }
 
-/* About Section */
+/* ── About Section ── */
 .about-section {
     background-color: var(--val-white);
     color: var(--val-darker);
@@ -320,6 +566,12 @@ h1, h2, h3, .logo-text, .section-title {
     padding: 2rem;
     text-align: center;
     border-left: 4px solid var(--val-red);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.stat-box:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3), 0 0 15px rgba(255, 70, 85, 0.15);
 }
 
 .stat-number {
@@ -327,6 +579,7 @@ h1, h2, h3, .logo-text, .section-title {
     font-family: var(--font-heading);
     font-size: 3.5rem;
     color: var(--val-red);
+    text-shadow: 0 0 20px rgba(255, 70, 85, 0.3);
 }
 
 .stat-label {
@@ -335,12 +588,38 @@ h1, h2, h3, .logo-text, .section-title {
     letter-spacing: 1px;
 }
 
-/* Footer */
+/* ── 8. Philosophy Cards — 3D tilt ── */
+.philosophy-card {
+    perspective: 800px;
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    transform-style: preserve-3d;
+}
+
+.philosophy-card:hover {
+    transform: rotateX(5deg) rotateY(-5deg) translateY(-5px);
+    box-shadow:
+        0 20px 40px rgba(0, 0, 0, 0.3),
+        0 0 20px rgba(255, 70, 85, 0.15);
+}
+
+/* ── Footer ── */
 .footer {
     padding: 4rem 2rem;
     text-align: center;
     background-color: var(--val-dark);
     border-top: 1px solid rgba(255, 70, 85, 0.2);
+    position: relative;
+}
+
+.footer::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--val-red), transparent);
+    box-shadow: 0 0 15px rgba(255, 70, 85, 0.4);
 }
 
 .footer-logo {
@@ -348,6 +627,7 @@ h1, h2, h3, .logo-text, .section-title {
     font-size: 3rem;
     color: var(--val-red);
     margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(255, 70, 85, 0.3);
 }
 
 .social-links {
@@ -361,11 +641,13 @@ h1, h2, h3, .logo-text, .section-title {
     color: var(--val-white);
     text-decoration: none;
     font-weight: 600;
-    transition: color 0.3s;
+    transition: color 0.3s, text-shadow 0.3s, transform 0.3s;
 }
 
 .social-link:hover {
     color: var(--val-red);
+    text-shadow: 0 0 10px rgba(255, 70, 85, 0.4);
+    transform: translateY(-2px);
 }
 
 .copyright {
@@ -373,7 +655,7 @@ h1, h2, h3, .logo-text, .section-title {
     font-size: 0.9rem;
 }
 
-/* Legacy Section */
+/* ── Legacy Section ── */
 .legacy-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -395,6 +677,7 @@ h1, h2, h3, .logo-text, .section-title {
     padding: 0;
 }
 
+/* 12. Match list hover with left border glow */
 .match-list li, .milestone-list li {
     background-color: var(--val-dark);
     padding: 1.5rem;
@@ -403,11 +686,14 @@ h1, h2, h3, .logo-text, .section-title {
     font-size: 1.2rem;
     display: flex;
     align-items: center;
-    transition: transform 0.2s;
+    transition: transform 0.2s, border-color 0.3s, box-shadow 0.3s, background-color 0.3s;
 }
 
 .match-list li:hover, .milestone-list li:hover {
     transform: translateX(10px);
+    border-left-color: var(--val-red);
+    box-shadow: -4px 0 15px rgba(255, 70, 85, 0.3), 0 4px 15px rgba(0, 0, 0, 0.2);
+    background-color: rgba(255, 70, 85, 0.03);
 }
 
 .match-result {
@@ -422,6 +708,7 @@ h1, h2, h3, .logo-text, .section-title {
 .win {
     background-color: var(--val-red);
     color: var(--val-white);
+    box-shadow: 0 0 10px rgba(255, 70, 85, 0.3);
 }
 
 .loss {
@@ -435,7 +722,29 @@ h1, h2, h3, .logo-text, .section-title {
     color: var(--val-white);
 }
 
-/* Animations */
+/* 9. Trophy hover — float/bounce animation */
+.milestone-list li {
+    cursor: default;
+}
+
+.milestone-list li:hover {
+    transform: translateX(10px);
+}
+
+/* Trophy emoji float animation (applied to spans or first-child text) */
+@keyframes trophyFloat {
+    0%, 100% { transform: translateY(0); }
+    25%      { transform: translateY(-6px) rotate(-3deg); }
+    50%      { transform: translateY(-10px) rotate(0deg); }
+    75%      { transform: translateY(-6px) rotate(3deg); }
+}
+
+.milestone-list li:hover::first-letter {
+    display: inline-block;
+    animation: trophyFloat 1s ease-in-out infinite;
+}
+
+/* ── Animations ── */
 @keyframes slideUp {
     from { opacity: 0; transform: translateY(50px); }
     to { opacity: 1; transform: translateY(0); }
@@ -446,10 +755,236 @@ h1, h2, h3, .logo-text, .section-title {
     to { opacity: 1; }
 }
 
-/* Responsive */
+/* 15. Typing cursor blink */
+@keyframes blink {
+    0%, 50% { opacity: 1; }
+    51%, 100% { opacity: 0; }
+}
+
+.typing-cursor {
+    display: inline-block;
+    width: 3px;
+    height: 1em;
+    background-color: var(--val-red);
+    margin-left: 4px;
+    animation: blink 0.8s step-end infinite;
+    vertical-align: text-bottom;
+}
+
+/* ── Match Cards ── */
+.match-card {
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: var(--val-dark);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    padding: 1.5rem 2rem;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.3s;
+}
+
+.match-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+}
+
+.match-card.featured {
+    border-color: var(--val-red);
+    box-shadow: 0 0 15px rgba(255, 70, 85, 0.2);
+}
+
+.match-card.featured:hover {
+    box-shadow: 0 0 25px rgba(255, 70, 85, 0.4), 0 0 50px rgba(255, 70, 85, 0.15);
+}
+
+.match-card-team-1, .match-card-team-2 {
+    flex: 1;
+    font-family: var(--font-heading);
+    font-size: 2rem;
+}
+
+.match-card-team-1 {
+    text-align: right;
+    color: var(--val-white);
+}
+
+.match-card-team-2 {
+    text-align: left;
+    color: var(--val-white);
+}
+
+.match-card-info {
+    flex: 0 0 220px;
+    text-align: center;
+    position: relative;
+    padding: 0 1rem;
+}
+
+.match-card-badge {
+    flex: 0 0 100px;
+    text-align: right;
+}
+
+/* ── Fade In Up Animations ── */
+.fade-in-up {
+    opacity: 0;
+    transform: translateY(40px);
+    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+}
+
+.fade-in-up.is-visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ── FAQ Accordion Styles ── */
+.faq-item {
+    margin-bottom: 1.5rem;
+    border-left: 4px solid var(--val-red);
+    background-color: var(--val-dark);
+    border-radius: 0 8px 8px 0;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.faq-item:hover {
+    box-shadow: -4px 0 15px rgba(255, 70, 85, 0.2);
+}
+
+.faq-question {
+    padding: 1.5rem;
+    font-size: 1.4rem;
+    color: var(--val-white);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+    user-select: none;
+    transition: background-color 0.2s;
+}
+
+.faq-question:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+.faq-icon {
+    color: var(--val-red);
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease-out;
+}
+
+.faq-answer-inner {
+    padding: 0 1.5rem 1.5rem 1.5rem;
+    color: var(--val-grey);
+    line-height: 1.6;
+}
+
+/* ── 13. Loading Screen ── */
+.loading-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    background: linear-gradient(135deg, var(--val-darker) 0%, var(--val-dark) 50%, #1a0a0c 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    transition: opacity 0.6s ease, visibility 0.6s ease;
+}
+
+.loading-screen.fade-out {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+.loading-screen::before {
+    content: '⚡';
+    font-size: 5rem;
+    animation: loadingPulse 1.2s ease-in-out infinite;
+    filter: drop-shadow(0 0 20px rgba(255, 70, 85, 0.5));
+}
+
+.loading-screen::after {
+    content: 'LOADING';
+    font-family: var(--font-heading);
+    font-size: 1.5rem;
+    letter-spacing: 8px;
+    color: var(--val-red);
+    margin-top: 2rem;
+    animation: loadingTextPulse 1.2s ease-in-out infinite alternate;
+}
+
+@keyframes loadingPulse {
+    0%, 100% { transform: scale(1); opacity: 0.7; }
+    50%      { transform: scale(1.2); opacity: 1; }
+}
+
+@keyframes loadingTextPulse {
+    0%   { opacity: 0.4; letter-spacing: 8px; }
+    100% { opacity: 1; letter-spacing: 12px; }
+}
+
+/* ── 14. Mobile Menu Button — Animated Hamburger ── */
+.mobile-menu-btn {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    background: none;
+    border: none;
+    padding: 5px;
+    z-index: 1001;
+}
+
+.mobile-menu-btn span {
+    display: block;
+    width: 28px;
+    height: 3px;
+    background-color: var(--val-white);
+    border-radius: 2px;
+    transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
+    transform-origin: center;
+}
+
+.mobile-menu-btn:hover span {
+    background-color: var(--val-red);
+}
+
+/* Active / open state */
+.mobile-menu-btn.active span:nth-child(1) {
+    transform: translateY(8px) rotate(45deg);
+    background-color: var(--val-red);
+}
+
+.mobile-menu-btn.active span:nth-child(2) {
+    opacity: 0;
+    transform: scaleX(0);
+}
+
+.mobile-menu-btn.active span:nth-child(3) {
+    transform: translateY(-8px) rotate(-45deg);
+    background-color: var(--val-red);
+}
+
+/* ── Responsive ── */
 @media (max-width: 768px) {
     .nav-links {
         display: none;
+    }
+    .mobile-menu-btn {
+        display: flex;
     }
     .hero-title {
         font-size: 3rem;
@@ -464,72 +999,195 @@ h1, h2, h3, .logo-text, .section-title {
     .legacy-container {
         grid-template-columns: 1fr;
     }
+    .match-card {
+        flex-direction: column;
+        gap: 1.5rem;
+        text-align: center;
+    }
+    .match-card-team-1 {
+        text-align: center;
+        font-size: 2.5rem;
+    }
+    .match-card-team-2 {
+        text-align: center;
+        font-size: 1.8rem;
+    }
+    .match-card-info {
+        flex: auto;
+    }
+    .match-card-badge {
+        flex: auto;
+        text-align: center;
+    }
 }
 
-/* Match Cards Responsive */
-.match-card { text-decoration: none; display: flex; justify-content: space-between; align-items: center; background-color: var(--val-dark); border: 2px solid rgba(255, 255, 255, 0.1); padding: 1.5rem 2rem; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
-.match-card:hover { transform: translateY(-3px); }
-.match-card.featured { border-color: var(--val-red); box-shadow: 0 0 15px rgba(255, 70, 85, 0.2); }
-.match-card.featured:hover { box-shadow: 0 0 25px rgba(255, 70, 85, 0.4); }
-.match-card-team-1, .match-card-team-2 { flex: 1; font-family: var(--font-heading); font-size: 2rem; }
-.match-card-team-1 { text-align: right; color: var(--val-white); }
-.match-card-team-2 { text-align: left; color: var(--val-white); }
-.match-card-info { flex: 0 0 220px; text-align: center; position: relative; padding: 0 1rem; }
-.match-card-badge { flex: 0 0 100px; text-align: right; }
+/* ── Utility & Micro-interactions ── */
+
+/* Link hover glow for all anchors */
+a {
+    transition: color 0.3s ease;
+}
+
+/* Subtle focus styles for accessibility */
+a:focus-visible,
+button:focus-visible,
+.cta-button:focus-visible {
+    outline: 2px solid var(--val-red);
+    outline-offset: 3px;
+}
+
+/* Image rendering quality */
+img {
+    image-rendering: -webkit-optimize-contrast;
+}
+
+/* ── Custom Cursor ── */
+.custom-cursor {
+    width: 40px;
+    height: 40px;
+    border: 2px solid var(--val-red);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10000;
+    transform: translate(-50%, -50%);
+    transition: width 0.3s, height 0.3s, border-color 0.3s, background-color 0.3s;
+    mix-blend-mode: difference;
+}
+
+.cursor-dot {
+    width: 6px;
+    height: 6px;
+    background-color: var(--val-red);
+    border-radius: 50%;
+    position: fixed;
+    pointer-events: none;
+    z-index: 10001;
+    transform: translate(-50%, -50%);
+    transition: width 0.15s, height 0.15s;
+}
+
+.custom-cursor.cursor-hover {
+    width: 60px;
+    height: 60px;
+    border-color: var(--val-white);
+    background-color: rgba(255, 70, 85, 0.1);
+}
+
+.cursor-dot.cursor-hover {
+    width: 0;
+    height: 0;
+}
+
 @media (max-width: 768px) {
-  .match-card { flex-direction: column; gap: 1.5rem; text-align: center; }
-  .match-card-team-1 { text-align: center; font-size: 2.5rem; }
-  .match-card-team-2 { text-align: center; font-size: 1.8rem; }
-  .match-card-info { flex: auto; }
-  .match-card-badge { flex: auto; text-align: center; }
+    .custom-cursor, .cursor-dot {
+        display: none;
+    }
 }
 
-/* Fade In Up Animations */
-.fade-in-up {
-    opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s ease-out, transform 0.8s ease-out;
-}
-.fade-in-up.is-visible {
-    opacity: 1;
-    transform: translateY(0);
+/* ── Particle Canvas ── */
+#particle-canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.6;
 }
 
-/* FAQ Accordion Styles */
-.faq-item {
-    margin-bottom: 1.5rem;
-    border-left: 4px solid var(--val-red);
-    background-color: var(--val-dark);
-    border-radius: 0 8px 8px 0;
-    overflow: hidden;
+/* ── Hero Grid Lines ── */
+.hero-grid-lines {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image:
+        linear-gradient(rgba(255, 70, 85, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255, 70, 85, 0.03) 1px, transparent 1px);
+    background-size: 60px 60px;
+    z-index: 0;
+    animation: gridShift 20s linear infinite;
 }
-.faq-question {
-    padding: 1.5rem;
-    font-size: 1.4rem;
-    color: var(--val-white);
-    cursor: pointer;
+
+@keyframes gridShift {
+    0% { transform: translate(0, 0); }
+    100% { transform: translate(60px, 60px); }
+}
+
+/* ── Countdown Timer ── */
+.match-countdown {
     display: flex;
-    justify-content: space-between;
     align-items: center;
-    font-weight: bold;
-    user-select: none;
-    transition: background-color 0.2s;
+    justify-content: center;
+    gap: 0.5rem;
+    font-family: var(--font-heading);
+    margin: 1rem 0;
 }
-.faq-question:hover {
-    background-color: rgba(255, 255, 255, 0.05);
+
+.countdown-unit {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(255, 70, 85, 0.1);
+    border: 1px solid rgba(255, 70, 85, 0.3);
+    padding: 0.5rem 1rem;
+    min-width: 70px;
+    border-radius: 4px;
 }
-.faq-icon {
-    color: var(--val-red);
-    font-size: 1.5rem;
-    transition: transform 0.3s;
+
+.countdown-number {
+    font-size: 2.5rem;
+    font-weight: 900;
+    color: var(--val-white);
+    line-height: 1;
+    letter-spacing: 2px;
+    text-shadow: 0 0 10px rgba(255, 70, 85, 0.5);
 }
-.faq-answer {
-    max-height: 0;
-    overflow: hidden;
-    transition: max-height 0.4s ease-out;
-}
-.faq-answer-inner {
-    padding: 0 1.5rem 1.5rem 1.5rem;
+
+.countdown-label {
+    font-size: 0.7rem;
     color: var(--val-grey);
-    line-height: 1.6;
+    letter-spacing: 2px;
+    margin-top: 4px;
+}
+
+.countdown-separator {
+    font-size: 2rem;
+    color: var(--val-red);
+    font-weight: 900;
+    animation: blink 1s ease-in-out infinite;
+}
+
+.countdown-live {
+    font-size: 1.5rem;
+    color: var(--val-red);
+    font-weight: 900;
+    letter-spacing: 3px;
+    animation: ctaPulse 1.5s ease-in-out infinite;
+}
+
+/* ── Navbar Scroll State ── */
+.navbar-scrolled {
+    background: rgba(15, 25, 35, 0.95) !important;
+    box-shadow: 0 4px 30px rgba(255, 70, 85, 0.2), 0 1px 0 rgba(255, 70, 85, 0.5) !important;
+}
+
+/* ── Active Nav Link ── */
+.nav-links a.active-link {
+    color: var(--val-red);
+}
+.nav-links a.active-link::after {
+    width: 100%;
+}
+
+/* ── Hero Logo Glow Pulse ── */
+.goat-logo-image {
+    animation: logoPulse 3s ease-in-out infinite;
+}
+@keyframes logoPulse {
+    0%, 100% { box-shadow: 0 0 30px rgba(255, 70, 85, 0.4); }
+    50% { box-shadow: 0 0 50px rgba(255, 70, 85, 0.7), 0 0 80px rgba(255, 70, 85, 0.3); }
 }

@@ -1,10 +1,62 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    // Mobile menu toggle
+    // ==============================
+    // LOADING SCREEN
+    // ==============================
+    const loadingScreen = document.querySelector('.loading-screen');
+    if (loadingScreen) {
+        setTimeout(() => {
+            loadingScreen.classList.add('fade-out');
+            setTimeout(() => loadingScreen.remove(), 600);
+        }, 1500);
+    }
+
+    // ==============================
+    // CUSTOM CURSOR
+    // ==============================
+    const cursor = document.querySelector('.custom-cursor');
+    const cursorDot = document.querySelector('.cursor-dot');
+    if (cursor && cursorDot) {
+        let cursorX = 0, cursorY = 0;
+        let dotX = 0, dotY = 0;
+
+        document.addEventListener('mousemove', (e) => {
+            cursorX = e.clientX;
+            cursorY = e.clientY;
+            cursorDot.style.left = cursorX + 'px';
+            cursorDot.style.top = cursorY + 'px';
+        });
+
+        function animateCursor() {
+            dotX += (cursorX - dotX) * 0.15;
+            dotY += (cursorY - dotY) * 0.15;
+            cursor.style.left = dotX + 'px';
+            cursor.style.top = dotY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Grow cursor on interactive elements
+        document.querySelectorAll('a, button, .faq-question, .player-card, .cta-button').forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('cursor-hover');
+                cursorDot.classList.add('cursor-hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('cursor-hover');
+                cursorDot.classList.remove('cursor-hover');
+            });
+        });
+    }
+
+    // ==============================
+    // MOBILE MENU TOGGLE
+    // ==============================
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', () => {
+            mobileMenuBtn.classList.toggle('active');
             const isOpen = navLinks.style.display === 'flex';
             navLinks.style.display = isOpen ? 'none' : 'flex';
             navLinks.style.flexDirection = 'column';
@@ -18,13 +70,49 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Scroll-in animation for player cards
+    // ==============================
+    // NAVBAR SCROLL EFFECT
+    // ==============================
+    const navbar = document.querySelector('.navbar');
+    let lastScrollY = 0;
+    window.addEventListener('scroll', () => {
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > 100) {
+            navbar.classList.add('navbar-scrolled');
+        } else {
+            navbar.classList.remove('navbar-scrolled');
+        }
+        lastScrollY = currentScrollY;
+    });
+
+    // ==============================
+    // PARALLAX HERO ELEMENTS
+    // ==============================
+    const heroContent = document.querySelector('.hero-content');
+    const hero = document.querySelector('.hero');
+    window.addEventListener('scroll', () => {
+        if (hero) {
+            const scrolled = window.scrollY;
+            const rate = scrolled * 0.3;
+            if (heroContent) {
+                heroContent.style.transform = `translateY(${rate}px)`;
+                heroContent.style.opacity = 1 - (scrolled / 700);
+            }
+        }
+    });
+
+    // ==============================
+    // SCROLL-IN ANIMATION FOR PLAYER CARDS
+    // ==============================
     const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
+        entries.forEach((entry, index) => {
             if (entry.isIntersecting) {
-                entry.target.style.opacity = '1';
-                entry.target.style.transform = 'translateY(0)';
+                // Stagger the animation
+                setTimeout(() => {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }, index * 100);
                 observer.unobserve(entry.target);
             }
         });
@@ -38,7 +126,28 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(card);
     });
 
-    // Animated stat counters
+    // ==============================
+    // 3D TILT EFFECT ON PLAYER CARDS
+    // ==============================
+    cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = (y - centerY) / 20;
+            const rotateY = (centerX - x) / 20;
+            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+        });
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+        });
+    });
+
+    // ==============================
+    // ANIMATED STAT COUNTERS
+    // ==============================
     const counters = document.querySelectorAll('.stat-counter');
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -64,7 +173,9 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.5 });
     counters.forEach(c => counterObserver.observe(c));
 
-    // Fade-in-up animation observer
+    // ==============================
+    // FADE-IN-UP ANIMATION OBSERVER
+    // ==============================
     const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -76,7 +187,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.fade-in-up').forEach(el => fadeObserver.observe(el));
 
-    // FAQ Accordion
+    // ==============================
+    // FAQ ACCORDION
+    // ==============================
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
@@ -99,11 +212,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Dynamic Match Dates
+    // ==============================
+    // DYNAMIC MATCH DATES
+    // ==============================
     function updateDynamicDates() {
         const elements = document.querySelectorAll('.dynamic-date');
         const now = new Date();
-        now.setHours(0, 0, 0, 0); // Zero out for accurate day diff
+        now.setHours(0, 0, 0, 0);
         
         elements.forEach(el => {
             const matchDateStr = el.getAttribute('data-match-date');
@@ -135,5 +250,114 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateDynamicDates();
-    setInterval(updateDynamicDates, 3600000); // Check every hour
+    setInterval(updateDynamicDates, 3600000);
+
+    // ==============================
+    // LIVE MATCH COUNTDOWN TIMER
+    // ==============================
+    function updateCountdowns() {
+        const countdownEls = document.querySelectorAll('.match-countdown');
+        countdownEls.forEach(el => {
+            const targetDate = new Date(el.dataset.target);
+            const now = new Date();
+            const diff = targetDate - now;
+
+            if (diff <= 0) {
+                el.innerHTML = '<span class="countdown-live">🔴 LIVE NOW</span>';
+                return;
+            }
+
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            el.innerHTML = `
+                <div class="countdown-unit">
+                    <span class="countdown-number">${String(hours).padStart(2, '0')}</span>
+                    <span class="countdown-label">HRS</span>
+                </div>
+                <span class="countdown-separator">:</span>
+                <div class="countdown-unit">
+                    <span class="countdown-number">${String(minutes).padStart(2, '0')}</span>
+                    <span class="countdown-label">MIN</span>
+                </div>
+                <span class="countdown-separator">:</span>
+                <div class="countdown-unit">
+                    <span class="countdown-number">${String(seconds).padStart(2, '0')}</span>
+                    <span class="countdown-label">SEC</span>
+                </div>
+            `;
+        });
+    }
+
+    updateCountdowns();
+    setInterval(updateCountdowns, 1000);
+
+    // ==============================
+    // TYPED TEXT EFFECT FOR HERO SUBTITLE
+    // ==============================
+    const typedEl = document.querySelector('.typed-text');
+    if (typedEl) {
+        const phrases = [
+            'SILENCE THE NOISE. DOMINATE THE SERVER.',
+            'WE ARE THE HERD.',
+            'FEAR THE GOATS.',
+            'CZECH FIREPOWER.',
+        ];
+        let phraseIndex = 0;
+        let charIndex = 0;
+        let isDeleting = false;
+        let typingSpeed = 80;
+
+        function typeEffect() {
+            const currentPhrase = phrases[phraseIndex];
+            
+            if (isDeleting) {
+                typedEl.textContent = currentPhrase.substring(0, charIndex - 1);
+                charIndex--;
+                typingSpeed = 40;
+            } else {
+                typedEl.textContent = currentPhrase.substring(0, charIndex + 1);
+                charIndex++;
+                typingSpeed = 80;
+            }
+
+            if (!isDeleting && charIndex === currentPhrase.length) {
+                typingSpeed = 2000;
+                isDeleting = true;
+            } else if (isDeleting && charIndex === 0) {
+                isDeleting = false;
+                phraseIndex = (phraseIndex + 1) % phrases.length;
+                typingSpeed = 500;
+            }
+
+            setTimeout(typeEffect, typingSpeed);
+        }
+
+        setTimeout(typeEffect, 1000);
+    }
+
+    // ==============================
+    // ACTIVE NAV LINK HIGHLIGHTING
+    // ==============================
+    const sections = document.querySelectorAll('section[id], header[id]');
+    const navLinksAll = document.querySelectorAll('.nav-links a');
+    
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(section => {
+            const sectionTop = section.offsetTop - 150;
+            if (window.scrollY >= sectionTop) {
+                current = section.getAttribute('id');
+            }
+        });
+        
+        navLinksAll.forEach(link => {
+            link.classList.remove('active-link');
+            if (link.getAttribute('href') === '#' + current) {
+                link.classList.add('active-link');
+            }
+        });
+    });
+
 });

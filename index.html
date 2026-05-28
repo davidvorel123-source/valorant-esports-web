@@ -11,6 +11,25 @@
 </head>
 <body>
 
+    <!-- LOADING SCREEN -->
+    <div class="loading-screen">
+        <div class="loading-content">
+            <div class="loading-logo">GCZ</div>
+            <div class="loading-bar">
+                <div class="loading-bar-fill"></div>
+            </div>
+            <p class="loading-text">ENTERING THE SERVER...</p>
+        </div>
+    </div>
+
+    <!-- CUSTOM CURSOR -->
+    <div class="custom-cursor"></div>
+    <div class="cursor-dot"></div>
+
+    <!-- PARTICLE CANVAS -->
+    <canvas id="particle-canvas"></canvas>
+
+
     <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
@@ -36,12 +55,13 @@
 
     <header id="home" class="hero">
         <div class="hero-overlay"></div>
+        <div class="hero-grid-lines"></div>
         <div class="hero-content">
             <div class="hero-logo">
                 <img src="logo.png" alt="Goats CZ Logo" class="goat-logo-image" style="width: 200px; height: 200px; border-radius: 50%; border: 4px solid var(--val-white); box-shadow: 0 0 30px rgba(255, 70, 85, 0.4); background-color: #ffffff; object-fit: cover;">
             </div>
-            <h1 class="hero-title">DEFY THE LIMITS</h1>
-            <p class="hero-subtitle" style="font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 3px; color: var(--val-red); text-transform: uppercase;">"SILENCE THE NOISE. DOMINATE THE SERVER."</p>
+            <h1 class="hero-title" data-text="DEFY THE LIMITS">DEFY THE LIMITS</h1>
+            <p class="hero-subtitle" style="font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 3px; color: var(--val-red); text-transform: uppercase;">"<span class="typed-text"></span><span class="typing-cursor">|</span>"</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
                 <a href="#roster" class="cta-button">MEET THE TEAM <span class="arrow">→</span></a>
                 <a href="https://discord.gg/W56F3G48xX" target="_blank" class="cta-button" style="background-color: #5865F2; border-color: #5865F2;">JOIN DISCORD <span class="arrow">→</span></a>
@@ -67,7 +87,8 @@
             <!-- Match 1 -->
             <div style="background: rgba(15, 25, 35, 0.8); padding: 2.5rem 4rem; border: 1px solid var(--val-red); display: inline-block; text-align: center; box-shadow: 0 10px 40px rgba(255, 70, 85, 0.15); border-radius: 4px; width: 100%; max-width: 800px;">
                 <span style="color: var(--val-grey); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 1rem; text-transform: uppercase;">UPCOMING MATCH • <span class="dynamic-date" data-match-date="2026-05-28T20:00:00" style="color: var(--val-red);">LOADING...</span></span>
-                <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 1.5rem; text-shadow: 2px 2px 0 var(--val-red);">WOLVESDEN TOURNAMENT</h3>
+                <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 2px 2px 0 var(--val-red);">WOLVESDEN TOURNAMENT</h3>
+                <div class="match-countdown" data-target="2026-05-28T20:00:00" style="margin-bottom: 1.5rem;"></div>
                 <a href="https://kick.com/gczdejwrix" target="_blank" style="display: inline-block; color: #53fc18; font-weight: bold; text-decoration: none; font-size: 1.2rem; letter-spacing: 1.5px; background: rgba(83, 252, 24, 0.15); padding: 10px 25px; border-radius: 4px; border: 2px solid rgba(83, 252, 24, 0.6); transition: all 0.3s;" onmouseover="this.style.background='rgba(83, 252, 24, 0.3)'; this.style.boxShadow='0 0 20px rgba(83, 252, 24, 0.3)'; this.style.transform='scale(1.05)';" onmouseout="this.style.background='rgba(83, 252, 24, 0.15)'; this.style.boxShadow='none'; this.style.transform='scale(1)';">🟢 WATCH LIVE ON KICK</a>
             </div>
 
@@ -608,6 +629,100 @@
                 }
             });
         });
+
+        // ==============================
+        // PARTICLE CANVAS ANIMATION
+        // ==============================
+        (function() {
+            const canvas = document.getElementById('particle-canvas');
+            if (!canvas) return;
+            const ctx = canvas.getContext('2d');
+            let particles = [];
+            const particleCount = 60;
+            let mouseX = 0, mouseY = 0;
+
+            function resize() {
+                canvas.width = window.innerWidth;
+                canvas.height = window.innerHeight;
+            }
+            resize();
+            window.addEventListener('resize', resize);
+
+            document.addEventListener('mousemove', (e) => {
+                mouseX = e.clientX;
+                mouseY = e.clientY;
+            });
+
+            class Particle {
+                constructor() {
+                    this.reset();
+                }
+                reset() {
+                    this.x = Math.random() * canvas.width;
+                    this.y = Math.random() * canvas.height;
+                    this.size = Math.random() * 2 + 0.5;
+                    this.speedX = (Math.random() - 0.5) * 0.5;
+                    this.speedY = (Math.random() - 0.5) * 0.5;
+                    this.opacity = Math.random() * 0.5 + 0.1;
+                }
+                update() {
+                    this.x += this.speedX;
+                    this.y += this.speedY;
+
+                    // Mouse repulsion
+                    const dx = this.x - mouseX;
+                    const dy = this.y - (mouseY + window.scrollY);
+                    const dist = Math.sqrt(dx * dx + dy * dy);
+                    if (dist < 120) {
+                        this.x += dx / dist * 1.5;
+                        this.y += dy / dist * 1.5;
+                    }
+
+                    if (this.x < 0 || this.x > canvas.width || this.y < 0 || this.y > canvas.height) {
+                        this.reset();
+                    }
+                }
+                draw() {
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                    ctx.fillStyle = `rgba(255, 70, 85, ${this.opacity})`;
+                    ctx.fill();
+                }
+            }
+
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+
+            function connectParticles() {
+                for (let i = 0; i < particles.length; i++) {
+                    for (let j = i + 1; j < particles.length; j++) {
+                        const dx = particles[i].x - particles[j].x;
+                        const dy = particles[i].y - particles[j].y;
+                        const dist = Math.sqrt(dx * dx + dy * dy);
+                        if (dist < 150) {
+                            ctx.beginPath();
+                            ctx.strokeStyle = `rgba(255, 70, 85, ${0.1 * (1 - dist / 150)})`;
+                            ctx.lineWidth = 0.5;
+                            ctx.moveTo(particles[i].x, particles[i].y);
+                            ctx.lineTo(particles[j].x, particles[j].y);
+                            ctx.stroke();
+                        }
+                    }
+                }
+            }
+
+            function animate() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+                particles.forEach(p => {
+                    p.update();
+                    p.draw();
+                });
+                connectParticles();
+                requestAnimationFrame(animate);
+            }
+            animate();
+        })();
     </script>
 </body>
 </html>
