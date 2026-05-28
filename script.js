@@ -387,32 +387,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function triggerGoatRain() {
-        for (let i = 0; i < 300; i++) {
-            setTimeout(() => {
-                const goat = document.createElement('div');
-                goat.textContent = '🐐';
-                goat.style.position = 'fixed';
-                goat.style.left = Math.random() * 100 + 'vw';
-                goat.style.top = '-100px';
-                goat.style.fontSize = (Math.random() * 3 + 1) + 'rem';
-                goat.style.zIndex = '10000';
-                goat.style.pointerEvents = 'none';
-                
-                // Randomize fall duration between 2s and 5s
-                const fallDuration = Math.random() * 3 + 2; 
-                goat.style.transition = `transform ${fallDuration}s linear, top ${fallDuration}s linear`;
-                document.body.appendChild(goat);
-
-                setTimeout(() => {
-                    goat.style.top = '120vh';
-                    goat.style.transform = `rotate(${Math.random() * 720 - 360}deg)`;
-                }, 50);
-
-                setTimeout(() => {
-                    goat.remove();
-                }, fallDuration * 1000 + 100);
-            }, Math.random() * 1500); // Random delay up to 1.5s for continuous rain effect
+        const fragment = document.createDocumentFragment();
+        const goats = [];
+        
+        // Vytvoříme elementy najednou (250 koz je pro výkon bezpečnější, s GPU to poletí hladce)
+        for (let i = 0; i < 250; i++) {
+            const goat = document.createElement('div');
+            goat.textContent = '🐐';
+            goat.style.position = 'fixed';
+            goat.style.left = Math.random() * 100 + 'vw';
+            goat.style.top = '-100px';
+            goat.style.fontSize = (Math.random() * 3 + 1) + 'rem';
+            goat.style.zIndex = '10000';
+            goat.style.pointerEvents = 'none';
+            // GPU akcelerace
+            goat.style.willChange = 'transform';
+            
+            fragment.appendChild(goat);
+            
+            goats.push({
+                element: goat,
+                delay: Math.random() * 1500, // náhodné zpoždění startu
+                duration: Math.random() * 3 + 2, // náhodná délka pádu
+                rotation: Math.random() * 720 - 360 // rotace
+            });
         }
+        
+        // Přidáme všechny kozy do DOMu jedním reflow
+        document.body.appendChild(fragment);
+        
+        // Spustíme animace pomocí hardwarově akcelerovaného transform (translate3d)
+        goats.forEach(g => {
+            setTimeout(() => {
+                g.element.style.transition = `transform ${g.duration}s linear`;
+                // Plynulý pohyb po Y ose s využitím GPU
+                g.element.style.transform = `translate3d(0, 150vh, 0) rotate(${g.rotation}deg)`;
+                
+                // Úklid po dokončení animace
+                setTimeout(() => {
+                    g.element.remove();
+                }, g.duration * 1000 + 100);
+            }, g.delay);
+        });
     }
 
 });
