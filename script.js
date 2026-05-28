@@ -353,4 +353,61 @@ document.addEventListener('DOMContentLoaded', () => {
         revealObserver.observe(el);
     });
 
+    // ==============================
+    // MAGNETIC BUTTONS
+    // ==============================
+    const magneticButtons = document.querySelectorAll('.cta-button');
+    magneticButtons.forEach(btn => {
+        btn.addEventListener('mousemove', (e) => {
+            const rect = btn.getBoundingClientRect();
+            const x = e.clientX - rect.left - rect.width / 2;
+            const y = e.clientY - rect.top - rect.height / 2;
+            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
+        });
+        btn.addEventListener('mouseleave', () => {
+            btn.style.transform = 'translate(0px, 0px)';
+        });
+    });
+
+    // ==============================
+    // EASTER EGG (TYPE "GOAT")
+    // ==============================
+    let secretCode = ['g', 'o', 'a', 't'];
+    let secretCodeIndex = 0;
+    document.addEventListener('keydown', (e) => {
+        if (e.key.toLowerCase() === secretCode[secretCodeIndex]) {
+            secretCodeIndex++;
+            if (secretCodeIndex === secretCode.length) {
+                triggerGoatRain();
+                secretCodeIndex = 0;
+            }
+        } else {
+            secretCodeIndex = 0;
+        }
+    });
+
+    function triggerGoatRain() {
+        for (let i = 0; i < 40; i++) {
+            const goat = document.createElement('div');
+            goat.textContent = '🐐';
+            goat.style.position = 'fixed';
+            goat.style.left = Math.random() * 100 + 'vw';
+            goat.style.top = '-50px';
+            goat.style.fontSize = (Math.random() * 2 + 1) + 'rem';
+            goat.style.zIndex = '10000';
+            goat.style.pointerEvents = 'none';
+            goat.style.transition = 'transform 3s linear, top 3s linear';
+            document.body.appendChild(goat);
+
+            setTimeout(() => {
+                goat.style.top = '120vh';
+                goat.style.transform = `rotate(${Math.random() * 360}deg)`;
+            }, 50);
+
+            setTimeout(() => {
+                goat.remove();
+            }, 3050);
+        }
+    }
+
 });
