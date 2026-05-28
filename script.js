@@ -12,44 +12,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // ==============================
-    // CUSTOM CURSOR
-    // ==============================
-    const cursor = document.querySelector('.custom-cursor');
-    const cursorDot = document.querySelector('.cursor-dot');
-    if (cursor && cursorDot) {
-        let cursorX = 0, cursorY = 0;
-        let dotX = 0, dotY = 0;
-
-        document.addEventListener('mousemove', (e) => {
-            cursorX = e.clientX;
-            cursorY = e.clientY;
-            cursorDot.style.left = cursorX + 'px';
-            cursorDot.style.top = cursorY + 'px';
-        });
-
-        function animateCursor() {
-            dotX += (cursorX - dotX) * 0.15;
-            dotY += (cursorY - dotY) * 0.15;
-            cursor.style.left = dotX + 'px';
-            cursor.style.top = dotY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Grow cursor on interactive elements
-        document.querySelectorAll('a, button, .faq-question, .player-card, .cta-button').forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.classList.add('cursor-hover');
-                cursorDot.classList.add('cursor-hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.classList.remove('cursor-hover');
-                cursorDot.classList.remove('cursor-hover');
-            });
-        });
-    }
-
-    // ==============================
     // MOBILE MENU TOGGLE
     // ==============================
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -83,22 +45,6 @@ document.addEventListener('DOMContentLoaded', () => {
             navbar.classList.remove('navbar-scrolled');
         }
         lastScrollY = currentScrollY;
-    });
-
-    // ==============================
-    // PARALLAX HERO ELEMENTS
-    // ==============================
-    const heroContent = document.querySelector('.hero-content');
-    const hero = document.querySelector('.hero');
-    window.addEventListener('scroll', () => {
-        if (hero) {
-            const scrolled = window.scrollY;
-            const rate = scrolled * 0.3;
-            if (heroContent) {
-                heroContent.style.transform = `translateY(${rate}px)`;
-                heroContent.style.opacity = 1 - (scrolled / 700);
-            }
-        }
     });
 
     // ==============================
