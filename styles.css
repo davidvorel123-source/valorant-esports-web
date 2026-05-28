@@ -189,8 +189,16 @@ h1, h2, h3, .logo-text, .section-title {
     align-items: center;
     justify-content: center;
     position: relative;
-    background: linear-gradient(135deg, var(--val-darker) 0%, var(--val-dark) 100%);
+    background: linear-gradient(-45deg, #0f1923, #111111, #1a0a0c, #0a1520);
+    background-size: 400% 400%;
+    animation: heroGradient 12s ease infinite;
     overflow: hidden;
+}
+
+@keyframes heroGradient {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
 }
 
 .hero::before {
@@ -1159,4 +1167,90 @@ img {
 @keyframes logoPulse {
     0%, 100% { box-shadow: 0 0 30px rgba(255, 70, 85, 0.4); }
     50% { box-shadow: 0 0 50px rgba(255, 70, 85, 0.7), 0 0 80px rgba(255, 70, 85, 0.3); }
+}
+
+/* ── Scroll Progress Bar ── */
+.scroll-progress {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background: transparent;
+    z-index: 10001;
+}
+
+.scroll-progress-fill {
+    height: 100%;
+    width: 0%;
+    background: linear-gradient(90deg, var(--val-red), #ff8a65, var(--val-red));
+    background-size: 200% 100%;
+    animation: progressShimmer 2s linear infinite;
+    transition: width 0.1s linear;
+    box-shadow: 0 0 10px rgba(255, 70, 85, 0.5);
+}
+
+@keyframes progressShimmer {
+    0% { background-position: -200% 0; }
+    100% { background-position: 200% 0; }
+}
+
+/* ── Back to Top Button ── */
+.back-to-top {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 50px;
+    height: 50px;
+    background: var(--val-red);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    font-size: 1.4rem;
+    font-weight: 900;
+    cursor: pointer;
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(20px);
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 70, 85, 0.4);
+}
+
+.back-to-top.visible {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.back-to-top:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 25px rgba(255, 70, 85, 0.6);
+    background: #ff6070;
+}
+
+/* ── Scroll Reveal Animations ── */
+.reveal-left {
+    opacity: 0;
+    transform: translateX(-60px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-right {
+    opacity: 0;
+    transform: translateX(60px);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-scale {
+    opacity: 0;
+    transform: scale(0.9);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.reveal-left.revealed,
+.reveal-right.revealed,
+.reveal-scale.revealed {
+    opacity: 1;
+    transform: translateX(0) scale(1);
 }

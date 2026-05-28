@@ -25,6 +25,10 @@
     <!-- PARTICLE CANVAS -->
     <canvas id="particle-canvas"></canvas>
 
+    <!-- SCROLL PROGRESS BAR -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-fill" id="scrollProgressFill"></div>
+    </div>
 
     <nav class="navbar">
         <div class="nav-container">
@@ -73,7 +77,7 @@
         </div>
     </header>
 
-    <section id="schedule" class="fade-in-up" style="padding: 100px 2rem; background-color: var(--val-dark); border-bottom: 2px solid var(--val-red);">
+    <section id="schedule" class="fade-in-up reveal-left" style="padding: 100px 2rem; background-color: var(--val-dark); border-bottom: 2px solid var(--val-red);">
         <div class="section-header">
             <h2 class="section-title">MATCH SCHEDULE</h2>
             <div class="section-line"></div>
@@ -167,7 +171,7 @@
 
 
 
-    <section id="manifesto" class="manifesto-section" style="padding: 100px 2rem; background-color: var(--val-dark); text-align: center; border-bottom: 2px solid var(--val-red); position: relative; overflow: hidden;">
+    <section id="manifesto" class="manifesto-section reveal-scale" style="padding: 100px 2rem; background-color: var(--val-dark); text-align: center; border-bottom: 2px solid var(--val-red); position: relative; overflow: hidden;">
         <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,70,85,0.05) 0%, rgba(15,25,35,1) 50%); z-index: 0;"></div>
         <div style="position: relative; z-index: 1; max-width: 900px; margin: 0 auto;">
             <span style="font-size: 6rem; color: var(--val-red); opacity: 0.3; display: block; margin-bottom: -3rem; font-family: serif;">"</span>
@@ -202,7 +206,7 @@
         </div>
     </section>
 
-    <section id="roster" class="roster-section fade-in-up">
+    <section id="roster" class="roster-section fade-in-up reveal-right">
         <div class="section-header">
             <h2 class="section-title">OUR ROSTER</h2>
             <div class="section-line"></div>
@@ -298,7 +302,7 @@
     </section>
 
     <!-- TEAM PHILOSOPHY SECTION -->
-    <section style="padding: 100px 2rem; background-color: var(--val-dark); border-top: 1px solid rgba(255,70,85,0.2); border-bottom: 1px solid rgba(255,70,85,0.2);">
+    <section class="reveal-left" style="padding: 100px 2rem; background-color: var(--val-dark); border-top: 1px solid rgba(255,70,85,0.2); border-bottom: 1px solid rgba(255,70,85,0.2);">
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 4rem;">
                 <h2 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--val-red); letter-spacing: 2px;">HOW WE PLAY</h2>
@@ -590,6 +594,11 @@
             <p class="copyright" style="margin-top: 2rem;">&copy; 2026 Goats CZ. All rights reserved. | Made with ❤️ in Czech Republic 🇨🇿</p>
         </div>
     </footer>
+
+    <!-- BACK TO TOP -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">
+        <span>↑</span>
+    </button>
 
     <script src="script.js"></script>
     <script>

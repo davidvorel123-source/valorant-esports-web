@@ -306,4 +306,51 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ==============================
+    // SCROLL PROGRESS BAR
+    // ==============================
+    const scrollProgressFill = document.getElementById('scrollProgressFill');
+    window.addEventListener('scroll', () => {
+        if (scrollProgressFill) {
+            const scrollTop = window.scrollY;
+            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+            const scrollPercent = (scrollTop / docHeight) * 100;
+            scrollProgressFill.style.width = scrollPercent + '%';
+        }
+    });
+
+    // ==============================
+    // BACK TO TOP BUTTON
+    // ==============================
+    const backToTop = document.getElementById('backToTop');
+    if (backToTop) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 600) {
+                backToTop.classList.add('visible');
+            } else {
+                backToTop.classList.remove('visible');
+            }
+        });
+
+        backToTop.addEventListener('click', () => {
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
+
+    // ==============================
+    // SCROLL REVEAL ANIMATIONS
+    // ==============================
+    const revealObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+                revealObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal-left, .reveal-right, .reveal-scale').forEach(el => {
+        revealObserver.observe(el);
+    });
+
 });
