@@ -387,26 +387,31 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function triggerGoatRain() {
-        for (let i = 0; i < 40; i++) {
-            const goat = document.createElement('div');
-            goat.textContent = '🐐';
-            goat.style.position = 'fixed';
-            goat.style.left = Math.random() * 100 + 'vw';
-            goat.style.top = '-50px';
-            goat.style.fontSize = (Math.random() * 2 + 1) + 'rem';
-            goat.style.zIndex = '10000';
-            goat.style.pointerEvents = 'none';
-            goat.style.transition = 'transform 3s linear, top 3s linear';
-            document.body.appendChild(goat);
-
+        for (let i = 0; i < 300; i++) {
             setTimeout(() => {
-                goat.style.top = '120vh';
-                goat.style.transform = `rotate(${Math.random() * 360}deg)`;
-            }, 50);
+                const goat = document.createElement('div');
+                goat.textContent = '🐐';
+                goat.style.position = 'fixed';
+                goat.style.left = Math.random() * 100 + 'vw';
+                goat.style.top = '-100px';
+                goat.style.fontSize = (Math.random() * 3 + 1) + 'rem';
+                goat.style.zIndex = '10000';
+                goat.style.pointerEvents = 'none';
+                
+                // Randomize fall duration between 2s and 5s
+                const fallDuration = Math.random() * 3 + 2; 
+                goat.style.transition = `transform ${fallDuration}s linear, top ${fallDuration}s linear`;
+                document.body.appendChild(goat);
 
-            setTimeout(() => {
-                goat.remove();
-            }, 3050);
+                setTimeout(() => {
+                    goat.style.top = '120vh';
+                    goat.style.transform = `rotate(${Math.random() * 720 - 360}deg)`;
+                }, 50);
+
+                setTimeout(() => {
+                    goat.remove();
+                }, fallDuration * 1000 + 100);
+            }, Math.random() * 1500); // Random delay up to 1.5s for continuous rain effect
         }
     }
 
