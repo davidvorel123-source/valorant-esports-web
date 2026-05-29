@@ -440,54 +440,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // EXTREME BRUTAL UPGRADE LOGIC
     // ==============================
 
-    // 1. Custom Cursor & Parallax Background
-    const cursor = document.getElementById('custom-cursor');
-    const follower = document.getElementById('custom-cursor-follower');
+    // 1. Parallax Background
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
     
-    if (cursor && follower) {
-        document.body.classList.add('cursor-active');
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        let followerX = window.innerWidth / 2;
-        let followerY = window.innerHeight / 2;
+    document.addEventListener('mousemove', (e) => {
+        mouseX = e.clientX;
+        mouseY = e.clientY;
         
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-            
-            // Immediate cursor position
-            cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
-            
-            // Parallax body background
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            const moveX = (centerX - mouseX) / 30;
-            const moveY = (centerY - mouseY) / 30;
-            document.body.style.backgroundPosition = `${moveX}px ${moveY}px, ${moveX + 20}px ${moveY + 20}px`;
-        });
-        
-        // Smooth follower animation
-        function animateFollower() {
-            followerX += (mouseX - followerX) * 0.15;
-            followerY += (mouseY - followerY) * 0.15;
-            follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0)`;
-            requestAnimationFrame(animateFollower);
-        }
-        animateFollower();
-
-        // Hover states
-        const hoverElements = document.querySelectorAll('a, button, .cta-button, .player-card, .philosophy-card');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.classList.add('hover');
-                follower.classList.add('hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hover');
-                follower.classList.remove('hover');
-            });
-        });
-    }
+        // Parallax body background
+        const centerX = window.innerWidth / 2;
+        const centerY = window.innerHeight / 2;
+        const moveX = (centerX - mouseX) / 30;
+        const moveY = (centerY - mouseY) / 30;
+        document.body.style.backgroundPosition = `${moveX}px ${moveY}px, ${moveX + 20}px ${moveY + 20}px`;
+    });
 
     // 2. SFX Audio
     const sfxHover = document.getElementById('sfx-hover');
