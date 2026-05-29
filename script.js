@@ -387,6 +387,11 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     function triggerGoatRain() {
+        document.body.classList.add('shake-active');
+        const sfxGlitch = document.getElementById('sfx-glitch');
+        if (sfxGlitch) { sfxGlitch.currentTime = 0; sfxGlitch.play().catch(()=>{}); }
+        setTimeout(() => document.body.classList.remove('shake-active'), 3000);
+
         const fragment = document.createDocumentFragment();
         const goats = [];
         
@@ -430,5 +435,96 @@ document.addEventListener('DOMContentLoaded', () => {
             }, g.delay);
         });
     }
+
+    // ==============================
+    // EXTREME BRUTAL UPGRADE LOGIC
+    // ==============================
+
+    // 1. Custom Cursor & Parallax Background
+    const cursor = document.getElementById('custom-cursor');
+    const follower = document.getElementById('custom-cursor-follower');
+    
+    if (cursor && follower) {
+        document.body.classList.add('cursor-active');
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let followerX = window.innerWidth / 2;
+        let followerY = window.innerHeight / 2;
+        
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Immediate cursor position
+            cursor.style.transform = `translate3d(${mouseX}px, ${mouseY}px, 0)`;
+            
+            // Parallax body background
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const moveX = (centerX - mouseX) / 30;
+            const moveY = (centerY - mouseY) / 30;
+            document.body.style.backgroundPosition = `${moveX}px ${moveY}px, ${moveX + 20}px ${moveY + 20}px`;
+        });
+        
+        // Smooth follower animation
+        function animateFollower() {
+            followerX += (mouseX - followerX) * 0.15;
+            followerY += (mouseY - followerY) * 0.15;
+            follower.style.transform = `translate3d(${followerX}px, ${followerY}px, 0)`;
+            requestAnimationFrame(animateFollower);
+        }
+        animateFollower();
+
+        // Hover states
+        const hoverElements = document.querySelectorAll('a, button, .cta-button, .player-card, .philosophy-card');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                follower.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                follower.classList.remove('hover');
+            });
+        });
+    }
+
+    // 2. SFX Audio
+    const sfxHover = document.getElementById('sfx-hover');
+    if (sfxHover) {
+        sfxHover.volume = 0.2;
+        const sfxElements = document.querySelectorAll('.cta-button, .nav-links a, .player-card');
+        sfxElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                sfxHover.currentTime = 0;
+                sfxHover.play().catch(() => {}); // Catch error if interaction blocked
+            });
+        });
+    }
+
+    // 3. Holographic Glare for Player Cards
+    document.querySelectorAll('.player-card').forEach(card => {
+        // Create glare element
+        const glare = document.createElement('div');
+        glare.classList.add('card-glare');
+        card.appendChild(glare);
+
+        card.addEventListener('mousemove', (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            
+            // Calculate angle
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI);
+            
+            // Calculate translation for the glare sweep
+            const percentX = (x / rect.width) * 100;
+            const percentY = (y / rect.height) * 100;
+            
+            glare.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translate(${percentX - 50}%, ${percentY - 50}%)`;
+        });
+    });
 
 });

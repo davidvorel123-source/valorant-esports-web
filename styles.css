@@ -1254,3 +1254,109 @@ img {
     opacity: 1;
     transform: translateX(0) scale(1);
 }
+
+/* =========================================
+   EXTREME EFFECTS (BRUTAL UPGRADE)
+   ========================================= */
+
+/* 1. Custom Cursor */
+body.cursor-active, body.cursor-active a, body.cursor-active button, body.cursor-active .cta-button {
+    cursor: none !important;
+}
+
+.custom-cursor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 6px;
+    height: 6px;
+    background-color: var(--val-red);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 999999;
+    transition: width 0.2s, height 0.2s, background-color 0.2s;
+}
+
+.custom-cursor-follower {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 40px;
+    height: 40px;
+    border: 1px solid rgba(255, 70, 85, 0.5);
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 999998;
+    transition: width 0.2s, height 0.2s, border-color 0.2s, transform 0.1s ease-out;
+}
+
+.custom-cursor.hover {
+    width: 12px;
+    height: 12px;
+    background-color: var(--val-cyan);
+}
+
+.custom-cursor-follower.hover {
+    width: 60px;
+    height: 60px;
+    border-color: var(--val-cyan);
+    background-color: rgba(0, 212, 255, 0.1);
+}
+
+/* 2. Holographic Glare for Player Cards */
+.player-card {
+    position: relative;
+    overflow: hidden; /* Ensure glare stays inside */
+}
+
+.card-glare {
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: linear-gradient(
+        105deg,
+        transparent 20%,
+        rgba(255, 255, 255, 0.2) 25%,
+        transparent 30%
+    );
+    transform: translate(-50%, -50%) rotate(0deg);
+    pointer-events: none;
+    z-index: 10;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.player-card:hover .card-glare {
+    opacity: 1;
+}
+
+/* 3. Screen Shake */
+@keyframes screenShake {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); }
+    100% { transform: translate(1px, -2px) rotate(-1deg); }
+}
+
+body.shake-active {
+    animation: screenShake 0.5s infinite;
+}
+
+/* Intense Glitch */
+.hero-title.intense-glitch {
+    animation: glitch 0.1s linear infinite !important;
+    text-shadow: 
+        4px 4px 0px rgba(0, 255, 255, 0.8),
+        -4px -4px 0px rgba(255, 0, 0, 0.8) !important;
+}
