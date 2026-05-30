@@ -16,6 +16,21 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==============================
     // MOBILE MENU TOGGLE
     // ==============================
+    // 0. LOADING SCREEN
+    // ==============================
+    const loadingScreen = document.querySelector('.loading-screen');
+    const sfxGlitch = document.getElementById('sfx-glitch');
+    if (loadingScreen) {
+        // Try to play glitch sound on load (might be blocked by browser autoplay policy, but we try)
+        if (sfxGlitch) sfxGlitch.play().catch(() => {});
+
+        setTimeout(() => {
+            loadingScreen.style.opacity = '0';
+            setTimeout(() => {
+                loadingScreen.remove();
+            }, 500);
+        }, 1200);
+    }
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     if (mobileMenuBtn) {
@@ -482,30 +497,37 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // 3. Holographic Glare for Player Cards
+    // 3. Ghost Cursor Trail
     if (!isMobile) {
-        document.querySelectorAll('.player-card').forEach(card => {
-            // Create glare element
-            const glare = document.createElement('div');
-            glare.classList.add('card-glare');
-            card.appendChild(glare);
+        const cursor = document.createElement('div');
+        cursor.classList.add('ghost-cursor');
+        document.body.appendChild(cursor);
 
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                
-                // Calculate angle
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI);
-                
-                // Calculate translation for the glare sweep
-                const percentX = (x / rect.width) * 100;
-                const percentY = (y / rect.height) * 100;
-                
-                glare.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translate(${percentX - 50}%, ${percentY - 50}%)`;
-            });
+        let cursorX = window.innerWidth / 2;
+        let cursorY = window.innerHeight / 2;
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+        });
+
+        // Smooth follow
+        function animateCursor() {
+            cursorX += (mouseX - cursorX) * 0.15;
+            cursorY += (mouseY - cursorY) * 0.15;
+            cursor.style.left = cursorX + 'px';
+            cursor.style.top = cursorY + 'px';
+            requestAnimationFrame(animateCursor);
+        }
+        animateCursor();
+
+        // Enlarge on clickable elements
+        const clickables = document.querySelectorAll('a, button, .player-card, .faq-question');
+        clickables.forEach(el => {
+            el.addEventListener('mouseenter', () => cursor.classList.add('active'));
+            el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
         });
     }
 
