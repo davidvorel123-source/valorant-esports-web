@@ -1,5 +1,22 @@
 document.addEventListener('DOMContentLoaded', () => {
 
+    const isMobile = window.innerWidth <= 768;
+
+    // ==============================
+    // PREMIER LIVE BANNER LOGIC
+    // ==============================
+    const banner = document.getElementById('premier-live-banner');
+    if (banner) {
+        const now = new Date();
+        const endHour = 22; // 22:00
+        // Hide banner if past 22:00
+        if (now.getHours() >= endHour || now > new Date('2026-05-30T22:00:00+02:00')) {
+            banner.remove();
+        } else {
+            document.body.classList.add('has-live-banner');
+        }
+    }
+
     // ==============================
     // LOADING SCREEN
     // ==============================
@@ -75,21 +92,23 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==============================
     // 3D TILT EFFECT ON PLAYER CARDS
     // ==============================
-    cards.forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const rotateX = (y - centerY) / 20;
-            const rotateY = (centerX - x) / 20;
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+    if (!isMobile) {
+        cards.forEach(card => {
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const rotateX = (y - centerY) / 20;
+                const rotateY = (centerX - x) / 20;
+                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
+            });
         });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-        });
-    });
+    }
 
     // ==============================
     // ANIMATED STAT COUNTERS
@@ -441,20 +460,22 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==============================
 
     // 1. Parallax Background
-    let mouseX = window.innerWidth / 2;
-    let mouseY = window.innerHeight / 2;
-    
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
+    if (!isMobile) {
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
         
-        // Parallax body background
-        const centerX = window.innerWidth / 2;
-        const centerY = window.innerHeight / 2;
-        const moveX = (centerX - mouseX) / 30;
-        const moveY = (centerY - mouseY) / 30;
-        document.body.style.backgroundPosition = `${moveX}px ${moveY}px, ${moveX + 20}px ${moveY + 20}px`;
-    });
+        document.addEventListener('mousemove', (e) => {
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Parallax body background
+            const centerX = window.innerWidth / 2;
+            const centerY = window.innerHeight / 2;
+            const moveX = (centerX - mouseX) / 30;
+            const moveY = (centerY - mouseY) / 30;
+            document.body.style.backgroundPosition = `${moveX}px ${moveY}px, ${moveX + 20}px ${moveY + 20}px`;
+        });
+    }
 
     // 2. SFX Audio
     const sfxHover = document.getElementById('sfx-hover');
@@ -470,28 +491,30 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // 3. Holographic Glare for Player Cards
-    document.querySelectorAll('.player-card').forEach(card => {
-        // Create glare element
-        const glare = document.createElement('div');
-        glare.classList.add('card-glare');
-        card.appendChild(glare);
+    if (!isMobile) {
+        document.querySelectorAll('.player-card').forEach(card => {
+            // Create glare element
+            const glare = document.createElement('div');
+            glare.classList.add('card-glare');
+            card.appendChild(glare);
 
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            
-            // Calculate angle
-            const centerX = rect.width / 2;
-            const centerY = rect.height / 2;
-            const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI);
-            
-            // Calculate translation for the glare sweep
-            const percentX = (x / rect.width) * 100;
-            const percentY = (y / rect.height) * 100;
-            
-            glare.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translate(${percentX - 50}%, ${percentY - 50}%)`;
+            card.addEventListener('mousemove', (e) => {
+                const rect = card.getBoundingClientRect();
+                const x = e.clientX - rect.left;
+                const y = e.clientY - rect.top;
+                
+                // Calculate angle
+                const centerX = rect.width / 2;
+                const centerY = rect.height / 2;
+                const angle = Math.atan2(y - centerY, x - centerX) * (180 / Math.PI);
+                
+                // Calculate translation for the glare sweep
+                const percentX = (x / rect.width) * 100;
+                const percentY = (y / rect.height) * 100;
+                
+                glare.style.transform = `translate(-50%, -50%) rotate(${angle}deg) translate(${percentX - 50}%, ${percentY - 50}%)`;
+            });
         });
-    });
+    }
 
 });
