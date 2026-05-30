@@ -2,16 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const isMobile = window.innerWidth <= 768;
 
-    // ==============================
-    // LOADING SCREEN
-    // ==============================
-    const loadingScreen = document.querySelector('.loading-screen');
-    if (loadingScreen) {
-        setTimeout(() => {
-            loadingScreen.classList.add('fade-out');
-            setTimeout(() => loadingScreen.remove(), 600);
-        }, 1500);
-    }
+
 
     // ==============================
     // MOBILE MENU TOGGLE
