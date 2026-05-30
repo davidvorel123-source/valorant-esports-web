@@ -3,21 +3,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const isMobile = window.innerWidth <= 768;
 
     // ==============================
-    // PREMIER LIVE BANNER LOGIC
-    // ==============================
-    const banner = document.getElementById('premier-live-banner');
-    if (banner) {
-        const now = new Date();
-        const endHour = 22; // 22:00
-        // Hide banner if past 22:00
-        if (now.getHours() >= endHour || now > new Date('2026-05-30T22:00:00+02:00')) {
-            banner.remove();
-        } else {
-            document.body.classList.add('has-live-banner');
-        }
-    }
-
-    // ==============================
     // LOADING SCREEN
     // ==============================
     const loadingScreen = document.querySelector('.loading-screen');
