@@ -213,7 +213,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const diff = targetDate - now;
 
             if (diff <= 0) {
-                el.innerHTML = '<span class="countdown-live">🔴 LIVE NOW</span>';
+                const hoursPassed = Math.abs(diff) / (1000 * 60 * 60);
+                if (hoursPassed > 2) {
+                    el.innerHTML = '<span class="countdown-live" style="color: var(--val-grey); text-shadow: none;">MATCH CONCLUDED</span>';
+                    const kickBtn = el.nextElementSibling;
+                    if (kickBtn && kickBtn.tagName === 'A') kickBtn.style.display = 'none';
+                } else {
+                    el.innerHTML = '<span class="countdown-live">🔴 LIVE NOW</span>';
+                }
                 return;
             }
 
