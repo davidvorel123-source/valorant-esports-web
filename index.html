@@ -92,14 +92,19 @@
                 <span class="logo-text">GCZ</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#schedule">Schedule</a></li>
-                <li><a href="#roster">Roster</a></li>
-                <li><a href="#stream">Stream</a></li>
-                <li><a href="#merch">Merch</a></li>
-                <li><a href="#tryouts">Tryouts</a></li>
-                <li><a href="#trophies">Trophies</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                <li><a href="#schedule" data-i18n="nav.schedule">Schedule</a></li>
+                <li><a href="#roster" data-i18n="nav.roster">Roster</a></li>
+                <li><a href="#stream" data-i18n="nav.stream">Stream</a></li>
+                <li><a href="#merch" data-i18n="nav.merch">Merch</a></li>
+                <li><a href="#tryouts" data-i18n="nav.tryouts">Tryouts</a></li>
+                <li><a href="#trophies" data-i18n="nav.trophies">Trophies</a></li>
+                <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+                <li class="lang-switcher" style="display: flex; gap: 5px; margin-left: 20px;">
+                    <a href="#" class="lang-btn" data-lang="en" style="padding:0; min-width:auto;">EN</a>
+                    <span style="color: var(--val-grey);">|</span>
+                    <a href="#" class="lang-btn" data-lang="cz" style="padding:0; min-width:auto;">CZ</a>
+                </li>
             </ul>
             <div class="mobile-menu-btn">
                 <span></span>
@@ -119,13 +124,13 @@
             <h1 class="hero-title" data-text="DEFY THE LIMITS">DEFY THE LIMITS</h1>
             <p class="hero-subtitle" style="font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 3px; color: var(--val-red); text-transform: uppercase;">"<span class="typed-text"></span><span class="typing-cursor">|</span>"</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
-                <a href="#roster" class="cta-button">MEET THE TEAM <span class="arrow">→</span></a>
-                <a href="https://discord.gg/W56F3G48xX" target="_blank" class="cta-button" style="background-color: #5865F2; border: 1px solid #5865F2; box-shadow: none; outline: none;">JOIN DISCORD <span class="arrow">→</span></a>
+                <a href="#roster" class="cta-button"><span data-i18n="hero.meet">MEET THE TEAM</span> <span class="arrow">→</span></a>
+                <a href="https://discord.gg/W56F3G48xX" target="_blank" class="cta-button" style="background-color: #5865F2; border: 1px solid #5865F2; box-shadow: none; outline: none;"><span data-i18n="hero.discord">JOIN DISCORD</span> <span class="arrow">→</span></a>
             </div>
 
 
             <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
-                <p style="color: var(--val-grey); font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 1rem; text-transform: uppercase;">OFFICIAL TEAM SOCIALS</p>
+                <p style="color: var(--val-grey); font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 1rem; text-transform: uppercase;"><span data-i18n="hero.socials">OFFICIAL TEAM SOCIALS</span></p>
                 <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
                     <a href="https://x.com/Goats_CZ" target="_blank" style="color: var(--val-grey); font-weight: 700; text-decoration: none; font-size: 1rem; letter-spacing: 1px; transition: color 0.2s;" onmouseover="this.style.color='var(--val-white)'" onmouseout="this.style.color='var(--val-grey)'">TWITTER (X)</a>
                 </div>
@@ -135,26 +140,26 @@
 
     <section id="schedule" class="fade-in-up reveal-left" style="padding: 100px 2rem; background-color: var(--val-dark); border-bottom: 2px solid var(--val-red);">
         <div class="section-header">
-            <h2 class="section-title">MATCH SCHEDULE</h2>
+            <h2 class="section-title"><span data-i18n="schedule.title">MATCH SCHEDULE</span></h2>
             <div class="section-line"></div>
         </div>
         <div style="max-width: 1000px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 2rem; align-items: center;">
             
             <!-- Match 1 (Premier) -->
             <div style="background: rgba(15, 25, 35, 0.8); padding: 2.5rem 4rem; border: 1px solid var(--val-red); display: inline-block; text-align: center; box-shadow: 0 10px 40px rgba(255, 70, 85, 0.15); border-radius: 4px; width: 100%; max-width: 800px;">
-                <span style="color: var(--val-grey); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 1rem; text-transform: uppercase;">UPCOMING MATCH • <span class="dynamic-date" data-match-date="2026-06-06T19:00:00" style="color: var(--val-red);">LOADING...</span></span>
+                <span style="color: var(--val-grey); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 1rem; text-transform: uppercase;"><span data-i18n="schedule.upcoming">UPCOMING MATCH</span> • <span class="dynamic-date" data-match-date="2026-06-06T19:00:00" style="color: var(--val-red);">LOADING...</span></span>
                 <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 2px 2px 0 var(--val-red);">VALORANT PREMIER</h3>
                 <span style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem;">GCZ vs. TBD</span>
                 <div class="match-countdown" data-target="2026-06-06T19:00:00" style="margin-bottom: 1.5rem;"></div>
-                <a href="https://kick.com/gczdejwrix" target="_blank" style="display: inline-block; color: #53fc18; font-weight: bold; text-decoration: none; font-size: 1.2rem; letter-spacing: 1.5px; background: rgba(83, 252, 24, 0.15); padding: 10px 25px; border-radius: 4px; border: 2px solid rgba(83, 252, 24, 0.6); transition: all 0.3s;" onmouseover="this.style.background='rgba(83, 252, 24, 0.3)'; this.style.boxShadow='0 0 20px rgba(83, 252, 24, 0.3)'; this.style.transform='scale(1.05)';" onmouseout="this.style.background='rgba(83, 252, 24, 0.15)'; this.style.boxShadow='none'; this.style.transform='scale(1)';">🟢 WATCH LIVE ON KICK</a>
+                <a href="https://kick.com/gczdejwrix" target="_blank" style="display: inline-block; color: #53fc18; font-weight: bold; text-decoration: none; font-size: 1.2rem; letter-spacing: 1.5px; background: rgba(83, 252, 24, 0.15); padding: 10px 25px; border-radius: 4px; border: 2px solid rgba(83, 252, 24, 0.6); transition: all 0.3s;" onmouseover="this.style.background='rgba(83, 252, 24, 0.3)'; this.style.boxShadow='0 0 20px rgba(83, 252, 24, 0.3)'; this.style.transform='scale(1.05)';" onmouseout="this.style.background='rgba(83, 252, 24, 0.15)'; this.style.boxShadow='none'; this.style.transform='scale(1)';">🟢 <span data-i18n="schedule.watch">WATCH LIVE ON KICK</span></a>
             </div>
 
             <!-- Match 2 (TBD) -->
             <div style="background: rgba(15, 25, 35, 0.8); padding: 2.5rem 4rem; border: 1px dashed rgba(255, 70, 85, 0.3); display: inline-block; text-align: center; border-radius: 4px; width: 100%; max-width: 800px; opacity: 0.7;">
-                <span style="color: var(--val-grey); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 1rem; text-transform: uppercase;">UPCOMING MATCH • <span style="color: var(--val-red);">TBD</span></span>
-                <h3 style="color: var(--val-grey); font-family: var(--font-heading); font-size: 3rem; letter-spacing: 2px; margin-bottom: 0.5rem;">TO BE ANNOUNCED</h3>
-                <span style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem;">NEXT MATCH TBD</span>
-                <span style="display: inline-block; color: var(--val-grey); font-weight: bold; font-size: 1rem; letter-spacing: 1px; background: rgba(255, 255, 255, 0.05); padding: 8px 20px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.1);">STAY TUNED</span>
+                <span style="color: var(--val-grey); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 1rem; text-transform: uppercase;"><span data-i18n="schedule.upcoming">UPCOMING MATCH</span> • <span style="color: var(--val-red);">TBD</span></span>
+                <h3 style="color: var(--val-grey); font-family: var(--font-heading); font-size: 3rem; letter-spacing: 2px; margin-bottom: 0.5rem;"><span data-i18n="schedule.tba">TO BE ANNOUNCED</span></h3>
+                <span style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem;"><span data-i18n="schedule.nexttbd">NEXT MATCH TBD</span></span>
+                <span style="display: inline-block; color: var(--val-grey); font-weight: bold; font-size: 1rem; letter-spacing: 1px; background: rgba(255, 255, 255, 0.05); padding: 8px 20px; border-radius: 4px; border: 1px solid rgba(255, 255, 255, 0.1);"><span data-i18n="schedule.staytuned">STAY TUNED</span></span>
             </div>
 
         </div>
@@ -265,14 +270,14 @@
 
     <section id="roster" class="roster-section fade-in-up reveal-right">
         <div class="section-header">
-            <h2 class="section-title">OUR ROSTER</h2>
+            <h2 class="section-title"><span data-i18n="roster.title">OUR ROSTER</span></h2>
             <div class="section-line"></div>
         </div>
         <div class="roster-grid">
             <div class="player-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5" data-tilt-scale="1.05">
                 <div class="player-image" style="background-image: url('dejwrix.jpg'); background-position: center top;"></div>
                 <div class="player-info">
-                    <span class="player-role">IGL / SECOND DUELIST</span>
+                    <span class="player-role"><span data-i18n="role.igl">IGL / SECOND <span data-i18n="role.duelist">DUELIST</span></span></span>
                     <h3 class="player-name">Dejwrix</h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;">Mains: Raze / Phoenix</p>
                     <a href="https://www.vlr.gg/player/62747/dejwrix" target="_blank" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">VLR.GG PROFILE</a>
@@ -283,7 +288,7 @@
             <div class="player-card fade-in-up" data-tilt data-tilt-glare data-tilt-max-glare="0.5" data-tilt-scale="1.05">
                 <div class="player-image" style="background-image: url('teikov.jpg'); background-position: center 20%;"></div>
                 <div class="player-info">
-                    <span class="player-role">DUELIST</span>
+                    <span class="player-role"><span data-i18n="role.duelist">DUELIST</span></span>
                     <h3 class="player-name">Teikov</h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;">Mains: Neon</p>
                 </div>
@@ -291,7 +296,7 @@
             <div class="player-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5" data-tilt-scale="1.05">
                 <div class="player-image bg-red"></div>
                 <div class="player-info">
-                    <span class="player-role">INITIATOR</span>
+                    <span class="player-role"><span data-i18n="role.initiator">INITIATOR</span></span>
                     <h3 class="player-name">Ondra</h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;">Mains: Sova / Fade</p>
                 </div>
@@ -299,7 +304,7 @@
             <div class="player-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5" data-tilt-scale="1.05">
                 <div class="player-image" style="background-image: url('rabadon.jpg'); background-position: center 40%; background-size: cover;"></div>
                 <div class="player-info">
-                    <span class="player-role">SMOKER</span>
+                    <span class="player-role"><span data-i18n="role.smoker">SMOKER</span></span>
                     <h3 class="player-name">Rabadon</h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;">Mains: Harbor / Astra / Omen</p>
                 </div>
@@ -307,7 +312,7 @@
             <div class="player-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5" data-tilt-scale="1.05">
                 <div class="player-image" style="background-image: url('luky.jpg'); background-position: center top;"></div>
                 <div class="player-info">
-                    <span class="player-role">FLEX</span>
+                    <span class="player-role"><span data-i18n="role.flex">FLEX</span></span>
                     <h3 class="player-name">Luky</h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;">Mains: Jett / Veto</p>
                     <a href="https://www.vlr.gg/player/62651/brambor-ek" target="_blank" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">VLR.GG PROFILE</a>
@@ -318,7 +323,7 @@
             <div class="player-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5" data-tilt-scale="1.05">
                 <div class="player-image" style="background-image: url('tezzy.jpg'); background-position: center 35%; background-size: 300%;"></div>
                 <div class="player-info">
-                    <span class="player-role">SUB / DUELIST</span>
+                    <span class="player-role">SUB / <span data-i18n="role.duelist">DUELIST</span></span>
                     <h3 class="player-name">Tezzy</h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;">Mains: Waylay / Jett</p>
                 </div>
@@ -326,7 +331,7 @@
             <div class="player-card" data-tilt data-tilt-glare data-tilt-max-glare="0.5" data-tilt-scale="1.05">
                 <div class="player-image" style="background-image: url('woody.png'); background-position: center top;"></div>
                 <div class="player-info">
-                    <span class="player-role">SUB / SMOKER</span>
+                    <span class="player-role">SUB / <span data-i18n="role.smoker">SMOKER</span></span>
                     <h3 class="player-name">Woody</h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;">Mains: Astra / Omen</p>
                     <a href="https://x.com/woody_valo" target="_blank" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
@@ -380,13 +385,13 @@
                 </div>
                 <div class="philosophy-card" style="background: linear-gradient(135deg, #111 0%, #0a1a0d 100%); border: 1px solid rgba(255,70,85,0.3); padding: 2.5rem; text-align: center; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,70,85,0.3)';">
                     <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🔄</div>
-                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;">ADAPTABILITY</h3>
-                    <p style="color: var(--val-grey); line-height: 1.7;">Mid-round reads, map switches, counter-strategies. The Herd adapts faster than the enemy can respond. Winning is a mindset, not a plan.</p>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;"><span data-i18n="about.adapt">ADAPTABILITY</span></h3>
+                    <p style="color: var(--val-grey); line-height: 1.7;"><span data-i18n="about.adapt_text">Mid-round reads, map switches, counter-strategies. The Herd adapts faster than the enemy can respond. Winning is a mindset, not a plan.</span></p>
                 </div>
                 <div class="philosophy-card" style="background: linear-gradient(135deg, #111 0%, #1a150a 100%); border: 1px solid rgba(255,70,85,0.3); padding: 2.5rem; text-align: center; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,70,85,0.3)';">
                     <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🤝</div>
-                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;">BROTHERHOOD</h3>
-                    <p style="color: var(--val-grey); line-height: 1.7;">GCZ is not just a team. We are friends who compete at the highest level. The trust between us on the server translates directly into results every single match.</p>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;"><span data-i18n="about.brotherhood">BROTHERHOOD</span></h3>
+                    <p style="color: var(--val-grey); line-height: 1.7;"><span data-i18n="about.brotherhood_text">GCZ is not just a team. We are friends who compete at the highest level. The trust between us on the server translates directly into results every single match.</span></p>
                 </div>
             </div>
         </div>
@@ -411,28 +416,28 @@
     <!-- MERCH SECTION -->
     <section id="merch" class="fade-in-up" style="padding: 100px 2rem; background: linear-gradient(135deg, var(--val-dark) 0%, #1a0a0c 100%); border-top: 1px solid rgba(255, 70, 85, 0.2);">
         <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-            <span style="color: var(--val-red); font-weight: 800; font-size: 1rem; letter-spacing: 3px;">OFFICIAL GEAR</span>
-            <h2 style="font-family: var(--font-heading); font-size: 4rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; line-height: 1;">MERCH DROPPING SOON</h2>
-            <p style="color: var(--val-grey); font-size: 1.2rem; margin-bottom: 2rem;">Rep the Herd. Premium jerseys, hoodies, and accessories are currently in production. Join the Discord to get notified first.</p>
-            <a href="https://discord.gg/W56F3G48xX" target="_blank" style="display: inline-block; background-color: var(--val-red); color: white; padding: 1rem 2rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">JOIN DISCORD TO WAITLIST</a>
+            <span style="color: var(--val-red); font-weight: 800; font-size: 1rem; letter-spacing: 3px;"><span data-i18n="merch.gear">OFFICIAL GEAR</span></span>
+            <h2 style="font-family: var(--font-heading); font-size: 4rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; line-height: 1;"><span data-i18n="merch.dropping">MERCH DROPPING SOON</span></h2>
+            <p style="color: var(--val-grey); font-size: 1.2rem; margin-bottom: 2rem;"><span data-i18n="merch.desc">Rep the Herd. Premium jerseys, hoodies, and accessories are currently in production. Join the Discord to get notified first.</span></p>
+            <a href="https://discord.gg/W56F3G48xX" target="_blank" style="display: inline-block; background-color: var(--val-red); color: white; padding: 1rem 2rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><span data-i18n="merch.waitlist">JOIN DISCORD TO WAITLIST</span></a>
         </div>
     </section>
 
     <!-- MARQUEE BANNER -->
     <div class="marquee-container">
         <div class="marquee-content">
-            DEFY THE LIMITS • GOATS CZ • VALORANT PREMIER • DEFY THE LIMITS • GOATS CZ • VALORANT PREMIER • DEFY THE LIMITS • GOATS CZ • VALORANT PREMIER • DEFY THE LIMITS • GOATS CZ • VALORANT PREMIER • 
+            <span data-i18n="marquee.text">DEFY THE LIMITS • GOATS CZ • VALORANT PREMIER</span> • <span data-i18n="marquee.text">DEFY THE LIMITS • GOATS CZ • VALORANT PREMIER</span> • <span data-i18n="marquee.text">DEFY THE LIMITS • GOATS CZ • VALORANT PREMIER</span> • <span data-i18n="marquee.text">DEFY THE LIMITS • GOATS CZ • VALORANT PREMIER</span> • 
         </div>
     </div>
 
     <section id="legacy" class="legacy-section roster-section fade-in-up" style="border-top: 1px solid rgba(255, 255, 255, 0.1);">
         <div class="section-header">
-            <h2 class="section-title">OUR LEGACY</h2>
+            <h2 class="section-title"><span data-i18n="legacy.title">OUR LEGACY</span></h2>
             <div class="section-line"></div>
         </div>
         <div class="legacy-container">
             <div class="legacy-column">
-                <h3>Last Matches</h3>
+                <h3><span data-i18n="legacy.last">Last Matches</span></h3>
                 <ul class="match-list">
                     <li><span class="match-result win">WIN</span> GCZ vs. redhound <span class="match-score">13:8</span></li>
                     <li><span class="match-result win">WIN</span> GCZ vs. Blackout <span class="match-score">13:4</span></li>
@@ -443,12 +448,12 @@
                 </ul>
             </div>
             <div class="legacy-column">
-                <h3>Milestones & Goals</h3>
+                <h3><span data-i18n="legacy.milestones">Milestones & Goals</span></h3>
                 <ul class="milestone-list">
                     <li>🏆 <strong>1st Place</strong>&nbsp;-&nbsp;Playzone Tournament</li>
                     <li>🥇 <strong>1st Place</strong>&nbsp;-&nbsp;Wolvesden Tournament</li>
-                    <li>🔥 <strong>Main Focus:</strong>&nbsp;Valorant Premier</li>
-                    <li>📈 <strong>Goal:</strong>&nbsp;Ascend to VCT EMEA</li>
+                    <li>🔥 <strong><span data-i18n="legacy.focus">Main Focus:</span></strong>&nbsp;Valorant Premier</li>
+                    <li>📈 <strong><span data-i18n="legacy.goal">Goal:</span></strong>&nbsp;<span data-i18n="legacy.ascend">Ascend to VCT EMEA</span></li>
                 </ul>
             </div>
         </div>
@@ -788,10 +793,11 @@
     </script>
     
     <!-- CUSTOM CROSSHAIR -->
-    <!-- (Odstraněno na žádost) -->
-
     <!-- Vanilla Tilt JS -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+    <script src="i18n.js"></script>
+    <script src="script.js"></script>
 
     <!-- SFX AUDIO -->
     <audio id="sfx-hover" src="https://assets.codepen.io/1468070/click.wav" preload="auto"></audio>

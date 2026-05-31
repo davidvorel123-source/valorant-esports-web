@@ -1410,3 +1410,23 @@ body.shake-active {
     color: var(--val-red);
     animation: glitch 0.3s cubic-bezier(.25, .46, .45, .94) both infinite;
 }
+
+/* LANG SWITCHER */
+.lang-btn {
+    background: none;
+    border: none;
+    color: var(--val-grey);
+    font-family: var(--font-heading);
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: color 0.3s, text-shadow 0.3s;
+    letter-spacing: 1px;
+    text-decoration: none;
+}
+.lang-btn:hover {
+    color: var(--val-white);
+}
+.lang-btn.active-lang {
+    color: var(--val-red);
+    text-shadow: 0 0 10px rgba(255, 70, 85, 0.4);
+}
