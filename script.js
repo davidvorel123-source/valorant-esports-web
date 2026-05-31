@@ -261,12 +261,24 @@ document.addEventListener('DOMContentLoaded', () => {
     // ==============================
     const typedEl = document.querySelector('.typed-text');
     if (typedEl) {
-        const phrases = [
-            'SILENCE THE NOISE. DOMINATE THE SERVER.',
-            'WE ARE THE HERD.',
-            'FEAR THE GOATS.',
-            'CZECH FIREPOWER.',
-        ];
+        function getPhrases() {
+            const lang = localStorage.getItem('gcz_lang') || 'en';
+            if (lang === 'cz') {
+                return [
+                    'UTIŠ HLUK. OVLÁDNI SERVER.',
+                    'MY JSME STÁDO.',
+                    'BOJ SE KOZ.',
+                    'ČESKÁ PALEBNÁ SÍLA.',
+                ];
+            }
+            return [
+                'SILENCE THE NOISE. DOMINATE THE SERVER.',
+                'WE ARE THE HERD.',
+                'FEAR THE GOATS.',
+                'CZECH FIREPOWER.',
+            ];
+        }
+        const phrases = getPhrases();
         let phraseIndex = 0;
         let charIndex = 0;
         let isDeleting = false;
