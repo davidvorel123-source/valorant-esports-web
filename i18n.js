@@ -5,6 +5,11 @@
         "media.more": "COMING SOON",
         "media.desc3": "Waiting for upload...",
         "legacy.matchHistory": "Premier & Tournament Matches",
+        "table.date": "Date",
+        "table.tournament": "Tournament",
+        "table.opponent": "Opponent",
+        "table.score": "Score",
+        "table.result": "Result",
         "sponsors.title": "PARTNERS & SPONSORS",
         "sponsors.placeholder": "YOUR LOGO HERE",
         "sponsors.contact": "BECOME A PARTNER",
@@ -149,6 +154,11 @@
         "media.more": "BRZY PŘIBUDOU",
         "media.desc3": "Čeká na nahrání...",
         "legacy.matchHistory": "Zápasy z Premier a Turnajů",
+        "table.date": "Datum",
+        "table.tournament": "Turnaj",
+        "table.opponent": "Soupeř",
+        "table.score": "Skóre",
+        "table.result": "Výsledek",
         "sponsors.title": "PARTNEŘI A SPONZOŘI",
         "sponsors.placeholder": "TADY MŮŽE BÝT VAŠE LOGO",
         "sponsors.contact": "STÁT SE PARTNEREM",
@@ -333,5 +343,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Apply initial language
     setLanguage(currentLang);
 });
+
 
 
