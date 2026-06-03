@@ -1,32 +1,10 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-    const isMobile = window.innerWidth <= 768;
-
-
-
-    // ==============================
-    // MOBILE MENU TOGGLE
-    // ==============================
-    // 0. LOADING SCREEN
-    // ==============================
-    const loadingScreen = document.querySelector('.loading-screen');
-    const sfxGlitch = document.getElementById('sfx-glitch');
-    if (loadingScreen) {
-        // Try to play glitch sound on load (might be blocked by browser autoplay policy, but we try)
-        if (sfxGlitch) sfxGlitch.play().catch(() => {});
-
-        setTimeout(() => {
-            loadingScreen.style.opacity = '0';
-            setTimeout(() => {
-                loadingScreen.remove();
-            }, 500);
-        }, 1200);
-    }
+    // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
     if (mobileMenuBtn) {
         mobileMenuBtn.addEventListener('click', () => {
-            mobileMenuBtn.classList.toggle('active');
             const isOpen = navLinks.style.display === 'flex';
             navLinks.style.display = isOpen ? 'none' : 'flex';
             navLinks.style.flexDirection = 'column';
@@ -40,33 +18,13 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // ==============================
-    // NAVBAR SCROLL EFFECT
-    // ==============================
-    const navbar = document.querySelector('.navbar');
-    let lastScrollY = 0;
-    window.addEventListener('scroll', () => {
-        const currentScrollY = window.scrollY;
-        if (currentScrollY > 100) {
-            navbar.classList.add('navbar-scrolled');
-        } else {
-            navbar.classList.remove('navbar-scrolled');
-        }
-        lastScrollY = currentScrollY;
-    });
-
-    // ==============================
-    // SCROLL-IN ANIMATION FOR PLAYER CARDS
-    // ==============================
+    // Scroll-in animation for player cards
     const observerOptions = { threshold: 0.1, rootMargin: "0px 0px -50px 0px" };
     const observer = new IntersectionObserver((entries) => {
-        entries.forEach((entry, index) => {
+        entries.forEach(entry => {
             if (entry.isIntersecting) {
-                // Stagger the animation
-                setTimeout(() => {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }, index * 100);
+                entry.target.style.opacity = '1';
+                entry.target.style.transform = 'translateY(0)';
                 observer.unobserve(entry.target);
             }
         });
@@ -80,30 +38,7 @@ document.addEventListener('DOMContentLoaded', () => {
         observer.observe(card);
     });
 
-    // ==============================
-    // 3D TILT EFFECT ON PLAYER CARDS
-    // ==============================
-    if (!isMobile) {
-        cards.forEach(card => {
-            card.addEventListener('mousemove', (e) => {
-                const rect = card.getBoundingClientRect();
-                const x = e.clientX - rect.left;
-                const y = e.clientY - rect.top;
-                const centerX = rect.width / 2;
-                const centerY = rect.height / 2;
-                const rotateX = (y - centerY) / 20;
-                const rotateY = (centerX - x) / 20;
-                card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-10px)`;
-            });
-            card.addEventListener('mouseleave', () => {
-                card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) translateY(0)';
-            });
-        });
-    }
-
-    // ==============================
-    // ANIMATED STAT COUNTERS
-    // ==============================
+    // Animated stat counters
     const counters = document.querySelectorAll('.stat-counter');
     const counterObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
@@ -129,9 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { threshold: 0.5 });
     counters.forEach(c => counterObserver.observe(c));
 
-    // ==============================
-    // FADE-IN-UP ANIMATION OBSERVER
-    // ==============================
+    // Fade-in-up animation observer
     const fadeObserver = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
@@ -143,9 +76,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     document.querySelectorAll('.fade-in-up').forEach(el => fadeObserver.observe(el));
 
-    // ==============================
-    // FAQ ACCORDION
-    // ==============================
+    // FAQ Accordion
     const faqQuestions = document.querySelectorAll('.faq-question');
     faqQuestions.forEach(question => {
         question.addEventListener('click', () => {
@@ -168,13 +99,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // ==============================
-    // DYNAMIC MATCH DATES
-    // ==============================
+    // Dynamic Match Dates
     function updateDynamicDates() {
         const elements = document.querySelectorAll('.dynamic-date');
         const now = new Date();
-        now.setHours(0, 0, 0, 0);
+        now.setHours(0, 0, 0, 0); // Zero out for accurate day diff
         
         elements.forEach(el => {
             const matchDateStr = el.getAttribute('data-match-date');
@@ -206,332 +135,85 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateDynamicDates();
-    setInterval(updateDynamicDates, 3600000);
+    setInterval(updateDynamicDates, 3600000); // Check every hour
 
-    // ==============================
-    // LIVE MATCH COUNTDOWN TIMER
-    // ==============================
-    function updateCountdowns() {
-        const countdownEls = document.querySelectorAll('.match-countdown');
-        countdownEls.forEach(el => {
-            const targetDate = new Date(el.dataset.target);
-            const now = new Date();
-            const diff = targetDate - now;
-
-            if (diff <= 0) {
-                const hoursPassed = Math.abs(diff) / (1000 * 60 * 60);
-                if (hoursPassed > 2) {
-                    el.innerHTML = '<span class="countdown-live" style="color: var(--val-grey); text-shadow: none;">MATCH CONCLUDED</span>';
-                    const kickBtn = el.nextElementSibling;
-                    if (kickBtn && kickBtn.tagName === 'A') kickBtn.style.display = 'none';
-                } else {
-                    el.innerHTML = '<span class="countdown-live">🔴 LIVE NOW</span>';
+    // Hero Particles System
+    const canvas = document.getElementById('hero-particles');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        let particles = [];
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * -1 - 0.5;
+                this.opacity = Math.random() * 0.5 + 0.1;
+            }
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                if (this.y < 0) {
+                    this.y = canvas.height;
+                    this.x = Math.random() * canvas.width;
                 }
-                return;
             }
-
-            const hours = Math.floor(diff / (1000 * 60 * 60));
-            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-            el.innerHTML = `
-                <div class="countdown-unit">
-                    <span class="countdown-number">${String(hours).padStart(2, '0')}</span>
-                    <span class="countdown-label">HRS</span>
-                </div>
-                <span class="countdown-separator">:</span>
-                <div class="countdown-unit">
-                    <span class="countdown-number">${String(minutes).padStart(2, '0')}</span>
-                    <span class="countdown-label">MIN</span>
-                </div>
-                <span class="countdown-separator">:</span>
-                <div class="countdown-unit">
-                    <span class="countdown-number">${String(seconds).padStart(2, '0')}</span>
-                    <span class="countdown-label">SEC</span>
-                </div>
-            `;
-        });
-    }
-
-    updateCountdowns();
-    setInterval(updateCountdowns, 1000);
-
-    // ==============================
-    // TYPED TEXT EFFECT FOR HERO SUBTITLE
-    // ==============================
-    const typedEl = document.querySelector('.typed-text');
-    if (typedEl) {
-        function getPhrases() {
-            const lang = localStorage.getItem('gcz_lang') || 'en';
-            if (lang === 'cz') {
-                return [
-                    'UTIŠ HLUK. OVLÁDNI SERVER.',
-                    'MY JSME STÁDO.',
-                    'BOJ SE KOZ.',
-                    'ČESKÁ PALEBNÁ SÍLA.',
-                ];
+            draw() {
+                ctx.fillStyle = `rgba(255, 70, 85, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
             }
-            return [
-                'SILENCE THE NOISE. DOMINATE THE SERVER.',
-                'WE ARE THE HERD.',
-                'FEAR THE GOATS.',
-                'CZECH FIREPOWER.',
-            ];
         }
-        const phrases = getPhrases();
-        let phraseIndex = 0;
-        let charIndex = 0;
-        let isDeleting = false;
-        let typingSpeed = 80;
-
-        function typeEffect() {
-            const currentPhrase = phrases[phraseIndex];
-            
-            if (isDeleting) {
-                typedEl.textContent = currentPhrase.substring(0, charIndex - 1);
-                charIndex--;
-                typingSpeed = 40;
-            } else {
-                typedEl.textContent = currentPhrase.substring(0, charIndex + 1);
-                charIndex++;
-                typingSpeed = 80;
-            }
-
-            if (!isDeleting && charIndex === currentPhrase.length) {
-                typingSpeed = 2000;
-                isDeleting = true;
-            } else if (isDeleting && charIndex === 0) {
-                isDeleting = false;
-                phraseIndex = (phraseIndex + 1) % phrases.length;
-                typingSpeed = 500;
-            }
-
-            setTimeout(typeEffect, typingSpeed);
-        }
-
-        setTimeout(typeEffect, 1000);
-    }
-
-    // ==============================
-    // ACTIVE NAV LINK HIGHLIGHTING
-    // ==============================
-    const sections = document.querySelectorAll('section[id], header[id]');
-    const navLinksAll = document.querySelectorAll('.nav-links a');
-    
-    window.addEventListener('scroll', () => {
-        let current = '';
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 150;
-            if (window.scrollY >= sectionTop) {
-                current = section.getAttribute('id');
-            }
-        });
         
-        navLinksAll.forEach(link => {
-            link.classList.remove('active-link');
-            if (link.getAttribute('href') === '#' + current) {
-                link.classList.add('active-link');
+        function initParticles() {
+            particles = [];
+            let particleCount = Math.floor(window.innerWidth / 15);
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
             }
-        });
-    });
-
-    // ==============================
-    // SCROLL PROGRESS BAR
-    // ==============================
-    const scrollProgressFill = document.getElementById('scrollProgressFill');
-    window.addEventListener('scroll', () => {
-        if (scrollProgressFill) {
-            const scrollTop = window.scrollY;
-            const docHeight = document.documentElement.scrollHeight - window.innerHeight;
-            const scrollPercent = (scrollTop / docHeight) * 100;
-            scrollProgressFill.style.width = scrollPercent + '%';
         }
-    });
-
-    // ==============================
-    // BACK TO TOP BUTTON
-    // ==============================
-    const backToTop = document.getElementById('backToTop');
-    if (backToTop) {
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 600) {
-                backToTop.classList.add('visible');
-            } else {
-                backToTop.classList.remove('visible');
+        
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            for (let i = 0; i < particles.length; i++) {
+                particles[i].update();
+                particles[i].draw();
             }
-        });
-
-        backToTop.addEventListener('click', () => {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            requestAnimationFrame(animateParticles);
+        }
+        
+        initParticles();
+        animateParticles();
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            initParticles();
         });
     }
 
-    // ==============================
-    // SCROLL REVEAL ANIMATIONS
-    // ==============================
-    const revealObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-                revealObserver.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
-
-    document.querySelectorAll('.reveal-left, .reveal-right, .reveal-scale').forEach(el => {
-        revealObserver.observe(el);
-    });
-
-    // ==============================
-    // MAGNETIC BUTTONS
-    // ==============================
-    const magneticButtons = document.querySelectorAll('.cta-button');
-    magneticButtons.forEach(btn => {
-        btn.addEventListener('mousemove', (e) => {
-            const rect = btn.getBoundingClientRect();
-            const x = e.clientX - rect.left - rect.width / 2;
-            const y = e.clientY - rect.top - rect.height / 2;
-            btn.style.transform = `translate(${x * 0.3}px, ${y * 0.3}px)`;
-        });
-        btn.addEventListener('mouseleave', () => {
-            btn.style.transform = 'translate(0px, 0px)';
-        });
-    });
-
-    // ==============================
-    // EASTER EGG (TYPE "GOAT")
-    // ==============================
-    let secretCode = ['g', 'o', 'a', 't'];
-    let secretCodeIndex = 0;
-    document.addEventListener('keydown', (e) => {
-        if (e.key.toLowerCase() === secretCode[secretCodeIndex]) {
-            secretCodeIndex++;
-            if (secretCodeIndex === secretCode.length) {
-                triggerGoatRain();
-                secretCodeIndex = 0;
-            }
-        } else {
-            secretCodeIndex = 0;
-        }
-    });
-
-    function triggerGoatRain() {
-        document.body.classList.add('shake-active');
-        const sfxGlitch = document.getElementById('sfx-glitch');
-        if (sfxGlitch) { sfxGlitch.currentTime = 0; sfxGlitch.play().catch(()=>{}); }
-        setTimeout(() => document.body.classList.remove('shake-active'), 3000);
-
-        const fragment = document.createDocumentFragment();
-        const goats = [];
-        
-        // Vytvoříme elementy najednou (250 koz je pro výkon bezpečnější, s GPU to poletí hladce)
-        for (let i = 0; i < 250; i++) {
-            const goat = document.createElement('div');
-            goat.textContent = '🐐';
-            goat.style.position = 'fixed';
-            goat.style.left = Math.random() * 100 + 'vw';
-            goat.style.top = '-100px';
-            goat.style.fontSize = (Math.random() * 3 + 1) + 'rem';
-            goat.style.zIndex = '10000';
-            goat.style.pointerEvents = 'none';
-            // GPU akcelerace
-            goat.style.willChange = 'transform';
-            
-            fragment.appendChild(goat);
-            
-            goats.push({
-                element: goat,
-                delay: Math.random() * 1500, // náhodné zpoždění startu
-                duration: Math.random() * 3 + 2, // náhodná délka pádu
-                rotation: Math.random() * 720 - 360 // rotace
+    // Agent Comps Logic
+    const compBtns = document.querySelectorAll('.comp-btn');
+    const compDisplays = document.querySelectorAll('.comp-display');
+    compBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const map = btn.getAttribute('data-map');
+            compBtns.forEach(b => {
+                b.classList.remove('active');
+                b.style.background = 'rgba(255,255,255,0.1)';
             });
-        }
-        
-        // Přidáme všechny kozy do DOMu jedním reflow
-        document.body.appendChild(fragment);
-        
-        // Spustíme animace pomocí hardwarově akcelerovaného transform (translate3d)
-        goats.forEach(g => {
-            setTimeout(() => {
-                g.element.style.transition = `transform ${g.duration}s linear`;
-                // Plynulý pohyb po Y ose s využitím GPU
-                g.element.style.transform = `translate3d(0, 150vh, 0) rotate(${g.rotation}deg)`;
-                
-                // Úklid po dokončení animace
-                setTimeout(() => {
-                    g.element.remove();
-                }, g.duration * 1000 + 100);
-            }, g.delay);
-        });
-    }
-
-    // ==============================
-    // EXTREME BRUTAL UPGRADE LOGIC
-    // ==============================
-
-    // 1. Parallax Background
-    if (!isMobile) {
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-        
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
+            btn.classList.add('active');
+            btn.style.background = 'var(--val-red)';
             
-            // Parallax body background
-            const centerX = window.innerWidth / 2;
-            const centerY = window.innerHeight / 2;
-            const moveX = (centerX - mouseX) / 30;
-            const moveY = (centerY - mouseY) / 30;
-            document.body.style.backgroundPosition = `${moveX}px ${moveY}px, ${moveX + 20}px ${moveY + 20}px`;
+            compDisplays.forEach(display => display.style.display = 'none');
+            document.getElementById('comp-' + map).style.display = 'flex';
         });
-    }
-
-    // 2. SFX Audio
-    const sfxHover = document.getElementById('sfx-hover');
-    if (sfxHover) {
-        sfxHover.volume = 0.2;
-        const sfxElements = document.querySelectorAll('.cta-button, .nav-links a, .player-card');
-        sfxElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                sfxHover.currentTime = 0;
-                sfxHover.play().catch(() => {}); // Catch error if interaction blocked
-            });
-        });
-    }
-
-    // 3. Ghost Cursor Trail
-    if (!isMobile) {
-        const cursor = document.createElement('div');
-        cursor.classList.add('ghost-cursor');
-        document.body.appendChild(cursor);
-
-        let cursorX = window.innerWidth / 2;
-        let cursorY = window.innerHeight / 2;
-        let mouseX = window.innerWidth / 2;
-        let mouseY = window.innerHeight / 2;
-
-        document.addEventListener('mousemove', (e) => {
-            mouseX = e.clientX;
-            mouseY = e.clientY;
-        });
-
-        // Smooth follow
-        function animateCursor() {
-            cursorX += (mouseX - cursorX) * 0.15;
-            cursorY += (mouseY - cursorY) * 0.15;
-            cursor.style.left = cursorX + 'px';
-            cursor.style.top = cursorY + 'px';
-            requestAnimationFrame(animateCursor);
-        }
-        animateCursor();
-
-        // Enlarge on clickable elements
-        const clickables = document.querySelectorAll('a, button, .player-card, .faq-question');
-        clickables.forEach(el => {
-            el.addEventListener('mouseenter', () => cursor.classList.add('active'));
-            el.addEventListener('mouseleave', () => cursor.classList.remove('active'));
-        });
-    }
+    });
 
 });
