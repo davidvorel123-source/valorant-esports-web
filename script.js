@@ -197,23 +197,4 @@ document.addEventListener('DOMContentLoaded', () => {
             initParticles();
         });
     }
-
-    // Agent Comps Logic
-    const compBtns = document.querySelectorAll('.comp-btn');
-    const compDisplays = document.querySelectorAll('.comp-display');
-    compBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            const map = btn.getAttribute('data-map');
-            compBtns.forEach(b => {
-                b.classList.remove('active');
-                b.style.background = 'rgba(255,255,255,0.1)';
-            });
-            btn.classList.add('active');
-            btn.style.background = 'var(--val-red)';
-            
-            compDisplays.forEach(display => display.style.display = 'none');
-            document.getElementById('comp-' + map).style.display = 'flex';
-        });
-    });
-
 });

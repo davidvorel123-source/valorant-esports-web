@@ -17,15 +17,20 @@
                 <span class="logo-text">GCZ</span>
             </div>
             <ul class="nav-links">
-                <li><a href="#home">Home</a></li>
-                <li><a href="#schedule">Schedule</a></li>
-                <li><a href="#roster">Roster</a></li>
-                <li><a href="#media">VODs</a></li>
-                <li><a href="#stream" style="display: flex; align-items: center; gap: 6px;"><span class="live-badge"></span> Stream</a></li>
-                <li><a href="#merch">Merch</a></li>
-                <li><a href="#tryouts">Tryouts</a></li>
-                <li><a href="#trophies">Trophies</a></li>
-                <li><a href="#faq">FAQ</a></li>
+                <li><a href="#home" data-i18n="nav.home">Home</a></li>
+                <li><a href="#schedule" data-i18n="nav.schedule">Schedule</a></li>
+                <li><a href="#roster" data-i18n="nav.roster">Roster</a></li>
+                <li><a href="#media" data-i18n="nav.media">VODs</a></li>
+                <li><a href="#stream" data-i18n="nav.stream" style="display: flex; align-items: center; gap: 6px;"><span class="live-badge"></span> Stream</a></li>
+                <li><a href="#merch" data-i18n="nav.merch">Merch</a></li>
+                <li><a href="#tryouts" data-i18n="nav.tryouts">Tryouts</a></li>
+                <li><a href="#trophies" data-i18n="nav.trophies">Trophies</a></li>
+                <li><a href="#faq" data-i18n="nav.faq">FAQ</a></li>
+                <li class="lang-switcher" style="display: flex; gap: 5px; margin-left: 20px;">
+                    <a href="#" class="lang-btn" data-lang="en" style="padding:0; min-width:auto;">EN</a>
+                    <span style="color: var(--val-grey);">|</span>
+                    <a href="#" class="lang-btn" data-lang="cz" style="padding:0; min-width:auto;">CZ</a>
+                </li>
             </ul>
             <div class="mobile-menu-btn">
                 <span></span>
@@ -260,35 +265,7 @@
         </div>
     </section>
 
-    <!-- AGENT COMPS SECTION -->
-    <section id="comps" class="fade-in-up" style="padding: 100px 2rem; background-color: var(--val-darker); border-top: 1px solid rgba(255, 255, 255, 0.1);">
-        <div class="section-header">
-            <h2 class="section-title"><span data-i18n="comps.title">SESTAVY NA MAPÁCH</span></h2>
-            <div class="section-line"></div>
-        </div>
-        <div style="max-width: 1000px; margin: 0 auto;">
-            <div style="display: flex; gap: 1rem; margin-bottom: 2rem; justify-content: center;">
-                <button class="comp-btn active" data-map="ascent" style="padding: 10px 20px; background: var(--val-red); color: white; border: none; font-family: var(--font-heading); font-size: 1.2rem; cursor: pointer; transition: background 0.3s;">ASCENT</button>
-                <button class="comp-btn" data-map="bind" style="padding: 10px 20px; background: rgba(255,255,255,0.1); color: white; border: none; font-family: var(--font-heading); font-size: 1.2rem; cursor: pointer; transition: background 0.3s;">BIND</button>
-            </div>
-            
-            <div id="comp-ascent" class="comp-display" style="display: flex; justify-content: space-around; flex-wrap: wrap; gap: 1rem; background: var(--val-dark); padding: 3rem; border: 1px solid rgba(255,70,85,0.3);">
-                <div style="text-align: center;"><img src="https://media.valorant-api.com/agents/320b2a48-4d9b-a075-30f1-1f93a9b638fa/displayicon.png" width="80" alt="Sova" style="filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));"><p style="font-weight: bold; margin-top: 10px;">SOVA</p><p style="color:var(--val-red); font-size:0.8rem;">Ondra</p></div>
-                <div style="text-align: center;"><img src="https://media.valorant-api.com/agents/8e253930-4c05-31dd-1b6c-968525494517/displayicon.png" width="80" alt="Omen" style="filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));"><p style="font-weight: bold; margin-top: 10px;">OMEN</p><p style="color:var(--val-red); font-size:0.8rem;">Rabadon</p></div>
-                <div style="text-align: center;"><img src="https://media.valorant-api.com/agents/1e58de9c-4950-5125-93e9-a0aee9f98746/displayicon.png" width="80" alt="Killjoy" style="filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));"><p style="font-weight: bold; margin-top: 10px;">KILLJOY</p><p style="color:var(--val-red); font-size:0.8rem;">Luky</p></div>
-                <div style="text-align: center;"><img src="https://media.valorant-api.com/agents/add6443a-41bd-e414-f6ad-e58d267f4e95/displayicon.png" width="80" alt="Jett" style="filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));"><p style="font-weight: bold; margin-top: 10px;">JETT</p><p style="color:var(--val-red); font-size:0.8rem;">Teikov</p></div>
-                <div style="text-align: center;"><img src="https://media.valorant-api.com/agents/601cb896-47a3-cb20-6d8b-59b1580f4f9f/displayicon.png" width="80" alt="KAY/O" style="filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));"><p style="font-weight: bold; margin-top: 10px;">KAY/O</p><p style="color:var(--val-red); font-size:0.8rem;">Dejwrix</p></div>
-            </div>
-            
-            <div id="comp-bind" class="comp-display" style="display: none; justify-content: space-around; flex-wrap: wrap; gap: 1rem; background: var(--val-dark); padding: 3rem; border: 1px solid rgba(255,70,85,0.3);">
-                <div style="text-align: center;"><img src="https://media.valorant-api.com/agents/41fb69c1-4189-7b37-f117-bcaf1e96f1bf/displayicon.png" width="80" alt="Astra" style="filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));"><p style="font-weight: bold; margin-top: 10px;">ASTRA</p><p style="color:var(--val-red); font-size:0.8rem;">Rabadon</p></div>
-                <div style="text-align: center;"><img src="https://media.valorant-api.com/agents/117ed9e3-49f3-6512-3ccf-0cada7e3823b/displayicon.png" width="80" alt="Cypher" style="filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));"><p style="font-weight: bold; margin-top: 10px;">CYPHER</p><p style="color:var(--val-red); font-size:0.8rem;">Luky</p></div>
-                <div style="text-align: center;"><img src="https://media.valorant-api.com/agents/f94c3b30-42be-e959-889c-5aa313dba261/displayicon.png" width="80" alt="Raze" style="filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));"><p style="font-weight: bold; margin-top: 10px;">RAZE</p><p style="color:var(--val-red); font-size:0.8rem;">Teikov</p></div>
-                <div style="text-align: center;"><img src="https://media.valorant-api.com/agents/dade69b4-415a-8cb1-65ce-0b8ce569b536/displayicon.png" width="80" alt="Fade" style="filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));"><p style="font-weight: bold; margin-top: 10px;">FADE</p><p style="color:var(--val-red); font-size:0.8rem;">Ondra</p></div>
-                <div style="text-align: center;"><img src="https://media.valorant-api.com/agents/cc8b64c8-4b25-4ff9-6e7f-37b4da43d235/displayicon.png" width="80" alt="Skye" style="filter: drop-shadow(0 0 10px rgba(255,255,255,0.2));"><p style="font-weight: bold; margin-top: 10px;">SKYE</p><p style="color:var(--val-red); font-size:0.8rem;">Dejwrix</p></div>
-            </div>
-        </div>
-    </section>
+
 
     <section id="about" class="about-section fade-in-up">
         <div class="about-container">
@@ -699,6 +676,7 @@
     </footer>
 
     <script src="script.js"></script>
+    <script src="i18n.js"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js"></script>
     <script>
         // Init Lenis smooth scroll
