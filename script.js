@@ -116,18 +116,24 @@ document.addEventListener('DOMContentLoaded', () => {
             const diffMs = matchDateZero - now;
             const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
             
-            let text = '';
+            const lang = localStorage.getItem('gcz_lang') || 'en';
+
             if (diffDays < 0) {
-                text = 'PLAYED';
+                text = lang === 'cz' ? 'ODEHRÁNO' : 'PLAYED';
             } else if (diffDays === 0) {
-                text = 'TODAY';
+                text = lang === 'cz' ? 'DNES' : 'TODAY';
             } else if (diffDays === 1) {
-                text = 'TOMORROW';
+                text = lang === 'cz' ? 'ZÍTRA' : 'TOMORROW';
             } else if (diffDays < 7) {
-                const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
-                text = 'THIS ' + days[matchDate.getDay()];
+                if (lang === 'cz') {
+                    const daysCz = ['TUTO NEDĚLI', 'TOTO PONDĚLÍ', 'TUTO ÚTERÝ', 'TUTO STŘEDU', 'TENTO ČTVRTEK', 'TENTO PÁTEK', 'TUTO SOBOTU'];
+                    text = daysCz[matchDate.getDay()];
+                } else {
+                    const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+                    text = 'THIS ' + days[matchDate.getDay()];
+                }
             } else {
-                text = 'IN ' + diffDays + ' DAYS';
+                text = lang === 'cz' ? 'ZA ' + diffDays + ' DNÍ' : 'IN ' + diffDays + ' DAYS';
             }
             
             el.textContent = text;
@@ -197,4 +203,132 @@ document.addEventListener('DOMContentLoaded', () => {
             initParticles();
         });
     }
+
+    // Scrim Form Submission to Discord Webhook
+    const scrimForm = document.getElementById('scrim-form');
+    if (scrimForm) {
+        scrimForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const teamInput = document.getElementById('scrim-team').value;
+            const rankInput = document.getElementById('scrim-rank').value;
+            const msgInput = document.getElementById('scrim-msg').value;
+            const statusDiv = document.getElementById('scrim-status');
+            const submitBtn = scrimForm.querySelector('button[type="submit"]');
+            
+            // NOTE: Replace this URL with your actual Discord Webhook URL
+            const webhookUrl = "YOUR_DISCORD_WEBHOOK_URL_HERE"; 
+            
+            submitBtn.disabled = true;
+            submitBtn.innerText = "SENDING...";
+            statusDiv.style.display = "none";
+
+            const payload = {
+                content: "<@&YOUR_ROLE_ID> Nová žádost o Scrim!",
+                embeds: [{
+                    title: "⚔️ Scrim Request: " + teamInput,
+                    color: 16729685, // Val Red #ff4655
+                    fields: [
+                        { name: "Tým / Tracker", value: teamInput, inline: true },
+                        { name: "Průměrný Rank", value: rankInput, inline: true },
+                        { name: "Zpráva / Dostupnost", value: msgInput }
+                    ],
+                    timestamp: new Date().toISOString()
+                }]
+            };
+
+            if (webhookUrl === "YOUR_DISCORD_WEBHOOK_URL_HERE") {
+                statusDiv.innerText = "⚠️ Webhook URL není nastavena. Kontaktujte prosím na Discordu.";
+                statusDiv.style.color = "orange";
+                statusDiv.style.display = "block";
+                submitBtn.innerText = "SEND REQUEST";
+                submitBtn.disabled = false;
+                return;
+            }
+
+            try {
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (response.ok) {
+                    statusDiv.innerText = "✅ Žádost úspěšně odeslána! Ozveme se na Discordu.";
+                    statusDiv.style.color = "#53fc18";
+                    statusDiv.style.display = "block";
+                    scrimForm.reset();
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
+            } catch (error) {
+                console.error("Webhook error:", error);
+                statusDiv.innerText = "❌ Chyba při odesílání. Zkuste nám napsat přímo na Discord.";
+                statusDiv.style.color = "var(--val-red)";
+                statusDiv.style.display = "block";
+            } finally {
+                submitBtn.innerText = "SEND REQUEST";
+                submitBtn.disabled = false;
+            }
+        });
+    }
+
+    // Dynamic News (RSS feed or fallback JSON logic)
+    // We will attempt to fetch a generic RSS feed endpoint if they have one,
+    // otherwise we just render some dummy structured data as an example of "dynamic" news.
+    async function loadNews() {
+        const newsContainer = document.getElementById('news-container');
+        if (!newsContainer) return;
+
+        // In a real app with RSS, you'd fetch an RSS to JSON proxy or directly parse XML
+        // Example: const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://goatscz.com/feed');
+        
+        // For now, we simulate fetched data:
+        const simulatedNews = [
+            {
+                date: "JUNE 4, 2026",
+                title: "WEBSITE REVAMPED",
+                content: "Goats CZ officially launched a brand new website complete with dynamic forms, improved SEO, and full bilingual support.",
+                important: false
+            },
+            {
+                date: "MAY 23, 2026",
+                title: "TEZZY & R1VVO JOIN AS SUBS",
+                content: "We are thrilled to welcome Tezzy and R1VVO to the herd as our official substitutes. Their flexibility and firepower will be a massive asset.",
+                important: false
+            },
+            {
+                date: "MAY 22, 2026",
+                title: "ROSTER LOCKED IN",
+                content: "The new Goats CZ roster is officially locked in for the upcoming season. Weeks of tryouts and intense practice have forged a deadly core.",
+                important: true // To trigger the special styling
+            }
+        ];
+
+        newsContainer.innerHTML = ''; // Clear loading text
+
+        simulatedNews.forEach(news => {
+            if (news.important) {
+                // Special "Recaps" or Important style card
+                newsContainer.innerHTML += `
+                <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px dashed rgba(255, 255, 255, 0.2); padding: 4rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0.5;">
+                    <span style="font-size: 3rem; margin-bottom: 1rem;">📊</span>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${news.title}</h3>
+                    <span style="color: var(--val-red); font-weight: bold; font-size: 1.2rem; letter-spacing: 2px;">COMING SOON</span>
+                </div>
+                `;
+            } else {
+                newsContainer.innerHTML += `
+                <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid rgba(255, 70, 85, 0.2); padding: 2rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">${news.date}</span>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${news.title}</h3>
+                    <p style="color: var(--val-grey); line-height: 1.6;">${news.content}</p>
+                </div>
+                `;
+            }
+        });
+    }
+
+    loadNews();
+
 });
