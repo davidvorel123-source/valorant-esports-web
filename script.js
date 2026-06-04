@@ -339,8 +339,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.innerText = "SEND REQUEST";
                 submitBtn.disabled = false;
             }
-
-});
+        });
+    }
 
     // 3D Tilt Effect
     const tiltElements = document.querySelectorAll('.player-card, .highlight-card, .philosophy-card, .trophy-card');
@@ -354,7 +354,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const centerY = rect.height / 2;
             const rotateX = ((y - centerY) / centerY) * -10;
             const rotateY = ((x - centerX) / centerX) * 10;
-            el.style.transform = `perspective(1000px) rotateX(deg) rotateY(deg) scale3d(1.02, 1.02, 1.02)`;
+            el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
         });
         el.addEventListener('mouseleave', () => {
             el.style.transition = 'transform 0.5s ease-out, box-shadow 0.5s ease-out';
@@ -362,15 +362,11 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-
     // Fix Trophy hover for 3D
     const trophies = document.querySelectorAll('#trophies [onmouseover]');
     trophies.forEach(t => {
         t.classList.add('trophy-card');
-        // we don't need to remove inline JS, our 3D mousemove will overwrite transform, but mouseover will still trigger opacity=1.
     });
-
-
 
     // Custom Cursor Logic
     const cursor = document.getElementById('custom-cursor');
@@ -417,6 +413,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 150);
     }
+});
 
 async function loadNews() {
     const newsContainer = document.getElementById('news-container');
@@ -447,20 +444,21 @@ async function loadNews() {
 
     simulatedNews.forEach(news => {
         if (news.important) {
-            newsContainer.innerHTML += `n            <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid var(--val-red); padding: 2rem; transition: transform 0.2s; box-shadow: 0 0 15px rgba(255, 70, 85, 0.2);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;"></span>
-                <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;"></h3>
-                <p style="color: var(--val-grey); line-height: 1.6;"></p>
+            newsContainer.innerHTML += `
+            <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid var(--val-red); padding: 2rem; transition: transform 0.2s; box-shadow: 0 0 15px rgba(255, 70, 85, 0.2);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">${news.date}</span>
+                <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${news.title}</h3>
+                <p style="color: var(--val-grey); line-height: 1.6;">${news.content}</p>
             </div>`;
         } else {
-            newsContainer.innerHTML += `n            <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid rgba(255, 70, 85, 0.2); padding: 2rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;"></span>
-                <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;"></h3>
-                <p style="color: var(--val-grey); line-height: 1.6;"></p>
+            newsContainer.innerHTML += `
+            <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid rgba(255, 70, 85, 0.2); padding: 2rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">${news.date}</span>
+                <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${news.title}</h3>
+                <p style="color: var(--val-grey); line-height: 1.6;">${news.content}</p>
             </div>`;
         }
     });
 }
 
 loadNews();
-
