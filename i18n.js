@@ -92,7 +92,7 @@ const translations = {
         "about.p1": "Goats CZ (GCZ) is a premier Valorant team built on aggressive plays, tactical superiority, and an unbreakable bond. Formed by a group of High Immortal and Radiant prodigies, our journey started in the local Czech ladders. As a purely Czech roster, we are dominating the domestic scene with our unique, fearless playstyle.",
         "about.p2": "Led by our IGL Dejwrix, we don't just play the game; we redefine the meta. From flawless executes to unbreakable site holds, the 'Herd' operates as a single, lethal unit. Our eyes are set on the highest tiers of European Valorant, and we won't stop until we reach the top.",
         "about.stat1": "Czech Roster",
-        "about.stat2": "Premier Division",
+        "about.stat2": "in Premier Contender",
         "about.stat3": "Matches Won",
         "phil.title": "HOW WE PLAY",
         "phil.agg": "AGGRESSION",
@@ -248,7 +248,7 @@ const translations = {
         "about.p1": "Goats CZ (GCZ) je elitní Valorant tým postavený na agresivních plays, taktické převaze a nezlomném poutu. Jsme složeni ze skupiny High Immortal a Radiant hráčů a naše cesta začala v lokálních českých žebříčcích. Jako čistě český roster dominujeme domácí scéně s naším unikátním a nebojácným stylem hry.",
         "about.p2": "Pod vedením našeho IGL Dejwrixe hru nejen hrajeme, my utváříme metu. Od bezchybných executů po neprolomitelné držení sajtů, 'Stádo' funguje jako jediná, smrtící jednotka. Náš zrak se upírá na ty nejvyšší vrstvy evropského Valorantu a nezastavíme se, dokud nebudeme na vrcholu.",
         "about.stat1": "Česká sestava",
-        "about.stat2": "Premier Divize",
+        "about.stat2": "v Premier Contender",
         "about.stat3": "Vyhraných zápasů",
         "phil.title": "JAK HRAJEME",
         "phil.agg": "AGRESIVITA",
@@ -332,6 +332,10 @@ function setLanguage(lang) {
     
     if (typeof window.startTypewriter === 'function') {
         window.startTypewriter();
+    }
+
+    if (typeof window.loadNews === 'function') {
+        window.loadNews();
     }
 
     // Handle marquee special case

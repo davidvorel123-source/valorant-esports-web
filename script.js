@@ -419,23 +419,55 @@ async function loadNews() {
     const newsContainer = document.getElementById('news-container');
     if (!newsContainer) return;
 
+    const lang = localStorage.getItem('gcz_lang') || 'en';
+
     const simulatedNews = [
         {
-            date: "JUNE 4, 2026",
-            title: "ROSTER UPDATE: WOODY JOINS, R1VVO LEAVES",
-            content: "We are parting ways with R1VVO and wish him the best in his future endeavors. At the same time, we welcome Woody to our active roster as Sentinel, with Luky moving to the sub position alongside Tezzy.",
+            date: "JUNE 5, 2026",
+            title: {
+                en: "14th PLACE IN PREMIER",
+                cz: "14. MÍSTO V PREMIER"
+            },
+            content: {
+                en: "We proudly secured the 14th spot in the Premier Contender Division! A huge thanks to the fans for their continued support as we climb our way to the top.",
+                cz: "Hrdě jsme obsadili 14. místo v Premier Contender Divizi! Obrovské díky patří fanouškům za jejich neustálou podporu na naší cestě vzhůru."
+            },
             important: true
         },
         {
             date: "JUNE 4, 2026",
-            title: "WEBSITE REVAMPED",
-            content: "Goats CZ officially launched a brand new website complete with dynamic forms, improved SEO, and full bilingual support.",
+            title: {
+                en: "ROSTER UPDATE: WOODY JOINS, R1VVO LEAVES",
+                cz: "ZTRÁTY A NÁLEZY: WOODY PŘICHÁZÍ, R1VVO ODCHÁZÍ"
+            },
+            content: {
+                en: "We are parting ways with R1VVO and wish him the best in his future endeavors. At the same time, we welcome Woody to our active roster as Sentinel, with Luky moving to the sub position alongside Tezzy.",
+                cz: "Loučíme se s R1VVO a přejeme mu to nejlepší. Zároveň vítáme Woodyho do naší aktivní sestavy na pozici Sentinel, přičemž Luky se přesouvá na pozici náhradníka k Tezzymu."
+            },
+            important: false
+        },
+        {
+            date: "JUNE 4, 2026",
+            title: {
+                en: "WEBSITE REVAMPED",
+                cz: "NOVÝ WEB SPUŠTĚN"
+            },
+            content: {
+                en: "Goats CZ officially launched a brand new website complete with dynamic forms, improved SEO, and full bilingual support.",
+                cz: "Goats CZ oficiálně spustili zbrusu nový web s dynamickými formuláři, lepším SEO a kompletní dvojjazyčnou podporou."
+            },
             important: false
         },
         {
             date: "MAY 22, 2026",
-            title: "ROSTER LOCKED IN",
-            content: "The new Goats CZ roster is officially locked in for the upcoming season. Weeks of tryouts and intense practice have forged a deadly core.",
+            title: {
+                en: "ROSTER LOCKED IN",
+                cz: "SESTAVA UZAMČENA"
+            },
+            content: {
+                en: "The new Goats CZ roster is officially locked in for the upcoming season. Weeks of tryouts and intense practice have forged a deadly core.",
+                cz: "Nová sestava Goats CZ je oficiálně uzamčena pro nadcházející sezónu. Týdny zkoušek a intenzivního tréninku vykovaly smrtící jádro."
+            },
             important: false
         }
     ];
@@ -443,22 +475,26 @@ async function loadNews() {
     newsContainer.innerHTML = '';
 
     simulatedNews.forEach(news => {
+        const tTitle = news.title[lang] || news.title.en;
+        const tContent = news.content[lang] || news.content.en;
+
         if (news.important) {
             newsContainer.innerHTML += `
             <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid var(--val-red); padding: 2rem; transition: transform 0.2s; box-shadow: 0 0 15px rgba(255, 70, 85, 0.2);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                 <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">${news.date}</span>
-                <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${news.title}</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">${news.content}</p>
+                <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${tTitle}</h3>
+                <p style="color: var(--val-grey); line-height: 1.6;">${tContent}</p>
             </div>`;
         } else {
             newsContainer.innerHTML += `
             <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid rgba(255, 70, 85, 0.2); padding: 2rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                 <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">${news.date}</span>
-                <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${news.title}</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">${news.content}</p>
+                <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${tTitle}</h3>
+                <p style="color: var(--val-grey); line-height: 1.6;">${tContent}</p>
             </div>`;
         }
     });
 }
 
+window.loadNews = loadNews;
 loadNews();
