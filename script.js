@@ -100,6 +100,9 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // Typewriter effect for hero subtitle
+    let subtitleTexts = [];
+    let currentSubtitleIndex = 0;
+    
     function startTypewriter() {
         const subtitle = document.querySelector('.hero-subtitle');
         if (!subtitle) return;
@@ -109,22 +112,54 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         let fullText = subtitle.getAttribute('data-full-text');
+        let currentRaw = subtitle.textContent.replace(/<span.*<\/span>/, '').trim();
         
         // If translation changed the text or first load
-        if (!fullText || subtitle.textContent.replace('|', '').trim() !== fullText) {
-            fullText = subtitle.textContent.replace('|', '').trim();
-            subtitle.setAttribute('data-full-text', fullText);
+        if (!fullText || currentRaw.includes('|') || currentRaw !== fullText) {
+            if (currentRaw.includes('|')) {
+                 subtitleTexts = currentRaw.split('|');
+                 subtitle.setAttribute('data-full-texts', JSON.stringify(subtitleTexts));
+                 currentSubtitleIndex = 0;
+            } else if (subtitle.hasAttribute('data-full-texts')) {
+                 subtitleTexts = JSON.parse(subtitle.getAttribute('data-full-texts'));
+            } else {
+                 subtitleTexts = [currentRaw];
+            }
         }
+        
+        if (subtitleTexts.length === 0) return;
+        
+        fullText = subtitleTexts[currentSubtitleIndex];
+        subtitle.setAttribute('data-full-text', fullText);
         
         subtitle.innerHTML = '';
         let i = 0;
+        let isDeleting = false;
         
         function typeWriter() {
-            if (i < fullText.length) {
-                subtitle.innerHTML = fullText.substring(0, i + 1) + '<span class="cursor" style="opacity: 1; font-weight: bold; animation: blink 1s step-end infinite;">|</span>';
+            let currentStr = subtitleTexts[currentSubtitleIndex];
+            
+            if (isDeleting) {
+                subtitle.innerHTML = currentStr.substring(0, i - 1) + '<span class="cursor" style="opacity: 1; font-weight: bold; animation: blink 1s step-end infinite;">|</span>';
+                i--;
+            } else {
+                subtitle.innerHTML = currentStr.substring(0, i + 1) + '<span class="cursor" style="opacity: 1; font-weight: bold; animation: blink 1s step-end infinite;">|</span>';
                 i++;
-                subtitle.typingTimeout = setTimeout(typeWriter, 60);
             }
+            
+            let typingSpeed = isDeleting ? 30 : 60;
+            
+            if (!isDeleting && i === currentStr.length) {
+                typingSpeed = 2500; // Pause at end
+                isDeleting = true;
+            } else if (isDeleting && i === 0) {
+                isDeleting = false;
+                currentSubtitleIndex = (currentSubtitleIndex + 1) % subtitleTexts.length;
+                subtitle.setAttribute('data-full-text', subtitleTexts[currentSubtitleIndex]);
+                typingSpeed = 500; // Pause before typing next
+            }
+            
+            subtitle.typingTimeout = setTimeout(typeWriter, typingSpeed);
         }
         typeWriter();
     }
