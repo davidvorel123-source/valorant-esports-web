@@ -580,4 +580,127 @@ a, button, input, textarea, .player-card, .highlight-card { cursor: none !import
 .m-stat strong { color: var(--val-white); font-size: 1.5rem; font-family: var(--font-heading); }
 @media (max-width: 600px) { .modal-image { min-height: 250px; } .modal-info { padding: 1.5rem; } }
 
-.timeline-container { display: flex; flex-direction: column; gap: 15px; } .timeline-item { display: flex; align-items: center; background: rgba(255,255,255,0.03); border-left: 4px solid var(--val-grey); padding: 1rem; transition: transform 0.2s, background 0.2s; } .timeline-item:hover { background: rgba(255,255,255,0.05); transform: translateX(5px); } .timeline-item.win { border-left-color: #53fc18; } .timeline-item.loss { border-left-color: #ff4655; } .timeline-date { flex: 0 0 120px; color: var(--val-grey); font-size: 0.9rem; font-family: monospace; } .timeline-content { flex: 1; display: flex; justify-content: space-between; align-items: center; } .timeline-tournament { color: var(--val-red); font-weight: bold; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 1px; } .timeline-match { color: white; font-size: 1.2rem; font-family: var(--font-heading); } .timeline-match span { margin: 0 10px; color: var(--val-grey); }
+.timeline-container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.timeline-item {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(90deg, rgba(30, 35, 45, 0.9) 0%, rgba(15, 25, 35, 0.6) 100%);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 1.5rem 2rem;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px);
+}
+
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 6px;
+    background: var(--val-grey);
+    transition: width 0.3s ease;
+}
+
+.timeline-item.win::before {
+    background: #53fc18;
+    box-shadow: 0 0 15px #53fc18;
+}
+
+.timeline-item.loss::before {
+    background: var(--val-red);
+    box-shadow: 0 0 15px var(--val-red);
+}
+
+.timeline-item:hover {
+    transform: translateX(10px) scale(1.01);
+    background: linear-gradient(90deg, rgba(40, 45, 55, 0.9) 0%, rgba(25, 35, 45, 0.8) 100%);
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.timeline-item:hover::before {
+    width: 10px;
+}
+
+.timeline-date {
+    flex: 0 0 140px;
+    color: var(--val-grey);
+    font-size: 1rem;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+.timeline-content {
+    flex: 1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.timeline-tournament {
+    background: rgba(255, 70, 85, 0.15);
+    color: var(--val-red);
+    padding: 0.4rem 1rem;
+    border-radius: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    border: 1px solid rgba(255, 70, 85, 0.3);
+}
+
+.timeline-match {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    color: white;
+    font-size: 1.8rem;
+    font-family: var(--font-heading);
+    text-transform: uppercase;
+}
+
+.timeline-match span {
+    color: var(--val-white);
+    font-size: 2.2rem;
+    padding: 0.2rem 1rem;
+    background: rgba(0,0,0,0.4);
+    border-radius: 8px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+}
+
+.timeline-item.win .timeline-match span {
+    color: #53fc18;
+    border: 1px solid rgba(83, 252, 24, 0.3);
+}
+
+.timeline-item.loss .timeline-match span {
+    color: var(--val-red);
+    border: 1px solid rgba(255, 70, 85, 0.3);
+}
+
+@media (max-width: 768px) {
+    .timeline-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        padding: 1.5rem;
+    }
+    .timeline-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+        width: 100%;
+    }
+    .timeline-match {
+        font-size: 1.4rem;
+        width: 100%;
+        justify-content: space-between;
+    }
+}
