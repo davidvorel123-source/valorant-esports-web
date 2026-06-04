@@ -428,38 +428,49 @@
         <div class="legacy-container">
             <div class="legacy-column" style="grid-column: 1 / -1;">
                 <h3><span data-i18n="legacy.matchHistory">Zápasy z Premier a Turnajů</span></h3>
-                <div style="overflow-x: auto; background: var(--val-dark); border: 1px solid rgba(255,70,85,0.3);">
-                    <table style="width: 100%; border-collapse: collapse; text-align: left; font-size: 1.1rem;">
-                        <thead>
-                            <tr style="background: rgba(255,70,85,0.1); border-bottom: 2px solid var(--val-red);">
-                                <th style="padding: 1rem;"><span data-i18n="table.date">Datum</span></th>
-                                <th style="padding: 1rem;"><span data-i18n="table.tournament">Turnaj</span></th>
-                                <th style="padding: 1rem;"><span data-i18n="table.opponent">Soupeř</span></th>
-                                <th style="padding: 1rem;"><span data-i18n="table.score">Skóre</span></th>
-                                <th style="padding: 1rem;"><span data-i18n="table.result">Výsledek</span></th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)';" onmouseout="this.style.background='transparent';">
-                                <td style="padding: 1rem;">30. 05. 2026</td><td style="padding: 1rem;">Premier</td><td style="padding: 1rem;">Redhound</td><td style="padding: 1rem; font-weight:bold;">13:8</td><td style="padding: 1rem;"><span class="match-result win">WIN</span></td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)';" onmouseout="this.style.background='transparent';">
-                                <td style="padding: 1rem;">30. 05. 2026</td><td style="padding: 1rem;">Premier</td><td style="padding: 1rem;">Blackout</td><td style="padding: 1rem; font-weight:bold;">13:4</td><td style="padding: 1rem;"><span class="match-result win">WIN</span></td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)';" onmouseout="this.style.background='transparent';">
-                                <td style="padding: 1rem;">23. 05. 2026</td><td style="padding: 1rem;">Premier</td><td style="padding: 1rem;">SL1PPERS</td><td style="padding: 1rem; font-weight:bold;">13:3</td><td style="padding: 1rem;"><span class="match-result win">WIN</span></td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)';" onmouseout="this.style.background='transparent';">
-                                <td style="padding: 1rem;">23. 05. 2026</td><td style="padding: 1rem;">Premier</td><td style="padding: 1rem;">FG School</td><td style="padding: 1rem; font-weight:bold;">3:13</td><td style="padding: 1rem;"><span class="match-result loss">LOSS</span></td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)';" onmouseout="this.style.background='transparent';">
-                                <td style="padding: 1rem;">20. 05. 2026</td><td style="padding: 1rem;">Wolvesden</td><td style="padding: 1rem;">The Flow!</td><td style="padding: 1rem; font-weight:bold;">9:13</td><td style="padding: 1rem;"><span class="match-result loss">LOSS</span></td>
-                            </tr>
-                            <tr style="border-bottom: 1px solid rgba(255,255,255,0.1); transition: background 0.2s;" onmouseover="this.style.background='rgba(255,255,255,0.05)';" onmouseout="this.style.background='transparent';">
-                                <td style="padding: 1rem;">20. 05. 2026</td><td style="padding: 1rem;">Wolvesden</td><td style="padding: 1rem;">SAINT MyriadS</td><td style="padding: 1rem; font-weight:bold;">13:6</td><td style="padding: 1rem;"><span class="match-result win">WIN</span></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                <div class="timeline-container">
+                    <div class="timeline-item win">
+                        <div class="timeline-date">30. 05. 2026</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tournament">Premier</div>
+                            <div class="timeline-match">GCZ <span>13:8</span> Redhound</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item win">
+                        <div class="timeline-date">30. 05. 2026</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tournament">Premier</div>
+                            <div class="timeline-match">GCZ <span>13:4</span> Blackout</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item win">
+                        <div class="timeline-date">23. 05. 2026</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tournament">Premier</div>
+                            <div class="timeline-match">GCZ <span>13:3</span> SL1PPERS</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item loss">
+                        <div class="timeline-date">23. 05. 2026</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tournament">Premier</div>
+                            <div class="timeline-match">GCZ <span>3:13</span> FG School</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item loss">
+                        <div class="timeline-date">20. 05. 2026</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tournament">Wolvesden</div>
+                            <div class="timeline-match">GCZ <span>9:13</span> The Flow!</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item win">
+                        <div class="timeline-date">20. 05. 2026</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tournament">Wolvesden</div>
+                            <div class="timeline-match">GCZ <span>13:6</span> SAINT MyriadS</div>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div class="legacy-column">
