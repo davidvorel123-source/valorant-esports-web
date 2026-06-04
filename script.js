@@ -99,6 +99,39 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // Typewriter effect for hero subtitle
+    function startTypewriter() {
+        const subtitle = document.querySelector('.hero-subtitle');
+        if (!subtitle) return;
+        
+        if (subtitle.typingTimeout) {
+            clearTimeout(subtitle.typingTimeout);
+        }
+        
+        let fullText = subtitle.getAttribute('data-full-text');
+        
+        // If translation changed the text or first load
+        if (!fullText || subtitle.textContent.replace('|', '').trim() !== fullText) {
+            fullText = subtitle.textContent.replace('|', '').trim();
+            subtitle.setAttribute('data-full-text', fullText);
+        }
+        
+        subtitle.innerHTML = '';
+        let i = 0;
+        
+        function typeWriter() {
+            if (i < fullText.length) {
+                subtitle.innerHTML = fullText.substring(0, i + 1) + '<span class="cursor" style="opacity: 1; font-weight: bold; animation: blink 1s step-end infinite;">|</span>';
+                i++;
+                subtitle.typingTimeout = setTimeout(typeWriter, 60);
+            }
+        }
+        typeWriter();
+    }
+
+    startTypewriter();
+    window.startTypewriter = startTypewriter;
+
     // Dynamic Match Dates
     function updateDynamicDates() {
         const elements = document.querySelectorAll('.dynamic-date');

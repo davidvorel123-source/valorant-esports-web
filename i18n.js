@@ -329,6 +329,10 @@ function setLanguage(lang) {
     if (typeof window.updateDynamicDates === 'function') {
         window.updateDynamicDates();
     }
+    
+    if (typeof window.startTypewriter === 'function') {
+        window.startTypewriter();
+    }
 
     // Handle marquee special case
     const marquee = document.querySelector('.marquee-content');
