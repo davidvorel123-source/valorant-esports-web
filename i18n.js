@@ -322,6 +322,10 @@ function setLanguage(lang) {
         }
     });
 
+    if (typeof window.updateDynamicDates === 'function') {
+        window.updateDynamicDates();
+    }
+
     // Handle marquee special case
     const marquee = document.querySelector('.marquee-content');
     if (marquee) {

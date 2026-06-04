@@ -141,6 +141,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     updateDynamicDates();
+    window.updateDynamicDates = updateDynamicDates;
     setInterval(updateDynamicDates, 3600000); // Check every hour
 
     // Hero Particles System
