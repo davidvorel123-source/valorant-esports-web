@@ -401,3 +401,120 @@ document.addEventListener('DOMContentLoaded', () => {
     loadNews();
 
 });
+
+    // 3D Tilt Effect
+    const tiltElements = document.querySelectorAll('.player-card, .highlight-card, .philosophy-card, .trophy-card');
+    tiltElements.forEach(el => {
+        el.addEventListener('mouseenter', () => { el.style.transition = 'transform 0.1s ease-out, box-shadow 0.1s'; });
+        el.addEventListener('mousemove', (e) => {
+            const rect = el.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const centerX = rect.width / 2;
+            const centerY = rect.height / 2;
+            const rotateX = ((y - centerY) / centerY) * -10;
+            const rotateY = ((x - centerX) / centerX) * 10;
+            el.style.transform = `perspective(1000px) rotateX(deg) rotateY(deg) scale3d(1.02, 1.02, 1.02)`;
+        });
+        el.addEventListener('mouseleave', () => {
+            el.style.transition = 'transform 0.5s ease-out, box-shadow 0.5s ease-out';
+            el.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        });
+    });
+
+
+    // Fix Trophy hover for 3D
+    const trophies = document.querySelectorAll('#trophies [onmouseover]');
+    trophies.forEach(t => {
+        t.classList.add('trophy-card');
+        // we don't need to remove inline JS, our 3D mousemove will overwrite transform, but mouseover will still trigger opacity=1.
+    });
+
+    // Player Modals
+    const playerModal = document.getElementById('player-modal');
+    const closeModal = document.getElementById('close-modal');
+    if (playerModal) {
+        const playerStats = {
+            'Dejwrix': { acs: 265, kd: 1.25, hs: 32, quote: '"Watch this!" - Raze' },
+            'Teikov': { acs: 250, kd: 1.18, hs: 28, quote: '"I go fast!" - Neon' },
+            'Ondra': { acs: 220, kd: 1.10, hs: 25, quote: '"I am the hunter!" - Sova' },
+            'Rabadon': { acs: 200, kd: 1.05, hs: 22, quote: '"I am everywhere." - Omen' },
+            'Luky': { acs: 240, kd: 1.15, hs: 30, quote: '"Watch this!" - Jett' },
+            'Tezzy': { acs: 230, kd: 1.12, hs: 27, quote: '"Get out of my way!"' },
+            'R1VVO': { acs: 215, kd: 1.08, hs: 26, quote: '"My territory."' }
+        };
+
+        document.querySelectorAll('.player-card').forEach(card => {
+            card.style.cursor = 'pointer';
+            card.addEventListener('click', () => {
+                const name = card.querySelector('.player-name').innerText;
+                const role = card.querySelector('.player-role').innerText;
+                const mains = card.querySelector('p').innerText;
+                const bgImg = card.querySelector('.player-image').style.backgroundImage;
+                
+                document.getElementById('modal-name').innerText = name;
+                document.getElementById('modal-role').innerText = role;
+                document.getElementById('modal-mains').innerText = mains;
+                document.getElementById('modal-img').style.backgroundImage = bgImg;
+                
+                const stats = playerStats[name] || { acs: 200, kd: 1.0, hs: 20, quote: '"Ready."' };
+                document.getElementById('modal-acs').innerText = stats.acs;
+                document.getElementById('modal-kd').innerText = stats.kd;
+                document.getElementById('modal-hs').innerText = stats.hs + '%';
+                document.getElementById('modal-quote').innerText = stats.quote;
+                
+                playerModal.classList.add('active');
+            });
+        });
+
+        closeModal.addEventListener('click', () => playerModal.classList.remove('active'));
+        playerModal.addEventListener('click', (e) => {
+            if (e.target === playerModal) playerModal.classList.remove('active');
+        });
+    }
+
+    // Custom Cursor Logic
+    const cursor = document.getElementById('custom-cursor');
+    const follower = document.getElementById('custom-cursor-follower');
+    
+    if (cursor && follower && window.innerWidth > 768) {
+        document.addEventListener('mousemove', (e) => {
+            cursor.style.left = e.clientX + 'px';
+            cursor.style.top = e.clientY + 'px';
+            
+            follower.style.left = e.clientX + 'px';
+            follower.style.top = e.clientY + 'px';
+        });
+
+        const hoverElements = document.querySelectorAll('a, button, input, textarea, .player-card, .highlight-card, .nav-links li, .cta-button, .social-link');
+        hoverElements.forEach(el => {
+            el.addEventListener('mouseenter', () => {
+                cursor.classList.add('hover');
+                follower.classList.add('hover');
+            });
+            el.addEventListener('mouseleave', () => {
+                cursor.classList.remove('hover');
+                follower.classList.remove('hover');
+            });
+        });
+    }
+
+    // Preloader Logic
+    const preloader = document.getElementById('preloader');
+    const preloaderBar = document.getElementById('preloader-bar');
+    if (preloader && preloaderBar) {
+        let progress = 0;
+        let interval = setInterval(() => {
+            progress += Math.random() * 20;
+            if (progress > 100) progress = 100;
+            preloaderBar.style.width = progress + '%';
+            
+            if (progress === 100) {
+                clearInterval(interval);
+                setTimeout(() => {
+                    preloader.style.opacity = '0';
+                    preloader.style.visibility = 'hidden';
+                }, 400);
+            }
+        }, 150);
+    }
