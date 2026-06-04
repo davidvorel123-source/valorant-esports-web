@@ -16,6 +16,41 @@
     <link rel="icon" type="image/png" href="logo.png">
 </head>
 <body>
+    <!-- Preloader -->
+    <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--val-darker); z-index: 99999; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 0.5s ease, visibility 0.5s;">
+        <img src="logo.png" style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid var(--val-red); animation: pulse 1.5s infinite; margin-bottom: 20px;">
+        <h2 style="font-family: var(--font-heading); color: var(--val-white); letter-spacing: 4px; text-transform: uppercase;"><span data-i18n="load.text">CONNECTING TO SERVER...</span></h2>
+        <div style="width: 200px; height: 4px; background: rgba(255,255,255,0.1); margin-top: 10px; overflow: hidden; border-radius: 2px;">
+            <div id="preloader-bar" style="width: 0%; height: 100%; background: var(--val-red); transition: width 0.1s;"></div>
+        </div>
+    </div>
+
+    <!-- Player Modal -->
+    <div id="player-modal" class="player-modal">
+        <div class="player-modal-content">
+            <button id="close-modal" class="close-modal">&times;</button>
+            <div class="modal-body">
+                <div class="modal-image" id="modal-img"></div>
+                <div class="modal-info">
+                    <span id="modal-role" class="modal-role">ROLE</span>
+                    <h2 id="modal-name" class="modal-name">NAME</h2>
+                    <p id="modal-mains" style="color: var(--val-red); font-weight: bold; margin-top: 10px;">Mains: </p>
+                    
+                    <div class="modal-stats">
+                        <div class="m-stat"><span>ACS</span> <strong id="modal-acs">250</strong></div>
+                        <div class="m-stat"><span>K/D</span> <strong id="modal-kd">1.2</strong></div>
+                        <div class="m-stat"><span>HS%</span> <strong id="modal-hs">30%</strong></div>
+                    </div>
+                    
+                    <p id="modal-quote" style="margin-top: 20px; font-style: italic; color: var(--val-grey);">"Quote goes here"</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Custom Cursor -->
+    <div id="custom-cursor" class="custom-cursor"></div>
+    <div id="custom-cursor-follower" class="custom-cursor-follower"></div>
 
     <nav class="navbar">
         <div class="nav-container">
@@ -75,7 +110,7 @@
 
     <section id="schedule" class="fade-in-up" style="padding: 100px 2rem; background-color: var(--val-dark); border-bottom: 2px solid var(--val-red);">
         <div class="section-header">
-            <h2 class="section-title">MATCH SCHEDULE</h2>
+            <h2 class="section-title" data-i18n="schedule.title">MATCH SCHEDULE</h2>
             <div class="section-line"></div>
         </div>
         <div style="max-width: 1000px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 2rem; align-items: center;">
@@ -152,8 +187,8 @@
         <div style="position: absolute; top: -50%; left: -50%; width: 200%; height: 200%; background: radial-gradient(circle, rgba(255,70,85,0.05) 0%, rgba(15,25,35,1) 50%); z-index: 0;"></div>
         <div style="position: relative; z-index: 1; max-width: 900px; margin: 0 auto;">
             <span style="font-size: 6rem; color: var(--val-red); opacity: 0.3; display: block; margin-bottom: -3rem; font-family: serif;">"</span>
-            <h2 style="font-family: var(--font-heading); font-size: 4rem; color: var(--val-white); margin-bottom: 2rem; line-height: 1.1; text-transform: uppercase;">WE DON'T ADAPT TO THE META.<br><span style="color: var(--val-red);">WE DICTATE IT.</span></h2>
-            <p style="color: var(--val-grey); font-size: 1.4rem; line-height: 1.8;">Goats CZ was not built to merely participate. It was built to dominate. Every execute, every retake, every single bullet fired is calculated to break our opponents' mental. We are the herd, and we will trample everything in our path to Champions.</p>
+            <h2 style="font-family: var(--font-heading); font-size: 4rem; color: var(--val-white); margin-bottom: 2rem; line-height: 1.1; text-transform: uppercase;"><span data-i18n="manifesto.q1">WE DON'T ADAPT TO THE META.</span><br><span style="color: var(--val-red);" data-i18n="manifesto.q2">WE DICTATE IT.</span></h2>
+            <p style="color: var(--val-grey); font-size: 1.4rem; line-height: 1.8;" data-i18n="manifesto.desc">Goats CZ was not built to merely participate. It was built to dominate. Every execute, every retake, every single bullet fired is calculated to break our opponents' mental. We are the herd, and we will trample everything in our path to Champions.</p>
         </div>
     </section>
 
@@ -161,24 +196,26 @@
     <section id="tryouts" style="padding: 100px 2rem; background-color: var(--val-darker); border-top: 1px solid rgba(255,70,85,0.15);">
         <div style="max-width: 900px; margin: 0 auto; display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;">
             <div style="flex: 1 1 300px;">
-                <span style="color: var(--val-red); font-weight: 800; font-size: 0.85rem; letter-spacing: 3px;">JOIN THE HERD</span>
-                <h2 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; font-weight: 900; line-height: 1;">THINK YOU GOT WHAT IT TAKES?</h2>
-                <p style="color: var(--val-grey); line-height: 1.8; font-size: 1.1rem; margin-bottom: 1.5rem;">We're always scouting for exceptional talent. If you're Immortal+ and believe you can elevate GCZ to the next level, reach out. We run structured tryouts with a clear evaluation process.</p>
-                <ul style="list-style: none; display: flex; flex-direction: column; gap: 0.8rem;">
-                    <li style="display: flex; align-items: center; gap: 0.8rem; color: var(--val-grey);"><span style="color: var(--val-red); font-weight: 900; font-size: 1.2rem;">→</span> Immortal 3+ or equivalent Premier rating</li>
-                    <li style="display: flex; align-items: center; gap: 0.8rem; color: var(--val-grey);"><span style="color: var(--val-red); font-weight: 900; font-size: 1.2rem;">→</span> Czech or Slovak nationality preferred</li>
-                    <li style="display: flex; align-items: center; gap: 0.8rem; color: var(--val-grey);"><span style="color: var(--val-red); font-weight: 900; font-size: 1.2rem;">→</span> Strong communication and team mentality</li>
-                    <li style="display: flex; align-items: center; gap: 0.8rem; color: var(--val-grey);"><span style="color: var(--val-red); font-weight: 900; font-size: 1.2rem;">→</span> Available for scheduled practice sessions</li>
+                <span style="color: var(--val-red); font-weight: 800; font-size: 0.85rem; letter-spacing: 3px;" data-i18n="tryouts.join">JOIN THE HERD</span>
+                <h2 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; font-weight: 900; line-height: 1;" data-i18n="tryouts.title">THINK YOU GOT WHAT IT TAKES?</h2>
+                <p style="color: var(--val-grey); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;" data-i18n="tryouts.desc">We're always scouting for exceptional talent. If you're Immortal+ and believe you can elevate GCZ to the next level, reach out. We run structured tryouts with a clear evaluation process.</p>
+                
+                <ul style="list-style: none; padding: 0; color: var(--val-grey); margin-bottom: 3rem;">
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><span style="color: var(--val-red);">→</span> <span data-i18n="tryouts.req1">Immortal 3+ or equivalent Premier rating</span></li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><span style="color: var(--val-red);">→</span> <span data-i18n="tryouts.req2">Czech or Slovak nationality preferred</span></li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><span style="color: var(--val-red);">→</span> <span data-i18n="tryouts.req3">Strong communication and team mentality</span></li>
+                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><span style="color: var(--val-red);">→</span> <span data-i18n="tryouts.req4">Available for scheduled practice sessions</span></li>
                 </ul>
             </div>
-            <div style="flex: 1 1 250px; display: flex; flex-direction: column; gap: 1rem;">
-                <a href="#" onclick="navigator.clipboard.writeText('goatscz0@gmail.com'); this.innerHTML='<span style=\'font-size: 1.3rem;\'><i class=\'fa-solid fa-check\'></i></span> COPIED!'; setTimeout(() => this.innerHTML='<span style=\'font-size: 1.3rem;\'><i class=\'fa-solid fa-envelope\'></i></span> GOATSCZ0@GMAIL.COM', 2000); return false;" style="display: flex; align-items: center; justify-content: center; gap: 0.5rem; background-color: var(--val-red); color: white; text-decoration: none; padding: 1.2rem 1rem; font-family: var(--font-heading); font-size: 1.1rem; letter-spacing: 1px; font-weight: 700; transition: transform 0.2s, opacity 0.2s;" onmouseover="this.style.opacity='0.85'; this.style.transform='translateX(5px)';" onmouseout="this.style.opacity='1'; this.style.transform='translateX(0)';">
-                    <span style="font-size: 1.3rem;"><i class="fa-solid fa-envelope"></i></span> GOATSCZ0@GMAIL.COM
+            
+            <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 1.5rem;">
+                <a href="mailto:goatsczo@gmail.com" style="display: flex; align-items: center; justify-content: center; gap: 15px; background-color: var(--val-red); color: white; padding: 1.5rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 2px; text-align: center; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(255,70,85,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    ✉ goatsczo@gmail.com
                 </a>
-                <a href="https://discord.gg/W56F3G48xX" target="_blank" style="display: flex; align-items: center; gap: 1rem; background-color: transparent; color: var(--val-white); text-decoration: none; padding: 1.2rem 1.5rem; font-family: var(--font-heading); font-size: 1.3rem; letter-spacing: 1px; font-weight: 700; border: 2px solid rgba(255,255,255,0.2); transition: transform 0.2s, border-color 0.2s;" onmouseover="this.style.transform='translateX(5px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateX(0)'; this.style.borderColor='rgba(255,255,255,0.2)';">
-                    <span style="font-size: 1.5rem;"><i class="fa-brands fa-discord"></i></span> DM US ON DISCORD
+                <a href="https://discord.gg/W56F3G48xX" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 15px; background-color: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; padding: 1.5rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 2px; text-align: center; transition: all 0.2s;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.5)';" onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)';">
+                    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" width="30" style="filter: brightness(0) invert(1);"> <span data-i18n="tryouts.dm">DM US ON DISCORD</span>
                 </a>
-                <p style="color: var(--val-grey); font-size: 0.85rem; line-height: 1.5; margin-top: 0.5rem;">Include your rank, agent pool, and a short intro. VOD review or trial scrim may be required.</p>
+                <p style="color: var(--val-grey); font-size: 0.9rem; margin-top: 1rem;" data-i18n="tryouts.sub">Include your rank, agent pool, and a short intro. VOD review or trial scrim may be required.</p>
             </div>
         </div>
     </section>
@@ -258,21 +295,21 @@
     <section id="about" class="about-section fade-in-up">
         <div class="about-container">
             <div class="about-text">
-                <h2>THE HERD</h2>
-                <p>Goats CZ (GCZ) is a premier Valorant team built on aggressive plays, tactical superiority, and an unbreakable bond. Formed by a group of High Immortal and Radiant prodigies, our journey started in the local Czech ladders. As a purely Czech roster, we are dominating the domestic scene with our unique, fearless playstyle.</p>
-                <p style="margin-top: 1rem; margin-bottom: 3rem;">Led by our IGL Dejwrix, we don't just play the game; we redefine the meta. From flawless executes to unbreakable site holds, the 'Herd' operates as a single, lethal unit. Our eyes are set on the highest tiers of European Valorant, and we won't stop until we reach the top.</p>
+                <h2 data-i18n="about.title">THE HERD</h2>
+                <p data-i18n="about.p1">Goats CZ (GCZ) is a premier Valorant team built on aggressive plays, tactical superiority, and an unbreakable bond. Formed by a group of High Immortal and Radiant prodigies, our journey started in the local Czech ladders. As a purely Czech roster, we are dominating the domestic scene with our unique, fearless playstyle.</p>
+                <p style="margin-top: 1rem; margin-bottom: 3rem;" data-i18n="about.p2">Led by our IGL Dejwrix, we don't just play the game; we redefine the meta. From flawless executes to unbreakable site holds, the 'Herd' operates as a single, lethal unit. Our eyes are set on the highest tiers of European Valorant, and we won't stop until we reach the top.</p>
                 <div class="stats-grid">
                     <div class="stat-box">
                         <span class="stat-number">100%</span>
-                        <span class="stat-label">Czech Roster</span>
+                        <span class="stat-label" data-i18n="about.stat1">Czech Roster</span>
                     </div>
                     <div class="stat-box">
                         <span class="stat-number" style="font-size: 2.5rem;">CONTENDER</span>
-                        <span class="stat-label">Premier Division</span>
+                        <span class="stat-label" data-i18n="about.stat2">Premier Division</span>
                     </div>
                     <div class="stat-box">
                         <span class="stat-number">100+</span>
-                        <span class="stat-label">Matches Won</span>
+                        <span class="stat-label" data-i18n="about.stat3">Matches Won</span>
                     </div>
                 </div>
             </div>
@@ -283,29 +320,29 @@
     <section style="padding: 100px 2rem; background-color: var(--val-dark); border-top: 1px solid rgba(255,70,85,0.2); border-bottom: 1px solid rgba(255,70,85,0.2);">
         <div style="max-width: 1200px; margin: 0 auto;">
             <div style="text-align: center; margin-bottom: 4rem;">
-                <h2 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--val-red); letter-spacing: 2px;">HOW WE PLAY</h2>
+                <h2 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--val-red); letter-spacing: 2px;" data-i18n="phil.title">HOW WE PLAY</h2>
                 <div style="height: 4px; width: 100px; background-color: var(--val-white); margin: 1rem auto 0;"></div>
             </div>
             <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem;">
                 <div class="philosophy-card" style="background: linear-gradient(135deg, #111 0%, #1a0a0c 100%); border: 1px solid rgba(255,70,85,0.3); padding: 2.5rem; text-align: center; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,70,85,0.3)';">
                     <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">⚡</div>
-                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;">AGGRESSION</h3>
-                    <p style="color: var(--val-grey); line-height: 1.7;">We don't sit back and wait. Our playstyle is built on early pressure, map control, and forcing enemies to react to us — never the other way around.</p>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;" data-i18n="phil.agg">AGGRESSION</h3>
+                    <p style="color: var(--val-grey); line-height: 1.7;" data-i18n="phil.agg_desc">We don't sit back and wait. Our playstyle is built on early pressure, map control, and forcing enemies to react to us — never the other way around.</p>
                 </div>
                 <div class="philosophy-card" style="background: linear-gradient(135deg, #111 0%, #0d1620 100%); border: 1px solid rgba(255,70,85,0.3); padding: 2.5rem; text-align: center; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,70,85,0.3)';">
                     <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🎯</div>
-                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;">PRECISION</h3>
-                    <p style="color: var(--val-grey); line-height: 1.7;">Every util, every smoke, every push is deliberate. Dejwrix's IGL calls are crafted from hours of VOD review and strategic preparation against every opponent.</p>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;" data-i18n="phil.prec">PRECISION</h3>
+                    <p style="color: var(--val-grey); line-height: 1.7;" data-i18n="phil.prec_desc">Every util, every smoke, every push is deliberate. Dejwrix's IGL calls are crafted from hours of VOD review and strategic preparation against every opponent.</p>
                 </div>
                 <div class="philosophy-card" style="background: linear-gradient(135deg, #111 0%, #0a1a0d 100%); border: 1px solid rgba(255,70,85,0.3); padding: 2.5rem; text-align: center; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,70,85,0.3)';">
                     <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🔄</div>
-                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;">ADAPTABILITY</h3>
-                    <p style="color: var(--val-grey); line-height: 1.7;">Mid-round reads, map switches, counter-strategies. The Herd adapts faster than the enemy can respond. Winning is a mindset, not a plan.</p>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;" data-i18n="about.adapt">ADAPTABILITY</h3>
+                    <p style="color: var(--val-grey); line-height: 1.7;" data-i18n="about.adapt_text">Mid-round reads, map switches, counter-strategies. The Herd adapts faster than the enemy can respond. Winning is a mindset, not a plan.</p>
                 </div>
                 <div class="philosophy-card" style="background: linear-gradient(135deg, #111 0%, #1a150a 100%); border: 1px solid rgba(255,70,85,0.3); padding: 2.5rem; text-align: center; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,70,85,0.3)';">
                     <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🤝</div>
-                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;">BROTHERHOOD</h3>
-                    <p style="color: var(--val-grey); line-height: 1.7;">GCZ is not just a team. We are friends who compete at the highest level. The trust between us on the server translates directly into results every single match.</p>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;" data-i18n="about.brotherhood">BROTHERHOOD</h3>
+                    <p style="color: var(--val-grey); line-height: 1.7;" data-i18n="about.brotherhood_text">GCZ is not just a team. We are friends who compete at the highest level. The trust between us on the server translates directly into results every single match.</p>
                 </div>
             </div>
         </div>
