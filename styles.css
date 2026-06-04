@@ -62,6 +62,7 @@ h1, h2, h3, .logo-text, .section-title {
     list-style: none;
     display: flex;
     gap: 2rem;
+    align-items: center;
 }
 
 .nav-links a {
