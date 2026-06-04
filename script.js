@@ -339,66 +339,6 @@ document.addEventListener('DOMContentLoaded', () => {
                 submitBtn.innerText = "SEND REQUEST";
                 submitBtn.disabled = false;
             }
-        });
-    }
-
-    // Dynamic News (RSS feed or fallback JSON logic)
-    // We will attempt to fetch a generic RSS feed endpoint if they have one,
-    // otherwise we just render some dummy structured data as an example of "dynamic" news.
-    async function loadNews() {
-        const newsContainer = document.getElementById('news-container');
-        if (!newsContainer) return;
-
-        // In a real app with RSS, you'd fetch an RSS to JSON proxy or directly parse XML
-        // Example: const response = await fetch('https://api.rss2json.com/v1/api.json?rss_url=https://goatscz.com/feed');
-        
-        // For now, we simulate fetched data:
-        const simulatedNews = [
-            {
-                date: "JUNE 4, 2026",
-                title: "WEBSITE REVAMPED",
-                content: "Goats CZ officially launched a brand new website complete with dynamic forms, improved SEO, and full bilingual support.",
-                important: false
-            },
-            {
-                date: "MAY 23, 2026",
-                title: "TEZZY & R1VVO JOIN AS SUBS",
-                content: "We are thrilled to welcome Tezzy and R1VVO to the herd as our official substitutes. Their flexibility and firepower will be a massive asset.",
-                important: false
-            },
-            {
-                date: "MAY 22, 2026",
-                title: "ROSTER LOCKED IN",
-                content: "The new Goats CZ roster is officially locked in for the upcoming season. Weeks of tryouts and intense practice have forged a deadly core.",
-                important: true // To trigger the special styling
-            }
-        ];
-
-        newsContainer.innerHTML = ''; // Clear loading text
-
-        simulatedNews.forEach(news => {
-            if (news.important) {
-                // Special "Recaps" or Important style card
-                newsContainer.innerHTML += `
-                <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px dashed rgba(255, 255, 255, 0.2); padding: 4rem 2rem; display: flex; flex-direction: column; align-items: center; justify-content: center; opacity: 0.5;">
-                    <span style="font-size: 3rem; margin-bottom: 1rem;">📊</span>
-                    <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${news.title}</h3>
-                    <span style="color: var(--val-red); font-weight: bold; font-size: 1.2rem; letter-spacing: 2px;">COMING SOON</span>
-                </div>
-                `;
-            } else {
-                newsContainer.innerHTML += `
-                <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid rgba(255, 70, 85, 0.2); padding: 2rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                    <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">${news.date}</span>
-                    <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${news.title}</h3>
-                    <p style="color: var(--val-grey); line-height: 1.6;">${news.content}</p>
-                </div>
-                `;
-            }
-        });
-    }
-
-    loadNews();
 
 });
 
@@ -430,48 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // we don't need to remove inline JS, our 3D mousemove will overwrite transform, but mouseover will still trigger opacity=1.
     });
 
-    // Player Modals
-    const playerModal = document.getElementById('player-modal');
-    const closeModal = document.getElementById('close-modal');
-    if (playerModal) {
-        const playerStats = {
-            'Dejwrix': { acs: 265, kd: 1.25, hs: 32, quote: '"Watch this!" - Raze' },
-            'Teikov': { acs: 250, kd: 1.18, hs: 28, quote: '"I go fast!" - Neon' },
-            'Ondra': { acs: 220, kd: 1.10, hs: 25, quote: '"I am the hunter!" - Sova' },
-            'Rabadon': { acs: 200, kd: 1.05, hs: 22, quote: '"I am everywhere." - Omen' },
-            'Luky': { acs: 240, kd: 1.15, hs: 30, quote: '"Watch this!" - Jett' },
-            'Tezzy': { acs: 230, kd: 1.12, hs: 27, quote: '"Get out of my way!"' },
-            'R1VVO': { acs: 215, kd: 1.08, hs: 26, quote: '"My territory."' }
-        };
 
-        document.querySelectorAll('.player-card').forEach(card => {
-            card.style.cursor = 'pointer';
-            card.addEventListener('click', () => {
-                const name = card.querySelector('.player-name').innerText;
-                const role = card.querySelector('.player-role').innerText;
-                const mains = card.querySelector('p').innerText;
-                const bgImg = card.querySelector('.player-image').style.backgroundImage;
-                
-                document.getElementById('modal-name').innerText = name;
-                document.getElementById('modal-role').innerText = role;
-                document.getElementById('modal-mains').innerText = mains;
-                document.getElementById('modal-img').style.backgroundImage = bgImg;
-                
-                const stats = playerStats[name] || { acs: 200, kd: 1.0, hs: 20, quote: '"Ready."' };
-                document.getElementById('modal-acs').innerText = stats.acs;
-                document.getElementById('modal-kd').innerText = stats.kd;
-                document.getElementById('modal-hs').innerText = stats.hs + '%';
-                document.getElementById('modal-quote').innerText = stats.quote;
-                
-                playerModal.classList.add('active');
-            });
-        });
-
-        closeModal.addEventListener('click', () => playerModal.classList.remove('active'));
-        playerModal.addEventListener('click', (e) => {
-            if (e.target === playerModal) playerModal.classList.remove('active');
-        });
-    }
 
     // Custom Cursor Logic
     const cursor = document.getElementById('custom-cursor');
@@ -518,3 +417,50 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }, 150);
     }
+
+async function loadNews() {
+    const newsContainer = document.getElementById('news-container');
+    if (!newsContainer) return;
+
+    const simulatedNews = [
+        {
+            date: "JUNE 4, 2026",
+            title: "ROSTER UPDATE: WOODY JOINS, R1VVO LEAVES",
+            content: "We are parting ways with R1VVO and wish him the best in his future endeavors. At the same time, we welcome Woody to our active roster as Sentinel, with Luky moving to the sub position alongside Tezzy.",
+            important: true
+        },
+        {
+            date: "JUNE 4, 2026",
+            title: "WEBSITE REVAMPED",
+            content: "Goats CZ officially launched a brand new website complete with dynamic forms, improved SEO, and full bilingual support.",
+            important: false
+        },
+        {
+            date: "MAY 22, 2026",
+            title: "ROSTER LOCKED IN",
+            content: "The new Goats CZ roster is officially locked in for the upcoming season. Weeks of tryouts and intense practice have forged a deadly core.",
+            important: false
+        }
+    ];
+
+    newsContainer.innerHTML = '';
+
+    simulatedNews.forEach(news => {
+        if (news.important) {
+            newsContainer.innerHTML += `n            <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid var(--val-red); padding: 2rem; transition: transform 0.2s; box-shadow: 0 0 15px rgba(255, 70, 85, 0.2);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;"></span>
+                <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;"></h3>
+                <p style="color: var(--val-grey); line-height: 1.6;"></p>
+            </div>`;
+        } else {
+            newsContainer.innerHTML += `n            <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid rgba(255, 70, 85, 0.2); padding: 2rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;"></span>
+                <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;"></h3>
+                <p style="color: var(--val-grey); line-height: 1.6;"></p>
+            </div>`;
+        }
+    });
+}
+
+loadNews();
+

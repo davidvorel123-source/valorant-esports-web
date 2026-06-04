@@ -344,9 +344,9 @@ function setLanguage(lang) {
     // Update toggles
     document.querySelectorAll('.lang-btn').forEach(btn => {
         if (btn.getAttribute('data-lang') === lang) {
-            btn.classList.add('active-lang');
+            btn.style.opacity = '1';
         } else {
-            btn.classList.remove('active-lang');
+            btn.style.opacity = '0.4';
         }
     });
 }
