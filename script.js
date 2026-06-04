@@ -286,14 +286,14 @@ document.addEventListener('DOMContentLoaded', () => {
             const submitBtn = scrimForm.querySelector('button[type="submit"]');
             
             // NOTE: Replace this URL with your actual Discord Webhook URL
-            const webhookUrl = "YOUR_DISCORD_WEBHOOK_URL_HERE"; 
+            const webhookUrl = "https://discord.com/api/webhooks/1512190473048166531/BsKnhbolkEIyNDcmgr9uj1EMJSJ-VOvL-j4zVS2M5WiNeftkxZyw-UzXBNlGJNYt0sco"; 
             
             submitBtn.disabled = true;
             submitBtn.innerText = "SENDING...";
             statusDiv.style.display = "none";
 
             const payload = {
-                content: "<@&YOUR_ROLE_ID> Nová žádost o Scrim!",
+                content: "🔔 Nová žádost o Scrim!",
                 embeds: [{
                     title: "⚔️ Scrim Request: " + teamInput,
                     color: 16729685, // Val Red #ff4655
