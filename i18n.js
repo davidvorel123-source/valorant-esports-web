@@ -313,16 +313,17 @@ const translations = {
     }
 };
 
-let currentLang = localStorage.getItem('gcz_lang') || 'en';
+let currentLang = 'cz';
+try { currentLang = localStorage.getItem('gcz_lang') || 'cz'; } catch(e) {}
 
 function setLanguage(lang) {
     currentLang = lang;
-    localStorage.setItem('gcz_lang', lang);
+    try { localStorage.setItem('gcz_lang', lang); } catch(e) {}
     
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');
         if (translations[lang] && translations[lang][key]) {
-            el.innerHTML = translations[lang][key]; // Pouzijeme innerHTML, aby fungovaly tagy jako <br>
+            el.innerHTML = translations[lang][key];
         }
     });
 
@@ -366,4 +367,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Apply initial language
     setLanguage(currentLang);
+
+    // Safety re-apply after short delay to catch any late-rendered elements
+    setTimeout(() => setLanguage(currentLang), 150);
 });

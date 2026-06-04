@@ -419,10 +419,10 @@
     <!-- MERCH SECTION -->
     <section id="merch" class="fade-in-up" style="padding: 100px 2rem; background: linear-gradient(135deg, var(--val-dark) 0%, #1a0a0c 100%); border-top: 1px solid rgba(255, 70, 85, 0.2);">
         <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-            <span style="color: var(--val-red); font-weight: 800; font-size: 1rem; letter-spacing: 3px;">OFFICIAL GEAR</span>
-            <h2 style="font-family: var(--font-heading); font-size: 4rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; line-height: 1;">MERCH DROPPING SOON</h2>
-            <p style="color: var(--val-grey); font-size: 1.2rem; margin-bottom: 2rem;">Rep the Herd. Premium jerseys, hoodies, and accessories are currently in production. Join the Discord to get notified first.</p>
-            <a href="https://discord.gg/W56F3G48xX" target="_blank" style="display: inline-block; background-color: var(--val-red); color: white; padding: 1rem 2rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">JOIN DISCORD TO WAITLIST</a>
+            <span data-i18n="merch.gear" style="color: var(--val-red); font-weight: 800; font-size: 1rem; letter-spacing: 3px;">OFFICIAL GEAR</span>
+            <h2 data-i18n="merch.dropping" style="font-family: var(--font-heading); font-size: 4rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; line-height: 1;">MERCH DROPPING SOON</h2>
+            <p data-i18n="merch.desc" style="color: var(--val-grey); font-size: 1.2rem; margin-bottom: 2rem;">Rep the Herd. Premium jerseys, hoodies, and accessories are currently in production. Join the Discord to get notified first.</p>
+            <a href="https://discord.gg/W56F3G48xX" target="_blank" style="display: inline-block; background-color: var(--val-red); color: white; padding: 1rem 2rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><span data-i18n="merch.waitlist">JOIN DISCORD TO WAITLIST</span></a>
         </div>
     </section>
 
@@ -498,58 +498,63 @@
         <div class="section-header">
             <h2 class="section-title">TROPHY CABINET</h2>
             <div class="section-line"></div>
+        <div class="section-header" style="margin-bottom: 3rem;">
+            <span style="color: var(--val-red); font-weight: 800; font-size: 0.85rem; letter-spacing: 3px;">HALL OF FAME</span>
+            <h2 data-i18n="trophies.title" class="section-title">TROPHY CABINET</h2>
         </div>
-        <p style="text-align: center; color: var(--val-grey); font-size: 1.2rem; margin-bottom: 4rem; max-width: 700px; margin-left: auto; margin-right: auto;">Our history of domination. Hover over a trophy to view the tournament details.</p>
         
+        <p data-i18n="trophies.desc" style="text-align: center; color: var(--val-grey); font-size: 1.2rem; margin-bottom: 4rem; max-width: 700px; margin-left: auto; margin-right: auto;">Our history of domination. Hover over a trophy to view the tournament details.</p>
+
         <div style="max-width: 1000px; margin: 0 auto; display: flex; justify-content: center; gap: 3rem; flex-wrap: wrap;">
             <!-- Trophy 1 -->
-            <div style="position: relative; width: 250px; height: 350px; background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(15,25,35,1) 100%); border: 1px solid rgba(255,255,255,0.1); border-bottom: 4px solid var(--val-red); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(255,70,85,0.2)'; this.querySelector('.trophy-details').style.opacity='1';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.querySelector('.trophy-details').style.opacity='0';">
+            <div class="trophy-card" style="position: relative; width: 250px; height: 350px; background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(15,25,35,1) 100%); border: 1px solid rgba(255,255,255,0.1); border-bottom: 4px solid var(--val-red); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(255,70,85,0.2)'; this.querySelector('.trophy-details').style.opacity='1';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.querySelector('.trophy-details').style.opacity='0';">
                 <span style="font-size: 7rem; filter: drop-shadow(0 0 20px rgba(255,215,0,0.4)); margin-bottom: 1rem; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.1) rotate(5deg)';" onmouseout="this.style.transform='scale(1) rotate(0deg)';">🏆</span>
-                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--val-white); text-align: center; margin-bottom: 0.5rem;">WOLVESDEN<br>SPRING 2026</h3>
-                <span style="color: #ffd700; font-weight: bold; letter-spacing: 2px;">1ST PLACE</span>
+                <h3 data-i18n="trophy.w" style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--val-white); text-align: center; margin-bottom: 0.5rem;">WOLVESDEN<br>SPRING 2026</h3>
+                <span data-i18n="trophy.1st" style="color: #ffd700; font-weight: bold; letter-spacing: 2px;">1ST PLACE</span>
                 <!-- Hover Details -->
                 <div class="trophy-details" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(15, 25, 35, 0.95); opacity: 0; transition: opacity 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; z-index: 10;">
-                    <span style="color: var(--val-red); font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem;">FINAL SCORE: 2-0</span>
-                    <span style="color: var(--val-white); font-size: 0.9rem; margin-bottom: 5px;">vs. Multiple Teams</span>
-                    <div style="width: 100%; height: 1px; background-color: rgba(255,255,255,0.2); margin: 10px 0;"></div>
-                    <span style="color: var(--val-grey); font-size: 0.8rem; text-transform: uppercase;">Finals MVP</span>
+                    <span data-i18n="trophy.score" style="color: var(--val-red); font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem;">FINAL SCORE: 2-0</span>
+                    <span data-i18n="trophy.vs" style="color: var(--val-white); font-size: 0.9rem; margin-bottom: 5px;">vs. Multiple Teams</span>
+                    <div style="width: 100%; height: 1px; background-color: rgba(255,255,255,0.1); margin: 10px 0;"></div>
+                    <span data-i18n="trophy.fmvp" style="color: var(--val-grey); font-size: 0.8rem; text-transform: uppercase;">Finals MVP</span>
                     <span style="color: #53fc18; font-weight: bold; font-size: 1.2rem; margin-top: 5px;">DEJWRIX</span>
                 </div>
             </div>
 
             <!-- Trophy 2 -->
-            <div style="position: relative; width: 250px; height: 350px; background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(15,25,35,1) 100%); border: 1px solid rgba(255,255,255,0.1); border-bottom: 4px solid var(--val-red); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(255,70,85,0.2)'; this.querySelector('.trophy-details').style.opacity='1';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.querySelector('.trophy-details').style.opacity='0';">
+            <div class="trophy-card" style="position: relative; width: 250px; height: 350px; background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(15,25,35,1) 100%); border: 1px solid rgba(255,255,255,0.1); border-bottom: 4px solid var(--val-red); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(255,70,85,0.2)'; this.querySelector('.trophy-details').style.opacity='1';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.querySelector('.trophy-details').style.opacity='0';">
                 <span style="font-size: 7rem; filter: drop-shadow(0 0 20px rgba(255,215,0,0.4)); margin-bottom: 1rem; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.1) rotate(5deg)';" onmouseout="this.style.transform='scale(1) rotate(0deg)';">🏆</span>
-                <h3 style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--val-white); text-align: center; margin-bottom: 0.5rem;">PLAYZONE</h3>
-                <span style="color: #ffd700; font-weight: bold; letter-spacing: 2px;">1ST PLACE</span>
+                <h3 data-i18n="trophy.p" style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--val-white); text-align: center; margin-bottom: 0.5rem;">PLAYZONE</h3>
+                <span data-i18n="trophy.1st" style="color: #ffd700; font-weight: bold; letter-spacing: 2px;">1ST PLACE</span>
                 <!-- Hover Details -->
                 <div class="trophy-details" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(15, 25, 35, 0.95); opacity: 0; transition: opacity 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; z-index: 10;">
-                    <span style="color: var(--val-red); font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem;">FINAL SCORE: 2-0</span>
-                    <span style="color: var(--val-white); font-size: 0.9rem; margin-bottom: 5px;">vs. Multiple Teams</span>
-                    <div style="width: 100%; height: 1px; background-color: rgba(255,255,255,0.2); margin: 10px 0;"></div>
-                    <span style="color: var(--val-grey); font-size: 0.8rem; text-transform: uppercase;">Team MVP</span>
+                    <span data-i18n="trophy.score" style="color: var(--val-red); font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem;">FINAL SCORE: 2-0</span>
+                    <span data-i18n="trophy.vs" style="color: var(--val-white); font-size: 0.9rem; margin-bottom: 5px;">vs. Multiple Teams</span>
+                    <div style="width: 100%; height: 1px; background-color: rgba(255,255,255,0.1); margin: 10px 0;"></div>
+                    <span data-i18n="trophy.tmvp" style="color: var(--val-grey); font-size: 0.8rem; text-transform: uppercase;">Team MVP</span>
                     <span style="color: #53fc18; font-weight: bold; font-size: 1.2rem; margin-top: 5px;">LUKY</span>
                 </div>
             </div>
 
             <!-- Trophy 3 (Empty slot) -->
-            <div style="position: relative; width: 250px; height: 350px; background: linear-gradient(180deg, rgba(255,255,255,0.02) 0%, rgba(15,25,35,1) 100%); border: 1px dashed rgba(255,255,255,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center;">
+            <div class="trophy-card" style="position: relative; width: 250px; height: 350px; background: transparent; border: 1px dashed rgba(255,255,255,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center;">
                 <span style="font-size: 4rem; opacity: 0.1; margin-bottom: 1rem;">🏆</span>
-                <span style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-align: center; opacity: 0.5;">AWAITING PREMIER<br>PLAYOFFS</span>
+                <span data-i18n="trophy.wait" style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-align: center; opacity: 0.5;">AWAITING PREMIER<br>PLAYOFFS</span>
             </div>
         </div>
     </section>
 
-    <section id="faq" class="faq-section" style="padding: 100px 2rem; background-color: var(--val-darker); border-top: 1px solid rgba(255, 255, 255, 0.1);">
+    <!-- FAQ SECTION -->
+    <section id="faq" style="padding: 100px 2rem; background-color: var(--val-darker); border-top: 1px solid rgba(255, 255, 255, 0.05);">
         <div style="max-width: 800px; margin: 0 auto; text-align: left;">
-            <h2 style="font-family: var(--font-heading); font-size: 3rem; color: var(--val-white); margin-bottom: 3rem; text-align: center;">FREQUENTLY ASKED QUESTIONS</h2>
+            <h2 data-i18n="faq.title" style="font-family: var(--font-heading); font-size: 3rem; color: var(--val-white); margin-bottom: 3rem; text-align: center;">FREQUENTLY ASKED QUESTIONS</h2>
             <div class="faq-item fade-in-up">
                 <div class="faq-question">
-                    Are you looking for new players?
+                    <span data-i18n="faq.q01">Are you looking for new players?</span>
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">
+                    <div class="faq-answer-inner" data-i18n="faq.a01">
                         Our core roster and subs are currently locked in for the Premier season. However, we always keep an eye out for exceptional High Immortal/Radiant Czech talent to join our practice squad.
                     </div>
                 </div>
@@ -557,11 +562,11 @@
             
             <div class="faq-item fade-in-up">
                 <div class="faq-question">
-                    Who does the in-game calling?
+                    <span data-i18n="faq.q02">Who does the in-game calling?</span>
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">
+                    <div class="faq-answer-inner" data-i18n="faq.a02">
                         Dejwrix is our dedicated IGL (In-Game Leader), orchestrating the mid-round calls, utility combinations, and overall match strategy.
                     </div>
                 </div>
@@ -569,11 +574,11 @@
             
             <div class="faq-item fade-in-up">
                 <div class="faq-question">
-                    How often do you practice?
+                    <span data-i18n="faq.q03">How often do you practice?</span>
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">
+                    <div class="faq-answer-inner" data-i18n="faq.a03">
                         We play official Premier matches weekly and run internal scrims against other top-tier Contender teams 3-4 times a week to stay sharp.
                     </div>
                 </div>
@@ -581,11 +586,11 @@
             
             <div class="faq-item fade-in-up">
                 <div class="faq-question">
-                    Do you have a dedicated coach?
+                    <span data-i18n="faq.q1">Do you have a dedicated coach?</span>
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">
+                    <div class="faq-answer-inner" data-i18n="faq.a1">
                         Currently, our IGL and the core team handle VOD reviews and strategy crafting. However, we are open to working with an experienced coach in the future.
                     </div>
                 </div>
@@ -593,11 +598,11 @@
             
             <div class="faq-item fade-in-up">
                 <div class="faq-question">
-                    How long have you been playing together?
+                    <span data-i18n="faq.q2">How long have you been playing together?</span>
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">
+                    <div class="faq-answer-inner" data-i18n="faq.a2">
                         The core of the team has been grinding together since this year (2026), building deep synergy and absolute trust in each other's plays.
                     </div>
                 </div>
@@ -605,11 +610,11 @@
             
             <div class="faq-item fade-in-up">
                 <div class="faq-question">
-                    What are the ultimate goals of the team?
+                    <span data-i18n="faq.q3">What are the ultimate goals of the team?</span>
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">
+                    <div class="faq-answer-inner" data-i18n="faq.a3">
                         Our primary objective is to dominate the Premier Contender division and fight our way into the Challengers league through Ascension.
                     </div>
                 </div>
@@ -617,11 +622,11 @@
             
             <div class="faq-item fade-in-up">
                 <div class="faq-question">
-                    Where can I watch your official matches?
+                    <span data-i18n="faq.q4">Where can I watch your official matches?</span>
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">
+                    <div class="faq-answer-inner" data-i18n="faq.a4">
                         We stream most of our official Premier matches and tournaments directly on our player POVs via Twitch and Kick. Follow our Discord to get notified when we go live!
                     </div>
                 </div>
@@ -629,11 +634,11 @@
 
             <div class="faq-item fade-in-up">
                 <div class="faq-question">
-                    How can I support Goats CZ?
+                    <span data-i18n="faq.q5">How can I support Goats CZ?</span>
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
-                    <div class="faq-answer-inner">
+                    <div class="faq-answer-inner" data-i18n="faq.a5">
                         The best way to support us right now is by joining our Discord, following our socials, and cheering for us in stream chats during match days. You can also support the team directly by <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" style="color: var(--val-red); text-decoration: underline; font-weight: bold;">donating here</a>. Merch is also dropping soon!
                     </div>
                 </div>
@@ -641,12 +646,12 @@
 
             <div class="faq-item fade-in-up">
                 <div class="faq-question">
-                    I have more questions. How can I contact you?
+                    <span data-i18n="faq.q06">I have more questions. How can I contact you?</span>
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">
-                        If you have any other questions, business inquiries, or just want to say hi, feel free to drop us an email at <span style="color: var(--val-red); font-weight: bold; cursor: pointer;" onclick="navigator.clipboard.writeText('goatscz0@gmail.com'); alert('Email copied to clipboard!');">goatscz0@gmail.com (Click to copy)</span>.
+                        <span data-i18n="faq.a06">If you have any other questions, business inquiries, or just want to say hi, feel free to drop us an email at</span> <span style="color: var(--val-red); font-weight: bold; cursor: pointer;" onclick="navigator.clipboard.writeText('goatscz0@gmail.com'); alert('Email copied to clipboard!');">goatscz0@gmail.com <span data-i18n="faq.copy">(Click to copy)</span></span>.
                     </div>
                 </div>
             </div>
@@ -726,7 +731,7 @@
     <footer id="contact" class="footer">
         <div class="footer-content">
             <div class="footer-logo">GCZ</div>
-            <p style="color: var(--val-grey); max-width: 500px; margin: 0 auto 2rem; line-height: 1.6;">Goats CZ — Fully Czech Valorant squad competing in Premier Contender. Join the herd on our journey to Challengers.</p>
+            <p data-i18n="footer.desc" style="color: var(--val-grey); max-width: 500px; margin: 0 auto 2rem; line-height: 1.6;">Goats CZ — Fully Czech Valorant squad competing in Premier Contender. Join the herd on our journey to Challengers.</p>
             <div class="social-links" style="gap: 2rem; flex-wrap: wrap;">
                 <a href="https://kick.com/gczdejwrix" target="_blank" class="social-link" style="color: #53fc18; font-weight: 700;"><i class="fa-solid fa-play"></i> KICK</a>
                 <a href="https://x.com/dejwrix" target="_blank" class="social-link"><i class="fa-brands fa-x-twitter"></i> TWITTER</a>
@@ -735,7 +740,7 @@
                 <a href="https://www.vidia-design.cz/" target="_blank" class="social-link"><i class="fa-solid fa-palette"></i> VIDIA DESIGN</a>
                 <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" class="social-link" style="color: var(--val-red); font-weight: 700;"><i class="fa-solid fa-heart"></i> DONATE</a>
             </div>
-            <p class="copyright" style="margin-top: 2rem;">&copy; 2026 Goats CZ. All rights reserved. | Made with ❤️ in Czech Republic 🇨🇿</p>
+            <p class="copyright" style="margin-top: 2rem;">&copy; 2026 Goats CZ. <span data-i18n="footer.rights">All rights reserved.</span> | Made with ❤️ in Czech Republic 🇨🇿</p>
             <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 0.5rem;">Website created by <a href="https://venvio.dev" target="_blank" style="color: var(--val-white); text-decoration: none; font-weight: bold; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-white)'">Venvio</a></p>
         </div>
     </footer>
