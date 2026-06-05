@@ -368,31 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
         t.classList.add('trophy-card');
     });
 
-    // Custom Cursor Logic
-    const cursor = document.getElementById('custom-cursor');
-    const follower = document.getElementById('custom-cursor-follower');
-    
-    if (cursor && follower && window.innerWidth > 768) {
-        document.addEventListener('mousemove', (e) => {
-            cursor.style.left = e.clientX + 'px';
-            cursor.style.top = e.clientY + 'px';
-            
-            follower.style.left = e.clientX + 'px';
-            follower.style.top = e.clientY + 'px';
-        });
-
-        const hoverElements = document.querySelectorAll('a, button, input, textarea, .player-card, .highlight-card, .nav-links li, .cta-button, .social-link');
-        hoverElements.forEach(el => {
-            el.addEventListener('mouseenter', () => {
-                cursor.classList.add('hover');
-                follower.classList.add('hover');
-            });
-            el.addEventListener('mouseleave', () => {
-                cursor.classList.remove('hover');
-                follower.classList.remove('hover');
-            });
-        });
-    }
+    // Custom cursor removed for performance
 
     // Preloader Logic
     const preloader = document.getElementById('preloader');
