@@ -280,7 +280,7 @@ const translations = {
         "phil.agg": "AGRESIVITA",
         "phil.agg_desc": "Nesedíme a nečekáme. Náš herní styl je postaven na brzkém tlaku, kontrole mapy a nucení nepřátel, aby reagovali oni na nás — nikdy naopak.",
         "phil.prec": "PŘESNOST",
-        "phil.prec_desc": "Každá utilita, každý smoke, každý push je úmyslný. Dějovy IGL cally jsou vytvořeny z hodin VOD reviews a strategické přípravy proti každému soupeři.",
+        "phil.prec_desc": "Každá utilita, každý smoke, každý push je úmyslný. Dejwrixovy IGL cally jsou vytvořeny z hodin VOD reviews a strategické přípravy proti každému soupeři.",
         "stream.title": "LIVESTREAM",
         "trophies.title": "SKŘÍŇKA S TROFEJEMI",
         "trophies.desc": "Naše historie dominance. Přejeď myší přes trofej pro detaily turnaje.",
