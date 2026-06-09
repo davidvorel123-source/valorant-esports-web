@@ -15,10 +15,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="logo.png">
     <style>
-        .timeline-container { display: flex; flex-direction: column; gap: 1.5rem; max-height: 500px; overflow-y: auto; padding-right: 10px; }
-        .timeline-container::-webkit-scrollbar { width: 6px; }
-        .timeline-container::-webkit-scrollbar-track { background: rgba(255,255,255,0.05); border-radius: 10px; }
-        .timeline-container::-webkit-scrollbar-thumb { background: var(--val-red); border-radius: 10px; }
+        .timeline-container { display: flex; flex-direction: column; gap: 1.5rem; transition: max-height 0.5s ease; }
+        .timeline-container .timeline-item:nth-child(n+5) { display: none; }
+        .timeline-container.show-all .timeline-item:nth-child(n+5) { display: flex; animation: fade-in-up 0.4s ease forwards; }
         .timeline-item { display: flex; align-items: center; background: linear-gradient(90deg, rgba(30, 35, 45, 0.9) 0%, rgba(15, 25, 35, 0.6) 100%) !important; border: 1px solid rgba(255, 255, 255, 0.05) !important; padding: 1.5rem 2rem !important; position: relative; overflow: hidden; transition: all 0.3s ease; clip-path: polygon(15px 0, 100% 0, 100% calc(100% - 15px), calc(100% - 15px) 100%, 0 100%, 0 15px) !important; }
         .timeline-item::before { content: ''; position: absolute; left: 0; top: 0; bottom: 0; width: 6px; background: var(--val-grey); transition: width 0.3s ease; }
         .timeline-item.win::before { background: #53fc18 !important; box-shadow: 0 0 15px #53fc18 !important; }
@@ -526,6 +525,7 @@
                         </div>
                     </div>
                 </div>
+                <button id="toggle-timeline-btn" style="margin-top: 1.5rem; width: 100%; background: transparent; border: 2px solid var(--val-red); color: var(--val-white); padding: 1rem; font-family: var(--font-heading); font-size: 1.2rem; cursor: pointer; transition: all 0.3s;" onmouseover="this.style.background='var(--val-red)'" onmouseout="this.style.background='transparent'"><span data-i18n="legacy.showAll">SHOW ALL MATCHES</span> <i class="fa-solid fa-chevron-down"></i></button>
             </div>
             <div class="legacy-column">
                 <h3><span data-i18n="legacy.milestones">Milestones & Goals</span></h3>
