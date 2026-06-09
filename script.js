@@ -526,8 +526,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const isShowingAll = container.classList.toggle('show-all');
             const lang = localStorage.getItem('gcz_lang') || 'en';
             
-            let textEn = isShowingAll ? 'SHOW LESS' : 'SHOW ALL MATCHES';
-            let textCs = isShowingAll ? 'ZOBRAZIT MÉNĚ' : 'ZOBRAZIT VŠECHNY ZÁPASY';
+            let textEn = isShowingAll ? 'SHOW LESS' : 'SHOW MORE MATCHES';
+            let textCs = isShowingAll ? 'ZOBRAZIT MÉNĚ' : 'ZOBRAZIT DALŠÍ ZÁPASY';
             let key = isShowingAll ? 'legacy.showLess' : 'legacy.showAll';
             
             toggleBtn.innerHTML = `<span data-i18n="${key}">${lang === 'cs' ? textCs : textEn}</span> <i class="fa-solid fa-chevron-${isShowingAll ? 'up' : 'down'}"></i>`;
