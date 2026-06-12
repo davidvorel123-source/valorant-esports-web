@@ -212,6 +212,63 @@ document.addEventListener('DOMContentLoaded', () => {
     window.updateDynamicDates = updateDynamicDates;
     setInterval(updateDynamicDates, 3600000); // Check every hour
 
+    // Match Countdown System
+    function updateMatchCountdowns() {
+        const countdowns = document.querySelectorAll('.match-countdown');
+        const now = new Date().getTime();
+        const lang = localStorage.getItem('gcz_lang') || 'en';
+        
+        countdowns.forEach(el => {
+            const targetStr = el.getAttribute('data-target');
+            if (!targetStr) return;
+            const targetDate = new Date(targetStr).getTime();
+            const distance = targetDate - now;
+            
+            if (distance < 0) {
+                el.innerHTML = `<span style="color: var(--val-red); font-weight: bold; font-size: 1.5rem; letter-spacing: 2px;">${lang === 'cz' ? 'PRÁVĚ PROBÍHÁ' : 'LIVE NOW'}</span>`;
+                return;
+            }
+            
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+            
+            const daysLabel = lang === 'cz' ? 'DNÍ' : 'DAYS';
+            const hoursLabel = lang === 'cz' ? 'HOD' : 'HRS';
+            const minLabel = lang === 'cz' ? 'MIN' : 'MIN';
+            const secLabel = lang === 'cz' ? 'SEK' : 'SEC';
+
+            el.innerHTML = `
+                <div style="display: flex; gap: 1rem; justify-content: center; font-family: var(--font-heading); font-size: 2.5rem; color: var(--val-white); text-shadow: 2px 2px 0 rgba(0,0,0,0.5);">
+                    <div style="display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; min-width: 80px; border: 1px solid rgba(255,255,255,0.05);">
+                        <span>${days.toString().padStart(2, '0')}</span>
+                        <span style="font-family: var(--font-body); font-size: 0.7rem; color: var(--val-grey); letter-spacing: 1px;">${daysLabel}</span>
+                    </div>
+                    <span style="color: var(--val-red); align-self: center; margin-top: -15px;">:</span>
+                    <div style="display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; min-width: 80px; border: 1px solid rgba(255,255,255,0.05);">
+                        <span>${hours.toString().padStart(2, '0')}</span>
+                        <span style="font-family: var(--font-body); font-size: 0.7rem; color: var(--val-grey); letter-spacing: 1px;">${hoursLabel}</span>
+                    </div>
+                    <span style="color: var(--val-red); align-self: center; margin-top: -15px;">:</span>
+                    <div style="display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; min-width: 80px; border: 1px solid rgba(255,255,255,0.05);">
+                        <span>${minutes.toString().padStart(2, '0')}</span>
+                        <span style="font-family: var(--font-body); font-size: 0.7rem; color: var(--val-grey); letter-spacing: 1px;">${minLabel}</span>
+                    </div>
+                    <span style="color: var(--val-red); align-self: center; margin-top: -15px;">:</span>
+                    <div style="display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; min-width: 80px; border: 1px solid rgba(255,255,255,0.05);">
+                        <span>${seconds.toString().padStart(2, '0')}</span>
+                        <span style="font-family: var(--font-body); font-size: 0.7rem; color: var(--val-grey); letter-spacing: 1px;">${secLabel}</span>
+                    </div>
+                </div>
+            `;
+        });
+    }
+    
+    updateMatchCountdowns();
+    window.updateMatchCountdowns = updateMatchCountdowns;
+    setInterval(updateMatchCountdowns, 1000);
+
     // Hero Particles System
     const canvas = document.getElementById('hero-particles');
     if (canvas) {
