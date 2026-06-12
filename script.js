@@ -241,23 +241,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
             el.innerHTML = `
                 <div style="display: flex; gap: 1rem; justify-content: center; font-family: var(--font-heading); font-size: 2.5rem; color: var(--val-white); text-shadow: 2px 2px 0 rgba(0,0,0,0.5);">
-                    <div style="display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; min-width: 80px; border: 1px solid rgba(255,255,255,0.05);">
-                        <span>${days.toString().padStart(2, '0')}</span>
+                    <div style="display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; min-width: 80px; border: 1px solid rgba(255, 70, 85, 0.3); box-shadow: 0 0 15px rgba(255, 70, 85, 0.4);">
+                        <span style="text-shadow: 0 0 10px rgba(255, 70, 85, 0.6);">${days.toString().padStart(2, '0')}</span>
                         <span style="font-family: var(--font-body); font-size: 0.7rem; color: var(--val-grey); letter-spacing: 1px;">${daysLabel}</span>
                     </div>
-                    <span style="color: var(--val-red); align-self: center; margin-top: -15px;">:</span>
-                    <div style="display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; min-width: 80px; border: 1px solid rgba(255,255,255,0.05);">
-                        <span>${hours.toString().padStart(2, '0')}</span>
+                    <span style="color: var(--val-red); align-self: center; margin-top: -15px; text-shadow: 0 0 10px rgba(255, 70, 85, 0.8);">:</span>
+                    <div style="display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; min-width: 80px; border: 1px solid rgba(255, 70, 85, 0.3); box-shadow: 0 0 15px rgba(255, 70, 85, 0.4);">
+                        <span style="text-shadow: 0 0 10px rgba(255, 70, 85, 0.6);">${hours.toString().padStart(2, '0')}</span>
                         <span style="font-family: var(--font-body); font-size: 0.7rem; color: var(--val-grey); letter-spacing: 1px;">${hoursLabel}</span>
                     </div>
-                    <span style="color: var(--val-red); align-self: center; margin-top: -15px;">:</span>
-                    <div style="display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; min-width: 80px; border: 1px solid rgba(255,255,255,0.05);">
-                        <span>${minutes.toString().padStart(2, '0')}</span>
+                    <span style="color: var(--val-red); align-self: center; margin-top: -15px; text-shadow: 0 0 10px rgba(255, 70, 85, 0.8);">:</span>
+                    <div style="display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; min-width: 80px; border: 1px solid rgba(255, 70, 85, 0.3); box-shadow: 0 0 15px rgba(255, 70, 85, 0.4);">
+                        <span style="text-shadow: 0 0 10px rgba(255, 70, 85, 0.6);">${minutes.toString().padStart(2, '0')}</span>
                         <span style="font-family: var(--font-body); font-size: 0.7rem; color: var(--val-grey); letter-spacing: 1px;">${minLabel}</span>
                     </div>
-                    <span style="color: var(--val-red); align-self: center; margin-top: -15px;">:</span>
-                    <div style="display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; min-width: 80px; border: 1px solid rgba(255,255,255,0.05);">
-                        <span>${seconds.toString().padStart(2, '0')}</span>
+                    <span style="color: var(--val-red); align-self: center; margin-top: -15px; text-shadow: 0 0 10px rgba(255, 70, 85, 0.8);">:</span>
+                    <div style="display: flex; flex-direction: column; align-items: center; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 4px; min-width: 80px; border: 1px solid rgba(255, 70, 85, 0.3); box-shadow: 0 0 15px rgba(255, 70, 85, 0.4);">
+                        <span style="text-shadow: 0 0 10px rgba(255, 70, 85, 0.6);">${seconds.toString().padStart(2, '0')}</span>
                         <span style="font-family: var(--font-body); font-size: 0.7rem; color: var(--val-grey); letter-spacing: 1px;">${secLabel}</span>
                     </div>
                 </div>
