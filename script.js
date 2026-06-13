@@ -456,6 +456,18 @@ async function loadNews() {
 
     const simulatedNews = [
         {
+            date: "JUNE 13, 2026",
+            title: {
+                en: "ADVANCING TO THE PLAYOFFS!",
+                cz: "POSTUP DO PLAYOFFS!"
+            },
+            content: {
+                en: "After a tough 8:13 loss against biele zaby, we bounced back with a 13:8 victory over suai52 to secure our spot in the Premier Playoffs! The final showdown takes place next Saturday.",
+                cz: "Po těžké prohře 8:13 proti biele zaby jsme se vrátili zpět výhrou 13:8 nad suai52 a zajistili si tak místo v Premier Playoffs! Rozhodující bitva nás čeká příští sobotu."
+            },
+            important: true
+        },
+        {
             date: "JUNE 5, 2026",
             title: {
                 en: "14th PLACE IN PREMIER",
