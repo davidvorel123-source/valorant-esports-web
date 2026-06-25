@@ -456,6 +456,18 @@ async function loadNews() {
 
     const simulatedNews = [
         {
+            date: "JUNE 25, 2026",
+            title: {
+                en: "ROSTER UPDATE: WETRIX LEAVES, KILLUA JOINS",
+                cz: "ZMĚNA V SESTAVĚ: WETRIX KONČÍ, PŘICHÁZÍ KILLUA"
+            },
+            content: {
+                en: "Wetrix has stepped down from the main roster. We thank him for his efforts and wish him the best. Taking his place as our Sentinel is Killua, who brings incredible firepower and tactical prowess to the team.",
+                cz: "Wetrix se rozhodl opustit hlavní sestavu. Děkujeme mu za jeho čas a přejeme mu hodně štěstí. Jeho místo Sentinela zaujme Killua, který do týmu přináší obrovskou palebnou sílu a taktické uvažování."
+            },
+            important: true
+        },
+        {
             date: "JUNE 13, 2026",
             title: {
                 en: "ADVANCING TO THE PLAYOFFS!",
