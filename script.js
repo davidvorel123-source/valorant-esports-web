@@ -456,6 +456,18 @@ async function loadNews() {
 
     const simulatedNews = [
         {
+            date: "JUNE 27, 2026",
+            title: {
+                en: "THE HERD IS REBUILDING: LFP",
+                cz: "PŘESTAVBA TÝMU: HLEDÁME HRÁČE"
+            },
+            content: {
+                en: "We are officially entering a rebuilding phase. Only Dejwrix and Teikov remain on the active roster. We are currently scouting for an Initiator, Smoker, and Sentinel to complete the new era of Goats CZ.",
+                cz: "Oficiálně vstupujeme do fáze přestavby. V aktivní sestavě zůstávají pouze Dejwrix a Teikov. Momentálně hledáme Initiatora, Smokera a Sentinela, kteří s námi odstartují novou éru Goats CZ."
+            },
+            important: true
+        },
+        {
             date: "JUNE 25, 2026",
             title: {
                 en: "ROSTER UPDATE: WETRIX LEAVES, KILLUA JOINS",
