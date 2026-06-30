@@ -456,6 +456,18 @@ async function loadNews() {
 
     const simulatedNews = [
         {
+            date: "JULY 1, 2026",
+            title: {
+                en: "ROSTER COMPLETE: WELCOME FANTA, MACKY, AND HODA",
+                cz: "SESTAVA KOMPLETNÍ: VÍTEJTE FANTA, MACKY A HODA"
+            },
+            content: {
+                en: "We have finalized our roster rebuild! Joining the herd are Fanta (IGL / Smoker), Macky (Sentinel), and Hoda (Initiator). Together with Dejwrix and Teikov, we are ready to dominate the scene once again.",
+                cz: "Přestavba sestavy je u konce! Ke stádu se připojují Fanta (IGL / Smoker), Macky (Sentinel) a Hoda (Initiator). Společně s Dejwrixem a Teikovem jsme připraveni znovu dominovat scéně."
+            },
+            important: true
+        },
+        {
             date: "JUNE 27, 2026",
             title: {
                 en: "THE HERD IS REBUILDING: LFP",
