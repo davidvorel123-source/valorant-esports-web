@@ -70,7 +70,7 @@ const translations = {
         "legacy.m1": "🏆 1st Place - Re ignite Tournament",
         "legacy.m2": "🏆 1st Place - Playzone Tournament",
         "legacy.m3": "🥇 1st Place - Wolvesden Tournament",
-        "legacy.m4": "🔥 Valorant Premier: Current Standing #14",
+
         "legacy.m5": "📈 Goal: Ascend to VCT EMEA",
         "trophies.title": "TROPHY CABINET",
         "legacy.focus": "Main Focus:",
@@ -248,7 +248,7 @@ const translations = {
         "legacy.m1": "🏆 1. Místo - Re ignite Turnaj",
         "legacy.m2": "🏆 1. Místo - Playzone Turnaj",
         "legacy.m3": "🥇 1. Místo - Wolvesden Turnaj",
-        "legacy.m4": "🔥 Valorant Premier: Průběžné pořadí #14",
+
         "legacy.m5": "📈 Cíl: Postup do VCT EMEA",
         "trophies.title": "VITRÍNA TROFEJÍ",
         "legacy.focus": "Hlavní zaměření:",
