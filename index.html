@@ -766,7 +766,7 @@
             </div>
         </div>
         <div style="text-align: center; margin-top: 3rem;">
-            <a href="#" onclick="navigator.clipboard.writeText('goatscz0@gmail.com'); this.innerHTML='Zkopírováno!'; setTimeout(() => this.innerHTML='<span data-i18n=\'sponsors.contact\'>STÁT SE PARTNEREM</span>', 2000); return false;" style="color: var(--val-red); font-weight: bold; text-decoration: underline; font-size: 1.1rem; letter-spacing: 1px;"><span data-i18n="sponsors.contact">STÁT SE PARTNEREM</span></a>
+            <a href="#" onclick="navigator.clipboard.writeText('goatscz0@gmail.com'); const lng = localStorage.getItem('gcz_lang') || 'en'; this.innerHTML= (lng==='cs'||lng==='cz') ? 'Zkopírováno!' : 'Copied!'; setTimeout(() => { this.innerHTML='<span data-i18n=\'sponsors.contact\'>' + ((lng==='cs'||lng==='cz') ? 'STÁT SE PARTNEREM' : 'BECOME A PARTNER') + '</span>'; }, 2000); return false;" style="color: var(--val-red); font-weight: bold; text-decoration: underline; font-size: 1.1rem; letter-spacing: 1px;"><span data-i18n="sponsors.contact">STÁT SE PARTNEREM</span></a>
         </div>
     </section>
 
