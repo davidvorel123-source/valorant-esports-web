@@ -458,12 +458,12 @@ async function loadNews() {
         {
             date: "JULY 1, 2026",
             title: {
-                en: "ROSTER COMPLETE: WELCOME FANTA, MACKY, AND HODA",
-                cz: "SESTAVA KOMPLETNÍ: VÍTEJTE FANTA, MACKY A HODA"
+                en: "100% CZECH ROSTER: WELCOME ADENY AND SNDR",
+                cz: "100% ČESKÁ SESTAVA: VÍTEJTE ADENY A SNDR"
             },
             content: {
-                en: "We have finalized our roster rebuild! Joining the herd are Fanta (IGL / Smoker), Macky (Sentinel), and Hoda (Initiator). Together with Dejwrix and Teikov, we are ready to dominate the scene once again.",
-                cz: "Přestavba sestavy je u konce! Ke stádu se připojují Fanta (IGL / Smoker), Macky (Sentinel) a Hoda (Initiator). Společně s Dejwrixem a Teikovem jsme připraveni znovu dominovat scéně."
+                en: "We are returning to our roots! We are now a 100% Czech roster once again. Woody and Rabadon are back in the main roster, joined by Adeny (Flex) and Sndr (Sub). The herd is ready to dominate.",
+                cz: "Vracíme se ke kořenům! Znovu jsme 100% česká sestava. Woody a Rabadon jsou zpět v hlavní sestavě, ke kterým se přidávají Adeny (Flex) a Sndr (Sub). Stádo je připraveno dominovat."
             },
             important: true
         },
