@@ -456,6 +456,18 @@ async function loadNews() {
 
     const simulatedNews = [
         {
+            date: "JULY 4, 2026",
+            title: {
+                en: "2-0 DAY IN PREMIER, WE ARE 7TH!",
+                cz: "2-0 DEN V PREMIERU, JSME 7.!"
+            },
+            content: {
+                en: "An incredibly successful day for the herd! We took down We Love Goths 13:9 and crushed Team Nocturnals 13:6, securing our 7th place in the Premier standings.",
+                cz: "Neuvěřitelně úspěšný den pro stádo! Porazili jsme We Love Goths 13:9 a přejeli Team Nocturnals 13:6, čímž jsme si zajistili 7. místo v tabulce Premier."
+            },
+            important: true
+        },
+        {
             date: "JULY 1, 2026",
             title: {
                 en: "100% CZECH ROSTER: WELCOME ADENY AND SNDR",
@@ -465,7 +477,7 @@ async function loadNews() {
                 en: "We are returning to our roots! We are now a 100% Czech roster once again. Woody and Rabadon are back in the main roster, joined by Adeny (Flex) and Sndr (Sub). The herd is ready to dominate.",
                 cz: "Vracíme se ke kořenům! Znovu jsme 100% česká sestava. Woody a Rabadon jsou zpět v hlavní sestavě, ke kterým se přidávají Adeny (Flex) a Sndr (Sub). Stádo je připraveno dominovat."
             },
-            important: true
+            important: false
         },
         {
             date: "JUNE 27, 2026",
