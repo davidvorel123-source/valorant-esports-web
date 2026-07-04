@@ -489,7 +489,7 @@ async function loadNews() {
                 en: "We are officially entering a rebuilding phase. Only Dejwrix and Teikov remain on the active roster. We are currently scouting for an Initiator, Smoker, and Sentinel to complete the new era of Goats CZ.",
                 cz: "Oficiálně vstupujeme do fáze přestavby. V aktivní sestavě zůstávají pouze Dejwrix a Teikov. Momentálně hledáme Initiatora, Smokera a Sentinela, kteří s námi odstartují novou éru Goats CZ."
             },
-            important: true
+            important: false
         },
         {
             date: "JUNE 25, 2026",
@@ -501,7 +501,7 @@ async function loadNews() {
                 en: "Wetrix has stepped down from the main roster. We thank him for his efforts and wish him the best. Taking his place as our Sentinel is Killua, who brings incredible firepower and tactical prowess to the team.",
                 cz: "Wetrix se rozhodl opustit hlavní sestavu. Děkujeme mu za jeho čas a přejeme mu hodně štěstí. Jeho místo Sentinela zaujme Killua, který do týmu přináší obrovskou palebnou sílu a taktické uvažování."
             },
-            important: true
+            important: false
         },
         {
             date: "JUNE 13, 2026",
@@ -513,7 +513,7 @@ async function loadNews() {
                 en: "After a tough 8:13 loss against biele zaby, we bounced back with a 13:8 victory over suai52 to secure our spot in the Premier Playoffs! The final showdown takes place next Saturday.",
                 cz: "Po těžké prohře 8:13 proti biele zaby jsme se vrátili zpět výhrou 13:8 nad suai52 a zajistili si tak místo v Premier Playoffs! Rozhodující bitva nás čeká příští sobotu."
             },
-            important: true
+            important: false
         },
         {
             date: "JUNE 5, 2026",
