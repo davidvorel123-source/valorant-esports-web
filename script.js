@@ -567,7 +567,7 @@ async function loadNews() {
 
     newsContainer.innerHTML = '';
 
-    simulatedNews.forEach(news => {
+    simulatedNews.slice(0, 3).forEach(news => {
         const tTitle = news.title[lang] || news.title.en;
         const tContent = news.content[lang] || news.content.en;
 
