@@ -171,22 +171,28 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateDynamicDates() {
         const elements = document.querySelectorAll('.dynamic-date');
         const now = new Date();
-        now.setHours(0, 0, 0, 0); // Zero out for accurate day diff
+        const nowZero = new Date(now);
+        nowZero.setHours(0, 0, 0, 0); // Zero out for accurate day diff
         
         elements.forEach(el => {
             const matchDateStr = el.getAttribute('data-match-date');
             if (!matchDateStr) return;
             
             const matchDate = new Date(matchDateStr);
+            
+            // Check if match was today but is already over (more than 3 hours ago)
+            const threeHoursMs = 3 * 60 * 60 * 1000;
+            const isTodayButOver = (now - matchDate) > threeHoursMs && now.toDateString() === matchDate.toDateString();
+            
             const matchDateZero = new Date(matchDate);
             matchDateZero.setHours(0, 0, 0, 0);
             
-            const diffMs = matchDateZero - now;
+            const diffMs = matchDateZero - nowZero;
             const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
             
             const lang = localStorage.getItem('gcz_lang') || 'en';
 
-            if (diffDays < 0) {
+            if (diffDays < 0 || isTodayButOver) {
                 text = lang === 'cz' ? 'ODEHRÁNO' : 'PLAYED';
             } else if (diffDays === 0) {
                 text = lang === 'cz' ? 'DNES' : 'TODAY';
@@ -225,7 +231,12 @@ document.addEventListener('DOMContentLoaded', () => {
             const distance = targetDate - now;
             
             if (distance < 0) {
-                el.innerHTML = `<span style="color: var(--val-red); font-weight: bold; font-size: 1.5rem; letter-spacing: 2px;">${lang === 'cz' ? 'PRÁVĚ PROBÍHÁ' : 'LIVE NOW'}</span>`;
+                const threeHoursMs = 3 * 60 * 60 * 1000;
+                if (Math.abs(distance) < threeHoursMs) {
+                    el.innerHTML = `<span style="color: var(--val-red); font-weight: bold; font-size: 1.5rem; letter-spacing: 2px;">${lang === 'cz' ? 'PRÁVĚ PROBÍHÁ' : 'LIVE NOW'}</span>`;
+                } else {
+                    el.innerHTML = `<span style="color: var(--val-grey); font-weight: bold; font-size: 1.5rem; letter-spacing: 2px;">${lang === 'cz' ? 'ODEHRÁNO' : 'PLAYED'}</span>`;
+                }
                 return;
             }
             
