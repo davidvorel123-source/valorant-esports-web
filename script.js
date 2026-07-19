@@ -467,6 +467,18 @@ async function loadNews() {
 
     const simulatedNews = [
         {
+            date: "JULY 19, 2026",
+            title: {
+                en: "2ND PLACE AT 3V3 RETAKE LAN & €200 CASHED!",
+                cz: "2. MÍSTO NA 3V3 RETAKE LAN A VÝHRA 200€!"
+            },
+            content: {
+                en: "Woody, Dejwrix, and Yuki represented Goats CZ today in a local 3v3 Retake LAN tournament. After an intense battle in the brackets, the team finished 2nd and cashed €200!",
+                cz: "Trio Woody, Dejwrix a Yuki reprezentovali Goats CZ na dnešním 3v3 Retake LAN turnaji. Po napínavých zápasech si kluci odvážejí skvělé 2. místo a finanční výhru 200€!"
+            },
+            important: true
+        },
+        {
             date: "JULY 4, 2026",
             title: {
                 en: "2-0 DAY IN PREMIER, WE ARE 7TH!",
