@@ -181,7 +181,8 @@ const translations = {
         "stats.tourneys": "Tournaments Won",
         "roster.mains": "Mains:",
         "schedule.vstbd": "GCZ vs. TBD",
-        "schedule.premier": "VALORANT PREMIER"
+        "schedule.premier": "VALORANT PREMIER",
+        "schedule.evc": "VALORANT EVC"
     },
     cz: {
         "media.title": "SESTŘIHY A VODY",
@@ -366,7 +367,8 @@ const translations = {
         "stats.tourneys": "Vyhraných turnajů",
         "roster.mains": "Mains:",
         "schedule.vstbd": "GCZ vs. TBD",
-        "schedule.premier": "VALORANT PREMIER"
+        "schedule.premier": "VALORANT PREMIER",
+        "schedule.evc": "VALORANT EVC"
     }
 };
 
