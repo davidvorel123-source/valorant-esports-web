@@ -182,7 +182,8 @@ const translations = {
         "roster.mains": "Mains:",
         "schedule.vstbd": "GCZ vs. TBD",
         "schedule.premier": "VALORANT PREMIER",
-        "schedule.evc": "VALORANT EVC"
+        "schedule.evc": "VALORANT EVC",
+        "schedule.vsvitality": "GCZ vs. Team Vitality"
     },
     cz: {
         "media.title": "SESTŘIHY A VODY",
@@ -368,7 +369,8 @@ const translations = {
         "roster.mains": "Mains:",
         "schedule.vstbd": "GCZ vs. TBD",
         "schedule.premier": "VALORANT PREMIER",
-        "schedule.evc": "VALORANT EVC"
+        "schedule.evc": "VALORANT EVC",
+        "schedule.vsvitality": "GCZ vs. Team Vitality"
     }
 };
 
