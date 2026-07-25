@@ -229,15 +229,26 @@ document.addEventListener('DOMContentLoaded', () => {
             if (!targetStr) return;
             const targetDate = new Date(targetStr).getTime();
             const distance = targetDate - now;
+            const card = el.closest('.match-card');
             
             if (distance < 0) {
                 const threeHoursMs = 3 * 60 * 60 * 1000;
                 if (Math.abs(distance) < threeHoursMs) {
                     el.innerHTML = `<span style="color: var(--val-red); font-weight: bold; font-size: 1.5rem; letter-spacing: 2px;">${lang === 'cz' ? 'PRÁVĚ PROBÍHÁ' : 'LIVE NOW'}</span>`;
+                    if (card && card.style.display === 'none') {
+                        card.style.display = 'inline-block';
+                    }
                 } else {
                     el.innerHTML = `<span style="color: var(--val-grey); font-weight: bold; font-size: 1.5rem; letter-spacing: 2px;">${lang === 'cz' ? 'ODEHRÁNO' : 'PLAYED'}</span>`;
+                    if (card && card.style.display !== 'none') {
+                        card.style.display = 'none';
+                    }
                 }
                 return;
+            }
+            
+            if (card && card.style.display === 'none') {
+                card.style.display = 'inline-block';
             }
             
             const days = Math.floor(distance / (1000 * 60 * 60 * 24));
@@ -274,6 +285,46 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             `;
         });
+
+        // Check if all match cards are hidden, and show placeholder if so
+        const container = document.querySelector('#schedule > div[style*="max-width"]');
+        if (container) {
+            const cards = container.querySelectorAll('.match-card');
+            let visibleCount = 0;
+            cards.forEach(card => {
+                if (card.style.display !== 'none') {
+                    visibleCount++;
+                }
+            });
+
+            let noMatchesMsg = container.querySelector('.no-matches-message');
+            if (visibleCount === 0) {
+                if (!noMatchesMsg) {
+                    noMatchesMsg = document.createElement('div');
+                    noMatchesMsg.className = 'no-matches-message';
+                    noMatchesMsg.style.color = 'var(--val-grey)';
+                    noMatchesMsg.style.fontSize = '1.5rem';
+                    noMatchesMsg.style.fontWeight = 'bold';
+                    noMatchesMsg.style.padding = '3rem';
+                    noMatchesMsg.style.border = '1px dashed rgba(255, 70, 85, 0.3)';
+                    noMatchesMsg.style.borderRadius = '4px';
+                    noMatchesMsg.style.width = '100%';
+                    noMatchesMsg.style.maxWidth = '800px';
+                    noMatchesMsg.style.background = 'rgba(15, 25, 35, 0.4)';
+                    noMatchesMsg.style.margin = '2rem 0';
+                    container.appendChild(noMatchesMsg);
+                } else {
+                    noMatchesMsg.style.display = 'block';
+                }
+                noMatchesMsg.innerHTML = lang === 'cz' ? 
+                    `📅 <span>ZŮSTAŇTE S NÁMI — DALŠÍ ZÁPASY BUDOU BRZY OZNÁMENY</span>` : 
+                    `📅 <span>STAY TUNED — UPCOMING MATCHES TO BE ANNOUNCED</span>`;
+            } else {
+                if (noMatchesMsg) {
+                    noMatchesMsg.style.display = 'none';
+                }
+            }
+        }
     }
     
     updateMatchCountdowns();
