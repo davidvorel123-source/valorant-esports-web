@@ -183,7 +183,8 @@ const translations = {
         "schedule.vstbd": "GCZ vs. TBD",
         "schedule.premier": "VALORANT PREMIER",
         "schedule.evc": "VALORANT EVC",
-        "schedule.vsvitality": "GCZ vs. Team Vitality"
+        "schedule.vsvitality": "GCZ vs. Team Vitality",
+        "schedule.tormenta": "CIRCUITO TORMENTA"
     },
     cz: {
         "media.title": "SESTŘIHY A VODY",
@@ -370,7 +371,8 @@ const translations = {
         "schedule.vstbd": "GCZ vs. TBD",
         "schedule.premier": "VALORANT PREMIER",
         "schedule.evc": "VALORANT EVC",
-        "schedule.vsvitality": "GCZ vs. Team Vitality"
+        "schedule.vsvitality": "GCZ vs. Team Vitality",
+        "schedule.tormenta": "CIRCUITO TORMENTA"
     }
 };
 
