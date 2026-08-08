@@ -184,7 +184,9 @@ const translations = {
         "schedule.premier": "VALORANT PREMIER",
         "schedule.evc": "VALORANT EVC",
         "schedule.vsvitality": "GCZ vs. Team Vitality",
-        "schedule.tormenta": "CIRCUITO TORMENTA"
+        "schedule.tormenta": "CIRCUITO TORMENTA",
+        "schedule.playoffs": "PREMIER PLAYOFFS",
+        "schedule.quarterfinal": "QUARTER FINAL"
     },
     cz: {
         "media.title": "SESTŘIHY A VODY",
@@ -372,7 +374,9 @@ const translations = {
         "schedule.premier": "VALORANT PREMIER",
         "schedule.evc": "VALORANT EVC",
         "schedule.vsvitality": "GCZ vs. Team Vitality",
-        "schedule.tormenta": "CIRCUITO TORMENTA"
+        "schedule.tormenta": "CIRCUITO TORMENTA",
+        "schedule.playoffs": "PREMIER PLAYOFFS",
+        "schedule.quarterfinal": "ČTVRŤFINÁLE"
     }
 };
 
