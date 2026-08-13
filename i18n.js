@@ -187,7 +187,8 @@ const translations = {
         "schedule.tormenta": "CIRCUITO TORMENTA",
         "schedule.playoffs": "PREMIER PLAYOFFS",
         "schedule.quarterfinal": "QUARTER FINAL",
-        "schedule.volt": "VOLT VALORANT OPEN #1"
+        "schedule.volt": "VOLT VALORANT OPEN #1",
+        "schedule.grandfinal": "GRAND FINAL"
     },
     cz: {
         "media.title": "SESTŘIHY A VODY",
@@ -378,7 +379,8 @@ const translations = {
         "schedule.tormenta": "CIRCUITO TORMENTA",
         "schedule.playoffs": "PREMIER PLAYOFFS",
         "schedule.quarterfinal": "ČTVRŤFINÁLE",
-        "schedule.volt": "VOLT VALORANT OPEN #1"
+        "schedule.volt": "VOLT VALORANT OPEN #1",
+        "schedule.grandfinal": "GRAND FINÁLE"
     }
 };
 
