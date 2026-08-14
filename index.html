@@ -146,7 +146,7 @@
     <section id="stats" style="padding: 60px 2rem; background-color: var(--val-dark); border-bottom: 1px solid rgba(255,255,255,0.05);">
         <div style="max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 0; text-align: center;">
             <div style="padding: 2rem; border-right: 1px solid rgba(255,255,255,0.08);">
-                <span class="stat-counter" data-target="2" style="display: block; font-family: var(--font-heading); font-size: 4.5rem; color: var(--val-red); line-height: 1; font-weight: 900;">0</span>
+                <span class="stat-counter" data-target="3" style="display: block; font-family: var(--font-heading); font-size: 4.5rem; color: var(--val-red); line-height: 1; font-weight: 900;">0</span>
                 <span data-i18n="stats.wins" style="color: var(--val-grey); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-top: 8px;">Tournament Wins</span>
             </div>
             <div style="padding: 2rem; border-right: 1px solid rgba(255,255,255,0.08);">
@@ -443,6 +443,13 @@
                 <h3><span data-i18n="legacy.matchHistory">Zápasy z Premier a Turnajů</span></h3>
                 <div class="timeline-container">
                     <div class="timeline-item win">
+                        <div class="timeline-date">13. 08. 2026</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tournament">VOLT Open</div>
+                            <div class="timeline-match">GCZ <span>2:0</span> N2xt valorant</div>
+                        </div>
+                    </div>
+                    <div class="timeline-item win">
                         <div class="timeline-date">12. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">VOLT Open</div>
@@ -679,6 +686,7 @@
             <div class="legacy-column">
                 <h3><span data-i18n="legacy.milestones">Milestones & Goals</span></h3>
                 <ul class="milestone-list">
+                    <li data-i18n="legacy.m6">🏆 1st Place - VOLT Valorant Open #1</li>
                     <li data-i18n="legacy.m2">🏆 1st Place - Playzone Tournament</li>
                     <li data-i18n="legacy.m3">🥇 1st Place - Wolvesden Tournament</li>
                     <li data-i18n="legacy.m4">🥈 2nd Place - 3v3 Retake LAN (€200)</li>
@@ -730,10 +738,19 @@
                 </div>
             </div>
 
-            <!-- Trophy 3 (Empty slot) -->
-            <div class="trophy-card" style="position: relative; width: 250px; height: 350px; background: transparent; border: 1px dashed rgba(255,255,255,0.2); display: flex; flex-direction: column; align-items: center; justify-content: center;">
-                <span style="font-size: 4rem; opacity: 0.1; margin-bottom: 1rem;">🏆</span>
-                <span data-i18n="trophy.wait" style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-align: center; opacity: 0.5;">AWAITING PREMIER<br>PLAYOFFS</span>
+            <!-- Trophy 3 (VOLT Open #1) -->
+            <div class="trophy-card" style="position: relative; width: 250px; height: 350px; background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, rgba(15,25,35,1) 100%); border: 1px solid rgba(255,255,255,0.1); border-bottom: 4px solid var(--val-red); display: flex; flex-direction: column; align-items: center; justify-content: center; transition: transform 0.3s, box-shadow 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.boxShadow='0 20px 40px rgba(255,70,85,0.2)'; this.querySelector('.trophy-details').style.opacity='1';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none'; this.querySelector('.trophy-details').style.opacity='0';">
+                <span style="font-size: 7rem; filter: drop-shadow(0 0 20px rgba(255,215,0,0.4)); margin-bottom: 1rem; transition: transform 0.5s;" onmouseover="this.style.transform='scale(1.1) rotate(5deg)';" onmouseout="this.style.transform='scale(1) rotate(0deg)';">🏆</span>
+                <h3 data-i18n="trophy.volt" style="font-family: var(--font-heading); font-size: 1.5rem; color: var(--val-white); text-align: center; margin-bottom: 0.5rem;">VOLT OPEN<br>#1</h3>
+                <span data-i18n="trophy.1st" style="color: #ffd700; font-weight: bold; letter-spacing: 2px;">1ST PLACE</span>
+                <!-- Hover Details -->
+                <div class="trophy-details" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(15, 25, 35, 0.95); opacity: 0; transition: opacity 0.3s; display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 2rem; text-align: center; z-index: 10;">
+                    <span data-i18n="trophy.score_volt" style="color: var(--val-red); font-size: 1.2rem; font-weight: bold; margin-bottom: 1rem;">FINAL SCORE: 2-0</span>
+                    <span data-i18n="trophy.vs_volt" style="color: var(--val-white); font-size: 0.9rem; margin-bottom: 5px;">vs. N2xt valorant</span>
+                    <div style="width: 100%; height: 1px; background-color: rgba(255,255,255,0.1); margin: 10px 0;"></div>
+                    <span data-i18n="trophy.tmvp_volt" style="color: var(--val-grey); font-size: 0.8rem; text-transform: uppercase;">Team MVP</span>
+                    <span style="color: #53fc18; font-weight: bold; font-size: 1.2rem; margin-top: 5px;">WOODY</span>
+                </div>
             </div>
         </div>
     </section>

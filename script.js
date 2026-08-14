@@ -518,6 +518,18 @@ async function loadNews() {
 
     const simulatedNews = [
         {
+            date: "AUGUST 13, 2026",
+            title: {
+                en: "CHAMPIONS OF VOLT VALORANT OPEN #1!",
+                cz: "ŠAMPIONI VOLT VALORANT OPEN #1!"
+            },
+            content: {
+                en: "Goats CZ are the champions! After an incredible tournament run, the team took down N2xt valorant 2-0 in the Grand Finals to secure 1st place in the VOLT Valorant Open #1!",
+                cz: "Goats CZ jsou šampioni! Po neuvěřitelném průchodu turnajem kluci ve finále porazili N2xt valorant 2:0 a odvážejí si zasloužené 1. místo z VOLT Valorant Open #1!"
+            },
+            important: true
+        },
+        {
             date: "JULY 19, 2026",
             title: {
                 en: "2ND PLACE AT 3V3 RETAKE LAN & €200 CASHED!",
