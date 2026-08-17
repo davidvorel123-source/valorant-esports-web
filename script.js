@@ -518,6 +518,18 @@ async function loadNews() {
 
     const simulatedNews = [
         {
+            date: "AUGUST 15, 2026",
+            title: {
+                en: "PREMIER PLAYOFFS RUN CONCLUDES",
+                cz: "CESTA V PREMIER PLAY-OFF KONČÍ"
+            },
+            content: {
+                en: "Our Premier season has come to an end. Despite a strong effort, the team fell 9-13 on Lotus in the first round of the Playoffs against чм vinEgret. We are proud of the team's effort and will be back stronger next season!",
+                cz: "Naše cesta v play-off turnaji Premier bohužel končí v prvním kole. Po vyrovnaném boji kluci podlehli soupeři чм винЕгрет 9:13 na mapě Lotus. Děkujeme všem za podporu v této sezóně!"
+            },
+            important: true
+        },
+        {
             date: "AUGUST 13, 2026",
             title: {
                 en: "CHAMPIONS OF VOLT VALORANT OPEN #1!",
