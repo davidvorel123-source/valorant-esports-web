@@ -3,18 +3,38 @@ document.addEventListener('DOMContentLoaded', () => {
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
     const navLinks = document.querySelector('.nav-links');
-    if (mobileMenuBtn) {
-        mobileMenuBtn.addEventListener('click', () => {
-            const isOpen = navLinks.style.display === 'flex';
-            navLinks.style.display = isOpen ? 'none' : 'flex';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.top = '100%';
-            navLinks.style.left = '0';
-            navLinks.style.width = '100%';
-            navLinks.style.backgroundColor = 'rgba(15, 25, 35, 0.98)';
-            navLinks.style.padding = '1rem 0';
-            navLinks.style.borderBottom = '2px solid var(--val-red)';
+
+    if (mobileMenuBtn && navLinks) {
+        // Toggle open/close
+        mobileMenuBtn.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = navLinks.classList.contains('nav-open');
+            navLinks.classList.toggle('nav-open', !isOpen);
+            mobileMenuBtn.classList.toggle('open', !isOpen);
+        });
+
+        // Close when a nav link is clicked
+        navLinks.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('nav-open');
+                mobileMenuBtn.classList.remove('open');
+            });
+        });
+
+        // Close when clicking outside navbar
+        document.addEventListener('click', (e) => {
+            if (!e.target.closest('.navbar')) {
+                navLinks.classList.remove('nav-open');
+                mobileMenuBtn.classList.remove('open');
+            }
+        });
+
+        // Reset on resize to desktop
+        window.addEventListener('resize', () => {
+            if (window.innerWidth > 900) {
+                navLinks.classList.remove('nav-open');
+                mobileMenuBtn.classList.remove('open');
+            }
         });
     }
 
