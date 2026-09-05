@@ -122,7 +122,7 @@
         "news.soon": "COMING SOON",
         "about.p1": "VINFO is a premier Valorant team built on aggressive plays, tactical superiority, and an unbreakable bond. Formed by a group of High Immortal and Radiant prodigies, our journey started in local competitive ladders. We are dominating the scene with our unique, fearless playstyle.",
         "about.p2": "Led by our IGL Dejwrix, we don't just play the game; we redefine the meta. From flawless executes to unbreakable site holds, the 'VINFO' operates as a single, lethal unit. Our eyes are set on the highest tiers of European Valorant, and we won't stop until we reach the top.",
-        "about.stat1": "100% Czech Roster",
+        "about.stat1": "International Roster",
         "about.stat2_num": "#5",
         "about.stat2": "in Premier",
         "about.stat3": "Matches Won",
@@ -320,7 +320,7 @@
         "about.title": "STÁDO",
         "about.p1": "VINFO je elitní Valorant tým postavený na agresivních plays, taktické převaze a nezlomném poutu. Jsme složeni ze skupiny High Immortal a Radiant hráčů a naše cesta začala v kompetitivních žebříčcích. Dominujeme scéně s naším unikátním a nebojácným stylem hry.",
         "about.p2": "Pod vedením našeho IGL Dejwrixe hru nejen hrajeme, my utváříme metu. Od bezchybných executů po neprolomitelné držení sajtů, 'VINFO' funguje jako jediná, smrtící jednotka. Náš zrak se upírá na ty nejvyšší vrstvy evropského Valorantu a nezastavíme se, dokud nebudeme na vrcholu.",
-        "about.stat1": "100% Česká sestava",
+        "about.stat1": "Mezinárodní sestava",
         "about.stat2_num": "#5",
         "about.stat2": "v Premier",
         "about.stat3": "Vyhraných zápasů",
@@ -456,6 +456,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // Safety re-apply after short delay to catch any late-rendered elements
     setTimeout(() => setLanguage(currentLang), 150);
 });
+
 
 
 
