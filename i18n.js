@@ -50,6 +50,8 @@
         "staff.name": "thomas",
         "staff.mental_coach_name": "Yonq",
         "role.igl": "IGL / DUELIST",
+        "role.igl_controller": "IGL / CONTROLLER",
+        "role.second_igl_duelist": "SECOND IGL / DUELIST",
         "role.duelist": "DUELIST",
         "role.initiator": "INITIATOR",
         "role.smoker": "SMOKER",
@@ -246,6 +248,8 @@
         "staff.name": "thomas",
         "staff.mental_coach_name": "Yonq",
         "role.igl": "IGL / DUELIST",
+        "role.igl_controller": "IGL / CONTROLLER",
+        "role.second_igl_duelist": "SECOND IGL / DUELIST",
         "role.duelist": "DUELIST",
         "role.initiator": "INITIATOR",
         "role.smoker": "SMOKER",
@@ -452,6 +456,8 @@ document.addEventListener('DOMContentLoaded', () => {
     // Safety re-apply after short delay to catch any late-rendered elements
     setTimeout(() => setLanguage(currentLang), 150);
 });
+
+
 
 
 
