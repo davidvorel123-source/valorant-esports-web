@@ -538,6 +538,18 @@ async function loadNews() {
 
     const simulatedNews = [
         {
+            date: "SEPTEMBER 5, 2026",
+            title: {
+                en: "WE REACHED INVITE RANK IN PREMIER!",
+                cz: "DALI JSME INVITE RANK V PREMIERU!"
+            },
+            content: {
+                en: "We finally did it! The hard work paid off and we have officially reached the Invite rank in Premier. Huge thanks to everyone who supported us on this journey!",
+                cz: "Konečně se to povedlo! Tvrdá práce se vyplatila a oficiálně jsme dosáhli na Invite rank v Premieru. Obrovské díky všem, kteří nás na této cestě podporovali!"
+            },
+            important: true
+        },
+        {
             date: "AUGUST 15, 2026",
             title: {
                 en: "PREMIER PLAYOFFS RUN CONCLUDES",
