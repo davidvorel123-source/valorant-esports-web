@@ -1,4 +1,4 @@
-/* Base and Variables */
+﻿/* Base and Variables */
 :root {
     --val-red: #ff4655;
     --val-dark: #111111;
@@ -130,7 +130,7 @@ h1, h2, h3, .logo-text, .section-title {
     margin-bottom: 2rem;
 }
 
-.goat-logo-placeholder {
+.vinfo-logo-placeholder {
     font-size: 6rem;
     background-color: var(--val-red);
     width: 150px;
@@ -800,7 +800,7 @@ h1, h2, h3, .logo-text, .section-title {
     .hero-content { padding: 1.5rem !important; }
     .hero-title { font-size: 2.8rem !important; letter-spacing: 2px !important; }
     .hero-subtitle { font-size: 0.95rem !important; padding: 0 0.5rem; }
-    .goat-logo-image, img.goat-logo-image { width: 130px !important; height: 130px !important; }
+    .vinfo-logo-image, img.vinfo-logo-image { width: 130px !important; height: 130px !important; }
     .cta-button { font-size: 1.1rem !important; padding: 0.8rem 2rem !important; }
 
     /* Hero links row */
@@ -905,7 +905,7 @@ h1, h2, h3, .logo-text, .section-title {
     .player-image { height: 170px !important; }
     .player-name { font-size: 1.5rem !important; }
     .timeline-content { flex-direction: column !important; align-items: flex-start !important; }
-    .goat-logo-image, img.goat-logo-image { width: 100px !important; height: 100px !important; }
+    .vinfo-logo-image, img.vinfo-logo-image { width: 100px !important; height: 100px !important; }
     div[style*="font-size: 3.5rem"] { font-size: 1.6rem !important; }
 }
 
@@ -926,3 +926,4 @@ h1, h2, h3, .logo-text, .section-title {
 .custom-cursor-follower { position: fixed; top: 0; left: 0; width: 30px; height: 30px; border: 2px solid rgba(255, 70, 85, 0.4); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate3d(-50%, -50%, 0); will-change: transform; transition: width 0.2s, height 0.2s, border-color 0.2s; }
 .custom-cursor.hover { width: 10px; height: 10px; background-color: var(--val-white); }
 .custom-cursor-follower.hover { width: 40px; height: 40px; border-color: var(--val-white); background-color: rgba(255, 255, 255, 0.1); }
+

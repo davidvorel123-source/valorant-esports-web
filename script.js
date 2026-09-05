@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -568,8 +568,8 @@ async function loadNews() {
                 cz: "ŠAMPIONI VOLT VALORANT OPEN #1!"
             },
             content: {
-                en: "Goats CZ are the champions! After an incredible tournament run, the team took down N2xt valorant 2-0 in the Grand Finals to secure 1st place in the VOLT Valorant Open #1!",
-                cz: "Goats CZ jsou šampioni! Po neuvěřitelném průchodu turnajem kluci ve finále porazili N2xt valorant 2:0 a odvážejí si zasloužené 1. místo z VOLT Valorant Open #1!"
+                en: "VINFO Esports are the champions! After an incredible tournament run, the team took down N2xt valorant 2-0 in the Grand Finals to secure 1st place in the VOLT Valorant Open #1!",
+                cz: "VINFO Esports jsou šampioni! Po neuvěřitelném průchodu turnajem kluci ve finále porazili N2xt valorant 2:0 a odvážejí si zasloužené 1. místo z VOLT Valorant Open #1!"
             },
             important: true
         },
@@ -580,8 +580,8 @@ async function loadNews() {
                 cz: "2. MÍSTO NA 3V3 RETAKE LAN A VÝHRA 200€!"
             },
             content: {
-                en: "Woody, Dejwrix, and Yuki represented Goats CZ today in a local 3v3 Retake LAN tournament. After an intense battle in the brackets, the team finished 2nd and cashed €200!",
-                cz: "Trio Woody, Dejwrix a Yuki reprezentovali Goats CZ na dnešním 3v3 Retake LAN turnaji. Po napínavých zápasech si kluci odvážejí skvělé 2. místo a finanční výhru 200€!"
+                en: "Woody, Dejwrix, and Yuki represented VINFO Esports today in a local 3v3 Retake LAN tournament. After an intense battle in the brackets, the team finished 2nd and cashed €200!",
+                cz: "Trio Woody, Dejwrix a Yuki reprezentovali VINFO Esports na dnešním 3v3 Retake LAN turnaji. Po napínavých zápasech si kluci odvážejí skvělé 2. místo a finanční výhru 200€!"
             },
             important: true
         },
@@ -592,8 +592,8 @@ async function loadNews() {
                 cz: "2-0 DEN V PREMIERU, JSME 7.!"
             },
             content: {
-                en: "An incredibly successful day for the herd! We took down We Love Goths 13:9 and crushed Team Nocturnals 13:6, securing our 7th place in the Premier standings.",
-                cz: "Neuvěřitelně úspěšný den pro stádo! Porazili jsme We Love Goths 13:9 a přejeli Team Nocturnals 13:6, čímž jsme si zajistili 7. místo v tabulce Premier."
+                en: "An incredibly successful day for VINFO Esports! We took down We Love Goths 13:9 and crushed Team Nocturnals 13:6, securing our 7th place in the Premier standings.",
+                cz: "Neuvěřitelně úspěšný den pro VINFO! Porazili jsme We Love Goths 13:9 a přejeli Team Nocturnals 13:6, čímž jsme si zajistili 7. místo v tabulce Premier."
             },
             important: true
         },
@@ -605,7 +605,7 @@ async function loadNews() {
             },
             content: {
                 en: "We are returning to our roots! We are now a 100% Czech roster once again. Woody and Rabadon are back in the main roster, joined by Adeny (Flex) and Sndr (Sub). The herd is ready to dominate.",
-                cz: "Vracíme se ke kořenům! Znovu jsme 100% česká sestava. Woody a Rabadon jsou zpět v hlavní sestavě, ke kterým se přidávají Adeny (Flex) a Sndr (Sub). Stádo je připraveno dominovat."
+                cz: "Vracíme se ke kořenům! Znovu jsme 100% česká sestava. Woody a Rabadon jsou zpět v hlavní sestavě, ke kterým se přidávají Adeny (Flex) a Sndr (Sub). VINFO je připraveno dominovat."
             },
             important: false
         },
@@ -616,8 +616,8 @@ async function loadNews() {
                 cz: "PŘESTAVBA TÝMU: HLEDÁME HRÁČE"
             },
             content: {
-                en: "We are officially entering a rebuilding phase. Only Dejwrix and Teikov remain on the active roster. We are currently scouting for an Initiator, Smoker, and Sentinel to complete the new era of Goats CZ.",
-                cz: "Oficiálně vstupujeme do fáze přestavby. V aktivní sestavě zůstávají pouze Dejwrix a Teikov. Momentálně hledáme Initiatora, Smokera a Sentinela, kteří s námi odstartují novou éru Goats CZ."
+                en: "We are officially entering a rebuilding phase. Only Dejwrix and Teikov remain on the active roster. We are currently scouting for an Initiator, Smoker, and Sentinel to complete the new era of VINFO Esports.",
+                cz: "Oficiálně vstupujeme do fáze přestavby. V aktivní sestavě zůstávají pouze Dejwrix a Teikov. Momentálně hledáme Initiatora, Smokera a Sentinela, kteří s námi odstartují novou éru VINFO Esports."
             },
             important: false
         },
@@ -676,8 +676,8 @@ async function loadNews() {
                 cz: "NOVÝ WEB SPUŠTĚN"
             },
             content: {
-                en: "Goats CZ officially launched a brand new website complete with dynamic forms, improved SEO, and full bilingual support.",
-                cz: "Goats CZ oficiálně spustili zbrusu nový web s dynamickými formuláři, lepším SEO a kompletní dvojjazyčnou podporou."
+                en: "VINFO Esports officially launched a brand new website complete with dynamic forms, improved SEO, and full bilingual support.",
+                cz: "VINFO Esports oficiálně spustili zbrusu nový web s dynamickými formuláři, lepším SEO a kompletní dvojjazyčnou podporou."
             },
             important: false
         },
@@ -688,8 +688,8 @@ async function loadNews() {
                 cz: "SESTAVA UZAMČENA"
             },
             content: {
-                en: "The new Goats CZ roster is officially locked in for the upcoming season. Weeks of tryouts and intense practice have forged a deadly core.",
-                cz: "Nová sestava Goats CZ je oficiálně uzamčena pro nadcházející sezónu. Týdny zkoušek a intenzivního tréninku vykovaly smrtící jádro."
+                en: "The new VINFO Esports roster is officially locked in for the upcoming season. Weeks of tryouts and intense practice have forged a deadly core.",
+                cz: "Nová sestava VINFO Esports je oficiálně uzamčena pro nadcházející sezónu. Týdny zkoušek a intenzivního tréninku vykovaly smrtící jádro."
             },
             important: false
         }
@@ -781,3 +781,4 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+

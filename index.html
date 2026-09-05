@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Official website of Goats CZ (GCZ), a professional Valorant esports team.">
-    <meta property="og:title" content="Goats CZ | Professional Valorant Esports Team">
-    <meta property="og:description" content="Official website of Goats CZ (GCZ). We don't adapt to the meta. We dictate it.">
-    <meta property="og:image" content="logo.png">
+    <meta name="description" content="Official website of VINFO Esports, a professional Valorant esports team.">
+    <meta property="og:title" content="VINFO Esports | Professional Valorant Esports Team">
+    <meta property="og:description" content="Official website of VINFO Esports. We don't adapt to the meta. We dictate it.">
+    <meta property="og:image" content="vinfo-logo.png">
     <meta property="og:url" content="https://goatscz.com">
     <meta name="twitter:card" content="summary_large_image">
-    <title>Goats CZ | GCZ - Valorant Esports Team</title>
+    <title>VINFO Esports | VINFO - Valorant Esports Team</title>
     <link rel="stylesheet" href="styles.css?v=4">
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="icon" type="image/png" href="vinfo-logo.png">
     <style>
         .timeline-container { display: flex; flex-direction: column; gap: 1.5rem; transition: max-height 0.5s ease; }
         .timeline-container .timeline-item:nth-child(n+5) { display: none; }
@@ -43,7 +43,7 @@
 <body>
     <!-- Preloader -->
     <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--val-darker); z-index: 99999; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 0.5s ease, visibility 0.5s;">
-        <img src="logo.png" style="width: 100px; height: 100px; border-radius: 50%; border: 2px solid var(--val-red); animation: pulse 1.5s infinite; margin-bottom: 20px;">
+        <img src="vinfo-logo.png" style="width: 120px; height: auto; filter: drop-shadow(0 0 15px rgba(255, 70, 85, 0.4)); animation: pulse 1.5s infinite; margin-bottom: 20px;">
         <h2 style="font-family: var(--font-heading); color: var(--val-white); letter-spacing: 4px; text-transform: uppercase;"><span data-i18n="load.text">CONNECTING TO SERVER...</span></h2>
         <div style="width: 200px; height: 4px; background: rgba(255,255,255,0.1); margin-top: 10px; overflow: hidden; border-radius: 2px;">
             <div id="preloader-bar" style="width: 0%; height: 100%; background: var(--val-red); transition: width 0.1s;"></div>
@@ -58,7 +58,7 @@
     <div id="custom-cursor-follower" class="custom-cursor-follower"></div>    <nav class="navbar">
         <div class="nav-container">
             <div class="logo">
-                <span class="logo-text">GCZ</span>
+                <span class="logo-text">VINFO</span>
             </div>
             <ul class="nav-links">
                 <li><a href="#home" data-i18n="nav.home">Home</a></li>
@@ -93,7 +93,7 @@
         <div class="hero-overlay"></div>
         <div class="hero-content">
             <div class="hero-logo">
-                <img src="logo.png" alt="Goats CZ Logo" class="goat-logo-image" style="width: 200px; height: 200px; border-radius: 50%; border: 4px solid var(--val-white); box-shadow: 0 0 30px rgba(255, 70, 85, 0.4); background-color: #ffffff; object-fit: cover;">
+                <img src="vinfo-logo.png" alt="VINFO Esports Logo" class="vinfo-logo-image" style="width: 250px; height: auto; filter: drop-shadow(0 0 20px rgba(255, 70, 85, 0.4)); margin-bottom: 20px;">
             </div>
             <h1 class="hero-title" data-i18n="hero.title">DEFY THE LIMITS</h1>
             <p class="hero-subtitle" data-i18n="hero.subtitle" style="font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 3px; color: var(--val-red); text-transform: uppercase;">"SILENCE THE NOISE. DOMINATE THE SERVER."</p>
@@ -125,7 +125,7 @@
             <div class="match-card" style="background: rgba(15, 25, 35, 0.8); padding: 2.5rem 4rem; border: 1px solid var(--val-red); display: inline-block; text-align: center; box-shadow: 0 10px 40px rgba(255, 70, 85, 0.15); border-radius: 4px; width: 100%; max-width: 800px; margin-bottom: 1rem;">
                 <span style="color: var(--val-grey); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 1rem; text-transform: uppercase;"><span data-i18n="schedule.upcoming">UPCOMING MATCH</span> • <span class="dynamic-date" data-match-date="2026-09-05T19:00:00" style="color: var(--val-red);">LOADING...</span></span>
                 <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 2px 2px 0 var(--val-red);" data-i18n="schedule.premier">VALORANT PREMIER</h3>
-                <span style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem;" data-i18n="schedule.vstbd">GCZ vs. TBD</span>
+                <span style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem;" data-i18n="schedule.vstbd">VINFO vs. TBD</span>
                 <div class="match-countdown" data-target="2026-09-05T19:00:00" style="margin-bottom: 1.5rem;"></div>
                 <a href="https://kick.com/gczdejwrix" target="_blank" style="display: inline-block; color: #53fc18; font-weight: bold; text-decoration: none; font-size: 1.2rem; letter-spacing: 1.5px; background: rgba(83, 252, 24, 0.15); padding: 10px 25px; border-radius: 4px; border: 2px solid rgba(83, 252, 24, 0.6); transition: all 0.3s;" onmouseover="this.style.background='rgba(83, 252, 24, 0.3)'; this.style.boxShadow='0 0 20px rgba(83, 252, 24, 0.3)'; this.style.transform='scale(1.05)';" onmouseout="this.style.background='rgba(83, 252, 24, 0.15)'; this.style.boxShadow='none'; this.style.transform='scale(1)';"><i class="fa-solid fa-play"></i> <span data-i18n="schedule.watch">WATCH LIVE ON KICK</span></a>
             </div>
@@ -181,7 +181,7 @@
         <div style="position: relative; z-index: 1; max-width: 900px; margin: 0 auto;">
             <span style="font-size: 6rem; color: var(--val-red); opacity: 0.3; display: block; margin-bottom: -3rem; font-family: serif;">"</span>
             <h2 style="font-family: var(--font-heading); font-size: 4rem; color: var(--val-white); margin-bottom: 2rem; line-height: 1.1; text-transform: uppercase;"><span data-i18n="manifesto.q1">WE DON'T ADAPT TO THE META.</span><br><span style="color: var(--val-red);" data-i18n="manifesto.q2">WE DICTATE IT.</span></h2>
-            <p style="color: var(--val-grey); font-size: 1.4rem; line-height: 1.8;" data-i18n="manifesto.desc">Goats CZ was not built to merely participate. It was built to dominate. Every execute, every retake, every single bullet fired is calculated to break our opponents' mental. We are the herd, and we will trample everything in our path to Champions.</p>
+            <p style="color: var(--val-grey); font-size: 1.4rem; line-height: 1.8;" data-i18n="manifesto.desc">VINFO Esports was not built to merely participate. It was built to dominate. Every execute, every retake, every single bullet fired is calculated to break our opponents' mental. We are VINFO Esports, and we will trample everything in our path to Champions.</p>
         </div>
     </section>
 
@@ -191,7 +191,7 @@
             <div style="flex: 1 1 300px;">
                 <span style="color: var(--val-red); font-weight: 800; font-size: 0.85rem; letter-spacing: 3px;" data-i18n="tryouts.join">JOIN THE HERD</span>
                 <h2 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; font-weight: 900; line-height: 1;" data-i18n="tryouts.title">THINK YOU GOT WHAT IT TAKES?</h2>
-                <p style="color: var(--val-grey); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;" data-i18n="tryouts.desc">We're always scouting for exceptional talent. If you're Immortal+ and believe you can elevate GCZ to the next level, reach out. We run structured tryouts with a clear evaluation process.</p>
+                <p style="color: var(--val-grey); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;" data-i18n="tryouts.desc">We're always scouting for exceptional talent. If you're Immortal+ and believe you can elevate VINFO to the next level, reach out. We run structured tryouts with a clear evaluation process.</p>
                 
                 <ul style="list-style: none; padding: 0; color: var(--val-grey); margin-bottom: 3rem;">
                     <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><span style="color: var(--val-red);">→</span> <span data-i18n="tryouts.req1">Immortal 3+ or equivalent Premier rating</span></li>
@@ -202,8 +202,8 @@
             </div>
             
             <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 1.5rem;">
-                <a href="mailto:goatscz0@gmail.com" style="display: flex; align-items: center; justify-content: center; gap: 15px; background-color: var(--val-red); color: white; padding: 1.5rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 2px; text-align: center; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(255,70,85,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
-                    ✉ goatscz0@gmail.com
+                <a href="mailto:vinfoesports@gmail.com" style="display: flex; align-items: center; justify-content: center; gap: 15px; background-color: var(--val-red); color: white; padding: 1.5rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 2px; text-align: center; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='0 10px 20px rgba(255,70,85,0.3)';" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='none';">
+                    ✉ vinfoesports@gmail.com
                 </a>
                 <a href="https://discord.gg/9kUvFVUeXs" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 15px; background-color: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; padding: 1.5rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 2px; text-align: center; transition: all 0.2s;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.5)';" onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)';">
                     <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" width="30" style="filter: brightness(0) invert(1);"> <span data-i18n="tryouts.dm">DM US ON DISCORD</span>
@@ -308,8 +308,8 @@
         <div class="about-container">
             <div class="about-text">
                 <h2 data-i18n="about.title">THE HERD</h2>
-                <p data-i18n="about.p1">Goats CZ (GCZ) is a premier Valorant team built on aggressive plays, tactical superiority, and an unbreakable bond. Formed by a group of High Immortal and Radiant prodigies, our journey started in the local Czech ladders. As a purely Czech roster, we are dominating the domestic scene with our unique, fearless playstyle.</p>
-                <p style="margin-top: 1rem; margin-bottom: 3rem;" data-i18n="about.p2">Led by our IGL Dejwrix, we don't just play the game; we redefine the meta. From flawless executes to unbreakable site holds, the 'Herd' operates as a single, lethal unit. Our eyes are set on the highest tiers of European Valorant, and we won't stop until we reach the top.</p>
+                <p data-i18n="about.p1">VINFO Esports is a premier Valorant team built on aggressive plays, tactical superiority, and an unbreakable bond. Formed by a group of High Immortal and Radiant prodigies, our journey started in the local Czech ladders. As a purely Czech roster, we are dominating the domestic scene with our unique, fearless playstyle.</p>
+                <p style="margin-top: 1rem; margin-bottom: 3rem;" data-i18n="about.p2">Led by our IGL Dejwrix, we don't just play the game; we redefine the meta. From flawless executes to unbreakable site holds, the 'VINFO' operates as a single, lethal unit. Our eyes are set on the highest tiers of European Valorant, and we won't stop until we reach the top.</p>
                 <div class="stats-grid">
                     <div class="stat-box">
                         <span class="stat-number">100%</span>
@@ -349,12 +349,12 @@
                 <div class="philosophy-card" style="background: linear-gradient(135deg, #111 0%, #0a1a0d 100%); border: 1px solid rgba(255,70,85,0.3); padding: 2.5rem; text-align: center; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,70,85,0.3)';">
                     <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🔄</div>
                     <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;" data-i18n="about.adapt">ADAPTABILITY</h3>
-                    <p style="color: var(--val-grey); line-height: 1.7;" data-i18n="about.adapt_text">Mid-round reads, map switches, counter-strategies. The Herd adapts faster than the enemy can respond. Winning is a mindset, not a plan.</p>
+                    <p style="color: var(--val-grey); line-height: 1.7;" data-i18n="about.adapt_text">Mid-round reads, map switches, counter-strategies. VINFO Esports adapts faster than the enemy can respond. Winning is a mindset, not a plan.</p>
                 </div>
                 <div class="philosophy-card" style="background: linear-gradient(135deg, #111 0%, #1a150a 100%); border: 1px solid rgba(255,70,85,0.3); padding: 2.5rem; text-align: center; transition: transform 0.3s, border-color 0.3s;" onmouseover="this.style.transform='translateY(-10px)'; this.style.borderColor='var(--val-red)';" onmouseout="this.style.transform='translateY(0)'; this.style.borderColor='rgba(255,70,85,0.3)';">
                     <div style="font-size: 3.5rem; margin-bottom: 1.5rem;">🤝</div>
                     <h3 style="font-family: var(--font-heading); font-size: 2rem; color: var(--val-red); margin-bottom: 1rem; letter-spacing: 1px;" data-i18n="about.brotherhood">BROTHERHOOD</h3>
-                    <p style="color: var(--val-grey); line-height: 1.7;" data-i18n="about.brotherhood_text">GCZ is not just a team. We are friends who compete at the highest level. The trust between us on the server translates directly into results every single match.</p>
+                    <p style="color: var(--val-grey); line-height: 1.7;" data-i18n="about.brotherhood_text">VINFO is not just a team. We are friends who compete at the highest level. The trust between us on the server translates directly into results every single match.</p>
                 </div>
             </div>
         </div>
@@ -427,7 +427,7 @@
         <div style="max-width: 900px; margin: 0 auto; text-align: center;">
             <span data-i18n="merch.gear" style="color: var(--val-red); font-weight: 800; font-size: 1rem; letter-spacing: 3px;">OFFICIAL GEAR</span>
             <h2 data-i18n="merch.dropping" style="font-family: var(--font-heading); font-size: 4rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; line-height: 1;">MERCH DROPPING SOON</h2>
-            <p data-i18n="merch.desc" style="color: var(--val-grey); font-size: 1.2rem; margin-bottom: 2rem;">Rep the Herd. Premium jerseys, hoodies, and accessories are currently in production. Join the Discord to get notified first.</p>
+            <p data-i18n="merch.desc" style="color: var(--val-grey); font-size: 1.2rem; margin-bottom: 2rem;">Rep VINFO Esports. Premium jerseys, hoodies, and accessories are currently in production. Join the Discord to get notified first.</p>
             <a href="https://discord.gg/9kUvFVUeXs" target="_blank" style="display: inline-block; background-color: var(--val-red); color: white; padding: 1rem 2rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><span data-i18n="merch.waitlist">JOIN DISCORD TO WAITLIST</span></a>
         </div>
     </section>
@@ -445,287 +445,287 @@
                         <div class="timeline-date">29. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>8:13</span> FERAJNA</div>
+                            <div class="timeline-match">VINFO <span>8:13</span> FERAJNA</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">29. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>13:1</span> POPUSK PRO</div>
+                            <div class="timeline-match">VINFO <span>13:1</span> POPUSK PRO</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">22. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>13:10</span> JustWWC</div>
+                            <div class="timeline-match">VINFO <span>13:10</span> JustWWC</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">22. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>7:13</span> ZyntherаX</div>
+                            <div class="timeline-match">VINFO <span>7:13</span> ZyntherаX</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">17. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Wolvesden</div>
-                            <div class="timeline-match">GCZ <span>2:13</span> Fl0wDomain</div>
+                            <div class="timeline-match">VINFO <span>2:13</span> Fl0wDomain</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">17. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Wolvesden</div>
-                            <div class="timeline-match">GCZ <span>14:12</span> Nyrexx</div>
+                            <div class="timeline-match">VINFO <span>14:12</span> Nyrexx</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">15. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier Playoffs</div>
-                            <div class="timeline-match">GCZ <span>9:13</span> чм винЕгрет</div>
+                            <div class="timeline-match">VINFO <span>9:13</span> чм винЕгрет</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">13. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">VOLT Open</div>
-                            <div class="timeline-match">GCZ <span>2:0</span> N2xt valorant</div>
+                            <div class="timeline-match">VINFO <span>2:0</span> N2xt valorant</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">12. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">VOLT Open</div>
-                            <div class="timeline-match">GCZ <span>13:8</span> LOCKDOWN II</div>
+                            <div class="timeline-match">VINFO <span>13:8</span> LOCKDOWN II</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">12. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">VOLT Open</div>
-                            <div class="timeline-match">GCZ <span>14:12</span> LoneWolves</div>
+                            <div class="timeline-match">VINFO <span>14:12</span> LoneWolves</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">11. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">VOLT Open</div>
-                            <div class="timeline-match">GCZ <span>13:2</span> TEAM HYDROGEN</div>
+                            <div class="timeline-match">VINFO <span>13:2</span> TEAM HYDROGEN</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">11. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">VOLT Open</div>
-                            <div class="timeline-match">GCZ <span>8:13</span> N2xt valorant</div>
+                            <div class="timeline-match">VINFO <span>8:13</span> N2xt valorant</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">10. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">VOLT Open</div>
-                            <div class="timeline-match">GCZ <span>2:0</span> FORZAT's party</div>
+                            <div class="timeline-match">VINFO <span>2:0</span> FORZAT's party</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">08. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>16:14</span> Summer</div>
+                            <div class="timeline-match">VINFO <span>16:14</span> Summer</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">08. 08. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>9:13</span> Dark Wardens</div>
+                            <div class="timeline-match">VINFO <span>9:13</span> Dark Wardens</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">25. 07. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>13:7</span> piwiwilve</div>
+                            <div class="timeline-match">VINFO <span>13:7</span> piwiwilve</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">25. 07. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>3:13</span> CIS LAST HOPE</div>
+                            <div class="timeline-match">VINFO <span>3:13</span> CIS LAST HOPE</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">20. 07. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Wolvesden</div>
-                            <div class="timeline-match">GCZ <span>6:13</span> Burmalda</div>
+                            <div class="timeline-match">VINFO <span>6:13</span> Burmalda</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">20. 07. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Wolvesden</div>
-                            <div class="timeline-match">GCZ <span>13:9</span> Team Vitality</div>
+                            <div class="timeline-match">VINFO <span>13:9</span> Team Vitality</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">18. 07. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>13:4</span> RÓWNI GOŚCIE</div>
+                            <div class="timeline-match">VINFO <span>13:4</span> RÓWNI GOŚCIE</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">18. 07. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>4:13</span> RANKED COMP</div>
+                            <div class="timeline-match">VINFO <span>4:13</span> RANKED COMP</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">11. 07. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>7:13</span> RVANI TYZ</div>
+                            <div class="timeline-match">VINFO <span>7:13</span> RVANI TYZ</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">11. 07. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>2:13</span> BUMBA</div>
+                            <div class="timeline-match">VINFO <span>2:13</span> BUMBA</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">04. 07. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>13:9</span> We Love Goths</div>
+                            <div class="timeline-match">VINFO <span>13:9</span> We Love Goths</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">04. 07. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>13:6</span> Team Nocturnals</div>
+                            <div class="timeline-match">VINFO <span>13:6</span> Team Nocturnals</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">25. 06. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Wolvesden</div>
-                            <div class="timeline-match">GCZ <span>2:13</span> Team Scars</div>
+                            <div class="timeline-match">VINFO <span>2:13</span> Team Scars</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">20. 06. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier Playoff</div>
-                            <div class="timeline-match">GCZ <span>15:16</span> 2ruchy3wybuchy</div>
+                            <div class="timeline-match">VINFO <span>15:16</span> 2ruchy3wybuchy</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">17. 06. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Wolvesden</div>
-                            <div class="timeline-match">GCZ <span>11:13</span> Team glow</div>
+                            <div class="timeline-match">VINFO <span>11:13</span> Team glow</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">13. 06. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>13:8</span> suai52</div>
+                            <div class="timeline-match">VINFO <span>13:8</span> suai52</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">13. 06. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>8:13</span> biele zaby</div>
+                            <div class="timeline-match">VINFO <span>8:13</span> biele zaby</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">12. 06. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Re ignite (BO3)</div>
-                            <div class="timeline-match">GCZ <span>2:0</span> VYRON E-Sport</div>
+                            <div class="timeline-match">VINFO <span>2:0</span> VYRON E-Sport</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">09. 06. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Re ignite (BO3)</div>
-                            <div class="timeline-match">GCZ <span>0:2</span> Foot Clan</div>
+                            <div class="timeline-match">VINFO <span>0:2</span> Foot Clan</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">08. 06. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Re ignite (BO3)</div>
-                            <div class="timeline-match">GCZ <span>2:0</span> 404 crimson</div>
+                            <div class="timeline-match">VINFO <span>2:0</span> 404 crimson</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">06. 06. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>1:13</span> KronBars</div>
+                            <div class="timeline-match">VINFO <span>1:13</span> KronBars</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">06. 06. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>7:13</span> FG Origins</div>
+                            <div class="timeline-match">VINFO <span>7:13</span> FG Origins</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">30. 05. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>13:8</span> Redhound</div>
+                            <div class="timeline-match">VINFO <span>13:8</span> Redhound</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">30. 05. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>13:4</span> Blackout</div>
+                            <div class="timeline-match">VINFO <span>13:4</span> Blackout</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">23. 05. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>13:3</span> SL1PPERS</div>
+                            <div class="timeline-match">VINFO <span>13:3</span> SL1PPERS</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">23. 05. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Premier</div>
-                            <div class="timeline-match">GCZ <span>3:13</span> FG School</div>
+                            <div class="timeline-match">VINFO <span>3:13</span> FG School</div>
                         </div>
                     </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">20. 05. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Wolvesden</div>
-                            <div class="timeline-match">GCZ <span>9:13</span> The Flow!</div>
+                            <div class="timeline-match">VINFO <span>9:13</span> The Flow!</div>
                         </div>
                     </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">20. 05. 2026</div>
                         <div class="timeline-content">
                             <div class="timeline-tournament">Wolvesden</div>
-                            <div class="timeline-match">GCZ <span>13:6</span> SAINT MyriadS</div>
+                            <div class="timeline-match">VINFO <span>13:6</span> SAINT MyriadS</div>
                         </div>
                     </div>
                 </div>
@@ -893,7 +893,7 @@
 
             <div class="faq-item fade-in-up">
                 <div class="faq-question">
-                    <span data-i18n="faq.q5">How can I support Goats CZ?</span>
+                    <span data-i18n="faq.q5">How can I support VINFO Esports?</span>
                     <span class="faq-icon">+</span>
                 </div>
                 <div class="faq-answer">
@@ -910,7 +910,7 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-inner">
-                        <span data-i18n="faq.a06">If you have any other questions, business inquiries, or just want to say hi, feel free to drop us an email at</span> <span style="color: var(--val-red); font-weight: bold; cursor: pointer;" onclick="navigator.clipboard.writeText('goatscz0@gmail.com'); alert('Email copied to clipboard!');">goatscz0@gmail.com <span data-i18n="faq.copy">(Click to copy)</span></span>.
+                        <span data-i18n="faq.a06">If you have any other questions, business inquiries, or just want to say hi, feel free to drop us an email at</span> <span style="color: var(--val-red); font-weight: bold; cursor: pointer;" onclick="navigator.clipboard.writeText('vinfoesports@gmail.com'); alert('Email copied to clipboard!');">vinfoesports@gmail.com <span data-i18n="faq.copy">(Click to copy)</span></span>.
                     </div>
                 </div>
             </div>
@@ -925,10 +925,10 @@
             <div style="flex: 1 1 400px;">
                 <span data-i18n="scrim.for" style="color: var(--val-red); font-weight: 800; font-size: 0.85rem; letter-spacing: 3px;">PRO TÝMY</span>
                 <h2 style="font-family: var(--font-heading); font-size: 4rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; line-height: 1;" data-i18n="scrim.title">CHCI S NÁMI SCRIMOVAT?</h2>
-                <p style="color: var(--val-grey); line-height: 1.8; font-size: 1.1rem; margin-bottom: 2rem;" data-i18n="scrim.desc">Vždy hledáme výzvy proti ostatním Contender a Radiant týmům. Pokud si myslíte, že vaše sestava zvládne Stádo, ozvěte se a pojďme hrát.</p>
+                <p style="color: var(--val-grey); line-height: 1.8; font-size: 1.1rem; margin-bottom: 2rem;" data-i18n="scrim.desc">Vždy hledáme výzvy proti ostatním Contender a Radiant týmům. Pokud si myslíte, že vaše sestava zvládne VINFO, ozvěte se a pojďme hrát.</p>
                 <div style="display: flex; gap: 1rem; width: 100%; margin-top: 1rem;">
                     <a href="https://discord.gg/9kUvFVUeXs" target="_blank" class="scrim-btn discord-btn"><i class="fa-brands fa-discord"></i> DISCORD</a>
-                    <a href="https://x.com/goatscz" target="_blank" class="scrim-btn twitter-btn"><i class="fa-brands fa-x-twitter"></i> TWITTER</a>
+                    <a href="https://x.com/vinfoesports" target="_blank" class="scrim-btn twitter-btn"><i class="fa-brands fa-x-twitter"></i> TWITTER</a>
                 </div>
             </div>
             <div style="flex: 1 1 400px; background-color: var(--val-darker); border: 1px solid rgba(255,70,85,0.3); padding: 3rem;">
@@ -970,7 +970,7 @@
             </div>
         </div>
         <div style="text-align: center; margin-top: 3rem;">
-            <a href="#" onclick="navigator.clipboard.writeText('goatscz0@gmail.com'); const lng = localStorage.getItem('gcz_lang') || 'en'; this.innerHTML= (lng==='cs'||lng==='cz') ? 'Zkopírováno!' : 'Copied!'; setTimeout(() => { this.innerHTML='<span data-i18n=\'sponsors.contact\'>' + ((lng==='cs'||lng==='cz') ? 'STÁT SE PARTNEREM' : 'BECOME A PARTNER') + '</span>'; }, 2000); return false;" style="color: var(--val-red); font-weight: bold; text-decoration: underline; font-size: 1.1rem; letter-spacing: 1px;"><span data-i18n="sponsors.contact">STÁT SE PARTNEREM</span></a>
+            <a href="#" onclick="navigator.clipboard.writeText('vinfoesports@gmail.com'); const lng = localStorage.getItem('gcz_lang') || 'en'; this.innerHTML= (lng==='cs'||lng==='cz') ? 'Zkopírováno!' : 'Copied!'; setTimeout(() => { this.innerHTML='<span data-i18n=\'sponsors.contact\'>' + ((lng==='cs'||lng==='cz') ? 'STÁT SE PARTNEREM' : 'BECOME A PARTNER') + '</span>'; }, 2000); return false;" style="color: var(--val-red); font-weight: bold; text-decoration: underline; font-size: 1.1rem; letter-spacing: 1px;"><span data-i18n="sponsors.contact">STÁT SE PARTNEREM</span></a>
         </div>
     </section>
 
@@ -979,9 +979,9 @@
         <div style="max-width: 800px; margin: 0 auto;">
             <div style="font-size: 4rem; margin-bottom: 1rem; animation: pulse 2s infinite;">💛</div>
             <h2 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--val-white); margin-bottom: 1.5rem; text-transform: uppercase;" data-i18n="support.title">BACK THE HERD</h2>
-            <p style="color: var(--val-grey); font-size: 1.2rem; line-height: 1.8; margin-bottom: 3rem;" data-i18n="support.desc">We're a self-funded Czech team grinding our way to the top. Every donation helps us cover tournament fees, equipment, and keeps the herd running. Every single cent goes back into making GCZ better.</p>
+            <p style="color: var(--val-grey); font-size: 1.2rem; line-height: 1.8; margin-bottom: 3rem;" data-i18n="support.desc">We're a self-funded Czech team grinding our way to the top. Every donation helps us cover tournament fees, equipment, and keeps VINFO Esports running. Every single cent goes back into making VINFO better.</p>
             <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
-                <a href="https://ko-fi.com/goatscz" target="_blank" class="cta-button" style="font-size: 1.2rem; padding: 1.5rem 3rem;" data-i18n="support.btn1">DONATE NOW 💖</a>
+                <a href="https://ko-fi.com/vinfoesports" target="_blank" class="cta-button" style="font-size: 1.2rem; padding: 1.5rem 3rem;" data-i18n="support.btn1">DONATE NOW 💖</a>
                 <a href="https://discord.gg/9kUvFVUeXs" target="_blank" class="cta-button" style="background-color: transparent; border-color: rgba(255,255,255,0.2); font-size: 1.2rem; padding: 1.5rem 3rem;" data-i18n="support.btn2">JOIN DISCORD</a>
             </div>
         </div>
@@ -989,8 +989,8 @@
 
     <footer id="contact" class="footer">
         <div class="footer-content">
-            <div class="footer-logo">GCZ</div>
-            <p data-i18n="footer.desc" style="color: var(--val-grey); max-width: 500px; margin: 0 auto 2rem; line-height: 1.6;">Goats CZ — Fully Czech Valorant squad competing in Premier Contender. Join the herd on our journey to Challengers.</p>
+            <div class="footer-logo">VINFO</div>
+            <p data-i18n="footer.desc" style="color: var(--val-grey); max-width: 500px; margin: 0 auto 2rem; line-height: 1.6;">VINFO Esports — Fully Czech Valorant squad competing in Premier Contender. Join VINFO Esports on our journey to Challengers.</p>
             <div class="social-links" style="gap: 2rem; flex-wrap: wrap;">
                 <a href="https://kick.com/gczdejwrix" target="_blank" class="social-link" style="color: #53fc18; font-weight: 700;"><i class="fa-solid fa-play"></i> KICK</a>
                 <a href="https://x.com/dejwrix" target="_blank" class="social-link"><i class="fa-brands fa-x-twitter"></i> TWITTER</a>
@@ -999,7 +999,7 @@
                 <a href="https://www.vidia-design.cz/" target="_blank" class="social-link"><i class="fa-solid fa-palette"></i> VIDIA DESIGN</a>
                 <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" class="social-link" style="color: var(--val-red); font-weight: 700;"><i class="fa-solid fa-heart"></i> DONATE</a>
             </div>
-            <p class="copyright" style="margin-top: 2rem;">&copy; 2026 Goats CZ. <span data-i18n="footer.rights">All rights reserved.</span> | Made with ❤️ in Czech Republic 🇨🇿</p>
+            <p class="copyright" style="margin-top: 2rem;">&copy; 2026 VINFO Esports. <span data-i18n="footer.rights">All rights reserved.</span> | Made with ❤️ in Czech Republic 🇨🇿</p>
             <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 0.5rem;">Website created by <a href="https://venvio.dev" target="_blank" style="color: var(--val-white); text-decoration: none; font-weight: bold; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-white)'">Venvio</a></p>
         </div>
     </footer>
@@ -1042,3 +1042,4 @@
     </script>
 </body>
 </html>
+
