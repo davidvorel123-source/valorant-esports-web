@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -540,12 +540,12 @@ async function loadNews() {
         {
             date: "SEPTEMBER 5, 2026",
             title: {
-                en: "WE REACHED INVITE RANK IN PREMIER!",
-                cz: "DALI JSME INVITE RANK V PREMIERU!"
+                en: "REBRAND, PREMIER #5 & BACK-TO-BACK WINS!",
+                cz: "REBRAND, 5. MÍSTO V PREMIERU A 2 VÝHRY V ŘADĚ!"
             },
             content: {
-                en: "We finally did it! The hard work paid off and we have officially reached the Invite rank in Premier. Huge thanks to everyone who supported us on this journey!",
-                cz: "Konečně se to povedlo! Tvrdá práce se vyplatila a oficiálně jsme dosáhli na Invite rank v Premieru. Obrovské díky všem, kteří nás na této cestě podporovali!"
+                en: "A new era begins! We have officially rebranded to VINFO Esports. We're celebrating our new identity with back-to-back victories against SOP UNSEEN (15-13) and ASHBORN (13-7), bringing us to the 5th place in the Premier Invite division!",
+                cz: "Nová éra začíná! Oficiálně jsme se rebrandovali na VINFO Esports. Naši novou identitu slavíme dvěma výhrami v řadě proti SOP UNSEEN (15:13) a ASHBORN (13:7), což nás posouvá na úžasné 5. místo v divizi Premier Invite!"
             },
             important: true
         },
