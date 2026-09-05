@@ -44,7 +44,7 @@
         "subs.title": "SUBSTITUTES",
         "roster.lfp": "LOOKING FOR PLAYER",
         "staff.title": "MANAGEMENT & STAFF",
-        "role.discord_admin": "SOCIAL MEDIA MANAGER",
+        "role.manager": "MANAGER",
         "role.mental_coach": "MENTAL COACH",
         "role.coach": "COACH",
         "staff.name": "thomas",
@@ -240,7 +240,7 @@
         "subs.title": "NÁHRADNÍCI",
         "roster.lfp": "HLEDÁME HRÁČE",
         "staff.title": "VEDENÍ A PERSONÁL",
-        "role.discord_admin": "SOCIAL MEDIA MANAŽER",
+        "role.manager": "MANAŽER",
         "role.mental_coach": "MENTÁLNÍ KOUČ",
         "role.coach": "TRENÉR",
         "staff.name": "thomas",
@@ -452,5 +452,6 @@ document.addEventListener('DOMContentLoaded', () => {
     // Safety re-apply after short delay to catch any late-rendered elements
     setTimeout(() => setLanguage(currentLang), 150);
 });
+
 
 
