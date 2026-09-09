@@ -1,8 +1,12 @@
 ﻿/* Base and Variables */
 :root {
     --val-red: #ff4655;
+    --val-red-rgb: 255, 70, 85;
+    --val-green: #53fc18;
+    --val-green-rgb: 83, 252, 24;
     --val-dark: #111111;
     --val-darker: #0f1923;
+    --val-card-bg: #141b24;
     --val-white: #ece8e1;
     --val-grey: #8b978f;
     --font-heading: 'Barlow Condensed', sans-serif;
@@ -225,17 +229,19 @@ h1, h2, h3, .logo-text, .section-title {
 }
 
 .player-card {
-    background-color: var(--val-dark);
-    border: 1px solid rgba(255, 255, 255, 0.1);
+    background-color: var(--val-card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     position: relative;
     overflow: hidden;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.4s ease;
     cursor: pointer;
+    border-radius: 2px;
 }
 
 .player-card:hover {
     transform: translateY(-10px);
     border-color: var(--val-red);
+    box-shadow: 0 15px 40px rgba(var(--val-red-rgb), 0.25), 0 5px 15px rgba(0, 0, 0, 0.4);
 }
 
 .player-card::after {
@@ -245,11 +251,17 @@ h1, h2, h3, .logo-text, .section-title {
     right: 0;
     width: 30px;
     height: 30px;
-    background-color: var(--val-red);
-    clip-path: polygon(100% 0, 0% 100%, 100% 100%);
+    background: linear-gradient(135deg, transparent 50%, var(--val-red) 50%);
+    transition: width 0.3s ease, height 0.3s ease;
+}
+
+.player-card:hover::after {
+    width: 45px;
+    height: 45px;
 }
 
 .player-image {
+    background-color: var(--val-card-bg);
     height: 300px;
     background-size: cover;
     background-position: center;
@@ -341,7 +353,7 @@ h1, h2, h3, .logo-text, .section-title {
     padding: 4rem 2rem;
     text-align: center;
     background-color: var(--val-dark);
-    border-top: 1px solid rgba(255, 70, 85, 0.2);
+    border-top: 2px solid rgba(var(--val-red-rgb), 0.3);
 }
 
 .footer-logo {
@@ -846,7 +858,8 @@ h1, h2, h3, .logo-text, .section-title {
 
     /* --- ROSTER --- */
     .roster-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)) !important; gap: 1rem !important; }
-    .player-image { height: 200px !important; }
+    .player-image {
+    background-color: var(--val-card-bg); height: 200px !important; }
     .player-name { font-size: 1.8rem !important; }
 
     /* --- LEGACY / TIMELINE --- */
@@ -902,7 +915,8 @@ h1, h2, h3, .logo-text, .section-title {
     .section-title { font-size: 2rem !important; }
     .stats-grid { grid-template-columns: 1fr !important; }
     .roster-grid { grid-template-columns: 1fr 1fr !important; }
-    .player-image { height: 170px !important; }
+    .player-image {
+    background-color: var(--val-card-bg); height: 170px !important; }
     .player-name { font-size: 1.5rem !important; }
     .timeline-content { flex-direction: column !important; align-items: flex-start !important; }
     .vinfo-logo-image, img.vinfo-logo-image { width: 100px !important; height: 100px !important; }
@@ -926,4 +940,5 @@ h1, h2, h3, .logo-text, .section-title {
 .custom-cursor-follower { position: fixed; top: 0; left: 0; width: 30px; height: 30px; border: 2px solid rgba(255, 70, 85, 0.4); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate3d(-50%, -50%, 0); will-change: transform; transition: width 0.2s, height 0.2s, border-color 0.2s; }
 .custom-cursor.hover { width: 10px; height: 10px; background-color: var(--val-white); }
 .custom-cursor-follower.hover { width: 40px; height: 40px; border-color: var(--val-white); background-color: rgba(255, 255, 255, 0.1); }
+
 
