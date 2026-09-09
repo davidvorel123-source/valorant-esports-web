@@ -10,7 +10,7 @@
     <meta property="og:url" content="https://vinfoesports.com">
     <meta name="twitter:card" content="summary_large_image">
     <title>VINFO Esports | VINFO - Valorant Esports Team</title>
-    <link rel="stylesheet" href="styles.css?v=7">
+    <link rel="stylesheet" href="styles.css?v=8">
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="vinfo-logo.png">
@@ -41,6 +41,7 @@
     </style>
 </head>
 <body>
+    <div class="crt-overlay"></div>
     <!-- Preloader -->
     <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--val-darker); z-index: 99999; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 0.5s ease, visibility 0.5s;">
         <img src="vinfo-logo.png" style="width: 120px; height: auto; filter: drop-shadow(0 0 15px rgba(255, 70, 85, 0.4)); animation: pulse 1.5s infinite; margin-bottom: 20px;">
@@ -212,7 +213,7 @@
         <div class="roster-grid">
             <div class="player-card">
                 <div class="player-image vinfo-logo-placeholder" style="background-image: url('vinfo-logo.png'); background-position: center; background-size: 50%; background-repeat: no-repeat; background-color: var(--val-darker);"></div>
-                <div class="player-info">
+                <div class="player-info" style="position: relative; z-index: 2;">
                     <span data-i18n="role.igl_controller" class="player-role">IGL / CONTROLLER</span>
                     <h3 class="player-name">Alex <img src="https://flagcdn.com/24x18/pl.png" alt="PL" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Omen / Astra</p>
@@ -221,7 +222,7 @@
             </div>
             <div class="player-card">
                 <div class="player-image" style="background-image: url('dejwrix.jpg'); background-position: center 25%;"></div>
-                <div class="player-info">
+                <div class="player-info" style="position: relative; z-index: 2;">
                     <span data-i18n="role.second_igl_duelist" class="player-role">SECOND IGL / DUELIST</span>
                     <h3 class="player-name">Dejwrix <img src="https://flagcdn.com/24x18/cz.png" alt="CZ" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Raze / Phoenix</p>
@@ -231,7 +232,7 @@
             </div>
             <div class="player-card fade-in-up">
                 <div class="player-image" style="background-image: url('teikov.jpg'); background-position: center 30%;"></div>
-                <div class="player-info">
+                <div class="player-info" style="position: relative; z-index: 2;">
                     <span data-i18n="role.duelist" class="player-role">DUELIST</span>
                     <h3 class="player-name">Teikov <img src="https://flagcdn.com/24x18/cz.png" alt="CZ" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Neon</p>
@@ -240,7 +241,7 @@
             </div>
             <div class="player-card">
                 <div class="player-image vinfo-logo-placeholder" style="background-image: url('vinfo-logo.png'); background-position: center; background-size: 50%; background-repeat: no-repeat; background-color: var(--val-darker);"></div>
-                <div class="player-info">
+                <div class="player-info" style="position: relative; z-index: 2;">
                     <span data-i18n="role.initiator" class="player-role">INITIATOR</span>
                     <h3 class="player-name">Kiwi <img src="https://flagcdn.com/24x18/ch.png" alt="CH" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Fade / Sova</p>
@@ -249,7 +250,7 @@
             </div>
             <div class="player-card">
                 <div class="player-image" style="background-image: url('marcel.png'); background-position: center 60%; background-size: cover; background-color: #1a1a1a;"></div>
-                <div class="player-info">
+                <div class="player-info" style="position: relative; z-index: 2;">
                     <span data-i18n="role.flex" class="player-role">FLEX</span>
                     <h3 class="player-name">Marcel <img src="https://flagcdn.com/24x18/pl.png" alt="PL" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Cypher / Killjoy</p>
@@ -259,7 +260,7 @@
             </div>
             <div class="player-card">
                 <div class="player-image" style="background-image: url('cole.png'); background-position: center 25%; background-size: cover; background-color: #1a1a1a;"></div>
-                <div class="player-info">
+                <div class="player-info" style="position: relative; z-index: 2;">
                     <span data-i18n="role.sentinel" class="player-role">SENTINEL</span>
                     <h3 class="player-name">Cole <img src="https://flagcdn.com/24x18/cz.png" alt="CZ" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Cypher / Killjoy</p>
@@ -267,7 +268,7 @@
             </div>
             <div class="player-card">
                 <div class="player-image" style="background-image: url('woody.png'); background-position: center 25%; background-size: cover; background-color: #1a1a1a;"></div>
-                <div class="player-info">
+                <div class="player-info" style="position: relative; z-index: 2;">
                     <span data-i18n="role.sub" class="player-role">SUB</span>
                     <h3 class="player-name">Woody <img src="https://flagcdn.com/24x18/cz.png" alt="CZ" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Vyse / Viper</p>
@@ -290,7 +291,7 @@
 
             <div class="player-card">
                 <div class="player-image vinfo-logo-placeholder" style="background-image: url('vinfo-logo.png'); background-position: center; background-size: 50%; background-repeat: no-repeat; background-color: var(--val-darker);"></div>
-                <div class="player-info">
+                <div class="player-info" style="position: relative; z-index: 2;">
                     <span data-i18n="role.manager" class="player-role">MANAGER</span>
                     <h3 class="player-name">kohteihep <img src="https://flagcdn.com/24x18/ua.png" alt="UA" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                 </div>
@@ -1052,6 +1053,7 @@
     </script>
 </body>
 </html>
+
 
 
 
