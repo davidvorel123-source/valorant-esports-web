@@ -25,6 +25,8 @@ html {
 
 body {
     background-color: var(--val-darker);
+    background-image: linear-gradient(rgba(255, 255, 255, 0.02) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.02) 1px, transparent 1px);
+    background-size: 50px 50px;
     color: var(--val-white);
     font-family: var(--font-body);
     overflow-x: hidden;
@@ -41,10 +43,12 @@ h1, h2, h3, .logo-text, .section-title {
     position: fixed;
     top: 0;
     width: 100%;
-    background-color: rgba(15, 25, 35, 0.95);
-    backdrop-filter: blur(10px);
+    background: rgba(10, 15, 22, 0.85);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
     z-index: 1000;
-    border-bottom: 2px solid var(--val-red);
+    border-bottom: 1px solid rgba(255, 70, 85, 0.3);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
 }
 
 .nav-container {
@@ -147,10 +151,14 @@ h1, h2, h3, .logo-text, .section-title {
 }
 
 .hero-title {
-    font-size: 5rem;
+    font-size: 6rem;
     margin-bottom: 1rem;
-    letter-spacing: 4px;
-    text-shadow: 4px 4px 0 var(--val-red);
+    letter-spacing: 6px;
+    background: linear-gradient(135deg, #ffffff 0%, #a8b2b5 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0px 10px 30px rgba(0,0,0,0.8);
+    font-weight: 900;
     animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
@@ -163,17 +171,19 @@ h1, h2, h3, .logo-text, .section-title {
 
 .cta-button {
     display: inline-block;
-    padding: 1rem 3rem;
+    padding: 1.2rem 3.5rem;
     background-color: var(--val-red);
     color: var(--val-white);
     text-decoration: none;
     font-family: var(--font-heading);
     font-size: 1.5rem;
-    letter-spacing: 2px;
+    font-weight: bold;
+    letter-spacing: 3px;
     position: relative;
-    overflow: hidden;
-    transition: transform 0.2s, background-color 0.2s;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
     border: 1px solid var(--val-red);
+    text-transform: uppercase;
+    box-shadow: 0 0 15px rgba(var(--val-red-rgb), 0.3);
 }
 
 .cta-button::before {
@@ -190,6 +200,8 @@ h1, h2, h3, .logo-text, .section-title {
 
 .cta-button:hover {
     color: var(--val-darker);
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(var(--val-red-rgb), 0.5);
 }
 
 .cta-button:hover::before {
@@ -295,8 +307,9 @@ h1, h2, h3, .logo-text, .section-title {
 
 /* About Section */
 .about-section {
-    background-color: var(--val-white);
-    color: var(--val-darker);
+    background: linear-gradient(180deg, var(--val-dark) 0%, #151a22 100%);
+    color: var(--val-white);
+    border-top: 1px solid rgba(255, 70, 85, 0.2);
     max-width: 100%;
     padding: 100px 10%;
     position: relative;
@@ -328,7 +341,8 @@ h1, h2, h3, .logo-text, .section-title {
 }
 
 .stat-box {
-    background-color: var(--val-darker);
+    background: rgba(0,0,0,0.4);
+    backdrop-filter: blur(5px);
     color: var(--val-white);
     padding: 2rem;
     text-align: center;
@@ -656,7 +670,7 @@ h1, h2, h3, .logo-text, .section-title {
     padding: 0.2rem 1rem;
     background: rgba(0,0,0,0.4);
     border-radius: 8px;
-    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+    text-shadow: 0 5px 15px rgba(0,0,0,0.8);
 }
 
 .timeline-item.win .timeline-match span {
@@ -698,7 +712,7 @@ h1, h2, h3, .logo-text, .section-title {
     font-family: var(--font-heading);
     font-size: 2.5rem;
     color: var(--val-white);
-    text-shadow: 2px 2px 0 rgba(0,0,0,0.5);
+    text-shadow: 0 5px 15px rgba(0,0,0,0.8);
 }
 
 .countdown-box {
@@ -940,5 +954,7 @@ h1, h2, h3, .logo-text, .section-title {
 .custom-cursor-follower { position: fixed; top: 0; left: 0; width: 30px; height: 30px; border: 2px solid rgba(255, 70, 85, 0.4); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate3d(-50%, -50%, 0); will-change: transform; transition: width 0.2s, height 0.2s, border-color 0.2s; }
 .custom-cursor.hover { width: 10px; height: 10px; background-color: var(--val-white); }
 .custom-cursor-follower.hover { width: 40px; height: 40px; border-color: var(--val-white); background-color: rgba(255, 255, 255, 0.1); }
+
+
 
 
