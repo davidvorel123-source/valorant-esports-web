@@ -56,8 +56,10 @@ h1, h2, h3, .logo-text, .section-title {
     margin: 0 auto;
     padding: 1rem 2rem;
     display: flex;
-    justify-content: space-between;
+    flex-direction: column;
+    justify-content: center;
     align-items: center;
+    gap: 1.5rem;
 }
 
 .logo-text {
@@ -157,7 +159,7 @@ h1, h2, h3, .logo-text, .section-title {
     background: linear-gradient(135deg, #ffffff 0%, #a8b2b5 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    text-shadow: 0px 10px 30px rgba(0,0,0,0.8);
+    filter: drop-shadow(0px 10px 10px rgba(0,0,0,0.8));
     font-weight: 900;
     animation: slideUp 1s cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -172,6 +174,7 @@ h1, h2, h3, .logo-text, .section-title {
 .cta-button {
     display: inline-block;
     padding: 1.2rem 3.5rem;
+    overflow: hidden;
     background-color: var(--val-red);
     color: var(--val-white);
     text-decoration: none;
@@ -954,6 +957,7 @@ h1, h2, h3, .logo-text, .section-title {
 .custom-cursor-follower { position: fixed; top: 0; left: 0; width: 30px; height: 30px; border: 2px solid rgba(255, 70, 85, 0.4); border-radius: 50%; pointer-events: none; z-index: 9999; transform: translate3d(-50%, -50%, 0); will-change: transform; transition: width 0.2s, height 0.2s, border-color 0.2s; }
 .custom-cursor.hover { width: 10px; height: 10px; background-color: var(--val-white); }
 .custom-cursor-follower.hover { width: 40px; height: 40px; border-color: var(--val-white); background-color: rgba(255, 255, 255, 0.1); }
+
 
 
 

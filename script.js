@@ -1,4 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
+﻿document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -523,7 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(interval);
                 setTimeout(() => {
                     preloader.style.opacity = '0';
-                    preloader.style.visibility = 'hidden';
+                    setTimeout(() => { preloader.style.display = 'none'; }, 500);
                 }, 400);
             }
         }, 150);
@@ -781,4 +781,5 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 });
+
 
