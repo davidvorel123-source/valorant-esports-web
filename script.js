@@ -1,9 +1,4 @@
-document.addEventListener('DOMContentLoaded', () => {
-    // Backward compatibility for language setting
-    const oldLang = localStorage.getItem('gcz_lang');
-    if (oldLang && !localStorage.getItem('vinfo_lang')) {
-        localStorage.setItem('vinfo_lang', oldLang);
-    }
+﻿document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -217,7 +212,6 @@ document.addEventListener('DOMContentLoaded', () => {
             
             const lang = localStorage.getItem('vinfo_lang') || 'en';
 
-            let text;
             if (diffDays < 0 || isTodayButOver) {
                 text = lang === 'cz' ? 'ODEHRÁNO' : 'PLAYED';
             } else if (diffDays === 0) {
@@ -251,12 +245,8 @@ document.addEventListener('DOMContentLoaded', () => {
         const lang = localStorage.getItem('vinfo_lang') || 'en';
         
         countdowns.forEach(el => {
-            let targetStr = el.getAttribute('data-target');
+            const targetStr = el.getAttribute('data-target');
             if (!targetStr) return;
-            // Append CEST timezone offset to ensure dates match local time
-            if (!targetStr.includes('+')) {
-                targetStr += '+02:00';
-            }
             const targetDate = new Date(targetStr).getTime();
             const distance = targetDate - now;
             const card = el.closest('.match-card');
@@ -403,30 +393,17 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         }
         
-        let animationId;
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw();
             }
-            animationId = requestAnimationFrame(animateParticles);
+            requestAnimationFrame(animateParticles);
         }
         
         initParticles();
-        
-        const heroObserver = new IntersectionObserver((entries) => {
-            if (entries[0].isIntersecting) {
-                if (!animationId) animateParticles();
-            } else {
-                if (animationId) {
-                    cancelAnimationFrame(animationId);
-                    animationId = null;
-                }
-            }
-        });
-        const heroSection = document.getElementById('hero') || canvas;
-        heroObserver.observe(heroSection);
+        animateParticles();
         
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
@@ -448,8 +425,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const submitBtn = scrimForm.querySelector('button[type="submit"]');
             
             // NOTE: Replace this URL with your actual Discord Webhook URL
-            // Webhook removed for security. Use a server-side proxy.
-            const webhookUrl = "`; 
+            const webhookUrl = ""; // Webhook removed for security 
             
             submitBtn.disabled = true;
             submitBtn.innerText = "SENDING...";
@@ -479,12 +455,20 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             try {
-                // For now, show success message to user.
+                const response = await fetch(webhookUrl, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                });
+                
+                if (response.ok) {
                     statusDiv.innerText = "✅ Žádost úspěšně odeslána! Ozveme se na Discordu.";
                     statusDiv.style.color = "#53fc18";
                     statusDiv.style.display = "block";
                     scrimForm.reset();
-                
+                } else {
+                    throw new Error('Network response was not ok.');
+                }
             } catch (error) {
                 console.error("Webhook error:", error);
                 statusDiv.innerText = "❌ Chyba při odesílání. Zkuste nám napsat přímo na Discord.";
@@ -539,8 +523,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 clearInterval(interval);
                 setTimeout(() => {
                     preloader.style.opacity = '0';
-                    const transitionDuration = parseFloat(getComputedStyle(preloader).transitionDuration) * 1000 || 500;
-                    setTimeout(() => { preloader.style.display = 'none'; }, transitionDuration);
+                    setTimeout(() => { preloader.style.display = 'none'; }, 500);
                 }, 400);
             }
         }, 150);
@@ -741,11 +724,6 @@ loadNews();
 
 // Performant Custom Cursor Logic
 document.addEventListener('DOMContentLoaded', () => {
-    // Backward compatibility for language setting
-    const oldLang = localStorage.getItem('gcz_lang');
-    if (oldLang && !localStorage.getItem('vinfo_lang')) {
-        localStorage.setItem('vinfo_lang', oldLang);
-    }
     const cursor = document.getElementById('custom-cursor');
     const follower = document.getElementById('custom-cursor-follower');
     
