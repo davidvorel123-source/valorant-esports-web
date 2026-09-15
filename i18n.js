@@ -88,7 +88,7 @@
         "merch.dropping": "MERCH DROPPING SOON",
         "merch.desc": "Rep VINFO Esports. Premium jerseys, hoodies, and accessories are currently in production. Join the Discord to get notified first.",
         "merch.waitlist": "JOIN DISCORD TO WAITLIST",
-        "marquee.text": "DEFY THE LIMITS • GOATS CZ • VALORANT PREMIER",
+        "marquee.text": "DEFY THE LIMITS • VINFO ESPORTS • VALORANT PREMIER",
         "manifesto.q1": "WE DON'T ADAPT TO THE META.",
         "manifesto.q2": "WE DICTATE IT.",
         "manifesto.desc": "VINFO Esports was not built to merely participate. It was built to dominate. Every execute, every retake, every single bullet fired is calculated to break our opponents' mental. We are VINFO Esports, and we will trample everything in our path to Champions.",
@@ -285,7 +285,7 @@
         "merch.dropping": "MERCH JIŽ BRZY",
         "merch.desc": "Reprezentuj VINFO. Prémiové dresy, mikiny a doplňky jsou právě ve výrobě. Připoj se na náš Discord a získej info jako první.",
         "merch.waitlist": "PŘIPOJ SE A ZÍSKEJ PŘEDNOST",
-        "marquee.text": "PŘEKONEJ HRANICE • GOATS CZ • VALORANT PREMIER",
+        "marquee.text": "PŘEKONEJ HRANICE • VINFO ESPORTS • VALORANT PREMIER",
         "manifesto.q1": "MY SE METĚ NEPŘIZPŮSOBUJEME.",
         "manifesto.q2": "MY JI DIKTUJEME.",
         "manifesto.desc": "VINFO Esports nebyli stvořeni jen k tomu, aby se účastnili. Byli stvořeni, aby dominovali. Každý execute, každý retake, každá vystřelená kulka je vypočítaná tak, aby zlomila psychiku soupeře. My jsme VINFO a udupeme vše, co nám stojí v cestě na Champions.",
@@ -399,11 +399,14 @@
 };
 
 let currentLang = 'cz';
-try { currentLang = localStorage.getItem('gcz_lang') || 'cz'; } catch(e) {}
+try { currentLang = localStorage.getItem('vinfo_lang') || localStorage.getItem('gcz_lang') || 'cz'; } catch(e) {}
 
 function setLanguage(lang) {
     currentLang = lang;
-    try { localStorage.setItem('gcz_lang', lang); } catch(e) {}
+    try { localStorage.setItem('vinfo_lang', lang); } catch(e) {}
+
+    document.documentElement.lang = lang === 'cz' ? 'cs' : 'en';
+    document.title = lang === 'cz' ? 'VINFO Esports | Český Valorant Tým' : 'VINFO Esports | Valorant Team';
     
     document.querySelectorAll('[data-i18n]').forEach(el => {
         const key = el.getAttribute('data-i18n');

@@ -41,7 +41,7 @@
     </style>
 </head>
 <body>
-    <div class="crt-overlay"></div>
+    <a href="#home" class="skip-link">Skip to main content</a>`n    <div class="crt-overlay"></div>
     <!-- Preloader -->
     <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--val-darker); z-index: 99999; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 0.5s ease, visibility 0.5s;">
         <img src="vinfo-logo.png" style="width: 120px; height: auto; filter: drop-shadow(0 0 15px rgba(255, 70, 85, 0.4)); animation: pulse 1.5s infinite; margin-bottom: 20px;">
@@ -81,7 +81,7 @@
                     </a>
                 </li>
             </ul>
-            <div class="mobile-menu-btn">
+            <div class="mobile-menu-btn" role="button" tabindex="0" aria-label="Toggle Menu" aria-expanded="false">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -305,12 +305,12 @@
         <div class="about-container">
             <div class="about-text">
                 <h2 data-i18n="about.title">THE HERD</h2>
-                <p data-i18n="about.p1">VINFO Esports is a premier Valorant team built on aggressive plays, tactical superiority, and an unbreakable bond. Formed by a group of High Immortal and Radiant prodigies, our journey started in the local Czech ladders. As a purely Czech roster, we are dominating the domestic scene with our unique, fearless playstyle.</p>
+                <p data-i18n="about.p1">VINFO Esports is a premier Valorant team built on aggressive plays, tactical superiority, and an unbreakable bond. Formed by a group of High Immortal and Radiant prodigies, our journey started in the local Czech ladders. With a diverse international roster, we are dominating the competitive scene with our unique, fearless playstyle.</p>
                 <p style="margin-top: 1rem; margin-bottom: 3rem;" data-i18n="about.p2">Led by our IGL Dejwrix, we don't just play the game; we redefine the meta. From flawless executes to unbreakable site holds, the 'VINFO' operates as a single, lethal unit. Our eyes are set on the highest tiers of European Valorant, and we won't stop until we reach the top.</p>
                 <div class="stats-grid">
                     <div class="stat-box">
-                        <span class="stat-number">100%</span>
-                        <span class="stat-label" data-i18n="about.stat1">Czech Roster</span>
+                        <span class="stat-number">INTL</span>
+                        <span class="stat-label" data-i18n="about.stat1">Roster</span>
                     </div>
                     <div class="stat-box">
                         <span class="stat-number" data-i18n="about.stat2_num">#5</span>
@@ -415,7 +415,7 @@
             <div class="section-line"></div>
         </div>
         <div style="max-width: 1080px; margin: 0 auto; display: flex; justify-content: center; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
-            <iframe src="https://player.kick.com/vinfodejwrix" height="600" width="1080" frameborder="0" scrolling="no" allowfullscreen="true" style="max-width: 100%; border: 2px solid var(--val-red);"></iframe>
+            <iframe src="https://player.kick.com/vinfodejwrix" height="600" width="1080" style="border:none; overflow:hidden;" allowfullscreen="true" style="max-width: 100%; border: 2px solid var(--val-red);"></iframe>
         </div>
     </section>
 

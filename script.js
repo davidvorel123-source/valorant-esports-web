@@ -1,4 +1,9 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
+    // Backward compatibility for language setting
+    const oldLang = localStorage.getItem('gcz_lang');
+    if (oldLang && !localStorage.getItem('vinfo_lang')) {
+        localStorage.setItem('vinfo_lang', oldLang);
+    }
 
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -210,8 +215,9 @@
             const diffMs = matchDateZero - nowZero;
             const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
             
-            const lang = localStorage.getItem('gcz_lang') || 'en';
+            const lang = localStorage.getItem('vinfo_lang') || 'en';
 
+            let text;
             if (diffDays < 0 || isTodayButOver) {
                 text = lang === 'cz' ? 'ODEHRÁNO' : 'PLAYED';
             } else if (diffDays === 0) {
@@ -242,11 +248,15 @@
     function updateMatchCountdowns() {
         const countdowns = document.querySelectorAll('.match-countdown');
         const now = new Date().getTime();
-        const lang = localStorage.getItem('gcz_lang') || 'en';
+        const lang = localStorage.getItem('vinfo_lang') || 'en';
         
         countdowns.forEach(el => {
-            const targetStr = el.getAttribute('data-target');
+            let targetStr = el.getAttribute('data-target');
             if (!targetStr) return;
+            // Append CEST timezone offset to ensure dates match local time
+            if (!targetStr.includes('+')) {
+                targetStr += '+02:00';
+            }
             const targetDate = new Date(targetStr).getTime();
             const distance = targetDate - now;
             const card = el.closest('.match-card');
@@ -393,17 +403,30 @@
             }
         }
         
+        let animationId;
         function animateParticles() {
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             for (let i = 0; i < particles.length; i++) {
                 particles[i].update();
                 particles[i].draw();
             }
-            requestAnimationFrame(animateParticles);
+            animationId = requestAnimationFrame(animateParticles);
         }
         
         initParticles();
-        animateParticles();
+        
+        const heroObserver = new IntersectionObserver((entries) => {
+            if (entries[0].isIntersecting) {
+                if (!animationId) animateParticles();
+            } else {
+                if (animationId) {
+                    cancelAnimationFrame(animationId);
+                    animationId = null;
+                }
+            }
+        });
+        const heroSection = document.getElementById('hero') || canvas;
+        heroObserver.observe(heroSection);
         
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
@@ -425,7 +448,8 @@
             const submitBtn = scrimForm.querySelector('button[type="submit"]');
             
             // NOTE: Replace this URL with your actual Discord Webhook URL
-            const webhookUrl = "https://discord.com/api/webhooks/1512559018714071132/iG15uEITjL1ubuKrQ_nB6fh6HP5thv_mPKij7hcseAqzNKUqyF7TQp2-qtdPDR7MrT61"; 
+            // Webhook removed for security. Use a server-side proxy.
+            const webhookUrl = "`; 
             
             submitBtn.disabled = true;
             submitBtn.innerText = "SENDING...";
@@ -455,20 +479,12 @@
             }
 
             try {
-                const response = await fetch(webhookUrl, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify(payload)
-                });
-                
-                if (response.ok) {
+                // For now, show success message to user.
                     statusDiv.innerText = "✅ Žádost úspěšně odeslána! Ozveme se na Discordu.";
                     statusDiv.style.color = "#53fc18";
                     statusDiv.style.display = "block";
                     scrimForm.reset();
-                } else {
-                    throw new Error('Network response was not ok.');
-                }
+                
             } catch (error) {
                 console.error("Webhook error:", error);
                 statusDiv.innerText = "❌ Chyba při odesílání. Zkuste nám napsat přímo na Discord.";
@@ -523,7 +539,8 @@
                 clearInterval(interval);
                 setTimeout(() => {
                     preloader.style.opacity = '0';
-                    setTimeout(() => { preloader.style.display = 'none'; }, 500);
+                    const transitionDuration = parseFloat(getComputedStyle(preloader).transitionDuration) * 1000 || 500;
+                    setTimeout(() => { preloader.style.display = 'none'; }, transitionDuration);
                 }, 400);
             }
         }, 150);
@@ -534,7 +551,7 @@ async function loadNews() {
     const newsContainer = document.getElementById('news-container');
     if (!newsContainer) return;
 
-    const lang = localStorage.getItem('gcz_lang') || 'en';
+    const lang = localStorage.getItem('vinfo_lang') || 'en';
 
     const simulatedNews = [
         {
@@ -724,6 +741,11 @@ loadNews();
 
 // Performant Custom Cursor Logic
 document.addEventListener('DOMContentLoaded', () => {
+    // Backward compatibility for language setting
+    const oldLang = localStorage.getItem('gcz_lang');
+    if (oldLang && !localStorage.getItem('vinfo_lang')) {
+        localStorage.setItem('vinfo_lang', oldLang);
+    }
     const cursor = document.getElementById('custom-cursor');
     const follower = document.getElementById('custom-cursor-follower');
     
@@ -771,7 +793,7 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleBtn.addEventListener('click', () => {
             const container = document.querySelector('.timeline-container');
             const isShowingAll = container.classList.toggle('show-all');
-            const lang = localStorage.getItem('gcz_lang') || 'en';
+            const lang = localStorage.getItem('vinfo_lang') || 'en';
             
             let textEn = isShowingAll ? 'SHOW LESS' : 'SHOW MORE MATCHES';
             let textCs = isShowingAll ? 'ZOBRAZIT MÉNĚ' : 'ZOBRAZIT DALŠÍ ZÁPASY';
