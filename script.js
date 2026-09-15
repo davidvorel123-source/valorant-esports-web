@@ -432,14 +432,14 @@
             statusDiv.style.display = "none";
 
             const payload = {
-                content: "🔔 Nová žádost o Scrim!",
+                content: "🔔 New Scrim Request!",
                 embeds: [{
                     title: "⚔️ Scrim Request: " + teamInput,
                     color: 16729685, // Val Red #ff4655
                     fields: [
-                        { name: "Tým / Tracker", value: teamInput, inline: true },
-                        { name: "Průměrný Rank", value: rankInput, inline: true },
-                        { name: "Zpráva / Dostupnost", value: msgInput }
+                        { name: "Team / Tracker", value: teamInput, inline: true },
+                        { name: "Average Rank", value: rankInput, inline: true },
+                        { name: "Message / Availability", value: msgInput }
                     ],
                     timestamp: new Date().toISOString()
                 }]
