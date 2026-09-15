@@ -446,7 +446,7 @@
             };
 
             if (webhookUrl === "YOUR_DISCORD_WEBHOOK_URL_HERE") {
-                statusDiv.innerText = "⚠️ Webhook URL není nastavena. Kontaktujte prosím na Discordu.";
+                statusDiv.innerText = "⚠️ Webhook URL not set. Please contact us on Discord.";
                 statusDiv.style.color = "orange";
                 statusDiv.style.display = "block";
                 submitBtn.innerText = "SEND REQUEST";
@@ -462,7 +462,7 @@
                 });
                 
                 if (response.ok) {
-                    statusDiv.innerText = "✅ Žádost úspěšně odeslána! Ozveme se na Discordu.";
+                    statusDiv.innerText = "✅ Request sent successfully! We will contact you on Discord.";
                     statusDiv.style.color = "#53fc18";
                     statusDiv.style.display = "block";
                     scrimForm.reset();
@@ -471,7 +471,7 @@
                 }
             } catch (error) {
                 console.error("Webhook error:", error);
-                statusDiv.innerText = "❌ Chyba při odesílání. Zkuste nám napsat přímo na Discord.";
+                statusDiv.innerText = "❌ Error sending. Please try messaging us directly on Discord.";
                 statusDiv.style.color = "var(--val-red)";
                 statusDiv.style.display = "block";
             } finally {
