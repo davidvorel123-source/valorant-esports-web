@@ -425,7 +425,7 @@
             const submitBtn = scrimForm.querySelector('button[type="submit"]');
             
             // NOTE: Replace this URL with your actual Discord Webhook URL
-            const webhookUrl = ""; // Webhook removed for security 
+            const webhookUrl = "https://discord.com/api/webhooks/1512559018714071132/iG15uEITjL1ubuKrQ_nB6fh6HP5thv_mPKij7hcseAqzNKUqyF7TQp2-qtdPDR7MrT61"; 
             
             submitBtn.disabled = true;
             submitBtn.innerText = "SENDING...";
