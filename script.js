@@ -780,6 +780,86 @@ document.addEventListener('DOMContentLoaded', () => {
             toggleBtn.innerHTML = `<span data-i18n="${key}">${lang === 'cs' ? textCs : textEn}</span> <i class="fa-solid fa-chevron-${isShowingAll ? 'up' : 'down'}"></i>`;
         });
     }
+
+    // Player Modal Logic
+    const playerModal = document.getElementById('player-modal');
+    if (playerModal) {
+        const modalClose = playerModal.querySelector('.player-modal-close');
+        
+        modalClose.addEventListener('click', () => {
+            playerModal.classList.remove('active');
+        });
+        
+        playerModal.addEventListener('click', (e) => {
+            if (e.target === playerModal) {
+                playerModal.classList.remove('active');
+            }
+        });
+
+        document.querySelectorAll('.player-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                if (e.target.tagName.toLowerCase() === 'a') return;
+
+                const nameEl = card.querySelector('.player-name');
+                const roleEl = card.querySelector('.player-role');
+                const imgEl = card.querySelector('.player-image');
+                const hiddenData = card.querySelector('.hidden-data');
+                
+                const links = card.querySelectorAll('.player-info a');
+                
+                let mainsText = "";
+                const pTags = card.querySelectorAll('p');
+                pTags.forEach(p => {
+                    if (p.innerText.includes('Mains:')) {
+                        mainsText = p.innerText.replace('Mains:', '').trim();
+                    }
+                });
+
+                if (nameEl && imgEl) {
+                    const cleanName = nameEl.innerText.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
+                    
+                    document.getElementById('modal-name').innerText = cleanName;
+                    document.getElementById('modal-role').innerText = roleEl ? roleEl.innerText : '';
+                    document.getElementById('modal-img').style.backgroundImage = imgEl.style.backgroundImage;
+                    
+                    if (hiddenData) {
+                        const realName = hiddenData.getAttribute('data-realname');
+                        const age = hiddenData.getAttribute('data-age');
+                        document.getElementById('modal-realname').innerText = realName ? realName : '';
+                        
+                        if (age) {
+                            document.getElementById('modal-age').innerText = age;
+                            document.getElementById('modal-age-container').style.display = 'block';
+                        } else {
+                            document.getElementById('modal-age-container').style.display = 'none';
+                        }
+                    } else {
+                        document.getElementById('modal-realname').innerText = '';
+                        document.getElementById('modal-age-container').style.display = 'none';
+                    }
+                    
+                    if (mainsText) {
+                        document.getElementById('modal-mains').innerText = mainsText;
+                        document.getElementById('modal-mains-container').style.display = 'block';
+                    } else {
+                        document.getElementById('modal-mains-container').style.display = 'none';
+                    }
+                    
+                    const socialsContainer = document.getElementById('modal-socials');
+                    socialsContainer.innerHTML = '';
+                    links.forEach(link => {
+                        const newLink = document.createElement('a');
+                        newLink.href = link.href;
+                        newLink.target = '_blank';
+                        newLink.innerText = link.innerText;
+                        socialsContainer.appendChild(newLink);
+                    });
+                    
+                    playerModal.classList.add('active');
+                }
+            });
+        });
+    }
 });
 
 
