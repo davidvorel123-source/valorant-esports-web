@@ -841,8 +841,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         if (age) {
                             document.getElementById('modal-age').innerText = age;
-                                                        const lang = localStorage.getItem('vinfo_lang') || 'en';
-                            document.getElementById('modal-age-container').innerHTML = <strong> + (lang === 'cz' || lang === 'cs' ? 'Věk:' : 'Age:') + </strong> <span id="modal-age"> + age + </span>;
+                                                        let modalLang = localStorage.getItem('vinfo_lang') || 'en';
+                            document.getElementById('modal-age-container').innerHTML = <strong> + (modalLang === 'cz' || modalLang === 'cs' ? 'Věk:' : 'Age:') + </strong> <span id="modal-age"> + age + </span>;
                             document.getElementById('modal-age-container').style.display = 'block';
                         } else {
                             document.getElementById('modal-age-container').style.display = 'none';
