@@ -495,8 +495,8 @@
             const rotateX = ((y - centerY) / centerY) * -10;
             const rotateY = ((x - centerX) / centerX) * 10;
             el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-            el.style.setProperty('--mouse-x', ${(x / rect.width) * 100}%);
-            el.style.setProperty('--mouse-y', ${(y / rect.height) * 100}%);
+            el.style.setProperty('--mouse-x', `%`);
+            el.style.setProperty('--mouse-y', `%`);
         });
         el.addEventListener('mouseleave', () => {
             el.style.transition = 'transform 0.5s ease-out, box-shadow 0.5s ease-out';
