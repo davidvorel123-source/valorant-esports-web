@@ -536,7 +536,19 @@ async function loadNews() {
 
     const lang = localStorage.getItem('vinfo_lang') || 'en';
 
-    const simulatedNews = [
+        const simulatedNews = [
+        {
+            date: "SEPTEMBER 21, 2026",
+            title: {
+                en: "ROSTER REBUILD IN PROGRESS",
+                cz: "PROBÍHÁ REBUILD SESTAVY"
+            },
+            content: {
+                en: "VINFO Esports is officially entering a rebuild phase. As we look towards the future of Valorant Premier, we are scouting for fresh Immortal+ talent to join our core roster. We thank our departing players for their dedication and wish them the best.",
+                cz: "VINFO Esports oficiálně zahajuje fázi rebuildu. Při pohledu na budoucnost ve Valorant Premier hledáme nové talenty s rankem Immortal+, kteří by doplnili naše jádro. Děkujeme odcházejícím hráčům za jejich úsilí a přejeme jim to nejlepší."
+            },
+            important: true
+        },
         {
             date: "SEPTEMBER 5, 2026",
             title: {
@@ -829,6 +841,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         
                         if (age) {
                             document.getElementById('modal-age').innerText = age;
+                                                        const lang = localStorage.getItem('vinfo_lang') || 'en';
+                            document.getElementById('modal-age-container').innerHTML = <strong> + (lang === 'cz' || lang === 'cs' ? 'Věk:' : 'Age:') + </strong> <span id="modal-age"> + age + </span>;
                             document.getElementById('modal-age-container').style.display = 'block';
                         } else {
                             document.getElementById('modal-age-container').style.display = 'none';
@@ -840,6 +854,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     if (mainsText) {
                         document.getElementById('modal-mains').innerText = mainsText;
+                                                const lang = localStorage.getItem('vinfo_lang') || 'en';
+                        document.getElementById('modal-mains-container').innerHTML = <strong>Mains:</strong> <span id="modal-mains"> + mainsText + </span>;
                         document.getElementById('modal-mains-container').style.display = 'block';
                     } else {
                         document.getElementById('modal-mains-container').style.display = 'none';
