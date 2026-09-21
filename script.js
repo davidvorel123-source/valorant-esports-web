@@ -211,6 +211,7 @@
             const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
             
             const lang = localStorage.getItem('vinfo_lang') || 'en';
+            let text;
 
             if (diffDays < 0 || isTodayButOver) {
                 text = lang === 'cz' ? 'ODEHRÁNO' : 'PLAYED';
@@ -259,9 +260,9 @@
                         card.style.display = 'inline-block';
                     }
                 } else {
-                    el.innerHTML = `<span style="color: var(--val-grey); font-weight: bold; font-size: 1.5rem; letter-spacing: 2px;">${lang === 'cz' ? 'ODEHRÁNO' : 'PLAYED'}</span>`;
-                    if (card && card.style.display !== 'none') {
-                        card.style.display = 'none';
+                    el.innerHTML = `<span style="color: var(--val-grey); font-weight: bold; font-size: 1.5rem; letter-spacing: 2px;">${lang === 'cz' ? 'ZÁPAS DOKONČEN' : 'MATCH COMPLETED'}</span>`;
+                    if (card && card.style.display === 'none') {
+                        card.style.display = 'inline-block';
                     }
                 }
                 return;
@@ -353,7 +354,7 @@
 
     // Hero Particles System
     const canvas = document.getElementById('hero-particles');
-    if (canvas) {
+    if (canvas && window.innerWidth > 900) {
         const ctx = canvas.getContext('2d');
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
@@ -494,6 +495,8 @@
             const rotateX = ((y - centerY) / centerY) * -10;
             const rotateY = ((x - centerX) / centerX) * 10;
             el.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+            el.style.setProperty('--mouse-x', ${(x / rect.width) * 100}%);
+            el.style.setProperty('--mouse-y', ${(y / rect.height) * 100}%);
         });
         el.addEventListener('mouseleave', () => {
             el.style.transition = 'transform 0.5s ease-out, box-shadow 0.5s ease-out';
@@ -501,10 +504,35 @@
         });
     });
 
-    // Fix Trophy hover for 3D
-    const trophies = document.querySelectorAll('#trophies [onmouseover]');
+    // Fix Trophy hover for 3D and mobile tap
+    const trophyStyle = document.createElement('style');
+    trophyStyle.innerHTML = `
+        .trophy-card.active { box-shadow: 0 20px 40px rgba(255,70,85,0.2) !important; }
+        .trophy-card.active span { transform: scale(1.1) rotate(5deg) !important; }
+        .trophy-card.active .trophy-details { opacity: 1 !important; }
+        @media (min-width: 901px) {
+            .trophy-card:hover { box-shadow: 0 20px 40px rgba(255,70,85,0.2) !important; }
+            .trophy-card:hover span { transform: scale(1.1) rotate(5deg) !important; }
+            .trophy-card:hover .trophy-details { opacity: 1 !important; }
+        }
+    `;
+    document.head.appendChild(trophyStyle);
+
+    const trophies = document.querySelectorAll('#trophies [onmouseover], #trophies .trophy-card');
     trophies.forEach(t => {
         t.classList.add('trophy-card');
+        t.removeAttribute('onmouseover');
+        t.removeAttribute('onmouseout');
+        const icon = t.querySelector('span');
+        if (icon) {
+            icon.removeAttribute('onmouseover');
+            icon.removeAttribute('onmouseout');
+        }
+        t.addEventListener('click', () => {
+            if (window.innerWidth <= 900) {
+                t.classList.toggle('active');
+            }
+        });
     });
 
     // Custom cursor removed for performance
@@ -707,28 +735,57 @@ async function loadNews() {
         }
     ];
 
-    newsContainer.innerHTML = '';
-
-    simulatedNews.slice(0, 3).forEach(news => {
-        const tTitle = news.title[lang] || news.title.en;
-        const tContent = news.content[lang] || news.content.en;
-
-        if (news.important) {
-            newsContainer.innerHTML += `
-            <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid var(--val-red); padding: 2rem; transition: transform 0.2s; box-shadow: 0 0 15px rgba(255, 70, 85, 0.2);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">${news.date}</span>
-                <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${tTitle}</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">${tContent}</p>
-            </div>`;
-        } else {
-            newsContainer.innerHTML += `
-            <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid rgba(255, 70, 85, 0.2); padding: 2rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
-                <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">${news.date}</span>
-                <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${tTitle}</h3>
-                <p style="color: var(--val-grey); line-height: 1.6;">${tContent}</p>
-            </div>`;
+    const monthsCz = { 'JANUARY': 'LEDNA', 'FEBRUARY': 'ÚNORA', 'MARCH': 'BŘEZNA', 'APRIL': 'DUBNA', 'MAY': 'KVĚTNA', 'JUNE': 'ČERVNA', 'JULY': 'ČERVENCE', 'AUGUST': 'SRPNA', 'SEPTEMBER': 'ZÁŘÍ', 'OCTOBER': 'ŘÍJNA', 'NOVEMBER': 'LISTOPADU', 'DECEMBER': 'PROSINCE' };
+    let isShowingAllNews = false;
+    function renderNews() {
+        newsContainer.innerHTML = '';
+        const itemsToShow = isShowingAllNews ? simulatedNews : simulatedNews.slice(0, 3);
+        itemsToShow.forEach(news => {
+            const tTitle = news.title[lang] || news.title.en;
+            const tContent = news.content[lang] || news.content.en;
+            let displayDate = news.date;
+            if (lang === 'cz' || lang === 'cs') {
+                for (const [en, cz] of Object.entries(monthsCz)) {
+                    if (displayDate.includes(en)) {
+                        displayDate = displayDate.replace(en, cz);
+                        break;
+                    }
+                }
+            }
+            if (news.important) {
+                newsContainer.innerHTML += `
+                <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid var(--val-red); padding: 2rem; transition: transform 0.2s; box-shadow: 0 0 15px rgba(255, 70, 85, 0.2);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">${displayDate}</span>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${tTitle}</h3>
+                    <p style="color: var(--val-grey); line-height: 1.6;">${tContent}</p>
+                </div>`;
+            } else {
+                newsContainer.innerHTML += `
+                <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid rgba(255, 70, 85, 0.2); padding: 2rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                    <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">${displayDate}</span>
+                    <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${tTitle}</h3>
+                    <p style="color: var(--val-grey); line-height: 1.6;">${tContent}</p>
+                </div>`;
+            }
+        });
+        if (simulatedNews.length > 3) {
+            const btnContainer = document.createElement('div');
+            btnContainer.style.width = '100%';
+            btnContainer.style.textAlign = 'center';
+            btnContainer.style.marginTop = '2rem';
+            const btn = document.createElement('button');
+            btn.className = 'cta-button';
+            btn.style.margin = '0 auto';
+            btn.innerText = isShowingAllNews ? ((lang === 'cz' || lang === 'cs') ? 'ZOBRAZIT MÉNĚ' : 'SHOW LESS') : ((lang === 'cz' || lang === 'cs') ? 'ZOBRAZIT VÍCE' : 'LOAD MORE');
+            btn.addEventListener('click', () => {
+                isShowingAllNews = !isShowingAllNews;
+                renderNews();
+            });
+            newsContainer.appendChild(btnContainer);
+            btnContainer.appendChild(btn);
         }
-    });
+    }
+    renderNews();
 }
 
 window.loadNews = loadNews;
@@ -789,7 +846,7 @@ document.addEventListener('DOMContentLoaded', () => {
             let textCs = isShowingAll ? 'ZOBRAZIT MÉNĚ' : 'ZOBRAZIT DALŠÍ ZÁPASY';
             let key = isShowingAll ? 'legacy.showLess' : 'legacy.showAll';
             
-            toggleBtn.innerHTML = `<span data-i18n="${key}">${lang === 'cs' ? textCs : textEn}</span> <i class="fa-solid fa-chevron-${isShowingAll ? 'up' : 'down'}"></i>`;
+            toggleBtn.innerHTML = `<span data-i18n="${key}">${lang === 'cz' ? textCs : textEn}</span> <i class="fa-solid fa-chevron-${isShowingAll ? 'up' : 'down'}"></i>`;
         });
     }
 
@@ -800,17 +857,27 @@ document.addEventListener('DOMContentLoaded', () => {
         
         modalClose.addEventListener('click', () => {
             playerModal.classList.remove('active');
+            document.body.classList.remove('modal-open');
         });
         
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && playerModal.classList.contains('active')) {
+                playerModal.classList.remove('active');
+                document.body.classList.remove('modal-open');
+            }
+        });
+
         playerModal.addEventListener('click', (e) => {
             if (e.target === playerModal) {
                 playerModal.classList.remove('active');
+            document.body.classList.remove('modal-open');
             }
         });
 
         document.querySelectorAll('.player-card').forEach(card => {
             card.addEventListener('click', (e) => {
                 if (e.target.tagName.toLowerCase() === 'a') return;
+                if (!card.querySelector('.player-image') || card.closest('#staff')) return;
 
                 const nameEl = card.querySelector('.player-name');
                 const roleEl = card.querySelector('.player-role');
@@ -869,6 +936,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     });
                     
                     playerModal.classList.add('active');
+                    document.body.classList.add('modal-open');
                 }
             });
         });

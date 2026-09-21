@@ -5,11 +5,6 @@
         "media.more": "COMING SOON",
         "media.desc3": "Waiting for upload...",
         "legacy.matchHistory": "Premier & Tournament Matches",
-        "table.date": "Date",
-        "table.tournament": "Tournament",
-        "table.opponent": "Opponent",
-        "table.score": "Score",
-        "table.result": "Result",
         "sponsors.title": "PARTNERS & SPONSORS",
         "sponsors.placeholder": "YOUR LOGO HERE",
         "sponsors.contact": "BECOME A PARTNER",
@@ -27,11 +22,6 @@
         "hero.socials": "DEJWRIX — PERSONAL SOCIALS",
         "hero.title": "DEFY THE LIMITS",
         "hero.subtitle": "\"SILENCE THE NOISE. DOMINATE THE SERVER.\"|\"WE DON'T ADAPT TO THE META. WE DICTATE IT.\"|\"WINNING IS A MINDSET, NOT A PLAN.\"|\"EVERY BULLET CALCULATED. EVERY ROUND OURS.\"|\"THE HERD SHOWS NO MERCY.\"|\"FROM LOCAL LOBBIES TO EUROPEAN DOMINANCE.\"|\"NO EXCUSES. JUST HEADSHOTS.\"|\"ONE TEAM. ONE GOAL. CHAMPIONS.\"",
-        "banner.race": "RACE TO PLAYOFFS",
-        "banner.division": "Premier Division (TBD)",
-        "banner.current_rank": "CURRENT RANK",
-        "banner.top_16": "TOP 16",
-        "banner.cutoff": "PLAYOFF CUTOFF",
         "schedule.title": "MATCH SCHEDULE",
         "schedule.upcoming": "UPCOMING MATCH",
         "schedule.tba": "TO BE ANNOUNCED",
@@ -43,12 +33,11 @@
         "roster.title": "OUR ROSTER",
         "subs.title": "SUBSTITUTES",
         "roster.lfp": "LOOKING FOR PLAYER",
+        "lfp.role1": "INITIATOR / FLEX",
+        "lfp.role2": "SENTINEL / SMOKER",
+        "lfp.scouting": "SCOUTING",
         "staff.title": "MANAGEMENT & STAFF",
         "role.manager": "MANAGER",
-        "role.mental_coach": "MENTAL COACH",
-        "role.coach": "COACH",
-        "staff.name": "thomas",
-        "staff.mental_coach_name": "Yonq",
         "role.igl": "IGL / DUELIST",
         "role.igl_controller": "IGL / CONTROLLER",
         "role.second_igl_duelist": "SECOND IGL / DUELIST",
@@ -112,12 +101,6 @@
         "stats.contender": "Placement Phase",
         "stats.founded": "Founded",
         "news.title": "LATEST INTEL",
-        "news.date1": "JUNE 25, 2026",
-        "news.title1": "ROSTER UPDATE: WETRIX LEAVES, KILLUA JOINS",
-        "news.desc1": "Wetrix has stepped down from the main roster. We thank him for his efforts and wish him the best. Taking his place as our Sentinel is Killua, who brings incredible firepower and tactical prowess to the team.",
-        "news.date2": "MAY 29, 2026",
-        "news.title2": "RIVO LEAVES AS SUB",
-        "news.desc2": "We part ways with Rivo, who has stepped down from his substitute role. We thank him for his time with the team and wish him the best.",
         "news.recap": "MATCH RECAPS",
         "news.soon": "COMING SOON",
         "about.p1": "VINFO is a premier Valorant team built on aggressive plays, tactical superiority, and an unbreakable bond. Formed by a group of High Immortal and Radiant prodigies, our journey started in local competitive ladders. We are dominating the scene with our unique, fearless playstyle.",
@@ -183,9 +166,6 @@
         "footer.join": "JOIN THE HERD.",
         "footer.contact": "Contact:",
         "footer.rights": "All rights reserved.",
-        "stats.matches": "Matches Played",
-        "stats.winrate": "Win Rate",
-        "stats.tourneys": "Tournaments Won",
         "roster.mains": "Mains:",
         "schedule.vstbd": "VINFO vs. TBD",
         "schedule.premier": "VALORANT PREMIER",
@@ -202,11 +182,6 @@
         "media.more": "BRZY PŘIBUDOU",
         "media.desc3": "Čeká na nahrání...",
         "legacy.matchHistory": "ZÁPASY Z PREMIER A TURNAJŮ",
-        "table.date": "Datum",
-        "table.tournament": "Turnaj",
-        "table.opponent": "Soupeř",
-        "table.score": "Skóre",
-        "table.result": "Výsledek",
         "sponsors.title": "PARTNEŘI A SPONZOŘI",
         "sponsors.placeholder": "TADY MŮŽE BÝT VAŠE LOGO",
         "sponsors.contact": "STÁT SE PARTNEREM",
@@ -225,11 +200,6 @@
         "hero.socials": "DEJWRIX — OSOBNÍ SÍTĚ",
         "hero.title": "PŘEKONEJ HRANICE",
         "hero.subtitle": "\"UTIŠ HLUK. DOMINUJ SERVERU.\"|\"MY SE METĚ NEPŘIZPŮSOBUJEME. MY JI DIKTUJEME.\"|\"VÝHRA NENÍ PLÁN, ALE NASTAVENÍ MYSLI.\"|\"KAŽDÁ KULKA VYPOČÍTANÁ. KAŽDÉ KOLO NAŠE.\"|\"STÁDO NEZNÁ SLITOVÁNÍ.\"|\"OD LOKÁLNÍCH LOBBY PO EVROPSKOU DOMINANCI.\"|\"ŽÁDNÉ VÝMLUVY. JEN HLAVY.\"|\"JEDEN TÝM. JEDEN CÍL. CHAMPIONS.\"",
-        "banner.race": "ZÁVOD O PLAYOFF",
-        "banner.division": "Premier Divize (TBD)",
-        "banner.current_rank": "PRŮBĚŽNÉ POŘADÍ",
-        "banner.top_16": "TOP 16",
-        "banner.cutoff": "POSTUP DO PLAYOFF",
         "schedule.title": "ROZPIS ZÁPASŮ",
         "schedule.upcoming": "DALŠÍ ZÁPAS",
         "schedule.tba": "BUDE OZNÁMENO",
@@ -241,12 +211,11 @@
         "roster.title": "NAŠE SESTAVA",
         "subs.title": "NÁHRADNÍCI",
         "roster.lfp": "HLEDÁME HRÁČE",
+        "lfp.role1": "INICIÁTOR / FLEX",
+        "lfp.role2": "SENTINEL / SMOKER",
+        "lfp.scouting": "HLEDÁME HRÁČE",
         "staff.title": "VEDENÍ A PERSONÁL",
         "role.manager": "MANAŽER",
-        "role.mental_coach": "MENTÁLNÍ KOUČ",
-        "role.coach": "TRENÉR",
-        "staff.name": "thomas",
-        "staff.mental_coach_name": "Yonq",
         "role.igl": "IGL / DUELIST",
         "role.igl_controller": "IGL / CONTROLLER",
         "role.second_igl_duelist": "SECOND IGL / DUELIST",
@@ -309,12 +278,6 @@
         "stats.contender": "Fáze Umisťování",
         "stats.founded": "Založeno",
         "news.title": "NOVINKY",
-        "news.date1": "25. ČERVNA 2026",
-        "news.title1": "ZMĚNA V SESTAVĚ: WETRIX KONČÍ, PŘICHÁZÍ KILLUA",
-        "news.desc1": "Wetrix se rozhodl opustit hlavní sestavu. Děkujeme mu za jeho čas a přejeme mu hodně štěstí. Jeho místo Sentinela zaujme Killua, který do týmu přináší obrovskou palebnou sílu a taktické uvažování.",
-        "news.date2": "29. KVĚTNA 2026",
-        "news.title2": "RIVO KONČÍ JAKO NÁHRADNÍK",
-        "news.desc2": "Loučíme se s Rivem, který odstupuje ze své pozice náhradníka. Děkujeme mu za jeho čas v týmu a přejeme mu hodně štěstí.",
         "news.recap": "VÝSLEDKY ZÁPASŮ",
         "news.soon": "BRZY PŘIBUDOU",
         "about.title": "STÁDO",
@@ -382,9 +345,6 @@
         "footer.join": "PŘIDEJ SE KE STÁDU.",
         "footer.contact": "Kontakt:",
         "footer.rights": "Všechna práva vyhrazena.",
-        "stats.matches": "Odehraných zápasů",
-        "stats.winrate": "Win Rate",
-        "stats.tourneys": "Vyhraných turnajů",
         "roster.mains": "Mains:",
         "schedule.vstbd": "VINFO vs. TBD",
         "schedule.premier": "VALORANT PREMIER",
@@ -427,13 +387,6 @@ function setLanguage(lang) {
         window.loadNews();
     }
 
-    // Handle marquee special case
-    const marquee = document.querySelector('.marquee-content');
-    if (marquee) {
-        const t = translations[lang]["marquee.text"];
-        marquee.innerText = t + " • " + t + " • " + t + " • " + t + " • ";
-    }
-
     // Update toggles
     document.querySelectorAll('.lang-btn').forEach(btn => {
         if (btn.getAttribute('data-lang') === lang) {
@@ -459,9 +412,3 @@ document.addEventListener('DOMContentLoaded', () => {
     // Safety re-apply after short delay to catch any late-rendered elements
     setTimeout(() => setLanguage(currentLang), 150);
 });
-
-
-
-
-
-

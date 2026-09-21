@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html lang="cs">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -10,7 +10,9 @@
     <meta property="og:url" content="https://vinfoesports.com">
     <meta name="twitter:card" content="summary_large_image">
     <title>VINFO Esports | VINFO - Valorant Esports Team</title>
-    <link rel="stylesheet" href="styles.css?v=17">
+    <link rel="stylesheet" href="styles.css?v=30">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="icon" type="image/png" href="vinfo-logo.png">
@@ -39,13 +41,35 @@
         .twitter-btn { background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); }
         .twitter-btn:hover { background-color: rgba(255,255,255,0.1); transform: translateY(-3px); box-shadow: 0 5px 15px rgba(255,255,255,0.1); color: white; }
     </style>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "SportsTeam",
+  "name": "VINFO Esports",
+  "sport": "Valorant",
+  "url": "https://vinfoesports.com",
+  "logo": "https://vinfoesports.com/vinfo-logo.png",
+  "foundingDate": "2026",
+  "member": [
+    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "David Vorel", "alternateName": "Dejwrix" }, "roleName": "IGL / Controller" },
+    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Matyáš Řehák", "alternateName": "Teikov" }, "roleName": "Duelist" },
+    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Filip", "alternateName": "Woody" }, "roleName": "Sub" }
+  ],
+  "sameAs": [
+    "https://x.com/vinfoesports",
+    "https://discord.gg/9kUvFVUeXs",
+    "https://www.vlr.gg/team/18058/vinfo-esports",
+    "https://kick.com/vinfodejwrix"
+  ]
+}
+</script>
 </head>
 <body>
     <a href="#home" class="skip-link">Skip to main content</a>
     <div class="crt-overlay"></div>
     <!-- Preloader -->
     <div id="preloader" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: var(--val-darker); z-index: 99999; display: flex; align-items: center; justify-content: center; flex-direction: column; transition: opacity 0.5s ease, visibility 0.5s;">
-        <img src="vinfo-logo.png" style="width: 120px; height: auto; filter: drop-shadow(0 0 15px rgba(255, 70, 85, 0.4)); animation: pulse 1.5s infinite; margin-bottom: 20px;">
+        <img src="vinfo-logo.png" alt="VINFO Esports Logo" style="width: 120px; height: auto; filter: drop-shadow(0 0 15px rgba(255, 70, 85, 0.4)); animation: pulse 1.5s infinite; margin-bottom: 20px;">
         <h2 style="font-family: var(--font-heading); color: var(--val-white); letter-spacing: 4px; text-transform: uppercase;"><span data-i18n="load.text">CONNECTING TO SERVER...</span></h2>
         <div style="width: 200px; height: 4px; background: rgba(255,255,255,0.1); margin-top: 10px; overflow: hidden; border-radius: 2px;">
             <div id="preloader-bar" style="width: 0%; height: 100%; background: var(--val-red); transition: width 0.1s;"></div>
@@ -101,17 +125,17 @@
             <p class="hero-subtitle" data-i18n="hero.subtitle" style="font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 3px; color: var(--val-red); text-transform: uppercase;">"SILENCE THE NOISE. DOMINATE THE SERVER."</p>
             <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2rem;">
                 <a href="#roster" class="cta-button"><span data-i18n="hero.meet">MEET THE TEAM</span> <span class="arrow">→</span></a>
-                <a href="https://discord.gg/9kUvFVUeXs" target="_blank" class="cta-button" style="background-color: #5865F2; border-color: #5865F2;"><span data-i18n="hero.discord">JOIN DISCORD</span> <span class="arrow">→</span></a>
+                <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" class="cta-button" style="background-color: #5865F2; border-color: #5865F2;"><span data-i18n="hero.discord">JOIN DISCORD</span> <span class="arrow">→</span></a>
             </div>
 
 
             <div style="margin-top: 2rem; border-top: 1px solid rgba(255,255,255,0.1); padding-top: 1.5rem;">
                 <p data-i18n="hero.socials" style="color: var(--val-grey); font-size: 0.75rem; letter-spacing: 2px; margin-bottom: 1rem; text-transform: uppercase;">Dejwrix — Personal Socials</p>
                 <div style="display: flex; gap: 2rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="https://kick.com/vinfodejwrix" target="_blank" style="color: #53fc18; font-weight: 700; text-decoration: none; font-size: 1.1rem; letter-spacing: 1px; display: flex; align-items: center; gap: 6px; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'"><i class="fa-solid fa-play"></i> KICK</a>
-                    <a href="https://x.com/dejwrix" target="_blank" style="color: var(--val-grey); font-weight: 700; text-decoration: none; font-size: 1.1rem; letter-spacing: 1px; transition: color 0.2s;" onmouseover="this.style.color='var(--val-white)'" onmouseout="this.style.color='var(--val-grey)'"><i class="fa-brands fa-x-twitter"></i> TWITTER</a>
-                    <a href="https://www.vlr.gg/team/18058/vinfo-esports" target="_blank" style="color: var(--val-grey); font-weight: 700; text-decoration: none; font-size: 1.1rem; letter-spacing: 1px; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-grey)'"><i class="fa-solid fa-crosshairs"></i> VLR.GG</a>
-                    <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" style="color: var(--val-grey); font-weight: 700; text-decoration: none; font-size: 1.1rem; letter-spacing: 1px; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-grey)'"><i class="fa-solid fa-heart"></i> DONATE</a>
+                    <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="color: #53fc18; font-weight: 700; text-decoration: none; font-size: 1.1rem; letter-spacing: 1px; display: flex; align-items: center; gap: 6px; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.7'" onmouseout="this.style.opacity='1'"><i class="fa-solid fa-play"></i> KICK</a>
+                    <a href="https://x.com/dejwrix" target="_blank" rel="noopener noreferrer" style="color: var(--val-grey); font-weight: 700; text-decoration: none; font-size: 1.1rem; letter-spacing: 1px; transition: color 0.2s;" onmouseover="this.style.color='var(--val-white)'" onmouseout="this.style.color='var(--val-grey)'"><i class="fa-brands fa-x-twitter"></i> TWITTER</a>
+                    <a href="https://www.vlr.gg/team/18058/vinfo-esports" target="_blank" rel="noopener noreferrer" style="color: var(--val-grey); font-weight: 700; text-decoration: none; font-size: 1.1rem; letter-spacing: 1px; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-grey)'"><i class="fa-solid fa-crosshairs"></i> VLR.GG</a>
+                    <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" rel="noopener noreferrer" style="color: var(--val-grey); font-weight: 700; text-decoration: none; font-size: 1.1rem; letter-spacing: 1px; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-grey)'"><i class="fa-solid fa-heart"></i> DONATE</a>
                 </div>
             </div>
         </div>
@@ -129,7 +153,7 @@
                 <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 2px 2px 0 var(--val-red);">SYNERGY CIRCUIT</h3>
                 <span style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem;">vs. IVAN (BO3)</span>
                 <div class="match-countdown" data-target="2026-09-17T21:00:00" style="margin-bottom: 1.5rem;"></div>
-                <a href="https://kick.com/vinfodejwrix" target="_blank" style="display: inline-block; color: #53fc18; font-weight: bold; text-decoration: none; font-size: 1.2rem; letter-spacing: 1.5px; background: rgba(83, 252, 24, 0.15); padding: 10px 25px; border-radius: 4px; border: 2px solid rgba(83, 252, 24, 0.6); transition: all 0.3s;" onmouseover="this.style.background='rgba(83, 252, 24, 0.3)'; this.style.boxShadow='0 0 20px rgba(83, 252, 24, 0.3)'; this.style.transform='scale(1.05)';" onmouseout="this.style.background='rgba(83, 252, 24, 0.15)'; this.style.boxShadow='none'; this.style.transform='scale(1)';"><i class="fa-solid fa-play"></i> <span data-i18n="schedule.watch">WATCH LIVE ON KICK</span></a>
+                <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #53fc18; font-weight: bold; text-decoration: none; font-size: 1.2rem; letter-spacing: 1.5px; background: rgba(83, 252, 24, 0.15); padding: 10px 25px; border-radius: 4px; border: 2px solid rgba(83, 252, 24, 0.6); transition: all 0.3s;" onmouseover="this.style.background='rgba(83, 252, 24, 0.3)'; this.style.boxShadow='0 0 20px rgba(83, 252, 24, 0.3)'; this.style.transform='scale(1.05)';" onmouseout="this.style.background='rgba(83, 252, 24, 0.15)'; this.style.boxShadow='none'; this.style.transform='scale(1)';"><i class="fa-solid fa-play"></i> <span data-i18n="schedule.watch">WATCH LIVE ON KICK</span></a>
             </div>
         </div>
     </section>
@@ -143,7 +167,7 @@
                 <span data-i18n="stats.wins" style="color: var(--val-grey); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-top: 8px;">Tournament Wins</span>
             </div>
             <div style="padding: 2rem; border-right: 1px solid rgba(255,255,255,0.08);">
-                <span class="stat-counter" data-target="5" style="display: block; font-family: var(--font-heading); font-size: 4.5rem; color: var(--val-red); line-height: 1; font-weight: 900;">0</span>
+                <span class="stat-counter" data-target="3" style="display: block; font-family: var(--font-heading); font-size: 4.5rem; color: var(--val-red); line-height: 1; font-weight: 900;">0</span>
                 <span data-i18n="stats.core" style="color: var(--val-grey); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-top: 8px;">Core Players</span>
             </div>
 
@@ -198,7 +222,7 @@
                 <a href="mailto:goatscz0@gmail.com" style="display: flex; align-items: center; justify-content: center; gap: 15px; background-color: var(--val-red); color: white; padding: 1.5rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 2px; text-align: center; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 10px 20px rgba(255,70,85,0.3)';" onmouseout="this.style.boxShadow='none';">
                     ✉ goatscz0@gmail.com
                 </a>
-                <a href="https://discord.gg/9kUvFVUeXs" target="_blank" style="display: flex; align-items: center; justify-content: center; gap: 15px; background-color: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; padding: 1.5rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 2px; text-align: center; transition: all 0.2s;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.5)';" onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)';">
+                <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 15px; background-color: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; padding: 1.5rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 2px; text-align: center; transition: all 0.2s;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.5)';" onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)';">
                     <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" width="30" style="filter: brightness(0) invert(1);"> <span data-i18n="tryouts.dm">DM US ON DISCORD</span>
                 </a>
                 <p style="color: var(--val-grey); font-size: 0.9rem; margin-top: 1rem;" data-i18n="tryouts.sub">Include your rank, agent pool, and a short intro. VOD review or trial scrim may be required.</p>
@@ -218,8 +242,8 @@
                     <span data-i18n="role.second_igl_duelist" class="player-role">SECOND IGL / DUELIST</span>
                     <span class="hidden-data" data-realname="David Vorel" data-age="17" style="display:none"></span><h3 class="player-name">Dejwrix <img src="https://flagcdn.com/24x18/cz.png" alt="CZ" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Raze / Phoenix</p>
-                    <a href="https://www.vlr.gg/player/62747/dejwrix" target="_blank" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">VLR.GG PROFILE</a>
-                    <a href="https://x.com/dejwrix" target="_blank" style="display: inline-block; margin-top: 10px; margin-left: 5px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
+                    <a href="https://www.vlr.gg/player/62747/dejwrix" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">VLR.GG PROFILE</a>
+                    <a href="https://x.com/dejwrix" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; margin-left: 5px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
                 </div>
             </div>
             <div class="player-card fade-in-up">
@@ -228,7 +252,7 @@
                     <span data-i18n="role.duelist" class="player-role">DUELIST</span>
                     <span class="hidden-data" data-realname="Matyáš Řehák" data-age="17" style="display:none"></span><h3 class="player-name">Teikov <img src="https://flagcdn.com/24x18/cz.png" alt="CZ" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Neon</p>
-                    <a href="https://x.com/teikovvlr" target="_blank" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
+                    <a href="https://x.com/teikovvlr" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
                 </div>
             </div>
             <div class="player-card">
@@ -237,8 +261,8 @@
                     <span data-i18n="role.sub" class="player-role">SUB</span>
                     <span class="hidden-data" data-realname="Filip" data-age="18" style="display:none"></span><h3 class="player-name">Woody <img src="https://flagcdn.com/24x18/cz.png" alt="CZ" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Vyse / Viper</p>
-                    <a href="https://www.vlr.gg/player/7172/woody" target="_blank" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">VLR.GG PROFILE</a>
-                    <a href="https://x.com/woody_valo" target="_blank" style="display: inline-block; margin-top: 10px; margin-left: 5px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
+                    <a href="https://www.vlr.gg/player/7172/woody" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">VLR.GG PROFILE</a>
+                    <a href="https://x.com/woody_valo" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; margin-left: 5px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
                 </div>
             </div>
 
@@ -380,7 +404,7 @@
             <div class="section-line"></div>
         </div>
         <div style="max-width: 1080px; margin: 0 auto; display: flex; justify-content: center; box-shadow: 0 10px 40px rgba(0,0,0,0.5);">
-            <iframe src="https://player.kick.com/vinfodejwrix" height="600" width="1080" style="border:none; overflow:hidden;" allowfullscreen="true" style="max-width: 100%; border: 2px solid var(--val-red);"></iframe>
+            <iframe src="https://player.kick.com/vinfodejwrix" style="border:none; overflow:hidden; width: 100%; aspect-ratio: 16/9; border: 2px solid var(--val-red);" allowfullscreen="true"></iframe>
         </div>
     </section>
 
@@ -390,7 +414,7 @@
             <span data-i18n="merch.gear" style="color: var(--val-red); font-weight: 800; font-size: 1rem; letter-spacing: 3px;">OFFICIAL GEAR</span>
             <h2 data-i18n="merch.dropping" style="font-family: var(--font-heading); font-size: 4rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; line-height: 1;">MERCH DROPPING SOON</h2>
             <p data-i18n="merch.desc" style="color: var(--val-grey); font-size: 1.2rem; margin-bottom: 2rem;">Rep VINFO Esports. Premium jerseys, hoodies, and accessories are currently in production. Join the Discord to get notified first.</p>
-            <a href="https://discord.gg/9kUvFVUeXs" target="_blank" style="display: inline-block; background-color: var(--val-red); color: white; padding: 1rem 2rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><span data-i18n="merch.waitlist">JOIN DISCORD TO WAITLIST</span></a>
+            <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="display: inline-block; background-color: var(--val-red); color: white; padding: 1rem 2rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><span data-i18n="merch.waitlist">JOIN DISCORD TO WAITLIST</span></a>
         </div>
     </section>
 
@@ -888,7 +912,7 @@
                 </div>
                 <div class="faq-answer">
                     <div class="faq-answer-inner" data-i18n="faq.a5">
-                        The best way to support us right now is by joining our Discord, following our socials, and cheering for us in stream chats during match days. You can also support the team directly by <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" style="color: var(--val-red); text-decoration: underline; font-weight: bold;">donating here</a>. Merch is also dropping soon!
+                        The best way to support us right now is by joining our Discord, following our socials, and cheering for us in stream chats during match days. You can also support the team directly by <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" rel="noopener noreferrer" style="color: var(--val-red); text-decoration: underline; font-weight: bold;">donating here</a>. Merch is also dropping soon!
                     </div>
                 </div>
             </div>
@@ -914,11 +938,11 @@
         <div style="max-width: 1200px; margin: 0 auto; display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;">
             <div style="flex: 1 1 400px;">
                 <span data-i18n="scrim.for" style="color: var(--val-red); font-weight: 800; font-size: 0.85rem; letter-spacing: 3px;">PRO TÝMY</span>
-                <h2 style="font-family: var(--font-heading); font-size: 4rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; line-height: 1;" data-i18n="scrim.title">CHCI S NÁMI SCRIMOVAT?</h2>
+                <h2 style="font-family: var(--font-heading); font-size: 4rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; line-height: 1;" data-i18n="scrim.title">CHCEŠ S NÁMI SCRIMOVAT?</h2>
                 <p style="color: var(--val-grey); line-height: 1.8; font-size: 1.1rem; margin-bottom: 2rem;" data-i18n="scrim.desc">Vždy hledáme výzvy proti ostatním Contender a Radiant týmům. Pokud si myslíte, že vaše sestava zvládne VINFO, ozvěte se a pojďme hrát.</p>
                 <div style="display: flex; gap: 1rem; width: 100%; margin-top: 1rem;">
-                    <a href="https://discord.gg/9kUvFVUeXs" target="_blank" class="scrim-btn discord-btn"><i class="fa-brands fa-discord"></i> DISCORD</a>
-                    <a href="https://x.com/vinfoesports" target="_blank" class="scrim-btn twitter-btn"><i class="fa-brands fa-x-twitter"></i> TWITTER</a>
+                    <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" class="scrim-btn discord-btn"><i class="fa-brands fa-discord"></i> DISCORD</a>
+                    <a href="https://x.com/vinfoesports" target="_blank" rel="noopener noreferrer" class="scrim-btn twitter-btn"><i class="fa-brands fa-x-twitter"></i> TWITTER</a>
                 </div>
             </div>
             <div style="flex: 1 1 400px; background-color: var(--val-darker); border: 1px solid rgba(255,70,85,0.3); padding: 3rem;">
@@ -935,6 +959,7 @@
                         <label style="display: block; color: var(--val-grey); margin-bottom: 0.5rem; font-size: 0.9rem; font-weight: bold;" data-i18n="scrim.msg">Dostupnost & Zpráva</label>
                         <textarea id="scrim-msg" rows="4" style="width: 100%; padding: 1rem; background-color: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: inherit;" required></textarea>
                     </div>
+                    <input type="text" id="scrim-contact" placeholder="Your Discord Tag (e.g. username#1234)" required style="width: 100%; padding: 1rem; background: var(--val-card-bg); border: 1px solid rgba(255,255,255,0.1); color: white; font-family: var(--font-body); margin-bottom: 1rem; font-size: 1rem;">
                     <button type="submit" class="cta-button" style="width: 100%; text-align: center; justify-content: center;" data-i18n="scrim.send">SEND REQUEST</button>
                     <div id="scrim-status" style="margin-top: 1rem; font-size: 0.9rem; text-align: center; font-weight: bold; display: none;"></div>
                 </form>
@@ -949,10 +974,10 @@
             <div class="section-line"></div>
         </div>
         <div style="max-width: 1200px; margin: 0 auto; display: flex; justify-content: center; gap: 4rem; flex-wrap: wrap; align-items: center;">
-            <a href="https://www.vidia-design.cz/" target="_blank" style="opacity: 0.7; transition: opacity 0.3s; transform: scale(0.9);" onmouseover="this.style.opacity='1'; this.style.transform='scale(1)';" onmouseout="this.style.opacity='0.7'; this.style.transform='scale(0.9)';">
+            <a href="https://www.vidia-design.cz/" target="_blank" rel="noopener noreferrer" style="opacity: 0.7; transition: opacity 0.3s; transform: scale(0.9);" onmouseover="this.style.opacity='1'; this.style.transform='scale(1)';" onmouseout="this.style.opacity='0.7'; this.style.transform='scale(0.9)';">
                 <div style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--val-white); font-weight: bold; letter-spacing: 2px;">VIDIA DESIGN</div>
             </a>
-            <a href="https://venvio.dev/" target="_blank" style="opacity: 0.7; transition: opacity 0.3s; transform: scale(0.9);" onmouseover="this.style.opacity='1'; this.style.transform='scale(1)';" onmouseout="this.style.opacity='0.7'; this.style.transform='scale(0.9)';">
+            <a href="https://venvio.dev/" target="_blank" rel="noopener noreferrer" style="opacity: 0.7; transition: opacity 0.3s; transform: scale(0.9);" onmouseover="this.style.opacity='1'; this.style.transform='scale(1)';" onmouseout="this.style.opacity='0.7'; this.style.transform='scale(0.9)';">
                 <div style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--val-white); font-weight: bold; letter-spacing: 2px;">VENVIO</div>
             </a>
             <div style="font-family: var(--font-heading); font-size: 2.5rem; color: var(--val-grey); opacity: 0.3; letter-spacing: 2px; font-style: italic;">
@@ -971,8 +996,8 @@
             <h2 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--val-white); margin-bottom: 1.5rem; text-transform: uppercase;" data-i18n="support.title">BACK THE HERD</h2>
             <p style="color: var(--val-grey); font-size: 1.2rem; line-height: 1.8; margin-bottom: 3rem;" data-i18n="support.desc">We're a self-funded Czech team grinding our way to the top. Every donation helps us cover tournament fees, equipment, and keeps VINFO Esports running. Every single cent goes back into making VINFO better.</p>
             <div style="display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;">
-                <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" class="cta-button" style="font-size: 1.2rem; padding: 1.5rem 3rem;" data-i18n="support.btn1">DONATE NOW 💖</a>
-                <a href="https://discord.gg/9kUvFVUeXs" target="_blank" class="cta-button" style="background-color: transparent; border-color: rgba(255,255,255,0.2); font-size: 1.2rem; padding: 1.5rem 3rem;" data-i18n="support.btn2">JOIN DISCORD</a>
+                <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" rel="noopener noreferrer" class="cta-button" style="font-size: 1.2rem; padding: 1.5rem 3rem;" data-i18n="support.btn1">DONATE NOW 💖</a>
+                <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" class="cta-button" style="background-color: transparent; border-color: rgba(255,255,255,0.2); font-size: 1.2rem; padding: 1.5rem 3rem;" data-i18n="support.btn2">JOIN DISCORD</a>
             </div>
         </div>
     </section>
@@ -980,22 +1005,22 @@
     <footer id="contact" class="footer">
         <div class="footer-content">
             <div class="footer-logo">VINFO</div>
-            <p data-i18n="footer.desc" style="color: var(--val-grey); max-width: 500px; margin: 0 auto 2rem; line-height: 1.6;">VINFO Esports — Fully Czech Valorant squad competing in Premier Contender. Join VINFO Esports on our journey to Challengers.</p>
+            <p data-i18n="footer.desc" style="color: var(--val-grey); max-width: 500px; margin: 0 auto 2rem; line-height: 1.6;">VINFO Esports — International Valorant squad currently in rebuild. Scouting new talent for Premier.. Join VINFO Esports on our journey to Challengers.</p>
             <div class="social-links" style="gap: 2rem; flex-wrap: wrap;">
-                <a href="https://kick.com/vinfodejwrix" target="_blank" class="social-link" style="color: #53fc18; font-weight: 700;"><i class="fa-solid fa-play"></i> KICK</a>
-                <a href="https://x.com/dejwrix" target="_blank" class="social-link"><i class="fa-brands fa-x-twitter"></i> TWITTER</a>
-                <a href="https://discord.gg/9kUvFVUeXs" target="_blank" class="social-link"><i class="fa-brands fa-discord"></i> DISCORD</a>
-                <a href="https://www.vlr.gg/team/18058/vinfo-esports" target="_blank" class="social-link"><i class="fa-solid fa-crosshairs"></i> VLR.GG</a>
-                <a href="https://www.vidia-design.cz/" target="_blank" class="social-link"><i class="fa-solid fa-palette"></i> VIDIA DESIGN</a>
-                <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" class="social-link" style="color: var(--val-red); font-weight: 700;"><i class="fa-solid fa-heart"></i> DONATE</a>
+                <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" class="social-link" style="color: #53fc18; font-weight: 700;"><i class="fa-solid fa-play"></i> KICK</a>
+                <a href="https://x.com/dejwrix" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-x-twitter"></i> TWITTER</a>
+                <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-brands fa-discord"></i> DISCORD</a>
+                <a href="https://www.vlr.gg/team/18058/vinfo-esports" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-solid fa-crosshairs"></i> VLR.GG</a>
+                <a href="https://www.vidia-design.cz/" target="_blank" rel="noopener noreferrer" class="social-link"><i class="fa-solid fa-palette"></i> VIDIA DESIGN</a>
+                <a href="https://streamlabs.com/gczdejwrix/tip" target="_blank" rel="noopener noreferrer" class="social-link" style="color: var(--val-red); font-weight: 700;"><i class="fa-solid fa-heart"></i> DONATE</a>
             </div>
             <p class="copyright" style="margin-top: 2rem;">&copy; 2026 VINFO Esports. <span data-i18n="footer.rights">All rights reserved.</span> | Made with ❤️ in Czech Republic 🇨🇿</p>
-            <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 0.5rem;">Website created by <a href="https://venvio.dev" target="_blank" style="color: var(--val-white); text-decoration: none; font-weight: bold; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-white)'">Venvio</a></p>
+            <p style="color: rgba(255,255,255,0.4); font-size: 0.8rem; margin-top: 0.5rem;">Website created by <a href="https://venvio.dev" target="_blank" rel="noopener noreferrer" style="color: var(--val-white); text-decoration: none; font-weight: bold; transition: color 0.2s;" onmouseover="this.style.color='var(--val-red)'" onmouseout="this.style.color='var(--val-white)'">Venvio</a></p>
         </div>
     </footer>
 
-    <script src="script.js?v=27"></script>
-    <script src="i18n.js?v=27"></script>
+    <script src="script.js?v=30"></script>
+    <script src="i18n.js?v=30"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js?v=2"></script>
     <script>
         // Init Lenis smooth scroll
