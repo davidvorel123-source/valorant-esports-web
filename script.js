@@ -834,15 +834,15 @@ document.addEventListener('DOMContentLoaded', () => {
                     document.getElementById('modal-role').innerText = roleEl ? roleEl.innerText : '';
                     document.getElementById('modal-img').style.backgroundImage = imgEl.style.backgroundImage;
                     
-                    if (hiddenData) {
+                                        if (hiddenData) {
                         const realName = hiddenData.getAttribute('data-realname');
                         const age = hiddenData.getAttribute('data-age');
                         document.getElementById('modal-realname').innerText = realName ? realName : '';
                         
                         if (age) {
-                            document.getElementById('modal-age').innerText = age;
-                                                        let modalLang = localStorage.getItem('vinfo_lang') || 'en';
-                            document.getElementById('modal-age-container').innerHTML = <strong> + (modalLang === 'cz' || modalLang === 'cs' ? 'Věk:' : 'Age:') + </strong> <span id="modal-age"> + age + </span>;
+                            const modalLang = localStorage.getItem('vinfo_lang') || 'en';
+                            const ageLabel = (modalLang === 'cz' || modalLang === 'cs') ? 'Věk:' : 'Age:';
+                            document.getElementById('modal-age-container').innerHTML = '<strong>' + ageLabel + '</strong> <span>' + age + '</span>';
                             document.getElementById('modal-age-container').style.display = 'block';
                         } else {
                             document.getElementById('modal-age-container').style.display = 'none';
@@ -853,15 +853,12 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     
                     if (mainsText) {
-                        document.getElementById('modal-mains').innerText = mainsText;
-                                                const lang = localStorage.getItem('vinfo_lang') || 'en';
-                        document.getElementById('modal-mains-container').innerHTML = <strong>Mains:</strong> <span id="modal-mains"> + mainsText + </span>;
+                        document.getElementById('modal-mains-container').innerHTML = '<strong>Mains:</strong> <span>' + mainsText + '</span>';
                         document.getElementById('modal-mains-container').style.display = 'block';
                     } else {
                         document.getElementById('modal-mains-container').style.display = 'none';
                     }
-                    
-                    const socialsContainer = document.getElementById('modal-socials');
+                                        const socialsContainer = document.getElementById('modal-socials');
                     socialsContainer.innerHTML = '';
                     links.forEach(link => {
                         const newLink = document.createElement('a');
