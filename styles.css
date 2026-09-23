@@ -1025,7 +1025,7 @@ html {
     padding: 3rem;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
 }
 .player-modal-name {
     font-family: var(--font-heading);
