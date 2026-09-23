@@ -944,3 +944,284 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+
+
+
+
+// VINFO v3 Features
+document.addEventListener('DOMContentLoaded', () => {
+
+    // 1. Audio FX System
+    class VinfoAudioFX {
+        constructor() {
+            this.ctx = null;
+            this.initialized = false;
+        }
+        init() {
+            if (!this.initialized) {
+                const AudioContext = window.AudioContext || window.webkitAudioContext;
+                if (AudioContext) {
+                    this.ctx = new AudioContext();
+                    this.initialized = true;
+                }
+            }
+        }
+        playHover() {
+            if (!this.ctx || this.ctx.state === 'suspended') return;
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'sine';
+            osc.frequency.setValueAtTime(800, this.ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(1200, this.ctx.currentTime + 0.04);
+            gain.gain.setValueAtTime(0.02, this.ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start();
+            osc.stop(this.ctx.currentTime + 0.05);
+        }
+        playClick() {
+            if (!this.ctx) return;
+            if (this.ctx.state === 'suspended') this.ctx.resume();
+            const osc = this.ctx.createOscillator();
+            const gain = this.ctx.createGain();
+            osc.type = 'square';
+            osc.frequency.setValueAtTime(150, this.ctx.currentTime);
+            osc.frequency.exponentialRampToValueAtTime(40, this.ctx.currentTime + 0.1);
+            gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
+            gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.1);
+            osc.connect(gain);
+            gain.connect(this.ctx.destination);
+            osc.start();
+            osc.stop(this.ctx.currentTime + 0.1);
+        }
+    }
+    const sfx = new VinfoAudioFX();
+    
+    // Initialize audio on first user interaction
+    document.body.addEventListener('click', () => sfx.init(), { once: true });
+
+    document.querySelectorAll('.cta-button, .cta-button-hud, .player-card, .modal-tab, .nav-links a').forEach(el => {
+        el.addEventListener('mouseenter', () => sfx.playHover());
+        el.addEventListener('mousedown', () => sfx.playClick());
+    });
+
+    // 2. Konami Code Easter Egg
+    const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
+    let konamiIndex = 0;
+    document.addEventListener('keydown', (e) => {
+        if (e.keyCode === konamiCode[konamiIndex]) {
+            konamiIndex++;
+            if (konamiIndex === konamiCode.length) {
+                document.body.classList.toggle('overdrive-mode');
+                sfx.playClick();
+                konamiIndex = 0;
+            }
+        } else {
+            konamiIndex = 0;
+        }
+    });
+
+    // 3. Live Bar Observer (Timeline scroll effect)
+    const timelineItems = document.querySelectorAll('.timeline-item');
+    const timelineObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('revealed');
+            }
+        });
+    }, { threshold: 0.5 });
+    timelineItems.forEach(item => timelineObserver.observe(item));
+
+    // 4. Player Modal Tabs & Canvas Radar
+    const mockPlayerData = {
+        'Dejwrix': { crosshair: '0;P;c;5;o;1;f;0;0t;1;0l;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight', dpi: '800', sens: '0.3', monitor: 'ZOWIE XL2546K 240Hz', stats: [85, 70, 60, 90, 80, 75] }, // ACS, KD, HS, Clutch, Entry, Flex
+        'Teikov': { crosshair: '0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'Razer DeathAdder V3 Pro', dpi: '400', sens: '0.45', monitor: 'ZOWIE XL2566K 360Hz', stats: [95, 80, 85, 60, 95, 50] },
+        'Woody': { crosshair: '0;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'Zowie EC2-CW', dpi: '800', sens: '0.25', monitor: 'ASUS ROG Swift 360Hz', stats: [70, 85, 75, 85, 50, 90] }
+    };
+
+    const tabs = document.querySelectorAll('.modal-tab');
+    const tabContents = document.querySelectorAll('.modal-tab-content');
+    
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+            tabs.forEach(t => t.classList.remove('active'));
+            tabContents.forEach(c => c.style.display = 'none');
+            tab.classList.add('active');
+            document.getElementById(tab.getAttribute('data-tab')).style.display = 'block';
+        });
+    });
+
+    function drawRadarChart(ctx, stats) {
+        ctx.clearRect(0, 0, 300, 300);
+        const centerX = 150;
+        const centerY = 150;
+        const radius = 100;
+        const sides = 6;
+        const labels = ['ACS', 'K/D', 'HS %', 'Clutch', 'Entry', 'Flex'];
+
+        // Draw background grid
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.1)';
+        ctx.lineWidth = 1;
+        for (let r = 1; r <= 4; r++) {
+            ctx.beginPath();
+            for (let i = 0; i < sides; i++) {
+                const angle = (Math.PI * 2 * i / sides) - Math.PI / 2;
+                const x = centerX + radius * (r / 4) * Math.cos(angle);
+                const y = centerY + radius * (r / 4) * Math.sin(angle);
+                if (i === 0) ctx.moveTo(x, y);
+                else ctx.lineTo(x, y);
+            }
+            ctx.closePath();
+            ctx.stroke();
+        }
+
+        // Draw axes and labels
+        ctx.fillStyle = '#8E95A5';
+        ctx.font = '12px Inter';
+        ctx.textAlign = 'center';
+        ctx.textBaseline = 'middle';
+        for (let i = 0; i < sides; i++) {
+            const angle = (Math.PI * 2 * i / sides) - Math.PI / 2;
+            const x = centerX + radius * Math.cos(angle);
+            const y = centerY + radius * Math.sin(angle);
+            ctx.beginPath();
+            ctx.moveTo(centerX, centerY);
+            ctx.lineTo(x, y);
+            ctx.stroke();
+            
+            const labelX = centerX + (radius + 20) * Math.cos(angle);
+            const labelY = centerY + (radius + 20) * Math.sin(angle);
+            ctx.fillText(labels[i], labelX, labelY);
+        }
+
+        // Draw stats data
+        ctx.beginPath();
+        ctx.fillStyle = 'rgba(255, 70, 85, 0.4)';
+        ctx.strokeStyle = '#ff4655';
+        ctx.lineWidth = 2;
+        for (let i = 0; i < sides; i++) {
+            const angle = (Math.PI * 2 * i / sides) - Math.PI / 2;
+            const val = stats[i] / 100;
+            const x = centerX + radius * val * Math.cos(angle);
+            const y = centerY + radius * val * Math.sin(angle);
+            if (i === 0) ctx.moveTo(x, y);
+            else ctx.lineTo(x, y);
+        }
+        ctx.closePath();
+        ctx.fill();
+        ctx.stroke();
+    }
+
+    // Intercept player card click to populate gear and draw chart
+    const playerCards = document.querySelectorAll('.player-card:not(.lfp-card)');
+    playerCards.forEach(card => {
+        card.addEventListener('click', (e) => {
+            if (e.target.tagName.toLowerCase() === 'a') return;
+            const nameEl = card.querySelector('.player-name');
+            if (nameEl) {
+                const cleanName = nameEl.innerText.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
+                const pData = mockPlayerData[cleanName];
+                
+                if (pData) {
+                    const canvas = document.getElementById('radar-chart');
+                    if(canvas) {
+                        const ctx = canvas.getContext('2d');
+                        drawRadarChart(ctx, pData.stats);
+                    }
+                    
+                    document.getElementById('modal-gear-info').innerHTML = `
+                        <strong>Mouse:</strong> <span>${pData.mouse}</span>
+                        <strong>DPI:</strong> <span>${pData.dpi}</span>
+                        <strong>Sens:</strong> <span>${pData.sens}</span>
+                        <strong>Monitor:</strong> <span>${pData.monitor}</span>
+                    `;
+                    
+                    // Super basic crosshair visualization simulation
+                    const chVisual = document.getElementById('crosshair-visual');
+                    if (chVisual) {
+                        chVisual.style.width = '4px';
+                        chVisual.style.height = '4px';
+                        chVisual.style.backgroundColor = '#00ff00';
+                        chVisual.style.boxShadow = '-10px 0 0 #00ff00, 10px 0 0 #00ff00, 0 -10px 0 #00ff00, 0 10px 0 #00ff00';
+                    }
+
+                    const copyBtn = document.getElementById('btn-copy-crosshair');
+                    if(copyBtn) {
+                        copyBtn.onclick = () => {
+                            navigator.clipboard.writeText(pData.crosshair);
+                            copyBtn.innerText = 'COPIED!';
+                            setTimeout(() => copyBtn.innerText = 'COPY CODE', 2000);
+                        };
+                    }
+                }
+                
+                // Reset tabs to overview
+                tabs.forEach(t => t.classList.remove('active'));
+                tabContents.forEach(c => c.style.display = 'none');
+                if (tabs.length > 0) tabs[0].classList.add('active');
+                if (document.getElementById('tab-overview')) document.getElementById('tab-overview').style.display = 'block';
+            }
+        });
+    });
+
+    // 5. Fan ID Generator
+    const genBtn = document.getElementById('generate-fan-id');
+    if (genBtn) {
+        genBtn.addEventListener('click', () => {
+            const name = document.getElementById('fan-name').value || 'GUEST#VINFO';
+            const role = document.getElementById('fan-role').value;
+            const canvas = document.getElementById('fan-canvas');
+            const ctx = canvas.getContext('2d');
+            
+            // Draw background
+            ctx.fillStyle = '#0f1923';
+            ctx.fillRect(0, 0, 600, 900);
+            
+            // Draw accents
+            ctx.fillStyle = '#ff4655';
+            ctx.beginPath();
+            ctx.moveTo(0, 0);
+            ctx.lineTo(600, 0);
+            ctx.lineTo(600, 20);
+            ctx.lineTo(0, 20);
+            ctx.fill();
+            
+            // Draw lines
+            ctx.strokeStyle = 'rgba(255,255,255,0.1)';
+            ctx.lineWidth = 2;
+            for(let i=0; i<10; i++) {
+                ctx.beginPath();
+                ctx.moveTo(0, i*100);
+                ctx.lineTo(600, i*100);
+                ctx.stroke();
+            }
+
+            // Draw Text
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 50px Arial'; // Using standard font for canvas
+            ctx.textAlign = 'center';
+            ctx.fillText('VINFO ESPORTS', 300, 150);
+            
+            ctx.fillStyle = '#ff4655';
+            ctx.font = 'bold 30px Arial';
+            ctx.fillText('OFFICIAL FAN PASSPORT', 300, 200);
+            
+            ctx.fillStyle = '#ffffff';
+            ctx.font = 'bold 70px Arial';
+            ctx.fillText(name.toUpperCase(), 300, 500);
+            
+            ctx.fillStyle = '#8E95A5';
+            ctx.font = 'bold 40px Arial';
+            ctx.fillText('ROLE: ' + role, 300, 580);
+            
+            // Download
+            const link = document.createElement('a');
+            link.download = 'vinfo_passport.png';
+            link.href = canvas.toDataURL();
+            link.click();
+            sfx.playClick();
+        });
+    }
+
+});
