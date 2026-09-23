@@ -975,15 +975,15 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
-                osc.type = 'sine';
+                osc.type = 'triangle';
                 osc.frequency.setValueAtTime(800, this.ctx.currentTime);
-                osc.frequency.exponentialRampToValueAtTime(1200, this.ctx.currentTime + 0.04);
-                gain.gain.setValueAtTime(0.15, this.ctx.currentTime); // INCREASED VOL
-                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+                osc.frequency.exponentialRampToValueAtTime(1200, this.ctx.currentTime + 0.08);
+                gain.gain.setValueAtTime(0.5, this.ctx.currentTime); // INCREASED VOL
+                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.08);
                 osc.connect(gain);
                 gain.connect(this.ctx.destination);
                 osc.start();
-                osc.stop(this.ctx.currentTime + 0.05);
+                osc.stop(this.ctx.currentTime + 0.1);
             } catch(e) {}
         }
         playClick() {
@@ -992,10 +992,10 @@ document.addEventListener('DOMContentLoaded', () => {
             try {
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
-                osc.type = 'square';
+                osc.type = 'sawtooth';
                 osc.frequency.setValueAtTime(150, this.ctx.currentTime);
                 osc.frequency.exponentialRampToValueAtTime(40, this.ctx.currentTime + 0.1);
-                gain.gain.setValueAtTime(0.3, this.ctx.currentTime); // INCREASED VOL
+                gain.gain.setValueAtTime(0.8, this.ctx.currentTime); // INCREASED VOL
                 gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.1);
                 osc.connect(gain);
                 gain.connect(this.ctx.destination);
