@@ -1048,7 +1048,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=32"></script>
+    <script src="script.js?v=33"></script>
     <script src="i18n.js?v=32"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js?v=2"></script>
     <script>
@@ -1084,26 +1084,53 @@
             });
         });
     </script>
-    <!-- Player Modal -->
-    <div id="player-modal" class="player-modal-overlay">
+    <!-- Player Modal v3 -->
+    <div id="player-modal" class="player-modal-overlay" role="dialog" aria-modal="true" aria-labelledby="modal-name">
         <div class="player-modal-content">
-            <div class="player-modal-close"><i class="fa-solid fa-xmark"></i></div>
+            <div class="player-modal-close" tabindex="0" role="button" aria-label="Close"><i class="fa-solid fa-xmark"></i></div>
             <div class="player-modal-left" id="modal-img"></div>
             <div class="player-modal-right">
-                <span id="modal-role" class="player-role" style="margin-bottom: 10px; display: inline-block;"></span>
-                <h3 id="modal-name" class="player-modal-name"></h3>
-                <div id="modal-realname" class="player-modal-realname"></div>
                 
-                <div id="modal-age-container" class="player-modal-detail">
-                    <strong>Věk:</strong> <span id="modal-age"></span>
+                <div class="modal-tabs">
+                    <button class="modal-tab active" data-tab="tab-overview">OVERVIEW</button>
+                    <button class="modal-tab" data-tab="tab-stats">STATS</button>
+                    <button class="modal-tab" data-tab="tab-gear">GEAR</button>
                 </div>
-                <div id="modal-mains-container" class="player-modal-detail">
-                    <strong>Mains:</strong> <span id="modal-mains"></span>
+
+                <div id="tab-overview" class="modal-tab-content active">
+                    <span id="modal-role" class="player-role" style="margin-bottom: 10px; display: inline-block;"></span>
+                    <h3 id="modal-name" class="player-modal-name"></h3>
+                    <div id="modal-realname" class="player-modal-realname"></div>
+                    
+                    <div id="modal-age-container" class="player-modal-detail">
+                        <strong>Age:</strong> <span id="modal-age"></span>
+                    </div>
+                    <div id="modal-mains-container" class="player-modal-detail">
+                        <strong>Mains:</strong> <span id="modal-mains"></span>
+                    </div>
+                    
+                    <div id="modal-socials" class="player-modal-socials">
+                    </div>
                 </div>
-                
-                <div id="modal-socials" class="player-modal-socials">
-                    <!-- Social links will be injected here -->
+
+                <div id="tab-stats" class="modal-tab-content" style="display: none;">
+                    <h4 style="color: var(--val-white); font-family: var(--font-heading); margin-bottom: 1rem; letter-spacing: 1px; font-size: 1.5rem; text-align: center;">PERFORMANCE RADAR</h4>
+                    <canvas id="radar-chart" width="300" height="300" style="margin: 0 auto; display: block; filter: drop-shadow(0 0 10px rgba(255,70,85,0.2));"></canvas>
                 </div>
+
+                <div id="tab-gear" class="modal-tab-content" style="display: none;">
+                    <h4 style="color: var(--val-white); font-family: var(--font-heading); margin-bottom: 1rem; letter-spacing: 1px; font-size: 1.5rem;">HARDWARE</h4>
+                    <div id="modal-gear-info" style="color: var(--val-grey); font-size: 1rem; margin-bottom: 2rem; line-height: 1.8; display: grid; grid-template-columns: auto 1fr; gap: 0.5rem 1rem;">
+                    </div>
+                    <h4 style="color: var(--val-white); font-family: var(--font-heading); margin-bottom: 1rem; letter-spacing: 1px; font-size: 1.5rem;">CROSSHAIR</h4>
+                    <div style="display: flex; align-items: center; gap: 2rem;">
+                        <div id="crosshair-preview-container" style="width: 100px; height: 100px; background: #222; border: 1px solid rgba(255,70,85,0.3); display: flex; justify-content: center; align-items: center; position: relative;">
+                            <div id="crosshair-visual"></div>
+                        </div>
+                        <button id="btn-copy-crosshair" class="cta-button-hud" style="padding: 0.8rem 1.5rem; font-size: 0.9rem; border: none; cursor: pointer;">COPY CODE</button>
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>

@@ -948,63 +948,73 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+
+
 // VINFO v3 Features
 document.addEventListener('DOMContentLoaded', () => {
 
-    // 1. Audio FX System
+    // 1. Audio FX System (Fixed volume and interaction logic)
     class VinfoAudioFX {
         constructor() {
             this.ctx = null;
-            this.initialized = false;
         }
         init() {
-            if (!this.initialized) {
+            if (!this.ctx) {
                 const AudioContext = window.AudioContext || window.webkitAudioContext;
                 if (AudioContext) {
                     this.ctx = new AudioContext();
-                    this.initialized = true;
                 }
+            }
+            if (this.ctx && this.ctx.state === 'suspended') {
+                this.ctx.resume().catch(e => console.log('Audio resume blocked', e));
             }
         }
         playHover() {
+            this.init();
             if (!this.ctx || this.ctx.state === 'suspended') return;
-            const osc = this.ctx.createOscillator();
-            const gain = this.ctx.createGain();
-            osc.type = 'sine';
-            osc.frequency.setValueAtTime(800, this.ctx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(1200, this.ctx.currentTime + 0.04);
-            gain.gain.setValueAtTime(0.02, this.ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
-            osc.connect(gain);
-            gain.connect(this.ctx.destination);
-            osc.start();
-            osc.stop(this.ctx.currentTime + 0.05);
+            try {
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(800, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(1200, this.ctx.currentTime + 0.04);
+                gain.gain.setValueAtTime(0.15, this.ctx.currentTime); // INCREASED VOL
+                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.04);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.05);
+            } catch(e) {}
         }
         playClick() {
-            if (!this.ctx) return;
-            if (this.ctx.state === 'suspended') this.ctx.resume();
-            const osc = this.ctx.createOscillator();
-            const gain = this.ctx.createGain();
-            osc.type = 'square';
-            osc.frequency.setValueAtTime(150, this.ctx.currentTime);
-            osc.frequency.exponentialRampToValueAtTime(40, this.ctx.currentTime + 0.1);
-            gain.gain.setValueAtTime(0.05, this.ctx.currentTime);
-            gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.1);
-            osc.connect(gain);
-            gain.connect(this.ctx.destination);
-            osc.start();
-            osc.stop(this.ctx.currentTime + 0.1);
+            this.init();
+            if (!this.ctx || this.ctx.state === 'suspended') return;
+            try {
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.type = 'square';
+                osc.frequency.setValueAtTime(150, this.ctx.currentTime);
+                osc.frequency.exponentialRampToValueAtTime(40, this.ctx.currentTime + 0.1);
+                gain.gain.setValueAtTime(0.3, this.ctx.currentTime); // INCREASED VOL
+                gain.gain.exponentialRampToValueAtTime(0.001, this.ctx.currentTime + 0.1);
+                osc.connect(gain);
+                gain.connect(this.ctx.destination);
+                osc.start();
+                osc.stop(this.ctx.currentTime + 0.1);
+            } catch(e) {}
         }
     }
     const sfx = new VinfoAudioFX();
-    
-    // Initialize audio on first user interaction
-    document.body.addEventListener('click', () => sfx.init(), { once: true });
 
-    document.querySelectorAll('.cta-button, .cta-button-hud, .player-card, .modal-tab, .nav-links a').forEach(el => {
+    // Attach sound to interactive elements safely
+    const hoverElements = document.querySelectorAll('.cta-button, .cta-button-hud, .player-card, .modal-tab, .nav-links a');
+    hoverElements.forEach(el => {
         el.addEventListener('mouseenter', () => sfx.playHover());
         el.addEventListener('mousedown', () => sfx.playClick());
     });
+    
+    // Auto init on first general click if not already init
+    document.body.addEventListener('click', () => sfx.init(), { once: true });
 
     // 2. Konami Code Easter Egg
     const konamiCode = [38, 38, 40, 40, 37, 39, 37, 39, 66, 65];
@@ -1022,20 +1032,24 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 3. Live Bar Observer (Timeline scroll effect)
+    // 3. Live Bar Observer
     const timelineItems = document.querySelectorAll('.timeline-item');
-    const timelineObserver = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                entry.target.classList.add('revealed');
-            }
-        });
-    }, { threshold: 0.5 });
-    timelineItems.forEach(item => timelineObserver.observe(item));
+    if ('IntersectionObserver' in window) {
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('revealed');
+                }
+            });
+        }, { threshold: 0.3 });
+        timelineItems.forEach(item => timelineObserver.observe(item));
+    } else {
+        timelineItems.forEach(item => item.classList.add('revealed'));
+    }
 
-    // 4. Player Modal Tabs & Canvas Radar
+    // 4. Player Modal Tabs & Canvas Radar (Fixing name extraction logic)
     const mockPlayerData = {
-        'Dejwrix': { crosshair: '0;P;c;5;o;1;f;0;0t;1;0l;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight', dpi: '800', sens: '0.3', monitor: 'ZOWIE XL2546K 240Hz', stats: [85, 70, 60, 90, 80, 75] }, // ACS, KD, HS, Clutch, Entry, Flex
+        'Dejwrix': { crosshair: '0;P;c;5;o;1;f;0;0t;1;0l;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight', dpi: '800', sens: '0.3', monitor: 'ZOWIE XL2546K 240Hz', stats: [85, 70, 60, 90, 80, 75] },
         'Teikov': { crosshair: '0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'Razer DeathAdder V3 Pro', dpi: '400', sens: '0.45', monitor: 'ZOWIE XL2566K 360Hz', stats: [95, 80, 85, 60, 95, 50] },
         'Woody': { crosshair: '0;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'Zowie EC2-CW', dpi: '800', sens: '0.25', monitor: 'ASUS ROG Swift 360Hz', stats: [70, 85, 75, 85, 50, 90] }
     };
@@ -1048,11 +1062,14 @@ document.addEventListener('DOMContentLoaded', () => {
             tabs.forEach(t => t.classList.remove('active'));
             tabContents.forEach(c => c.style.display = 'none');
             tab.classList.add('active');
-            document.getElementById(tab.getAttribute('data-tab')).style.display = 'block';
+            const targetId = tab.getAttribute('data-tab');
+            const targetEl = document.getElementById(targetId);
+            if (targetEl) targetEl.style.display = 'block';
         });
     });
 
     function drawRadarChart(ctx, stats) {
+        if (!ctx) return;
         ctx.clearRect(0, 0, 300, 300);
         const centerX = 150;
         const centerY = 150;
@@ -1078,7 +1095,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Draw axes and labels
         ctx.fillStyle = '#8E95A5';
-        ctx.font = '12px Inter';
+        ctx.font = '12px Inter, sans-serif';
         ctx.textAlign = 'center';
         ctx.textBaseline = 'middle';
         for (let i = 0; i < sides; i++) {
@@ -1113,31 +1130,38 @@ document.addEventListener('DOMContentLoaded', () => {
         ctx.stroke();
     }
 
-    // Intercept player card click to populate gear and draw chart
     const playerCards = document.querySelectorAll('.player-card:not(.lfp-card)');
     playerCards.forEach(card => {
         card.addEventListener('click', (e) => {
             if (e.target.tagName.toLowerCase() === 'a') return;
             const nameEl = card.querySelector('.player-name');
             if (nameEl) {
-                const cleanName = nameEl.innerText.replace(/[\n\r]+|[\s]{2,}/g, ' ').trim();
+                // Safely extract just the text, ignoring img alt text
+                const cleanName = Array.from(nameEl.childNodes)
+                    .filter(n => n.nodeType === 3)
+                    .map(n => n.textContent)
+                    .join('')
+                    .trim();
+                
                 const pData = mockPlayerData[cleanName];
                 
                 if (pData) {
                     const canvas = document.getElementById('radar-chart');
-                    if(canvas) {
+                    if (canvas) {
                         const ctx = canvas.getContext('2d');
                         drawRadarChart(ctx, pData.stats);
                     }
                     
-                    document.getElementById('modal-gear-info').innerHTML = `
-                        <strong>Mouse:</strong> <span>${pData.mouse}</span>
-                        <strong>DPI:</strong> <span>${pData.dpi}</span>
-                        <strong>Sens:</strong> <span>${pData.sens}</span>
-                        <strong>Monitor:</strong> <span>${pData.monitor}</span>
-                    `;
+                    const gearInfo = document.getElementById('modal-gear-info');
+                    if (gearInfo) {
+                        gearInfo.innerHTML = `
+                            <strong>Mouse:</strong> <span>${pData.mouse}</span>
+                            <strong>DPI:</strong> <span>${pData.dpi}</span>
+                            <strong>Sens:</strong> <span>${pData.sens}</span>
+                            <strong>Monitor:</strong> <span>${pData.monitor}</span>
+                        `;
+                    }
                     
-                    // Super basic crosshair visualization simulation
                     const chVisual = document.getElementById('crosshair-visual');
                     if (chVisual) {
                         chVisual.style.width = '4px';
@@ -1147,11 +1171,11 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
 
                     const copyBtn = document.getElementById('btn-copy-crosshair');
-                    if(copyBtn) {
+                    if (copyBtn) {
                         copyBtn.onclick = () => {
-                            navigator.clipboard.writeText(pData.crosshair);
+                            navigator.clipboard.writeText(pData.crosshair).catch(()=>{});
                             copyBtn.innerText = 'COPIED!';
-                            setTimeout(() => copyBtn.innerText = 'COPY CODE', 2000);
+                            setTimeout(() => { if (copyBtn) copyBtn.innerText = 'COPY CODE'; }, 2000);
                         };
                     }
                 }
@@ -1169,9 +1193,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const genBtn = document.getElementById('generate-fan-id');
     if (genBtn) {
         genBtn.addEventListener('click', () => {
-            const name = document.getElementById('fan-name').value || 'GUEST#VINFO';
-            const role = document.getElementById('fan-role').value;
+            const nameInput = document.getElementById('fan-name');
+            const name = (nameInput && nameInput.value) ? nameInput.value : 'GUEST#VINFO';
+            const roleInput = document.getElementById('fan-role');
+            const role = roleInput ? roleInput.value : 'FAN';
             const canvas = document.getElementById('fan-canvas');
+            if (!canvas) return;
             const ctx = canvas.getContext('2d');
             
             // Draw background
@@ -1199,7 +1226,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
             // Draw Text
             ctx.fillStyle = '#ffffff';
-            ctx.font = 'bold 50px Arial'; // Using standard font for canvas
+            ctx.font = 'bold 50px Arial';
             ctx.textAlign = 'center';
             ctx.fillText('VINFO ESPORTS', 300, 150);
             
@@ -1216,11 +1243,15 @@ document.addEventListener('DOMContentLoaded', () => {
             ctx.fillText('ROLE: ' + role, 300, 580);
             
             // Download
-            const link = document.createElement('a');
-            link.download = 'vinfo_passport.png';
-            link.href = canvas.toDataURL();
-            link.click();
-            sfx.playClick();
+            try {
+                const link = document.createElement('a');
+                link.download = 'vinfo_passport.png';
+                link.href = canvas.toDataURL();
+                link.click();
+                sfx.playClick();
+            } catch(e) {
+                console.error('Download failed', e);
+            }
         });
     }
 
