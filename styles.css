@@ -1227,29 +1227,52 @@ body.modal-open {
 .timeline-item {
     transition: all 0.5s ease;
 }
-/* VINFO Scroll Reveal Effects */
+/* VINFO Scroll Reveal Effects - AGGRESSIVE 3D EDITION */
 .scroll-reveal {
     opacity: 0;
-    transform: translateY(40px);
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    transform: perspective(1500px) rotateX(30deg) translateY(80px) scale(0.9);
+    transform-origin: center bottom;
+    transition: opacity 0.6s ease, transform 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
     will-change: opacity, transform;
 }
+
 .scroll-reveal.in-view {
     opacity: 1;
-    transform: translateY(0);
+    transform: perspective(1500px) rotateX(0deg) translateY(0) scale(1);
 }
 
-/* Specific overrides for certain elements to look more dynamic */
+/* Titles get an aggressive side-slash entry */
+.section-title.scroll-reveal {
+    transform: translateX(-100px) skewX(-20deg);
+    transform-origin: left center;
+}
+.section-title.scroll-reveal.in-view {
+    transform: translateX(0) skewX(0);
+    position: relative;
+}
+
+/* Quick neon flash on titles when they enter */
+.section-title.scroll-reveal.in-view::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -10%; width: 120%; height: 100%;
+    background: var(--val-red);
+    z-index: 5;
+    mix-blend-mode: overlay;
+    animation: slash-flash 0.5s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes slash-flash {
+    0% { clip-path: polygon(0 0, 0 0, -20% 100%, -20% 100%); opacity: 1; }
+    50% { clip-path: polygon(100% 0, 120% 0, 100% 100%, 80% 100%); opacity: 0.8; }
+    100% { clip-path: polygon(120% 0, 120% 0, 100% 100%, 100% 100%); opacity: 0; }
+}
+
+/* Cards bounce slightly more */
 .player-card.scroll-reveal {
-    transform: translateY(60px) scale(0.95);
+    transform: perspective(1000px) rotateY(-15deg) rotateX(20deg) translateY(100px) scale(0.85);
 }
 .player-card.scroll-reveal.in-view {
-    transform: translateY(0) scale(1);
-}
-
-.philosophy-card.scroll-reveal {
-    transform: translateY(40px);
-}
-.philosophy-card.scroll-reveal.in-view {
-    transform: translateY(0);
+    transform: perspective(1000px) rotateY(0deg) rotateX(0deg) translateY(0) scale(1);
 }
