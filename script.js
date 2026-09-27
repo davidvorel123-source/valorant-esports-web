@@ -394,17 +394,38 @@
             }
         }
         
-        function animateParticles() {
-            ctx.clearRect(0, 0, canvas.width, canvas.height);
-            for (let i = 0; i < particles.length; i++) {
-                particles[i].update();
-                particles[i].draw();
-            }
-            requestAnimationFrame(animateParticles);
-        }
-        
-        initParticles();
-        animateParticles();
+                  let animationId;
+          function animateParticles() {
+              ctx.clearRect(0, 0, canvas.width, canvas.height);
+              for (let i = 0; i < particles.length; i++) {
+                  particles[i].update();
+                  particles[i].draw();
+              }
+              animationId = requestAnimationFrame(animateParticles);
+          }
+          
+          initParticles();
+          
+          if ('IntersectionObserver' in window) {
+              const heroSection = document.getElementById('hero') || document.querySelector('.hero');
+              if (heroSection) {
+                  const heroObserver = new IntersectionObserver((entries) => {
+                      if (entries[0].isIntersecting) {
+                          if (!animationId) animateParticles();
+                      } else {
+                          if (animationId) {
+                              cancelAnimationFrame(animationId);
+                              animationId = null;
+                          }
+                      }
+                  }, { threshold: 0 });
+                  heroObserver.observe(heroSection);
+              } else {
+                  animateParticles();
+              }
+          } else {
+              animateParticles();
+          }
         
         window.addEventListener('resize', () => {
             canvas.width = window.innerWidth;
@@ -956,7 +977,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Audio FX System (Fixed volume and interaction logic)
     class VinfoAudioFX {
         constructor() {
-            this.ctx = null;
+            this.ctx = null; this.lastHover = 0;
         }
         init() {
             if (!this.ctx) {
@@ -971,7 +992,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         playHover() {
             this.init();
-            if (!this.ctx || this.ctx.state === 'suspended') return;
+            if (!this.ctx || this.ctx.state === 'suspended') return; const now = this.ctx.currentTime; if (now - this.lastHover < 0.05) return; this.lastHover = now;
             try {
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
@@ -988,7 +1009,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         playClick() {
             this.init();
-            if (!this.ctx || this.ctx.state === 'suspended') return;
+            if (!this.ctx || this.ctx.state === 'suspended') return; const now = this.ctx.currentTime; if (now - this.lastHover < 0.05) return; this.lastHover = now;
             try {
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
