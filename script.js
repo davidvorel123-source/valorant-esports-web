@@ -1276,4 +1276,48 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
+
+    // 6. Scroll Reveal Animations
+    const elementsToReveal = document.querySelectorAll('.section-title, .player-card, .philosophy-card, .trophy-card, .accordion-item');
+    
+    // Add base class dynamically so if JS is disabled, they don't stay hidden
+    elementsToReveal.forEach((el, index) => {
+        el.classList.add('scroll-reveal');
+        // Add slight transition delays based on DOM order for a cascading stagger effect
+        const delay = (index % 4) * 0.1;
+        el.style.transitionDelay = `${delay}s`;
+    });
+
+    if ('IntersectionObserver' in window) {
+        const revealObserver = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('in-view');
+                    observer.unobserve(entry.target); // Only animate once when scrolling down
+                }
+            });
+        }, {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.15 // Trigger when 15% of the element is visible
+        });
+        
+        elementsToReveal.forEach(el => revealObserver.observe(el));
+    } else {
+        elementsToReveal.forEach(el => el.classList.add('in-view'));
+    }
+    
+    // Also observe dynamically generated news articles
+    const observeNews = () => {
+        const newsItems = document.querySelectorAll('#news-container > div:not(.scroll-reveal)');
+        newsItems.forEach((el, index) => {
+            el.classList.add('scroll-reveal');
+            el.style.transitionDelay = `${(index % 3) * 0.1}s`;
+            if (revealObserver) revealObserver.observe(el);
+            else el.classList.add('in-view');
+        });
+    };
+    // Call it after a short delay to ensure news are loaded
+    setTimeout(observeNews, 500);
+
 });
