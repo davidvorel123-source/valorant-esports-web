@@ -256,6 +256,8 @@
                 const threeHoursMs = 3 * 60 * 60 * 1000;
                 if (Math.abs(distance) < threeHoursMs) {
                     el.innerHTML = `<span style="color: var(--val-red); font-weight: bold; font-size: 1.5rem; letter-spacing: 2px;">${lang === 'cz' ? 'PRÁVĚ PROBÍHÁ' : 'LIVE NOW'}</span>`;
+                    const liveBarTitle = document.getElementById('live-bar-title');
+                    if (liveBarTitle) liveBarTitle.textContent = lang === 'cz' ? 'ŽIVĚ PRÁVĚ TEĎ:' : 'LIVE NOW:';
                     if (card && card.style.display === 'none') {
                         card.style.display = 'inline-block';
                     }
@@ -1072,7 +1074,8 @@ document.addEventListener('DOMContentLoaded', () => {
     const mockPlayerData = {
         'Dejwrix': { crosshair: '0;P;c;5;o;1;f;0;0t;1;0l;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight', dpi: '800', sens: '0.3', monitor: 'ZOWIE XL2546K 240Hz', stats: [85, 70, 60, 90, 80, 75] },
         'Teikov': { crosshair: '0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'Razer DeathAdder V3 Pro', dpi: '400', sens: '0.45', monitor: 'ZOWIE XL2566K 360Hz', stats: [95, 80, 85, 60, 95, 50] },
-        'Woody': { crosshair: '0;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'Zowie EC2-CW', dpi: '800', sens: '0.25', monitor: 'ASUS ROG Swift 360Hz', stats: [70, 85, 75, 85, 50, 90] }
+        'Woody': { crosshair: '0;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'Zowie EC2-CW', dpi: '800', sens: '0.25', monitor: 'ASUS ROG Swift 360Hz', stats: [70, 85, 75, 85, 50, 90] },
+        'Marcel': { crosshair: '0;s;1;P;c;1;u;000000FF;h;0;f;0;m;1;0l;3;0v;3;0o;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight 2', dpi: '800', sens: '0.28', monitor: 'BenQ ZOWIE XL2546X 240Hz', stats: [78, 82, 86, 80, 68, 90] }
     };
 
     const tabs = document.querySelectorAll('.modal-tab');

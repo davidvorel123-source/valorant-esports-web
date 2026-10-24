@@ -10,7 +10,7 @@
     <meta property="og:url" content="https://vinfoesports.com">
     <meta name="twitter:card" content="summary_large_image">
     <title>VINFO Esports | VINFO - Valorant Esports Team</title>
-    <link rel="stylesheet" href="styles.css?v=38">
+    <link rel="stylesheet" href="styles.css?v=39">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -53,6 +53,7 @@
   "member": [
     { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "David Vorel", "alternateName": "Dejwrix" }, "roleName": "IGL / Controller" },
     { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Matyáš Řehák", "alternateName": "Teikov" }, "roleName": "Duelist" },
+    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Marcel", "alternateName": "Marcel" }, "roleName": "Flex" },
     { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Filip", "alternateName": "Woody" }, "roleName": "Sub" }
   ],
   "sameAs": [
@@ -66,10 +67,10 @@
 </head>
 <body>
     <!-- Live Match Command Center (Hidden by Default) -->
-    <div id="live-bar" style="display: none; position: sticky; top: 0; z-index: 100000; background: var(--val-red); color: white; padding: 0.75rem 2rem; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; align-items: center; justify-content: center; gap: 1rem; box-shadow: 0 4px 15px rgba(255, 70, 85, 0.4);">
+    <div id="live-bar" style="display: flex; position: sticky; top: 0; z-index: 100000; background: var(--val-red); color: white; padding: 0.75rem 2rem; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; align-items: center; justify-content: center; gap: 1rem; box-shadow: 0 4px 15px rgba(255, 70, 85, 0.4);">
         <div class="live-pulse" style="width: 10px; height: 10px; background: white; border-radius: 50%; animation: blink 1s infinite;"></div>
-        <strong>LIVE NOW:</strong> <span>VINFO Esports vs TEAM VITALITY (Map 1 - Bind)</span>
-        <a href="#stream" style="background: white; color: var(--val-red); padding: 0.3rem 1rem; font-size: 1rem; text-decoration: none; border-radius: 2px; font-weight: 700; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">WATCH</a>
+        <strong id="live-bar-title">MATCH DAY:</strong> <span id="live-bar-text">VALORANT PREMIER &bull; DNES 19:00</span>
+        <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="background: white; color: var(--val-red); padding: 0.3rem 1.2rem; font-size: 1rem; text-decoration: none; border-radius: 2px; font-weight: 700; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">WATCH ON KICK</a>
     </div>
     <a href="#home" class="skip-link">Skip to main content</a>
     <div class="crt-overlay"></div>
@@ -155,10 +156,10 @@
         <div style="max-width: 1000px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 2rem; align-items: center;">
                         <!-- Match 1 (Synergy Circuit) -->
             <div class="match-card" style="background: rgba(15, 25, 35, 0.8); padding: 2.5rem 4rem; border: 1px solid var(--val-red); display: inline-block; text-align: center; box-shadow: 0 10px 40px rgba(255, 70, 85, 0.15); border-radius: 4px; width: 100%; max-width: 800px; margin-bottom: 1rem;">
-                <span style="color: var(--val-grey); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 1rem; text-transform: uppercase;"><span data-i18n="schedule.upcoming">UPCOMING MATCH</span> | <span class="dynamic-date" data-match-date="2026-09-17T21:00:00" style="color: var(--val-red);">17.9. 21:00</span></span>
-                <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 2px 2px 0 var(--val-red);">SYNERGY CIRCUIT</h3>
-                <span style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem;">vs. IVAN (BO3)</span>
-                <div class="match-countdown" data-target="2026-09-17T21:00:00" style="margin-bottom: 1.5rem;"></div>
+                <span style="color: var(--val-grey); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 1rem; text-transform: uppercase;"><span data-i18n="schedule.upcoming">UPCOMING MATCH</span> | <span class="dynamic-date" data-match-date="2026-10-24T19:00:00" style="color: var(--val-red);">24.10. 19:00</span></span>
+                <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 2px 2px 0 var(--val-red);" data-i18n="schedule.premier">VALORANT PREMIER</h3>
+                <span style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem;">CONTENDER DIVISION (BO1)</span>
+                <div class="match-countdown" data-target="2026-10-24T19:00:00" style="margin-bottom: 1.5rem;"></div>
                 <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #53fc18; font-weight: bold; text-decoration: none; font-size: 1.2rem; letter-spacing: 1.5px; background: rgba(83, 252, 24, 0.15); padding: 10px 25px; border-radius: 4px; border: 2px solid rgba(83, 252, 24, 0.6); transition: all 0.3s;" onmouseover="this.style.background='rgba(83, 252, 24, 0.3)'; this.style.boxShadow='0 0 20px rgba(83, 252, 24, 0.3)'; this.style.transform='scale(1.05)';" onmouseout="this.style.background='rgba(83, 252, 24, 0.15)'; this.style.boxShadow='none'; this.style.transform='scale(1)';"><i class="fa-solid fa-play"></i> <span data-i18n="schedule.watch">WATCH LIVE ON KICK</span></a>
             </div>
         </div>
@@ -173,7 +174,7 @@
                 <span data-i18n="stats.wins" style="color: var(--val-grey); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-top: 8px;">Tournament Wins</span>
             </div>
             <div style="padding: 2rem; border-right: 1px solid rgba(255,255,255,0.08);">
-                <span class="stat-counter" data-target="3" style="display: block; font-family: var(--font-heading); font-size: 4.5rem; color: var(--val-red); line-height: 1; font-weight: 900;">0</span>
+                <span class="stat-counter" data-target="4" style="display: block; font-family: var(--font-heading); font-size: 4.5rem; color: var(--val-red); line-height: 1; font-weight: 900;">0</span>
                 <span data-i18n="stats.core" style="color: var(--val-grey); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-top: 8px;">Core Players</span>
             </div>
 
@@ -242,7 +243,7 @@
             <div class="section-line"></div>
         </div>
         <div class="roster-grid">
-            <div class="player-card">
+<div class="player-card">
                 <div class="player-image" style="background-image: url('dejwrix.jpg'); background-position: center 25%;"></div>
                 <div class="player-info" style="position: relative; z-index: 2;">
                     <span data-i18n="role.second_igl_duelist" class="player-role">SECOND IGL / DUELIST</span>
@@ -259,6 +260,16 @@
                     <span class="hidden-data" data-realname="Matyáš Řehák" data-age="17" style="display:none"></span><h3 class="player-name">Teikov <img src="https://flagcdn.com/24x18/cz.png" alt="CZ" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Neon</p>
                     <a href="https://x.com/teikovvlr" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
+                </div>
+            </div>
+                        <div class="player-card">
+                <div class="player-image" style="background-image: url('marcel.png'); background-position: center 60%; background-size: cover; background-color: #1a1a1a;"></div>
+                <div class="player-info" style="position: relative; z-index: 2;">
+                    <span data-i18n="role.flex" class="player-role">FLEX</span>
+                    <span class="hidden-data" data-realname="Marcel" data-age="19" style="display:none"></span><h3 class="player-name">Marcel <img src="https://flagcdn.com/24x18/pl.png" alt="PL" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
+                    <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Cypher / Killjoy</p>
+                    <a href="https://www.vlr.gg/player/8525/marcel" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">VLR.GG PROFILE</a>
+                    <a href="https://x.com/marceldzia" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; margin-left: 5px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
                 </div>
             </div>
             <div class="player-card">
@@ -1048,8 +1059,8 @@
         </div>
     </footer>
 
-    <script src="script.js?v=38"></script>
-    <script src="i18n.js?v=32"></script>
+    <script src="script.js?v=39"></script>
+    <script src="i18n.js?v=39"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js?v=2"></script>
     <script>
         // Init Lenis smooth scroll
