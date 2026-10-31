@@ -1035,6 +1035,9 @@ html {
     text-transform: uppercase;
     letter-spacing: 2px;
 }
+.player-modal-realname:empty {
+    display: none;
+}
 .player-modal-realname {
     color: var(--val-grey);
     font-size: 1.1rem;

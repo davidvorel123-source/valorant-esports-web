@@ -964,7 +964,11 @@ document.addEventListener('DOMContentLoaded', () => {
                         const realName = hiddenData.getAttribute('data-realname');
                         const age = hiddenData.getAttribute('data-age');
                         const country = hiddenData.getAttribute('data-country');
-                        document.getElementById('modal-realname').innerText = realName ? realName : '';
+                        const realNameEl = document.getElementById('modal-realname');
+                        if (realNameEl) {
+                            realNameEl.innerText = realName ? realName : '';
+                            realNameEl.style.display = realName ? 'block' : 'none';
+                        }
                         
                         const modalLang = localStorage.getItem('vinfo_lang') || 'en';
                         
@@ -987,7 +991,11 @@ document.addEventListener('DOMContentLoaded', () => {
                             document.getElementById('modal-age-container').style.display = 'none';
                         }
                     } else {
-                        document.getElementById('modal-realname').innerText = '';
+                        const realNameEl = document.getElementById('modal-realname');
+                        if (realNameEl) {
+                            realNameEl.innerText = '';
+                            realNameEl.style.display = 'none';
+                        }
                         const countryContainer = document.getElementById('modal-country-container');
                         if (countryContainer) countryContainer.style.display = 'none';
                         document.getElementById('modal-age-container').style.display = 'none';
