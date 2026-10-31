@@ -1131,7 +1131,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Player Modal Tabs & Canvas Radar (Fixing name extraction logic)
     const mockPlayerData = {
-        'Dejwrix': { crosshair: '0;P;c;5;o;1;f;0;0t;1;0l;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight', dpi: '800', sens: '0.3', monitor: 'ZOWIE XL2546K 240Hz', stats: [95, 88, 78, 92, 98, 70] },
+        'Dejwrix': { crosshair: '0;c;1;s;1;P;o;1;d;1;f;0;0l;2;0v;0;0g;1;0o;0;0a;1;0f;0;1b;0;S;d;0', mouse: 'Razer Viper V3 Pro', dpi: '1600', sens: '0.135', monitor: 'ZOWIE XL2546K 240Hz', stats: [95, 88, 78, 92, 98, 70] },
+        'dejwrix': { crosshair: '0;c;1;s;1;P;o;1;d;1;f;0;0l;2;0v;0;0g;1;0o;0;0a;1;0f;0;1b;0;S;d;0', mouse: 'Razer Viper V3 Pro', dpi: '1600', sens: '0.135', monitor: 'ZOWIE XL2546K 240Hz', stats: [95, 88, 78, 92, 98, 70] },
         'MusX': { crosshair: '0;s;1;P;c;1;h;0;0t;1;0l;3;0v;3;0a;1;0f;0;1b;0', mouse: 'Razer DeathAdder V3 Pro', dpi: '800', sens: '0.31', monitor: 'ZOWIE XL2566K 360Hz', stats: [90, 88, 85, 95, 80, 85] },
         'Waiz': { crosshair: '0;P;c;8;u;000000FF;h;0;b;1;0l;4;0v;4;0g;1;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight 2', dpi: '800', sens: '0.27', monitor: 'ZOWIE XL2546K 240Hz', stats: [84, 82, 80, 92, 70, 95] },
         'SarrZ': { crosshair: '0;s;1;P;c;5;u;000000FF;h;0;0l;3;0v;3;0o;1;0a;1;0f;0;1b;0;S;c;5', mouse: 'Logitech G Pro X Superlight 2', dpi: '400', sens: '0.365', monitor: 'AOC 25G3ZM 240Hz', stats: [88, 85, 84, 94, 75, 90] },
@@ -1187,8 +1188,12 @@ document.addEventListener('DOMContentLoaded', () => {
             '8': '#ffffff'
         };
 
+        let currentSection = 'GLOBAL';
         for (let i = 0; i < parts.length; i++) {
             const key = parts[i];
+            if (key === 'P') { currentSection = 'P'; continue; }
+            if (key === 'A' || key === 'S') { currentSection = key; continue; }
+            if (currentSection !== 'GLOBAL' && currentSection !== 'P') continue;
             const val = parts[i + 1];
 
             if (key === 'c' && colors[val]) config.color = colors[val];
@@ -1310,18 +1315,22 @@ document.addEventListener('DOMContentLoaded', () => {
         // 2. Inner Lines
         if (cfg.innerLines && (cfg.innerLengthX > 0 || cfg.innerLengthY > 0)) {
             const th = Math.max(1, Math.round(cfg.innerThickness * scale));
-            const lx = Math.max(1, Math.round(cfg.innerLengthX * scale));
-            const ly = Math.max(1, Math.round(cfg.innerLengthY * scale));
+            const lx = Math.round(cfg.innerLengthX * scale);
+            const ly = Math.round(cfg.innerLengthY * scale);
             const off = Math.round(cfg.innerOffset * scale);
 
-            // Right
-            drawBar(cx + off, cy - th / 2, lx, th, false);
-            // Left
-            drawBar(cx - off - lx, cy - th / 2, lx, th, false);
-            // Bottom
-            drawBar(cx - th / 2, cy + off, th, ly, false);
-            // Top
-            drawBar(cx - th / 2, cy - off - ly, th, ly, false);
+            if (lx > 0) {
+                // Right
+                drawBar(cx + off, cy - th / 2, lx, th, false);
+                // Left
+                drawBar(cx - off - lx, cy - th / 2, lx, th, false);
+            }
+            if (ly > 0) {
+                // Bottom
+                drawBar(cx - th / 2, cy + off, th, ly, false);
+                // Top
+                drawBar(cx - th / 2, cy - off - ly, th, ly, false);
+            }
         }
 
         // 3. Outer Lines
