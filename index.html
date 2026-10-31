@@ -10,7 +10,7 @@
     <meta property="og:url" content="https://vinfoesports.com">
     <meta name="twitter:card" content="summary_large_image">
     <title>VINFO Esports | VINFO - Valorant Esports Team</title>
-    <link rel="stylesheet" href="styles.css?v=39">
+    <link rel="stylesheet" href="styles.css?v=40">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -51,10 +51,13 @@
   "logo": "https://vinfoesports.com/vinfo-logo.png",
   "foundingDate": "2026",
   "member": [
-    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "David Vorel", "alternateName": "Dejwrix" }, "roleName": "IGL / Controller" },
-    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Matyáš Řehák", "alternateName": "Teikov" }, "roleName": "Duelist" },
-    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Marcel", "alternateName": "Marcel" }, "roleName": "Flex" },
-    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Filip", "alternateName": "Woody" }, "roleName": "Sub" }
+    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "David Vorel", "alternateName": "Dejwrix" }, "roleName": "👑 IGL / Duelist" },
+    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "N3cr0x", "alternateName": "N3cr0x" }, "roleName": "🎯 Initiator / Duelist" },
+    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Waiz", "alternateName": "Waiz" }, "roleName": "🧠 Controller" },
+    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "sarrz", "alternateName": "sarrz" }, "roleName": "🔥 Duelist / Flex" },
+    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "bozzi", "alternateName": "bozzi" }, "roleName": "🛡️ Sentinel" },
+    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Filip Šeďa", "alternateName": "Woody" }, "roleName": "Sub" },
+    { "@type": "OrganizationRole", "member": { "@type": "Person", "name": "Marcel Dziądziak", "alternateName": "Marcel" }, "roleName": "Sub" }
   ],
   "sameAs": [
     "https://x.com/vinfoesports",
@@ -69,7 +72,7 @@
     <!-- Live Match Command Center (Hidden by Default) -->
     <div id="live-bar" style="display: flex; position: sticky; top: 0; z-index: 100000; background: var(--val-red); color: white; padding: 0.75rem 2rem; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; align-items: center; justify-content: center; gap: 1rem; box-shadow: 0 4px 15px rgba(255, 70, 85, 0.4);">
         <div class="live-pulse" style="width: 10px; height: 10px; background: white; border-radius: 50%; animation: blink 1s infinite;"></div>
-        <strong id="live-bar-title">MATCH DAY:</strong> <span id="live-bar-text">VALORANT PREMIER &bull; DNES 19:00</span>
+        <strong id="live-bar-title">UPCOMING TOURNAMENT:</strong> <span id="live-bar-text">VCT EMEA KICKOFF QUALIFIER 1 &bull; 5.11. - 8.11.</span>
         <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="background: white; color: var(--val-red); padding: 0.3rem 1.2rem; font-size: 1rem; text-decoration: none; border-radius: 2px; font-weight: 700; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">WATCH ON KICK</a>
     </div>
     <a href="#home" class="skip-link">Skip to main content</a>
@@ -156,10 +159,10 @@
         <div style="max-width: 1000px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 2rem; align-items: center;">
                         <!-- Match 1 (Synergy Circuit) -->
             <div class="match-card" style="background: rgba(15, 25, 35, 0.8); padding: 2.5rem 4rem; border: 1px solid var(--val-red); display: inline-block; text-align: center; box-shadow: 0 10px 40px rgba(255, 70, 85, 0.15); border-radius: 4px; width: 100%; max-width: 800px; margin-bottom: 1rem;">
-                <span style="color: var(--val-grey); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 1rem; text-transform: uppercase;"><span data-i18n="schedule.upcoming">UPCOMING MATCH</span> | <span class="dynamic-date" data-match-date="2026-10-24T19:00:00" style="color: var(--val-red);">24.10. 19:00</span></span>
-                <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 2px 2px 0 var(--val-red);" data-i18n="schedule.premier">VALORANT PREMIER</h3>
-                <span style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem;">CONTENDER DIVISION (BO1)</span>
-                <div class="match-countdown" data-target="2026-10-24T19:00:00" style="margin-bottom: 1.5rem;"></div>
+                <span style="color: var(--val-grey); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 1rem; text-transform: uppercase;"><span data-i18n="schedule.upcoming">UPCOMING TOURNAMENT</span> | <span class="dynamic-date" data-match-date="2026-11-05T17:00:00" style="color: var(--val-red);">5.11. 17:00</span></span>
+                <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 2px 2px 0 var(--val-red);" data-i18n="schedule.vct_kickoff">VCT EMEA KICKOFF</h3>
+                <span style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem;" data-i18n="schedule.vct_sub">EUROPE QUALIFIER 1 &bull; NOV 5 - NOV 8</span>
+                <div class="match-countdown" data-target="2026-11-05T17:00:00" style="margin-bottom: 1.5rem;"></div>
                 <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #53fc18; font-weight: bold; text-decoration: none; font-size: 1.2rem; letter-spacing: 1.5px; background: rgba(83, 252, 24, 0.15); padding: 10px 25px; border-radius: 4px; border: 2px solid rgba(83, 252, 24, 0.6); transition: all 0.3s;" onmouseover="this.style.background='rgba(83, 252, 24, 0.3)'; this.style.boxShadow='0 0 20px rgba(83, 252, 24, 0.3)'; this.style.transform='scale(1.05)';" onmouseout="this.style.background='rgba(83, 252, 24, 0.15)'; this.style.boxShadow='none'; this.style.transform='scale(1)';"><i class="fa-solid fa-play"></i> <span data-i18n="schedule.watch">WATCH LIVE ON KICK</span></a>
             </div>
         </div>
@@ -174,7 +177,7 @@
                 <span data-i18n="stats.wins" style="color: var(--val-grey); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-top: 8px;">Tournament Wins</span>
             </div>
             <div style="padding: 2rem; border-right: 1px solid rgba(255,255,255,0.08);">
-                <span class="stat-counter" data-target="4" style="display: block; font-family: var(--font-heading); font-size: 4.5rem; color: var(--val-red); line-height: 1; font-weight: 900;">0</span>
+                <span class="stat-counter" data-target="5" style="display: block; font-family: var(--font-heading); font-size: 4.5rem; color: var(--val-red); line-height: 1; font-weight: 900;">0</span>
                 <span data-i18n="stats.core" style="color: var(--val-grey); font-size: 0.8rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; display: block; margin-top: 8px;">Core Players</span>
             </div>
 
@@ -211,78 +214,151 @@
 
     <!-- TRYOUTS SECTION -->
     <section id="tryouts" style="padding: 100px 2rem; background-color: var(--val-darker); border-top: 1px solid rgba(255,70,85,0.15);">
-        <div style="max-width: 900px; margin: 0 auto; display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;">
-            <div style="flex: 1 1 300px;">
-                <span style="color: var(--val-red); font-weight: 800; font-size: 0.85rem; letter-spacing: 3px;" data-i18n="tryouts.join">JOIN THE HERD</span>
-                <h2 style="font-family: var(--font-heading); font-size: 3.5rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; font-weight: 900; line-height: 1;" data-i18n="tryouts.title">THINK YOU GOT WHAT IT TAKES?</h2>
-                <p style="color: var(--val-grey); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;" data-i18n="tryouts.desc">We're always scouting for exceptional talent. If you're Immortal+ and believe you can elevate VINFO to the next level, reach out. We run structured tryouts with a clear evaluation process.</p>
-                
-                <ul style="list-style: none; padding: 0; color: var(--val-grey); margin-bottom: 3rem;">
-                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><span style="color: var(--val-red);">→</span> <span data-i18n="tryouts.req1">Immortal 3+ or equivalent Premier rating</span></li>
-                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><span style="color: var(--val-red);">→</span> <span data-i18n="tryouts.req2">Czech or Slovak nationality preferred</span></li>
-                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><span style="color: var(--val-red);">→</span> <span data-i18n="tryouts.req3">Strong communication and team mentality</span></li>
-                    <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><span style="color: var(--val-red);">→</span> <span data-i18n="tryouts.req4">Available for scheduled practice sessions</span></li>
-                </ul>
+        <div style="max-width: 1100px; margin: 0 auto; display: flex; flex-direction: column; gap: 3rem;">
+            <!-- Coach Recruitment Banner -->
+            <div style="background: linear-gradient(135deg, rgba(255, 70, 85, 0.15) 0%, rgba(15, 25, 35, 0.95) 100%); border: 2px solid var(--val-red); border-radius: 8px; padding: 2.5rem; position: relative; overflow: hidden; box-shadow: 0 10px 30px rgba(255, 70, 85, 0.2);">
+                <div style="position: absolute; right: -20px; top: -20px; font-size: 10rem; opacity: 0.05; font-family: var(--font-heading); font-weight: 900; pointer-events: none;">LFC</div>
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 2rem;">
+                    <div style="max-width: 650px;">
+                        <span style="color: var(--val-red); font-weight: 900; font-size: 0.85rem; letter-spacing: 3px; display: inline-block; margin-bottom: 0.5rem;" data-i18n="coach.banner_badge">NOW RECRUITING &bull; LONG-TERM PROJECT</span>
+                        <h3 style="font-family: var(--font-heading); font-size: 2.8rem; color: var(--val-white); margin-bottom: 1rem; line-height: 1.1;" data-i18n="coach.banner_title">LOOKING FOR HEAD COACH (LFC)</h3>
+                        <p style="color: var(--val-grey); font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.2rem;" data-i18n="coach.banner_desc">VINFO Esports is seeking a dedicated Coach for our international roster competing in <strong>Invite East</strong> and the <strong>VCT EMEA Qualifiers</strong>.</p>
+                        <div style="display: flex; gap: 1.5rem; flex-wrap: wrap; color: white; font-size: 0.95rem;">
+                            <span style="display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-chess" style="color: var(--val-red);"></i> Tactical In-Game Prep</span>
+                            <span style="display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-video" style="color: var(--val-red);"></i> In-Depth VOD Reviews</span>
+                            <span style="display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-globe" style="color: var(--val-red);"></i> Fluent English</span>
+                            <span style="display: flex; align-items: center; gap: 6px;"><i class="fa-solid fa-users" style="color: var(--val-red);"></i> Previous Team Exp.</span>
+                        </div>
+                    </div>
+                    <div>
+                        <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; gap: 10px; background-color: var(--val-red); color: white; padding: 1.2rem 2.2rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.3rem; letter-spacing: 2px; font-weight: 900; border-radius: 4px; box-shadow: 0 4px 20px rgba(255, 70, 85, 0.4); transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">
+                            <i class="fa-brands fa-discord"></i> DM DISCORD: xdlamborghini
+                        </a>
+                        <p style="color: var(--val-grey); font-size: 0.85rem; text-align: center; margin-top: 0.8rem;">Send your experience & VLR/portfolio</p>
+                    </div>
+                </div>
             </div>
-            
-            <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 1.5rem;">
-                <a href="mailto:goatscz0@gmail.com" style="display: flex; align-items: center; justify-content: center; gap: 15px; background-color: var(--val-red); color: white; padding: 1.5rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 2px; text-align: center; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.boxShadow='0 10px 20px rgba(255,70,85,0.3)';" onmouseout="this.style.boxShadow='none';">
-                    ✉ goatscz0@gmail.com
-                </a>
-                <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 15px; background-color: transparent; border: 1px solid rgba(255,255,255,0.2); color: white; padding: 1.5rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.5rem; letter-spacing: 2px; text-align: center; transition: all 0.2s;" onmouseover="this.style.backgroundColor='rgba(255,255,255,0.05)'; this.style.borderColor='rgba(255,255,255,0.5)';" onmouseout="this.style.backgroundColor='transparent'; this.style.borderColor='rgba(255,255,255,0.2)';">
-                    <img src="https://assets-global.website-files.com/6257adef93867e50d84d30e2/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" width="30" style="filter: brightness(0) invert(1);"> <span data-i18n="tryouts.dm">DM US ON DISCORD</span>
-                </a>
-                <p style="color: var(--val-grey); font-size: 0.9rem; margin-top: 1rem;" data-i18n="tryouts.sub">Include your rank, agent pool, and a short intro. VOD review or trial scrim may be required.</p>
+
+            <!-- General Tryouts / Scouting -->
+            <div style="display: flex; gap: 4rem; align-items: center; flex-wrap: wrap;">
+                <div style="flex: 1 1 300px;">
+                    <span style="color: var(--val-red); font-weight: 800; font-size: 0.85rem; letter-spacing: 3px;" data-i18n="tryouts.join">JOIN THE HERD</span>
+                    <h2 style="font-family: var(--font-heading); font-size: 3.2rem; color: var(--val-white); margin: 0.5rem 0 1.5rem; font-weight: 900; line-height: 1;" data-i18n="tryouts.title">TALENT & PRACTICE SQUAD</h2>
+                    <p style="color: var(--val-grey); font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem;" data-i18n="tryouts.desc">Our active starting 5 is locked, but we are continuously scouting standout Immortal+ talent for our substitute pool and practice scrims.</p>
+                    
+                    <ul style="list-style: none; padding: 0; color: var(--val-grey); margin-bottom: 2rem;">
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><span style="color: var(--val-red);">→</span> <span data-i18n="tryouts.req1">Immortal 3+ or equivalent Premier rating</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><span style="color: var(--val-red);">→</span> <span data-i18n="tryouts.req2">Fluent English or Czech communication</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><span style="color: var(--val-red);">→</span> <span data-i18n="tryouts.req3">Strong communication and team mentality</span></li>
+                        <li style="margin-bottom: 1rem; display: flex; align-items: center; gap: 10px;"><span style="color: var(--val-red);">→</span> <span data-i18n="tryouts.req4">Available for scheduled practice sessions</span></li>
+                    </ul>
+                </div>
+                
+                <div style="flex: 1 1 300px; display: flex; flex-direction: column; gap: 1.5rem;">
+                    <a href="mailto:goatscz0@gmail.com" style="display: flex; align-items: center; justify-content: center; gap: 15px; background-color: rgba(255, 70, 85, 0.1); border: 1px solid var(--val-red); color: white; padding: 1.5rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: 2px; text-align: center; transition: all 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)';" onmouseout="this.style.backgroundColor='rgba(255, 70, 85, 0.1)';">
+                        ✉ goatscz0@gmail.com
+                    </a>
+                    <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="display: flex; align-items: center; justify-content: center; gap: 15px; background-color: #5865F2; color: white; padding: 1.5rem; text-decoration: none; font-family: var(--font-heading); font-size: 1.4rem; letter-spacing: 2px; text-align: center; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.02)';" onmouseout="this.style.transform='scale(1)';">
+                        <i class="fa-brands fa-discord" style="font-size: 1.5rem;"></i> <span data-i18n="tryouts.dm">JOIN OUR DISCORD</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
     <section id="roster" class="roster-section fade-in-up">
         <div class="section-header">
-            <h2 data-i18n="roster.title" class="section-title">OUR ROSTER</h2>
+            <h2 data-i18n="roster.title" class="section-title">ACTIVE ROSTER &bull; VCT EMEA</h2>
             <div class="section-line"></div>
         </div>
         <div class="roster-grid">
-<div class="player-card">
-                <div class="player-image" style="background-image: url('dejwrix.jpg'); background-position: center 25%;"></div>
+
+            <!-- 1. Dejwrix (IGL) -->
+            <div class="player-card">
+                <div class="player-image" style="background-image: url('dejwrix.jpg'); background-position: center 25%; background-size: cover; background-color: #1a1a1a;"></div>
                 <div class="player-info" style="position: relative; z-index: 2;">
-                    <span data-i18n="role.second_igl_duelist" class="player-role">SECOND IGL / DUELIST</span>
-                    <span class="hidden-data" data-realname="David Vorel" data-age="17" style="display:none"></span><h3 class="player-name">Dejwrix <img src="https://flagcdn.com/24x18/cz.png" alt="CZ" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
+                    <span class="player-role" style="color: #ffd700; font-weight: 900;"><i class="fa-solid fa-crown" style="margin-right: 4px;"></i> IGL / DUELIST</span>
+                    <span class="hidden-data" data-realname="David Vorel" data-age="17" style="display:none"></span>
+                    <h3 class="player-name">Dejwrix <img src="https://flagcdn.com/24x18/cz.png" alt="CZ" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Raze / Phoenix</p>
                     <a href="https://www.vlr.gg/player/62747/dejwrix" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">VLR.GG PROFILE</a>
                     <a href="https://x.com/dejwrix" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; margin-left: 5px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
                 </div>
             </div>
-            <div class="player-card fade-in-up">
-                <div class="player-image" style="background-image: url('teikov.jpg'); background-position: center 30%;"></div>
+
+            <!-- 2. N3cr0x (Initiator / Duelist) -->
+            <div class="player-card">
+                <div class="player-image vinfo-logo-placeholder" style="background-image: url('vinfo-logo.png'); background-position: center; background-size: 45%; background-repeat: no-repeat; background-color: #121820;"></div>
                 <div class="player-info" style="position: relative; z-index: 2;">
-                    <span data-i18n="role.duelist" class="player-role">DUELIST</span>
-                    <span class="hidden-data" data-realname="Matyáš Řehák" data-age="17" style="display:none"></span><h3 class="player-name">Teikov <img src="https://flagcdn.com/24x18/cz.png" alt="CZ" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
-                    <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Neon</p>
-                    <a href="https://x.com/teikovvlr" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
+                    <span class="player-role" style="color: #ff4655; font-weight: 900;"><i class="fa-solid fa-crosshairs" style="margin-right: 4px;"></i> INITIATOR / DUELIST</span>
+                    <span class="hidden-data" data-realname="N3cr0x" data-age="19" style="display:none"></span>
+                    <h3 class="player-name">N3cr0x <img src="https://flagcdn.com/24x18/eu.png" alt="EU" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
+                    <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Fade / Sova</p>
+                    <a href="https://x.com/N3cr0xVAL" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
                 </div>
             </div>
-                        <div class="player-card">
-                <div class="player-image" style="background-image: url('marcel.png'); background-position: center 60%; background-size: cover; background-color: #1a1a1a;"></div>
+
+            <!-- 3. Waiz (Controller / Strategist) -->
+            <div class="player-card">
+                <div class="player-image vinfo-logo-placeholder" style="background-image: url('vinfo-logo.png'); background-position: center; background-size: 45%; background-repeat: no-repeat; background-color: #121820;"></div>
                 <div class="player-info" style="position: relative; z-index: 2;">
-                    <span data-i18n="role.flex" class="player-role">FLEX</span>
-                    <span class="hidden-data" data-realname="Marcel" data-age="19" style="display:none"></span><h3 class="player-name">Marcel <img src="https://flagcdn.com/24x18/pl.png" alt="PL" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
-                    <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Cypher / Killjoy</p>
-                    <a href="https://www.vlr.gg/player/8525/marcel" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">VLR.GG PROFILE</a>
-                    <a href="https://x.com/marceldzia" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; margin-left: 5px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
+                    <span class="player-role" style="color: #46b4ff; font-weight: 900;"><i class="fa-solid fa-brain" style="margin-right: 4px;"></i> CONTROLLER</span>
+                    <span class="hidden-data" data-realname="Waiz" data-age="20" style="display:none"></span>
+                    <h3 class="player-name">Waiz <img src="https://flagcdn.com/24x18/eu.png" alt="EU" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
+                    <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Omen / Viper / Astra</p>
+                    <a href="https://x.com/WaizTw" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
                 </div>
             </div>
+
+            <!-- 4. sarrz (Duelist / Flex) -->
+            <div class="player-card">
+                <div class="player-image vinfo-logo-placeholder" style="background-image: url('vinfo-logo.png'); background-position: center; background-size: 45%; background-repeat: no-repeat; background-color: #121820;"></div>
+                <div class="player-info" style="position: relative; z-index: 2;">
+                    <span class="player-role" style="color: #ff9100; font-weight: 900;"><i class="fa-solid fa-fire" style="margin-right: 4px;"></i> DUELIST / FLEX</span>
+                    <span class="hidden-data" data-realname="sarrz" data-age="18" style="display:none"></span>
+                    <h3 class="player-name">sarrz <img src="https://flagcdn.com/24x18/eu.png" alt="EU" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
+                    <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Jett / Neon / Iso</p>
+                    <a href="https://x.com/sarrz_" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
+                </div>
+            </div>
+
+            <!-- 5. bozzi (Sentinel) -->
+            <div class="player-card">
+                <div class="player-image vinfo-logo-placeholder" style="background-image: url('vinfo-logo.png'); background-position: center; background-size: 45%; background-repeat: no-repeat; background-color: #121820;"></div>
+                <div class="player-info" style="position: relative; z-index: 2;">
+                    <span class="player-role" style="color: #00e676; font-weight: 900;"><i class="fa-solid fa-shield-halved" style="margin-right: 4px;"></i> SENTINEL</span>
+                    <span class="hidden-data" data-realname="bozzi" data-age="19" style="display:none"></span>
+                    <h3 class="player-name">bozzi <img src="https://flagcdn.com/24x18/eu.png" alt="EU" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
+                    <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Killjoy / Cypher / Vyse</p>
+                    <a href="https://x.com/bozzival" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
+                </div>
+            </div>
+
+            <!-- 6. Woody (Sub) -->
             <div class="player-card">
                 <div class="player-image" style="background-image: url('woody.png'); background-position: center 25%; background-size: cover; background-color: #1a1a1a;"></div>
                 <div class="player-info" style="position: relative; z-index: 2;">
                     <span data-i18n="role.sub" class="player-role">SUB</span>
-                    <span class="hidden-data" data-realname="Filip" data-age="18" style="display:none"></span><h3 class="player-name">Woody <img src="https://flagcdn.com/24x18/cz.png" alt="CZ" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
+                    <span class="hidden-data" data-realname="Filip" data-age="18" style="display:none"></span>
+                    <h3 class="player-name">Woody <img src="https://flagcdn.com/24x18/cz.png" alt="CZ" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
                     <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Vyse / Viper</p>
                     <a href="https://www.vlr.gg/player/7172/woody" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">VLR.GG PROFILE</a>
                     <a href="https://x.com/woody_valo" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; margin-left: 5px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
                 </div>
             </div>
 
+            <!-- 7. Marcel (Sub) -->
+            <div class="player-card">
+                <div class="player-image" style="background-image: url('marcel.png'); background-position: center 60%; background-size: cover; background-color: #1a1a1a;"></div>
+                <div class="player-info" style="position: relative; z-index: 2;">
+                    <span class="player-role">SUB / FLEX</span>
+                    <span class="hidden-data" data-realname="Marcel" data-age="19" style="display:none"></span>
+                    <h3 class="player-name">Marcel <img src="https://flagcdn.com/24x18/pl.png" alt="PL" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
+                    <p style="color: var(--val-red); font-size: 0.9rem; font-weight: bold; margin-top: 5px;"><span data-i18n="roster.mains">Mains:</span> Cypher / Killjoy</p>
+                    <a href="https://www.vlr.gg/player/8525/marcel" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">VLR.GG PROFILE</a>
+                    <a href="https://x.com/marceldzia" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; margin-left: 5px; background-color: #2b2e35; color: white; text-decoration: none; padding: 4px 10px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: background-color 0.2s;" onmouseover="this.style.backgroundColor='var(--val-red)'" onmouseout="this.style.backgroundColor='#2b2e35'">TWITTER</a>
+                </div>
+            </div>
 
         </div>
     </section>
@@ -290,18 +366,32 @@
     <!-- STAFF SECTION -->
     <section id="staff" class="roster-section fade-in-up" style="padding-top: 0;">
         <div class="section-header">
-            <h2 data-i18n="staff.title" class="section-title">MANAGEMENT & STAFF</h2>
+            <h2 data-i18n="staff.title" class="section-title">MANAGEMENT & COACHING</h2>
             <div class="section-line"></div>
         </div>
-        <div class="roster-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 300px));">
+        <div class="roster-grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); max-width: 900px; margin: 0 auto;">
 
+            <!-- Manager -->
             <div class="player-card">
                 <div class="player-image vinfo-logo-placeholder" style="background-image: url('vinfo-logo.png'); background-position: center; background-size: 50%; background-repeat: no-repeat; background-color: var(--val-darker);"></div>
                 <div class="player-info" style="position: relative; z-index: 2;">
                     <span data-i18n="role.manager" class="player-role">MANAGER</span>
                     <h3 class="player-name">kohteihep <img src="https://flagcdn.com/24x18/ua.png" alt="UA" style="vertical-align: middle; border-radius: 2px; margin-left: 5px; margin-bottom: 3px;"></h3>
+                    <p style="color: var(--val-grey); font-size: 0.85rem; margin-top: 5px;">Team Logistics & Management</p>
                 </div>
             </div>
+
+            <!-- Head Coach (LFC) -->
+            <div class="player-card" style="border-color: rgba(255, 70, 85, 0.4); box-shadow: 0 0 15px rgba(255, 70, 85, 0.15);">
+                <div class="player-image vinfo-logo-placeholder" style="background-image: url('vinfo-logo.png'); background-position: center; background-size: 50%; background-repeat: no-repeat; background-color: #1a1a24;"></div>
+                <div class="player-info" style="position: relative; z-index: 2;">
+                    <span class="player-role" style="color: var(--val-red); font-weight: 900;">HEAD COACH (LFC)</span>
+                    <h3 class="player-name" style="color: #ffd700;">POSITION OPEN <i class="fa-solid fa-user-plus" style="font-size: 0.9rem; margin-left: 4px;"></i></h3>
+                    <p style="color: var(--val-grey); font-size: 0.85rem; margin-top: 5px;">Invite East | Int. Roster</p>
+                    <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 10px; background-color: var(--val-red); color: white; text-decoration: none; padding: 6px 12px; border-radius: 3px; font-weight: bold; font-size: 0.8rem; letter-spacing: 1px; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">APPLY VIA DISCORD</a>
+                </div>
+            </div>
+
         </div>
     </section>
 
@@ -315,7 +405,7 @@
                 <p style="margin-top: 1rem; margin-bottom: 3rem;" data-i18n="about.p2">Led by our IGL Dejwrix, we don't just play the game; we redefine the meta. From flawless executes to unbreakable site holds, the 'VINFO' operates as a single, lethal unit. Our eyes are set on the highest tiers of European Valorant, and we won't stop until we reach the top.</p>
                 <div class="stats-grid">
                     <div class="stat-box">
-                        <span class="stat-number" style="font-size: 2.2rem;">REBUILD</span>
+                        <span class="stat-number" style="font-size: 2.2rem; color: #53fc18;">LOCKED</span>
                         <span class="stat-label" data-i18n="about.stat1">Roster</span>
                     </div>
                     <div class="stat-box">
@@ -1059,8 +1149,8 @@
         </div>
     </footer>
 
-    <script src="script.js?v=39"></script>
-    <script src="i18n.js?v=39"></script>
+    <script src="script.js?v=40"></script>
+    <script src="i18n.js?v=40"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js?v=2"></script>
     <script>
         // Init Lenis smooth scroll

@@ -589,6 +589,42 @@ async function loadNews() {
 
         const simulatedNews = [
         {
+            date: "OCTOBER 30, 2026",
+            title: {
+                en: "COMPETING IN VCT EMEA KICKOFF QUALIFIER 1",
+                cz: "STARTUJEME VE VCT EMEA KICKOFF KVALIFIKACI 1"
+            },
+            content: {
+                en: "The journey begins! 🚀 VINFO Esports is officially competing in the VCT EMEA Kickoff - Europe Qualifier 1 from Nov 5 - Nov 8. Time to show what this roster can do on the big stage! 🔥",
+                cz: "Cesta začíná! 🚀 VINFO Esports oficiálně nastupuje do prestižní kvalifikace VCT EMEA Kickoff - Europe Qualifier 1, která se hraje 5. - 8. listopadu. Čas ukázat, co tato sestava dokáže! 🔥"
+            },
+            important: true
+        },
+        {
+            date: "OCTOBER 30, 2026",
+            title: {
+                en: "REBUILDING: LOOKING FOR HEAD COACH (LFC)",
+                cz: "HLEDÁME HLAVNÍHO TRENÉRA (LFC) PRO DLOUHODOBÝ PROJEKT"
+            },
+            content: {
+                en: "VINFO Esports is recruiting a dedicated Coach (LFC) for our Invite East / International roster. Requirements: tactics, in-depth VOD reviews, fluent English, and team experience. DM Discord: xdlamborghini with your VLR profile & portfolio!",
+                cz: "VINFO Esports hledá oddaného hlavního trenéra (LFC) pro mezinárodní tým hrající Invite East. Požadavky: taktika, VOD reviews, plynulá angličtina a zkušenosti s týmem. Napište na Discord: xdlamborghini s portfoliem a VLR!"
+            },
+            important: true
+        },
+        {
+            date: "OCTOBER 28, 2026",
+            title: {
+                en: "ROSTER LOCKED: EMEA QUALIFIERS SQUAD ANNOUNCED",
+                cz: "SESTAVA UZAVŘENA: PŘEDSTAVUJEME EMEA ROSTER"
+            },
+            content: {
+                en: "After a FULL MONTH of intense trials and grinding, our starting five is officially locked! Welcome 👑 Dejwrix, 🎯 N3cr0x, 🧠 Waiz, 🔥 sarrz, and 🛡️ bozzi. Time to dominate the EMEA qualifiers! 😈⚔️",
+                cz: "Po celém měsíci náročných tryoutů máme oficiálně uzamčenou základní pětku! Vítejte 👑 Dejwrix, 🎯 N3cr0x, 🧠 Waiz, 🔥 sarrz a 🛡️ bozzi. Čas ovládnout EMEA kvalifikace! 😈⚔️"
+            },
+            important: true
+        },
+        {
             date: "SEPTEMBER 21, 2026",
             title: {
                 en: "ROSTER REBUILD IN PROGRESS",
@@ -1072,8 +1108,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Player Modal Tabs & Canvas Radar (Fixing name extraction logic)
     const mockPlayerData = {
-        'Dejwrix': { crosshair: '0;P;c;5;o;1;f;0;0t;1;0l;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight', dpi: '800', sens: '0.3', monitor: 'ZOWIE XL2546K 240Hz', stats: [85, 70, 60, 90, 80, 75] },
-        'Teikov': { crosshair: '0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'Razer DeathAdder V3 Pro', dpi: '400', sens: '0.45', monitor: 'ZOWIE XL2566K 360Hz', stats: [95, 80, 85, 60, 95, 50] },
+        'Dejwrix': { crosshair: '0;P;c;5;o;1;f;0;0t;1;0l;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight', dpi: '800', sens: '0.3', monitor: 'ZOWIE XL2546K 240Hz', stats: [90, 85, 75, 95, 88, 80] },
+        'N3cr0x': { crosshair: '0;s;1;P;c;1;h;0;0t;1;0l;3;0v;3;0a;1;0f;0;1b;0', mouse: 'Razer DeathAdder V3 Pro', dpi: '800', sens: '0.31', monitor: 'ZOWIE XL2566K 360Hz', stats: [92, 88, 85, 80, 90, 75] },
+        'Waiz': { crosshair: '0;P;c;8;u;000000FF;h;0;b;1;0l;4;0v;4;0g;1;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight 2', dpi: '800', sens: '0.27', monitor: 'ZOWIE XL2546K 240Hz', stats: [84, 82, 80, 92, 70, 95] },
+        'sarrz': { crosshair: '0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'WLMOUSE Beast X', dpi: '1600', sens: '0.16', monitor: 'ASUS ROG Swift 360Hz', stats: [96, 90, 88, 75, 98, 70] },
+        'bozzi': { crosshair: '0;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'ZOWIE EC2-CW', dpi: '800', sens: '0.24', monitor: 'ZOWIE XL2546X 240Hz', stats: [80, 86, 90, 88, 65, 92] },
         'Woody': { crosshair: '0;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'Zowie EC2-CW', dpi: '800', sens: '0.25', monitor: 'ASUS ROG Swift 360Hz', stats: [70, 85, 75, 85, 50, 90] },
         'Marcel': { crosshair: '0;s;1;P;c;1;u;000000FF;h;0;f;0;m;1;0l;3;0v;3;0o;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight 2', dpi: '800', sens: '0.28', monitor: 'BenQ ZOWIE XL2546X 240Hz', stats: [78, 82, 86, 80, 68, 90] }
     };
