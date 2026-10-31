@@ -963,10 +963,23 @@ document.addEventListener('DOMContentLoaded', () => {
                                         if (hiddenData) {
                         const realName = hiddenData.getAttribute('data-realname');
                         const age = hiddenData.getAttribute('data-age');
+                        const country = hiddenData.getAttribute('data-country');
                         document.getElementById('modal-realname').innerText = realName ? realName : '';
                         
+                        const modalLang = localStorage.getItem('vinfo_lang') || 'en';
+                        
+                        const countryContainer = document.getElementById('modal-country-container');
+                        if (countryContainer) {
+                            if (country) {
+                                const countryLabel = (modalLang === 'cz' || modalLang === 'cs') ? 'Země:' : 'Country:';
+                                countryContainer.innerHTML = '<strong>' + countryLabel + '</strong> <span>' + country + '</span>';
+                                countryContainer.style.display = 'block';
+                            } else {
+                                countryContainer.style.display = 'none';
+                            }
+                        }
+
                         if (age) {
-                            const modalLang = localStorage.getItem('vinfo_lang') || 'en';
                             const ageLabel = (modalLang === 'cz' || modalLang === 'cs') ? 'Věk:' : 'Age:';
                             document.getElementById('modal-age-container').innerHTML = '<strong>' + ageLabel + '</strong> <span>' + age + '</span>';
                             document.getElementById('modal-age-container').style.display = 'block';
@@ -975,6 +988,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
                     } else {
                         document.getElementById('modal-realname').innerText = '';
+                        const countryContainer = document.getElementById('modal-country-container');
+                        if (countryContainer) countryContainer.style.display = 'none';
                         document.getElementById('modal-age-container').style.display = 'none';
                     }
                     
