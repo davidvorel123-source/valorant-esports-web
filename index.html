@@ -171,6 +171,30 @@
                 </div>
             </div>
 
+            <!-- Latest Premier Results (Oct 24) -->
+            <div style="width: 100%; max-width: 800px; background: rgba(15, 25, 35, 0.7); border: 1px solid rgba(255,255,255,0.1); border-left: 4px solid #53fc18; border-radius: 4px; padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1rem; text-align: left;">
+                <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.6rem;">
+                    <span style="font-family: var(--font-heading); color: var(--val-white); font-size: 1.2rem; letter-spacing: 1px;"><i class="fa-solid fa-clock-rotate-left" style="color: var(--val-red); margin-right: 6px;"></i> <span data-i18n="schedule.last_results">LATEST PREMIER MATCHES &bull; 24. 10. 2026</span></span>
+                    <span style="color: #ffd700; font-size: 0.85rem; font-weight: 800; letter-spacing: 1px;"><i class="fa-solid fa-map"></i> BIND</span>
+                </div>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
+                    <div style="background: rgba(0,0,0,0.3); padding: 0.8rem 1.2rem; border-radius: 4px; border-left: 3px solid #53fc18;">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-weight: 700; color: var(--val-white);">vs Bondziorno</span>
+                            <span style="font-family: var(--font-heading); font-size: 1.3rem; color: #53fc18; font-weight: 900;">14 : 12 <span style="font-size: 0.75rem; color: #ffd700;">(OT WIN)</span></span>
+                        </div>
+                        <div style="font-size: 0.8rem; color: var(--val-grey); margin-top: 4px;">Top: SarrZ 29/16/3 &bull; bozzi 21/17/6 &bull; w1ck 21/13/7</div>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.3); padding: 0.8rem 1.2rem; border-radius: 4px; border-left: 3px solid var(--val-red);">
+                        <div style="display: flex; justify-content: space-between; align-items: center;">
+                            <span style="font-weight: 700; color: var(--val-white);">vs LAST ECHO</span>
+                            <span style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--val-red); font-weight: 900;">11 : 13 <span style="font-size: 0.75rem; color: var(--val-grey);">(LOSS)</span></span>
+                        </div>
+                        <div style="font-size: 0.8rem; color: var(--val-grey); margin-top: 4px;">Top: SarrZ 25/17/6 &bull; bozzi 17/19/6 &bull; Dejwrix 17/19/5</div>
+                    </div>
+                </div>
+            </div>
+
             <!-- Match 1 (Synergy Circuit) -->
             <div class="match-card" style="background: rgba(15, 25, 35, 0.8); padding: 2.5rem 4rem; border: 1px solid var(--val-red); display: inline-block; text-align: center; box-shadow: 0 10px 40px rgba(255, 70, 85, 0.15); border-radius: 4px; width: 100%; max-width: 800px; margin-bottom: 1rem;">
                 <span style="color: var(--val-grey); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 1rem; text-transform: uppercase;"><span data-i18n="schedule.upcoming">UPCOMING TOURNAMENT</span> | <span class="dynamic-date" data-match-date="2026-11-05T17:00:00" style="color: var(--val-red);">5.11. 17:00</span></span>
@@ -559,6 +583,28 @@
             <div class="legacy-column" style="grid-column: 1 / -1;">
                 <h3><span data-i18n="legacy.matchHistory">Zápasy z Premier a Turnajů</span></h3>
                 <div class="timeline-container">
+                    <div class="timeline-item loss">
+                        <div class="timeline-date">24. 10. 2026</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tournament">Premier &bull; Bind</div>
+                            <div class="timeline-match">VINFO <span>11:13</span> LAST ECHO</div>
+                            <div style="font-size: 0.85rem; color: var(--val-grey); margin-top: 4px; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <span><i class="fa-solid fa-shield-halved" style="color: var(--val-red);"></i> 6:7 Atk &bull; 5:6 Def</span>
+                                <span><i class="fa-solid fa-crosshairs"></i> Top: SarrZ (25/17/6) &bull; bozzi (17/19/6) &bull; Dejwrix (17/19/5)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item win">
+                        <div class="timeline-date">24. 10. 2026</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tournament">Premier &bull; Bind (OT)</div>
+                            <div class="timeline-match">VINFO <span>14:12</span> Bondziorno</div>
+                            <div style="font-size: 0.85rem; color: var(--val-grey); margin-top: 4px; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <span><i class="fa-solid fa-shield-halved" style="color: #53fc18;"></i> 8:7 Atk &bull; 6:5 Def</span>
+                                <span><i class="fa-solid fa-trophy" style="color: #ffd700;"></i> Top: SarrZ (29/16/3) &bull; bozzi (21/17/6) &bull; w1ck (21/13/7)</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="timeline-item win">
                         <div class="timeline-date">12. 09. 2026</div>
                         <div class="timeline-content">
@@ -1174,8 +1220,8 @@
         </div>
     </footer>
 
-    <script src="script.js?v=63"></script>
-    <script src="i18n.js?v=63"></script>
+    <script src="script.js?v=64"></script>
+    <script src="i18n.js?v=64"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js?v=2"></script>
     <script>
         // Init Lenis smooth scroll
