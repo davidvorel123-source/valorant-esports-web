@@ -1,9 +1,15 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="100%" height="100%" shape-rendering="crispEdges">
-  <rect width="120" height="120" fill="#1b1f27" />
-  
-  <!-- Outline -->
-  <rect x="44" y="52" width="32" height="16" fill="#000000" />
-  <!-- Core -->
-  <rect x="48" y="56" width="24" height="8" fill="#00ff44" />
-
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-14 -14 28 28" width="100%" height="100%" shape-rendering="crispEdges">
+  <rect x="-14" y="-14" width="28" height="28" fill="#232730" />
+  <line x1="-14" y1="0" x2="14" y2="0" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" />
+  <line x1="0" y1="-14" x2="0" y2="14" stroke="rgba(255,255,255,0.06)" stroke-width="0.5" />
+  <g id="outlines">
+    <rect x="-2" y="-2" width="4" height="4" fill="#000000" />
+    <rect x="-3" y="-2" width="4" height="4" fill="#000000" />
+    <rect x="-1" y="-2" width="4" height="4" fill="#000000" />
+  </g>
+  <g id="core">
+    <rect x="-1" y="-1" width="2" height="2" fill="#00FF44" />
+    <rect x="-2" y="-1" width="2" height="2" fill="#00FF44" />
+    <rect x="0" y="-1" width="2" height="2" fill="#00FF44" />
+  </g>
 </svg>

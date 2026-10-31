@@ -1,4 +1,4 @@
-﻿document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile menu toggle
     const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
@@ -1261,7 +1261,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     
                     currentActiveCrosshairCode = pData.crosshair;
-                    renderCrosshairToCanvas(document.getElementById('crosshair-canvas'), pData.crosshair);
+                    const crosshairImg = document.getElementById('crosshair-img');
+                    if (crosshairImg && pData.crosshairImg) {
+                        crosshairImg.src = pData.crosshairImg + '?v=60';
+                    }
 
                     const copyBtn = document.getElementById('btn-copy-crosshair');
                     if (copyBtn) {
