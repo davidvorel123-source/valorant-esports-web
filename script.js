@@ -1140,7 +1140,9 @@ document.addEventListener('DOMContentLoaded', () => {
         'Bozzi': { crosshair: '0;s;1;P;c;1;o;1;0l;5;0v;5;0a;1;0f;0;1b;0;S;s;1.002', mouse: 'Razer Viper V3 Pro', dpi: '3200', sens: '0.03', monitor: 'Samsung Odyssey G4 240Hz', stats: [92, 86, 88, 80, 95, 75] },
         'spotnik': { crosshair: '0;s;1;P;c;1;u;000000FF;h;0;f;0;0l;3;0v;3;0o;2;0a;1;0f;0;1b;0;S;c;0;o;1', mouse: 'Logitech G Pro X Superlight 2', dpi: '800', sens: '0.22', monitor: 'Acer Nitro XV272U W2 (240Hz)', stats: [82, 85, 80, 88, 74, 86] },
         'Spotnik': { crosshair: '0;s;1;P;c;1;u;000000FF;h;0;f;0;0l;3;0v;3;0o;2;0a;1;0f;0;1b;0;S;c;0;o;1', mouse: 'Logitech G Pro X Superlight 2', dpi: '800', sens: '0.22', monitor: 'Acer Nitro XV272U W2 (240Hz)', stats: [82, 85, 80, 88, 74, 86] },
-        'kuriqs': { crosshair: '0;P;c;5;o;1;f;0;0t;1;0l;3;0v;3;0a;1;0f;0;1b;0', mouse: 'Razer DeathAdder V3 Pro', dpi: '400', sens: '0.48', monitor: 'ASUS ROG Swift 360Hz', stats: [88, 80, 85, 76, 92, 70] },
+        'kuriqs': { crosshair: '0;P;c;8;h;0;d;1;b;1;f;0;0b;0;1b;0', mouse: 'Razer Viper V3 Pro', dpi: '1600', sens: '0.19', monitor: 'ZOWIE XL2546K 240Hz', stats: [88, 80, 85, 76, 92, 70] },
+        'Kuriqs': { crosshair: '0;P;c;8;h;0;d;1;b;1;f;0;0b;0;1b;0', mouse: 'Razer Viper V3 Pro', dpi: '1600', sens: '0.19', monitor: 'ZOWIE XL2546K 240Hz', stats: [88, 80, 85, 76, 92, 70] },
+        'Kuriiqs': { crosshair: '0;P;c;8;h;0;d;1;b;1;f;0;0b;0;1b;0', mouse: 'Razer Viper V3 Pro', dpi: '1600', sens: '0.19', monitor: 'ZOWIE XL2546K 240Hz', stats: [88, 80, 85, 76, 92, 70] },
         'Marcel': { crosshair: '0;s;1;P;c;1;u;000000FF;h;0;f;0;m;1;0l;3;0v;3;0o;2;0a;1;0f;0;1b;0', mouse: 'ATK Dragonfly A9', dpi: '1600', sens: '0.13', monitor: 'ASUS TUF Gaming VG249QM1A (270Hz)', stats: [82, 80, 86, 84, 70, 92] },
         'marcel': { crosshair: '0;s;1;P;c;1;u;000000FF;h;0;f;0;m;1;0l;3;0v;3;0o;2;0a;1;0f;0;1b;0', mouse: 'ATK Dragonfly A9', dpi: '1600', sens: '0.13', monitor: 'ASUS TUF Gaming VG249QM1A (270Hz)', stats: [82, 80, 86, 84, 70, 92] }
     };
