@@ -73,8 +73,8 @@
     <!-- Live Match Command Center (Hidden by Default) -->
     <div id="live-bar" style="display: flex; position: sticky; top: 0; z-index: 100000; background: var(--val-red); color: white; padding: 0.75rem 2rem; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; align-items: center; justify-content: center; gap: 1rem; box-shadow: 0 4px 15px rgba(255, 70, 85, 0.4); flex-wrap: wrap;">
         <div class="live-pulse" style="width: 10px; height: 10px; background: white; border-radius: 50%; animation: blink 1s infinite;"></div>
-        <strong id="live-bar-title" data-i18n="live.title">MATCH TODAY 19:00:</strong> <span id="live-bar-text" data-i18n="live.text">VALORANT PREMIER &bull; OFFICIAL MATCH</span>
-        <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="background: white; color: var(--val-red); padding: 0.3rem 1.2rem; font-size: 1rem; text-decoration: none; border-radius: 2px; font-weight: 700; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" data-i18n="live.action">WATCH ON KICK</a>
+        <strong id="live-bar-title" data-i18n="live.title">NEXT TOURNAMENT:</strong> <span id="live-bar-text" data-i18n="live.text">VCT EMEA KICKOFF &bull; NOV 5 17:00</span>
+        <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="background: white; color: var(--val-red); padding: 0.3rem 1.2rem; font-size: 1rem; text-decoration: none; border-radius: 2px; font-weight: 700; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" data-i18n="live.action">JOIN DISCORD</a>
     </div>
     <a href="#home" class="skip-link">Skip to main content</a>
     <div class="crt-overlay"></div>
@@ -158,51 +158,45 @@
             <div class="section-line"></div>
         </div>
         <div style="max-width: 1000px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 2rem; align-items: center;">
-                        <!-- Match 0 (Premier Match TODAY 19:00) -->
+                        <!-- Match 1 (Upcoming: VCT EMEA KICKOFF) -->
             <div class="match-card" style="background: linear-gradient(135deg, rgba(255, 70, 85, 0.15) 0%, rgba(15, 25, 35, 0.95) 100%); padding: 2.5rem 4rem; border: 2px solid var(--val-red); display: inline-block; text-align: center; box-shadow: 0 10px 40px rgba(255, 70, 85, 0.3); border-radius: 4px; width: 100%; max-width: 800px; margin-bottom: 1.5rem; position: relative;">
-                <div style="position: absolute; top: 12px; right: 15px; background: var(--val-red); color: white; font-weight: 900; font-size: 0.75rem; letter-spacing: 2px; padding: 4px 10px; border-radius: 3px; text-transform: uppercase;">TODAY &bull; DNES 19:00</div>
-                <span style="color: var(--val-red); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 0.5rem; text-transform: uppercase;"><span data-i18n="schedule.premier_badge">PREMIER MATCH</span> | <span class="dynamic-date" data-match-date="2026-10-31T19:00:00" style="color: #53fc18;">31.10. 19:00</span></span>
-                <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 2px 2px 0 var(--val-red);" data-i18n="schedule.premier_title">VALORANT PREMIER</h3>
-                <span style="color: #ffd700; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem; font-size: 1.1rem;" data-i18n="schedule.premier_status">DIVISION CONTENDER &bull; OFFICIAL MATCH</span>
-                <div class="match-countdown" data-target="2026-10-31T19:00:00" style="margin-bottom: 1.5rem;"></div>
+                <div style="position: absolute; top: 12px; right: 15px; background: var(--val-red); color: white; font-weight: 900; font-size: 0.75rem; letter-spacing: 2px; padding: 4px 10px; border-radius: 3px; text-transform: uppercase;">UPCOMING &bull; 5.11. 17:00</div>
+                <span style="color: var(--val-red); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 0.5rem; text-transform: uppercase;"><span data-i18n="schedule.upcoming">UPCOMING TOURNAMENT</span> | <span class="dynamic-date" data-match-date="2026-11-05T17:00:00" style="color: #53fc18;">5.11. 17:00</span></span>
+                <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 2px 2px 0 var(--val-red);" data-i18n="schedule.vct_kickoff">VCT EMEA KICKOFF</h3>
+                <span style="color: #ffd700; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem; font-size: 1.1rem;" data-i18n="schedule.vct_sub">EUROPE QUALIFIER 1 &bull; NOV 5 - NOV 8</span>
+                <div class="match-countdown" data-target="2026-11-05T17:00:00" style="margin-bottom: 1.5rem;"></div>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #53fc18; font-weight: bold; text-decoration: none; font-size: 1.1rem; letter-spacing: 1.5px; background: rgba(83, 252, 24, 0.15); padding: 10px 22px; border-radius: 4px; border: 2px solid rgba(83, 252, 24, 0.6); transition: all 0.3s;" onmouseover="this.style.background='rgba(83, 252, 24, 0.3)'; this.style.boxShadow='0 0 20px rgba(83, 252, 24, 0.3)'; this.style.transform='scale(1.05)';" onmouseout="this.style.background='rgba(83, 252, 24, 0.15)'; this.style.boxShadow='none'; this.style.transform='scale(1)';"><i class="fa-solid fa-play"></i> <span data-i18n="schedule.watch">WATCH LIVE ON KICK</span></a>
                     <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: white; font-weight: bold; text-decoration: none; font-size: 1.1rem; letter-spacing: 1.5px; background: #5865F2; padding: 10px 22px; border-radius: 4px; border: 2px solid #5865F2; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><i class="fa-brands fa-discord"></i> <span data-i18n="schedule.premier_lf1">JOIN DISCORD</span></a>
                 </div>
             </div>
 
-            <!-- Latest Premier Results (Oct 24) -->
-            <div style="width: 100%; max-width: 800px; background: rgba(15, 25, 35, 0.7); border: 1px solid rgba(255,255,255,0.1); border-left: 4px solid #53fc18; border-radius: 4px; padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1rem; text-align: left;">
+            <!-- Latest Premier Results (Oct 31 - Corrode) -->
+            <div style="width: 100%; max-width: 800px; background: rgba(15, 25, 35, 0.85); border: 1px solid rgba(255,255,255,0.1); border-left: 4px solid var(--val-red); border-radius: 4px; padding: 1.5rem 2rem; display: flex; flex-direction: column; gap: 0.8rem; margin-bottom: 1rem; text-align: left;">
                 <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.5rem; border-bottom: 1px solid rgba(255,255,255,0.08); padding-bottom: 0.6rem;">
-                    <span style="font-family: var(--font-heading); color: var(--val-white); font-size: 1.2rem; letter-spacing: 1px;"><i class="fa-solid fa-clock-rotate-left" style="color: var(--val-red); margin-right: 6px;"></i> <span data-i18n="schedule.last_results">LATEST PREMIER MATCHES &bull; 24. 10. 2026</span></span>
-                    <span style="color: #ffd700; font-size: 0.85rem; font-weight: 800; letter-spacing: 1px;"><i class="fa-solid fa-map"></i> BIND</span>
+                    <span style="font-family: var(--font-heading); color: var(--val-white); font-size: 1.2rem; letter-spacing: 1px;"><i class="fa-solid fa-clock-rotate-left" style="color: var(--val-red); margin-right: 6px;"></i> <span data-i18n="schedule.last_results_oct31">LATEST PREMIER MATCHES &bull; 31. 10. 2026</span></span>
+                    <span style="color: #ffd700; font-size: 0.85rem; font-weight: 800; letter-spacing: 1px;"><i class="fa-solid fa-map"></i> CORRODE</span>
                 </div>
                 <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1rem;">
-                    <div style="background: rgba(0,0,0,0.3); padding: 0.8rem 1.2rem; border-radius: 4px; border-left: 3px solid #53fc18;">
+                    <div style="background: rgba(0,0,0,0.35); padding: 1rem 1.2rem; border-radius: 4px; border-left: 3px solid var(--val-red);">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-weight: 700; color: var(--val-white);">vs Bondziorno</span>
-                            <span style="font-family: var(--font-heading); font-size: 1.3rem; color: #53fc18; font-weight: 900;">14 : 12 <span style="font-size: 0.75rem; color: #ffd700;">(OT WIN)</span></span>
+                            <span style="font-weight: 700; color: var(--val-white);">vs Nokar Esport</span>
+                            <span style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--val-red); font-weight: 900;">7 : 13 <span style="font-size: 0.75rem; color: var(--val-grey);">(LOSS)</span></span>
                         </div>
-                        <div style="font-size: 0.8rem; color: var(--val-grey); margin-top: 4px;">Top: SarrZ 29/16/3 &bull; bozzi 21/17/6 &bull; w1ck 21/13/7</div>
+                        <div style="font-size: 0.8rem; color: var(--val-grey); margin-top: 4px;">Poločas: 4:5 Atk &bull; 3:8 Def</div>
+                        <div style="font-size: 0.8rem; color: var(--val-grey); margin-top: 2px;">Top: SarrZ 15/15/3 (Omen) &bull; Dejwrix 15/15/1 (Phoenix) &bull; MusX 10/15/2</div>
                     </div>
-                    <div style="background: rgba(0,0,0,0.3); padding: 0.8rem 1.2rem; border-radius: 4px; border-left: 3px solid var(--val-red);">
+                    <div style="background: rgba(0,0,0,0.35); padding: 1rem 1.2rem; border-radius: 4px; border-left: 3px solid var(--val-red);">
                         <div style="display: flex; justify-content: space-between; align-items: center;">
-                            <span style="font-weight: 700; color: var(--val-white);">vs LAST ECHO</span>
-                            <span style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--val-red); font-weight: 900;">11 : 13 <span style="font-size: 0.75rem; color: var(--val-grey);">(LOSS)</span></span>
+                            <span style="font-weight: 700; color: var(--val-white);">vs KronBars</span>
+                            <span style="font-family: var(--font-heading); font-size: 1.3rem; color: var(--val-red); font-weight: 900;">3 : 13 <span style="font-size: 0.75rem; color: var(--val-grey);">(LOSS)</span></span>
                         </div>
-                        <div style="font-size: 0.8rem; color: var(--val-grey); margin-top: 4px;">Top: SarrZ 25/17/6 &bull; bozzi 17/19/6 &bull; Dejwrix 17/19/5</div>
+                        <div style="font-size: 0.8rem; color: var(--val-grey); margin-top: 4px;">Poločas: 2:11 Atk &bull; 1:2 Def</div>
+                        <div style="font-size: 0.8rem; color: var(--val-grey); margin-top: 2px;">Top: bozzi1 11/15/4 (Yoru) &bull; LEV Neon 11/13/4 &bull; MusX 10/15/1</div>
                     </div>
                 </div>
             </div>
 
-            <!-- Match 1 (Synergy Circuit) -->
-            <div class="match-card" style="background: rgba(15, 25, 35, 0.8); padding: 2.5rem 4rem; border: 1px solid var(--val-red); display: inline-block; text-align: center; box-shadow: 0 10px 40px rgba(255, 70, 85, 0.15); border-radius: 4px; width: 100%; max-width: 800px; margin-bottom: 1rem;">
-                <span style="color: var(--val-grey); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 1rem; text-transform: uppercase;"><span data-i18n="schedule.upcoming">UPCOMING TOURNAMENT</span> | <span class="dynamic-date" data-match-date="2026-11-05T17:00:00" style="color: var(--val-red);">5.11. 17:00</span></span>
-                <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 2px 2px 0 var(--val-red);" data-i18n="schedule.vct_kickoff">VCT EMEA KICKOFF</h3>
-                <span style="color: var(--val-grey); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem;" data-i18n="schedule.vct_sub">EUROPE QUALIFIER 1 &bull; NOV 5 - NOV 8</span>
-                <div class="match-countdown" data-target="2026-11-05T17:00:00" style="margin-bottom: 1.5rem;"></div>
-                <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #53fc18; font-weight: bold; text-decoration: none; font-size: 1.2rem; letter-spacing: 1.5px; background: rgba(83, 252, 24, 0.15); padding: 10px 25px; border-radius: 4px; border: 2px solid rgba(83, 252, 24, 0.6); transition: all 0.3s;" onmouseover="this.style.background='rgba(83, 252, 24, 0.3)'; this.style.boxShadow='0 0 20px rgba(83, 252, 24, 0.3)'; this.style.transform='scale(1.05)';" onmouseout="this.style.background='rgba(83, 252, 24, 0.15)'; this.style.boxShadow='none'; this.style.transform='scale(1)';"><i class="fa-solid fa-play"></i> <span data-i18n="schedule.watch">WATCH LIVE ON KICK</span></a>
-            </div>
         </div>
     </section>
 
@@ -583,6 +577,28 @@
             <div class="legacy-column" style="grid-column: 1 / -1;">
                 <h3><span data-i18n="legacy.matchHistory">Zápasy z Premier a Turnajů</span></h3>
                 <div class="timeline-container">
+                    <div class="timeline-item loss">
+                        <div class="timeline-date">31. 10. 2026</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tournament">Premier &bull; Corrode</div>
+                            <div class="timeline-match">VINFO <span>7:13</span> Nokar Esport</div>
+                            <div style="font-size: 0.85rem; color: var(--val-grey); margin-top: 4px; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <span><i class="fa-solid fa-shield-halved" style="color: var(--val-red);"></i> 4:5 Atk &bull; 3:8 Def</span>
+                                <span><i class="fa-solid fa-crosshairs"></i> SarrZ (15/15/3) &bull; Dejwrix (15/15/1) &bull; MusX (10/15/2)</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="timeline-item loss">
+                        <div class="timeline-date">31. 10. 2026</div>
+                        <div class="timeline-content">
+                            <div class="timeline-tournament">Premier &bull; Corrode</div>
+                            <div class="timeline-match">VINFO <span>3:13</span> KronBars</div>
+                            <div style="font-size: 0.85rem; color: var(--val-grey); margin-top: 4px; display: flex; gap: 1rem; flex-wrap: wrap;">
+                                <span><i class="fa-solid fa-shield-halved" style="color: var(--val-red);"></i> 2:11 Atk &bull; 1:2 Def</span>
+                                <span><i class="fa-solid fa-crosshairs"></i> bozzi (11/15/4) &bull; LEV Neon (11/13/4) &bull; MusX (10/15/1)</span>
+                            </div>
+                        </div>
+                    </div>
                     <div class="timeline-item loss">
                         <div class="timeline-date">24. 10. 2026</div>
                         <div class="timeline-content">
@@ -1220,8 +1236,8 @@
         </div>
     </footer>
 
-    <script src="script.js?v=64"></script>
-    <script src="i18n.js?v=64"></script>
+    <script src="script.js?v=65"></script>
+    <script src="i18n.js?v=65"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js?v=2"></script>
     <script>
         // Init Lenis smooth scroll
