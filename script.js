@@ -1113,8 +1113,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Waiz': { crosshair: '0;P;c;8;u;000000FF;h;0;b;1;0l;4;0v;4;0g;1;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight 2', dpi: '800', sens: '0.27', monitor: 'ZOWIE XL2546K 240Hz', stats: [84, 82, 80, 92, 70, 95] },
         'sarrz': { crosshair: '0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'WLMOUSE Beast X', dpi: '1600', sens: '0.16', monitor: 'ASUS ROG Swift 360Hz', stats: [96, 90, 88, 75, 98, 70] },
         'bozzi': { crosshair: '0;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'ZOWIE EC2-CW', dpi: '800', sens: '0.24', monitor: 'ZOWIE XL2546X 240Hz', stats: [80, 86, 90, 88, 65, 92] },
-        'Woody': { crosshair: '0;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'Zowie EC2-CW', dpi: '800', sens: '0.25', monitor: 'ASUS ROG Swift 360Hz', stats: [70, 85, 75, 85, 50, 90] },
-        'Marcel': { crosshair: '0;s;1;P;c;1;u;000000FF;h;0;f;0;m;1;0l;3;0v;3;0o;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight 2', dpi: '800', sens: '0.28', monitor: 'BenQ ZOWIE XL2546X 240Hz', stats: [78, 82, 86, 80, 68, 90] }
+        'spotnik': { crosshair: '0;s;1;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight', dpi: '800', sens: '0.29', monitor: 'ZOWIE XL2546K 240Hz', stats: [82, 85, 80, 88, 74, 86] },
+        'kuriqs': { crosshair: '0;P;c;5;o;1;f;0;0t;1;0l;3;0v;3;0a;1;0f;0;1b;0', mouse: 'Razer DeathAdder V3 Pro', dpi: '400', sens: '0.48', monitor: 'ASUS ROG Swift 360Hz', stats: [88, 80, 85, 76, 92, 70] }
     };
 
     const tabs = document.querySelectorAll('.modal-tab');
