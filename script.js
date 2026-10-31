@@ -1147,6 +1147,197 @@ document.addEventListener('DOMContentLoaded', () => {
         'marcel': { crosshair: '0;s;1;P;u;000000FF;o;1;0t;3;0l;1;0v;0;0g;1;0o;0;0a;1;0f;0;1t;1;1l;4;1g;1;1o;0;1a;1;1m;0;1f;0;S;s;0.61;o;1', mouse: 'ATK Dragonfly A9', dpi: '1600', sens: '0.13', monitor: 'ASUS TUF Gaming VG249QM1A (270Hz)', stats: [82, 80, 86, 84, 70, 92] }
     };
 
+    
+    let currentActiveCrosshairCode = '';
+
+    function parseCrosshair(code) {
+        if (!code || typeof code !== 'string') return null;
+        const parts = code.split(';');
+        const config = {
+            color: '#00ff44',
+            hasOutline: false,
+            outlineOpacity: 1,
+            outlineThickness: 1,
+            centerDot: false,
+            dotThickness: 2,
+            dotOpacity: 1,
+            innerLines: true,
+            innerThickness: 1,
+            innerLengthX: 6,
+            innerLengthY: 6,
+            innerOffset: 3,
+            innerOpacity: 1,
+            outerLines: false,
+            outerThickness: 2,
+            outerLengthX: 2,
+            outerLengthY: 2,
+            outerOffset: 10,
+            outerOpacity: 0.35
+        };
+
+        const colors = {
+            '0': '#ffffff',
+            '1': '#00ff44',
+            '2': '#7fff00',
+            '3': '#dfff00',
+            '4': '#ffff00',
+            '5': '#00f0ff',
+            '6': '#ff1493',
+            '7': '#ff2222',
+            '8': '#ffffff'
+        };
+
+        for (let i = 0; i < parts.length; i++) {
+            const key = parts[i];
+            const val = parts[i + 1];
+
+            if (key === 'c' && colors[val]) config.color = colors[val];
+            if (key === 'u' && val) {
+                let hex = val.replace(/ff$/i, '');
+                if (hex.length === 6) config.color = '#' + hex;
+            }
+            if (key === 'h') config.hasOutline = (val !== '0');
+            if (key === 'o') {
+                config.hasOutline = (parseFloat(val) > 0);
+                config.outlineOpacity = parseFloat(val) || 1;
+            }
+            if (key === 't') config.outlineThickness = parseInt(val) || 1;
+            if (key === 'd') config.centerDot = (val === '1');
+            if (key === 'z') config.dotThickness = parseInt(val) || 2;
+            if (key === 'a') config.dotOpacity = parseFloat(val) || 1;
+
+            if (key === '0b') config.innerLines = (val !== '0');
+            if (key === '0t') config.innerThickness = parseInt(val) || 1;
+            if (key === '0l') {
+                config.innerLengthX = parseInt(val) || 0;
+                if (config.innerLengthY === 6) config.innerLengthY = config.innerLengthX;
+            }
+            if (key === '0v') config.innerLengthY = parseInt(val) || 0;
+            if (key === '0o') config.innerOffset = parseInt(val) || 0;
+            if (key === '0a') config.innerOpacity = parseFloat(val) || 1;
+
+            if (key === '1b') config.outerLines = (val === '1');
+            if (key === '1t') config.outerThickness = parseInt(val) || 2;
+            if (key === '1l') {
+                config.outerLengthX = parseInt(val) || 0;
+                if (config.outerLengthY === 2) config.outerLengthY = config.outerLengthX;
+            }
+            if (key === '1v') config.outerLengthY = parseInt(val) || 0;
+            if (key === '1o') config.outerOffset = parseInt(val) || 0;
+            if (key === '1a') config.outerOpacity = parseFloat(val) || 0.35;
+        }
+
+        if (config.innerLengthX === 0 && config.innerLengthY === 0) {
+            config.innerLines = false;
+        }
+
+        return config;
+    }
+
+    function renderCrosshairToCanvas(canvas, code) {
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        const width = canvas.width || 100;
+        const height = canvas.height || 100;
+        const cx = Math.floor(width / 2);
+        const cy = Math.floor(height / 2);
+
+        ctx.clearRect(0, 0, width, height);
+
+        // Realistic Valorant range wall background
+        const bgGrad = ctx.createRadialGradient(cx, cy, 6, cx, cy, width * 0.7);
+        bgGrad.addColorStop(0, '#363d4d');
+        bgGrad.addColorStop(0.6, '#232731');
+        bgGrad.addColorStop(1, '#14171d');
+        ctx.fillStyle = bgGrad;
+        ctx.fillRect(0, 0, width, height);
+
+        // Subtle target rings
+        ctx.lineWidth = 1;
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.08)';
+        ctx.beginPath();
+        ctx.arc(cx, cy, 18, 0, Math.PI * 2);
+        ctx.stroke();
+
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+        ctx.beginPath();
+        ctx.arc(cx, cy, 34, 0, Math.PI * 2);
+        ctx.stroke();
+
+        // Subtle crosshair reference grid
+        ctx.strokeStyle = 'rgba(255, 255, 255, 0.04)';
+        ctx.beginPath();
+        ctx.moveTo(cx, 0); ctx.lineTo(cx, height);
+        ctx.moveTo(0, cy); ctx.lineTo(width, cy);
+        ctx.stroke();
+
+        const cfg = parseCrosshair(code);
+        if (!cfg) return;
+
+        const scale = 3.2;
+        ctx.imageSmoothingEnabled = false;
+
+        function drawLineRect(x, y, w, h, isOutline, color, opacity) {
+            ctx.save();
+            ctx.globalAlpha = opacity;
+            ctx.fillStyle = color;
+            ctx.fillRect(Math.floor(x), Math.floor(y), Math.ceil(w), Math.ceil(h));
+            ctx.restore();
+        }
+
+        function drawBar(x, y, w, h, isOuter) {
+            if (cfg.hasOutline) {
+                const out = cfg.outlineThickness * scale;
+                const outColor = (cfg.color === '#000000' || cfg.color === '#000') ? '#ffffff' : '#000000';
+                drawLineRect(x - out, y - out, w + out * 2, h + out * 2, true, outColor, cfg.outlineOpacity);
+            }
+            drawLineRect(x, y, w, h, false, cfg.color, isOuter ? cfg.outerOpacity : cfg.innerOpacity);
+        }
+
+        // 1. Center Dot
+        if (cfg.centerDot) {
+            const dt = Math.max(1, Math.round(cfg.dotThickness * scale));
+            const dx = cx - dt / 2;
+            const dy = cy - dt / 2;
+            if (cfg.hasOutline) {
+                const out = cfg.outlineThickness * scale;
+                const outColor = (cfg.color === '#000000' || cfg.color === '#000') ? '#ffffff' : '#000000';
+                drawLineRect(dx - out, dy - out, dt + out * 2, dt + out * 2, true, outColor, cfg.outlineOpacity);
+            }
+            drawLineRect(dx, dy, dt, dt, false, cfg.color, cfg.dotOpacity);
+        }
+
+        // 2. Inner Lines
+        if (cfg.innerLines && (cfg.innerLengthX > 0 || cfg.innerLengthY > 0)) {
+            const th = Math.max(1, Math.round(cfg.innerThickness * scale));
+            const lx = Math.max(1, Math.round(cfg.innerLengthX * scale));
+            const ly = Math.max(1, Math.round(cfg.innerLengthY * scale));
+            const off = Math.round(cfg.innerOffset * scale);
+
+            // Right
+            drawBar(cx + off, cy - th / 2, lx, th, false);
+            // Left
+            drawBar(cx - off - lx, cy - th / 2, lx, th, false);
+            // Bottom
+            drawBar(cx - th / 2, cy + off, th, ly, false);
+            // Top
+            drawBar(cx - th / 2, cy - off - ly, th, ly, false);
+        }
+
+        // 3. Outer Lines
+        if (cfg.outerLines && (cfg.outerLengthX > 0 || cfg.outerLengthY > 0)) {
+            const th = Math.max(1, Math.round(cfg.outerThickness * scale));
+            const lx = Math.max(1, Math.round(cfg.outerLengthX * scale));
+            const ly = Math.max(1, Math.round(cfg.outerLengthY * scale));
+            const off = Math.round(cfg.outerOffset * scale);
+
+            drawBar(cx + off, cy - th / 2, lx, th, true);
+            drawBar(cx - off - lx, cy - th / 2, lx, th, true);
+            drawBar(cx - th / 2, cy + off, th, ly, true);
+            drawBar(cx - th / 2, cy - off - ly, th, ly, true);
+        }
+    }
+
     const tabs = document.querySelectorAll('.modal-tab');
     const tabContents = document.querySelectorAll('.modal-tab-content');
     
@@ -1158,6 +1349,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetId = tab.getAttribute('data-tab');
             const targetEl = document.getElementById(targetId);
             if (targetEl) targetEl.style.display = 'block';
+            if (targetId === 'tab-gear' && currentActiveCrosshairCode) {
+                renderCrosshairToCanvas(document.getElementById('crosshair-canvas'), currentActiveCrosshairCode);
+            }
         });
     });
 
@@ -1255,13 +1449,8 @@ document.addEventListener('DOMContentLoaded', () => {
                         `;
                     }
                     
-                    const chVisual = document.getElementById('crosshair-visual');
-                    if (chVisual) {
-                        chVisual.style.width = '4px';
-                        chVisual.style.height = '4px';
-                        chVisual.style.backgroundColor = '#00ff00';
-                        chVisual.style.boxShadow = '-10px 0 0 #00ff00, 10px 0 0 #00ff00, 0 -10px 0 #00ff00, 0 10px 0 #00ff00';
-                    }
+                    currentActiveCrosshairCode = pData.crosshair;
+                    renderCrosshairToCanvas(document.getElementById('crosshair-canvas'), pData.crosshair);
 
                     const copyBtn = document.getElementById('btn-copy-crosshair');
                     if (copyBtn) {
