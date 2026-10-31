@@ -619,8 +619,8 @@ async function loadNews() {
                 cz: "SESTAVA UZAVŘENA: PŘEDSTAVUJEME EMEA ROSTER"
             },
             content: {
-                en: "After a FULL MONTH of intense trials and grinding, our starting five is officially locked! Welcome 👑 Dejwrix, 🎯 N3cr0x, 🧠 Waiz, 🔥 sarrz, and 🛡️ bozzi. Time to dominate the EMEA qualifiers! 😈⚔️",
-                cz: "Po celém měsíci náročných tryoutů máme oficiálně uzamčenou základní pětku! Vítejte 👑 Dejwrix, 🎯 N3cr0x, 🧠 Waiz, 🔥 sarrz a 🛡️ bozzi. Čas ovládnout EMEA kvalifikace! 😈⚔️"
+                en: "After a FULL MONTH of intense trials and grinding, our starting five is officially locked! Welcome 🎯 Dejwrix (Entry), 🏹 MusX (IGL), 🛡️ Waiz (Flex), 🎱 SarrZ (Controller/2nd caller), and 🎯 bozzi (2nd Duelist). Time to dominate the EMEA qualifiers! 😈⚔️",
+                cz: "Po celém měsíci náročných tryoutů máme oficiálně uzamčenou základní pětku! Vítejte 🎯 Dejwrix (Entry), 🏹 MusX (IGL), 🛡️ Waiz (Flex), 🎱 SarrZ (Controller/2nd caller) a 🎯 bozzi (2nd Duelist). Čas ovládnout EMEA kvalifikace! 😈⚔️"
             },
             important: true
         },
@@ -1108,11 +1108,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // 4. Player Modal Tabs & Canvas Radar (Fixing name extraction logic)
     const mockPlayerData = {
-        'Dejwrix': { crosshair: '0;P;c;5;o;1;f;0;0t;1;0l;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight', dpi: '800', sens: '0.3', monitor: 'ZOWIE XL2546K 240Hz', stats: [90, 85, 75, 95, 88, 80] },
-        'N3cr0x': { crosshair: '0;s;1;P;c;1;h;0;0t;1;0l;3;0v;3;0a;1;0f;0;1b;0', mouse: 'Razer DeathAdder V3 Pro', dpi: '800', sens: '0.31', monitor: 'ZOWIE XL2566K 360Hz', stats: [92, 88, 85, 80, 90, 75] },
+        'Dejwrix': { crosshair: '0;P;c;5;o;1;f;0;0t;1;0l;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight', dpi: '800', sens: '0.3', monitor: 'ZOWIE XL2546K 240Hz', stats: [95, 88, 78, 92, 98, 70] },
+        'MusX': { crosshair: '0;s;1;P;c;1;h;0;0t;1;0l;3;0v;3;0a;1;0f;0;1b;0', mouse: 'Razer DeathAdder V3 Pro', dpi: '800', sens: '0.31', monitor: 'ZOWIE XL2566K 360Hz', stats: [90, 88, 85, 95, 80, 85] },
         'Waiz': { crosshair: '0;P;c;8;u;000000FF;h;0;b;1;0l;4;0v;4;0g;1;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight 2', dpi: '800', sens: '0.27', monitor: 'ZOWIE XL2546K 240Hz', stats: [84, 82, 80, 92, 70, 95] },
-        'sarrz': { crosshair: '0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'WLMOUSE Beast X', dpi: '1600', sens: '0.16', monitor: 'ASUS ROG Swift 360Hz', stats: [96, 90, 88, 75, 98, 70] },
-        'bozzi': { crosshair: '0;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'ZOWIE EC2-CW', dpi: '800', sens: '0.24', monitor: 'ZOWIE XL2546X 240Hz', stats: [80, 86, 90, 88, 65, 92] },
+        'SarrZ': { crosshair: '0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'WLMOUSE Beast X', dpi: '1600', sens: '0.16', monitor: 'ASUS ROG Swift 360Hz', stats: [88, 85, 84, 94, 75, 90] },
+        'sarrz': { crosshair: '0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'WLMOUSE Beast X', dpi: '1600', sens: '0.16', monitor: 'ASUS ROG Swift 360Hz', stats: [88, 85, 84, 94, 75, 90] },
+        'bozzi': { crosshair: '0;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'ZOWIE EC2-CW', dpi: '800', sens: '0.24', monitor: 'ZOWIE XL2546X 240Hz', stats: [92, 86, 88, 80, 95, 75] },
         'spotnik': { crosshair: '0;s;1;P;c;1;h;0;0l;4;0o;2;0a;1;0f;0;1b;0', mouse: 'Logitech G Pro X Superlight', dpi: '800', sens: '0.29', monitor: 'ZOWIE XL2546K 240Hz', stats: [82, 85, 80, 88, 74, 86] },
         'kuriqs': { crosshair: '0;P;c;5;o;1;f;0;0t;1;0l;3;0v;3;0a;1;0f;0;1b;0', mouse: 'Razer DeathAdder V3 Pro', dpi: '400', sens: '0.48', monitor: 'ASUS ROG Swift 360Hz', stats: [88, 80, 85, 76, 92, 70] }
     };
