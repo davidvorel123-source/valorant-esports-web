@@ -1151,6 +1151,206 @@ document.addEventListener('DOMContentLoaded', () => {
     
     
 
+    
+    // Valorant Crosshair Decoder & Dynamic Vector Engine
+    const VAL_COLOR_MAP = {
+        0: '#FFFFFF', 1: '#00FF44', 2: '#A2FF00', 3: '#D4FF00',
+        4: '#FFFF00', 5: '#00FFFF', 6: '#FF00A0', 7: '#FF1A1A', 8: '#FFFFFF'
+    };
+
+    function parseValorantCrosshairCode(code) {
+        if (!code) return null;
+        const tokens = code.split(';');
+        const cfg = {
+            color: '#00FF44',
+            outlines: false,
+            outlineOpacity: 1,
+            outlineThickness: 1,
+            centerDot: false,
+            centerDotOpacity: 1,
+            centerDotThickness: 2,
+            showInnerLines: true,
+            innerOpacity: 1,
+            innerLenH: 6,
+            innerLenV: 6,
+            innerThick: 2,
+            innerOffset: 3,
+            showOuterLines: false,
+            outerOpacity: 0.35,
+            outerLenH: 2,
+            outerLenV: 2,
+            outerThick: 2,
+            outerOffset: 10
+        };
+
+        let section = 'global';
+        let independentInner = false;
+        let independentOuter = false;
+        let hasExplicitOutlines = false;
+        let customColorHex = null;
+        let colorPresetId = null;
+
+        for (let i = 0; i < tokens.length; i++) {
+            const t = tokens[i];
+            if (t === 'P') { section = 'P'; continue; }
+            if (t === 'A') { section = 'A'; continue; }
+            if (t === 'S') { section = 'S'; continue; }
+
+            if (i + 1 < tokens.length) {
+                const k = t;
+                const v = tokens[i + 1];
+                i++;
+
+                if (section === 'global' || section === 'P') {
+                    if (k === 'c') {
+                        colorPresetId = parseInt(v, 10);
+                    } else if (k === 'u') {
+                        let hex = v;
+                        if (hex.length === 8) hex = hex.substring(0, 6);
+                        customColorHex = '#' + hex;
+                    } else if (k === 'h') {
+                        cfg.outlines = (v === '1');
+                        hasExplicitOutlines = true;
+                    } else if (k === 'o') {
+                        cfg.outlineOpacity = parseFloat(v);
+                        if (!hasExplicitOutlines && cfg.outlineOpacity > 0) cfg.outlines = true;
+                    } else if (k === 't') {
+                        cfg.outlineThickness = parseInt(v, 10);
+                    } else if (k === 'd') {
+                        cfg.centerDot = (v === '1');
+                    } else if (k === 'a') {
+                        cfg.centerDotOpacity = parseFloat(v);
+                    } else if (k === 'z') {
+                        cfg.centerDotThickness = parseInt(v, 10);
+                    } else if (k === '0b') {
+                        cfg.showInnerLines = (v === '1');
+                    } else if (k === '0a') {
+                        cfg.innerOpacity = parseFloat(v);
+                    } else if (k === '0l') {
+                        cfg.innerLenH = parseInt(v, 10);
+                        if (!independentInner) cfg.innerLenV = cfg.innerLenH;
+                    } else if (k === '0v') {
+                        cfg.innerLenV = parseInt(v, 10);
+                    } else if (k === '0g') {
+                        independentInner = (v === '1');
+                    } else if (k === '0t') {
+                        cfg.innerThick = parseInt(v, 10);
+                    } else if (k === '0o') {
+                        cfg.innerOffset = parseInt(v, 10);
+                    } else if (k === '1b') {
+                        cfg.showOuterLines = (v === '1');
+                    } else if (k === '1a') {
+                        cfg.outerOpacity = parseFloat(v);
+                    } else if (k === '1l') {
+                        cfg.outerLenH = parseInt(v, 10);
+                        if (!independentOuter) cfg.outerLenV = cfg.outerLenH;
+                        cfg.showOuterLines = true;
+                    } else if (k === '1v') {
+                        cfg.outerLenV = parseInt(v, 10);
+                    } else if (k === '1g') {
+                        independentOuter = (v === '1');
+                    } else if (k === '1t') {
+                        cfg.outerThick = parseInt(v, 10);
+                    } else if (k === '1o') {
+                        cfg.outerOffset = parseInt(v, 10);
+                    }
+                }
+            }
+        }
+
+        if (colorPresetId === 8 && customColorHex) {
+            cfg.color = customColorHex;
+        } else if (colorPresetId !== null && VAL_COLOR_MAP[colorPresetId]) {
+            cfg.color = VAL_COLOR_MAP[colorPresetId];
+        } else if (customColorHex) {
+            cfg.color = customColorHex;
+        }
+
+        return cfg;
+    }
+
+    function renderCrosshairToContainer(code) {
+        const container = document.getElementById('crosshair-preview-container');
+        if (!container || !code) return;
+        const cfg = parseValorantCrosshairCode(code);
+        if (!cfg) return;
+
+        const width = 160;
+        const height = 160;
+        const scale = 6;
+        const cx = width / 2;
+        const cy = height / 2;
+        const ot = cfg.outlineThickness;
+
+        const rects = [];
+        if (cfg.centerDot) {
+            const s = cfg.centerDotThickness;
+            rects.push({ x: -s / 2, y: -s / 2, w: s, h: s, opacity: cfg.centerDotOpacity });
+        }
+        if (cfg.showInnerLines) {
+            const off = cfg.innerOffset;
+            const thick = cfg.innerThick;
+            const lenH = cfg.innerLenH;
+            const lenV = cfg.innerLenV;
+            if (lenV > 0) {
+                rects.push({ x: -thick / 2, y: -off - lenV, w: thick, h: lenV, opacity: cfg.innerOpacity });
+                rects.push({ x: -thick / 2, y: off, w: thick, h: lenV, opacity: cfg.innerOpacity });
+            }
+            if (lenH > 0) {
+                rects.push({ x: -off - lenH, y: -thick / 2, w: lenH, h: thick, opacity: cfg.innerOpacity });
+                rects.push({ x: off, y: -thick / 2, w: lenH, h: thick, opacity: cfg.innerOpacity });
+            }
+        }
+        if (cfg.showOuterLines) {
+            const off = cfg.outerOffset;
+            const thick = cfg.outerThick;
+            const lenH = cfg.outerLenH;
+            const lenV = cfg.outerLenV;
+            if (lenV > 0) {
+                rects.push({ x: -thick / 2, y: -off - lenV, w: thick, h: lenV, opacity: cfg.outerOpacity });
+                rects.push({ x: -thick / 2, y: off, w: thick, h: lenV, opacity: cfg.outerOpacity });
+            }
+            if (lenH > 0) {
+                rects.push({ x: -off - lenH, y: -thick / 2, w: lenH, h: thick, opacity: cfg.outerOpacity });
+                rects.push({ x: off, y: -thick / 2, w: lenH, h: thick, opacity: cfg.outerOpacity });
+            }
+        }
+
+        let outlinesSvg = '';
+        if (cfg.outlines && cfg.outlineOpacity > 0) {
+            rects.forEach(r => {
+                const rx = cx + (r.x - ot) * scale;
+                const ry = cy + (r.y - ot) * scale;
+                const rw = (r.w + 2 * ot) * scale;
+                const rh = (r.h + 2 * ot) * scale;
+                outlinesSvg += `<rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="#000000" fill-opacity="${cfg.outlineOpacity}" />`;
+            });
+        }
+
+        let coreSvg = '';
+        rects.forEach(r => {
+            const rx = cx + r.x * scale;
+            const ry = cy + r.y * scale;
+            const rw = r.w * scale;
+            const rh = r.h * scale;
+            coreSvg += `<rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="${cfg.color}" fill-opacity="${r.opacity}" />`;
+        });
+
+        container.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="100%" height="100%" shape-rendering="crispEdges">
+              <rect width="${width}" height="${height}" fill="#1b2028" />
+              <line x1="0" y1="${cy}" x2="${width}" y2="${cy}" stroke="rgba(255,255,255,0.07)" stroke-width="1" />
+              <line x1="${cx}" y1="0" x2="${cx}" y2="${height}" stroke="rgba(255,255,255,0.07)" stroke-width="1" />
+              <circle cx="${cx}" cy="${cy}" r="40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <circle cx="${cx}" cy="${cy}" r="20" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <g id="outlines">${outlinesSvg}</g>
+              <g id="core">${coreSvg}</g>
+            </svg>
+        `;
+    }
+
+    let currentActiveCrosshairCode = mockPlayerData['Dejwrix'].crosshair;
+
     const tabs = document.querySelectorAll('.modal-tab');
     const tabContents = document.querySelectorAll('.modal-tab-content');
     
@@ -1162,6 +1362,9 @@ document.addEventListener('DOMContentLoaded', () => {
             const targetId = tab.getAttribute('data-tab');
             const targetEl = document.getElementById(targetId);
             if (targetEl) targetEl.style.display = 'block';
+            if (targetId === 'tab-gear' && currentActiveCrosshairCode) {
+                renderCrosshairToContainer(currentActiveCrosshairCode);
+            }
             
         });
     });
@@ -1261,10 +1464,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                     
                     currentActiveCrosshairCode = pData.crosshair;
-                    const crosshairImg = document.getElementById('crosshair-img');
-                    if (crosshairImg && pData.crosshairImg) {
-                        crosshairImg.src = pData.crosshairImg + '?v=60';
-                    }
+                    renderCrosshairToContainer(pData.crosshair);
 
                     const copyBtn = document.getElementById('btn-copy-crosshair');
                     if (copyBtn) {
@@ -1284,6 +1484,12 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+    
+    // Initial active crosshair render
+    if (mockPlayerData['Dejwrix']) {
+        renderCrosshairToContainer(mockPlayerData['Dejwrix'].crosshair);
+    }
 
     // 5. Fan ID Generator
     const genBtn = document.getElementById('generate-fan-id');
