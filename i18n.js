@@ -1,4 +1,4 @@
-﻿const translations = {
+const translations = {
     en: {
         "nav.home": "Home",
         "media.title": "HIGHLIGHTS & VODS",
@@ -235,6 +235,7 @@
         "role.sub_duelist": "SUB / DUELIST",
         "role.sub_smoker": "SUB / SMOKER",
         "role.sub_sentinel": "SUB / SENTINEL",
+        "role.sub": "SUB",
         "about.title": "NAŠE FILOSOFIE",
         "about.adapt": "ADAPTABILITA",
         "about.brotherhood": "BRATRSTVÍ",
