@@ -1143,8 +1143,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'kuriqs': { crosshair: '0;P;c;8;h;0;d;1;b;1;f;0;0b;0;1b;0', mouse: 'Razer Viper V3 Pro', dpi: '1600', sens: '0.19', monitor: 'ZOWIE XL2546K 240Hz', stats: [88, 80, 85, 76, 92, 70] },
         'Kuriqs': { crosshair: '0;P;c;8;h;0;d;1;b;1;f;0;0b;0;1b;0', mouse: 'Razer Viper V3 Pro', dpi: '1600', sens: '0.19', monitor: 'ZOWIE XL2546K 240Hz', stats: [88, 80, 85, 76, 92, 70] },
         'Kuriiqs': { crosshair: '0;P;c;8;h;0;d;1;b;1;f;0;0b;0;1b;0', mouse: 'Razer Viper V3 Pro', dpi: '1600', sens: '0.19', monitor: 'ZOWIE XL2546K 240Hz', stats: [88, 80, 85, 76, 92, 70] },
-        'Marcel': { crosshair: '0;s;1;P;c;1;u;000000FF;h;0;f;0;m;1;0l;3;0v;3;0o;2;0a;1;0f;0;1b;0', mouse: 'ATK Dragonfly A9', dpi: '1600', sens: '0.13', monitor: 'ASUS TUF Gaming VG249QM1A (270Hz)', stats: [82, 80, 86, 84, 70, 92] },
-        'marcel': { crosshair: '0;s;1;P;c;1;u;000000FF;h;0;f;0;m;1;0l;3;0v;3;0o;2;0a;1;0f;0;1b;0', mouse: 'ATK Dragonfly A9', dpi: '1600', sens: '0.13', monitor: 'ASUS TUF Gaming VG249QM1A (270Hz)', stats: [82, 80, 86, 84, 70, 92] }
+        'Marcel': { crosshair: '0;s;1;P;u;000000FF;o;1;0t;3;0l;1;0v;0;0g;1;0o;0;0a;1;0f;0;1t;1;1l;4;1g;1;1o;0;1a;1;1m;0;1f;0;S;s;0.61;o;1', mouse: 'ATK Dragonfly A9', dpi: '1600', sens: '0.13', monitor: 'ASUS TUF Gaming VG249QM1A (270Hz)', stats: [82, 80, 86, 84, 70, 92] },
+        'marcel': { crosshair: '0;s;1;P;u;000000FF;o;1;0t;3;0l;1;0v;0;0g;1;0o;0;0a;1;0f;0;1t;1;1l;4;1g;1;1o;0;1a;1;1m;0;1f;0;S;s;0.61;o;1', mouse: 'ATK Dragonfly A9', dpi: '1600', sens: '0.13', monitor: 'ASUS TUF Gaming VG249QM1A (270Hz)', stats: [82, 80, 86, 84, 70, 92] }
     };
 
     const tabs = document.querySelectorAll('.modal-tab');
