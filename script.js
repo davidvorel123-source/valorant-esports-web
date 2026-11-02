@@ -1152,119 +1152,132 @@ document.addEventListener('DOMContentLoaded', () => {
     
 
     
-    // Valorant Crosshair Decoder & Dynamic Vector Engine
+    // Valorant Crosshair Decoder & Dynamic Vector Engine (Strict Valorant Specification)
+    // Reference standard: VCRDB (vcrdb.net), Tracker.gg Crosshair Builder, Riot Games Profile Format
     const VAL_COLOR_MAP = {
         0: '#FFFFFF', 1: '#00FF44', 2: '#A2FF00', 3: '#D4FF00',
-        4: '#FFFF00', 5: '#00FFFF', 6: '#FF00A0', 7: '#FF1A1A', 8: '#FFFFFF'
+        4: '#FFFF00', 5: '#00FFFF', 6: '#FF00A0', 7: '#FF1A1A'
     };
 
     function parseValorantCrosshairCode(code) {
         if (!code) return null;
         const tokens = code.split(';');
         const cfg = {
-            color: '#00FF44',
-            outlines: false,
-            outlineOpacity: 1,
+            color: '#FFFFFF',
+            colorIdx: 0,
+            hexColorEnabled: false,
+            hexColorValue: 'FFFFFF',
+            outlines: true,
+            outlineOpacity: 0.5,
             outlineThickness: 1,
             centerDot: false,
             centerDotOpacity: 1,
             centerDotThickness: 2,
             showInnerLines: true,
-            innerOpacity: 1,
+            innerOpacity: 0.8,
             innerLenH: 6,
             innerLenV: 6,
             innerThick: 2,
             innerOffset: 3,
+            innerIndependent: false,
             showOuterLines: false,
             outerOpacity: 0.35,
             outerLenH: 2,
             outerLenV: 2,
             outerThick: 2,
-            outerOffset: 10
+            outerOffset: 10,
+            outerIndependent: false
         };
 
         let section = 'global';
-        let independentInner = false;
-        let independentOuter = false;
-        let hasExplicitOutlines = false;
-        let customColorHex = null;
-        let colorPresetId = null;
+        let explicitOuterToggle = null;
+        let hasOuterParams = false;
 
         for (let i = 0; i < tokens.length; i++) {
             const t = tokens[i];
-            if (t === 'P') { section = 'P'; continue; }
-            if (t === 'A') { section = 'A'; continue; }
-            if (t === 'S') { section = 'S'; continue; }
+            if (t === 'P' || t === 'A' || t === 'S') {
+                section = t;
+                continue;
+            }
+            const k = t;
+            const v = tokens[i + 1];
+            if (v === undefined) continue;
 
-            if (i + 1 < tokens.length) {
-                const k = t;
-                const v = tokens[i + 1];
-                i++;
-
-                if (section === 'global' || section === 'P') {
-                    if (k === 'c') {
-                        colorPresetId = parseInt(v, 10);
-                    } else if (k === 'u') {
-                        let hex = v;
-                        if (hex.length === 8) hex = hex.substring(0, 6);
-                        customColorHex = '#' + hex;
-                    } else if (k === 'h') {
-                        cfg.outlines = (v === '1');
-                        hasExplicitOutlines = true;
-                    } else if (k === 'o') {
-                        cfg.outlineOpacity = parseFloat(v);
-                        if (!hasExplicitOutlines && cfg.outlineOpacity > 0) cfg.outlines = true;
-                    } else if (k === 't') {
-                        cfg.outlineThickness = parseInt(v, 10);
-                    } else if (k === 'd') {
-                        cfg.centerDot = (v === '1');
-                    } else if (k === 'a') {
-                        cfg.centerDotOpacity = parseFloat(v);
-                    } else if (k === 'z') {
-                        cfg.centerDotThickness = parseInt(v, 10);
-                    } else if (k === '0b') {
-                        cfg.showInnerLines = (v === '1');
-                    } else if (k === '0a') {
-                        cfg.innerOpacity = parseFloat(v);
-                    } else if (k === '0l') {
-                        cfg.innerLenH = parseInt(v, 10);
-                        if (!independentInner) cfg.innerLenV = cfg.innerLenH;
-                    } else if (k === '0v') {
-                        cfg.innerLenV = parseInt(v, 10);
-                    } else if (k === '0g') {
-                        independentInner = (v === '1');
-                    } else if (k === '0t') {
-                        cfg.innerThick = parseInt(v, 10);
-                    } else if (k === '0o') {
-                        cfg.innerOffset = parseInt(v, 10);
-                    } else if (k === '1b') {
-                        cfg.showOuterLines = (v === '1');
-                    } else if (k === '1a') {
-                        cfg.outerOpacity = parseFloat(v);
-                    } else if (k === '1l') {
-                        cfg.outerLenH = parseInt(v, 10);
-                        if (!independentOuter) cfg.outerLenV = cfg.outerLenH;
-                        cfg.showOuterLines = true;
-                    } else if (k === '1v') {
-                        cfg.outerLenV = parseInt(v, 10);
-                    } else if (k === '1g') {
-                        independentOuter = (v === '1');
-                    } else if (k === '1t') {
-                        cfg.outerThick = parseInt(v, 10);
-                    } else if (k === '1o') {
-                        cfg.outerOffset = parseInt(v, 10);
-                    }
+            if (section === 'global' || section === 'P') {
+                if (k === 'c') {
+                    cfg.colorIdx = parseInt(v, 10);
+                } else if (k === 'u') {
+                    let hex = v;
+                    if (hex.length >= 6) hex = hex.substring(0, 6);
+                    cfg.hexColorValue = hex;
+                } else if (k === 'b') {
+                    // In Valorant profile strings, 'b;1' flags hexColorEnabled
+                    cfg.hexColorEnabled = (v === '1');
+                } else if (k === 'h') {
+                    cfg.outlines = (v === '1');
+                } else if (k === 'o') {
+                    cfg.outlineOpacity = parseFloat(v);
+                    if (cfg.outlineOpacity > 0 && cfg.outlines !== false) cfg.outlines = true;
+                } else if (k === 't') {
+                    cfg.outlineThickness = parseInt(v, 10);
+                } else if (k === 'd') {
+                    cfg.centerDot = (v === '1');
+                } else if (k === 'a') {
+                    cfg.centerDotOpacity = parseFloat(v);
+                } else if (k === 'z') {
+                    cfg.centerDotThickness = parseInt(v, 10);
+                } else if (k === '0b') {
+                    cfg.showInnerLines = (v === '1');
+                } else if (k === '0a') {
+                    cfg.innerOpacity = parseFloat(v);
+                } else if (k === '0l') {
+                    cfg.innerLenH = parseInt(v, 10);
+                    if (!cfg.innerIndependent) cfg.innerLenV = cfg.innerLenH;
+                } else if (k === '0v') {
+                    cfg.innerLenV = parseInt(v, 10);
+                } else if (k === '0g') {
+                    cfg.innerIndependent = (v === '1');
+                } else if (k === '0t') {
+                    cfg.innerThick = parseInt(v, 10);
+                } else if (k === '0o') {
+                    cfg.innerOffset = parseInt(v, 10);
+                } else if (k === '1b') {
+                    explicitOuterToggle = (v === '1');
+                } else if (k === '1a') {
+                    cfg.outerOpacity = parseFloat(v);
+                } else if (k === '1l') {
+                    cfg.outerLenH = parseInt(v, 10);
+                    if (!cfg.outerIndependent) cfg.outerLenV = cfg.outerLenH;
+                    hasOuterParams = true;
+                } else if (k === '1v') {
+                    cfg.outerLenV = parseInt(v, 10);
+                    hasOuterParams = true;
+                } else if (k === '1g') {
+                    cfg.outerIndependent = (v === '1');
+                } else if (k === '1t') {
+                    cfg.outerThick = parseInt(v, 10);
+                    hasOuterParams = true;
+                } else if (k === '1o') {
+                    cfg.outerOffset = parseInt(v, 10);
+                    hasOuterParams = true;
                 }
             }
         }
 
-        if (colorPresetId === 8 && customColorHex) {
-            cfg.color = customColorHex;
-        } else if (colorPresetId !== null && VAL_COLOR_MAP[colorPresetId]) {
-            cfg.color = VAL_COLOR_MAP[colorPresetId];
-        } else if (customColorHex) {
-            cfg.color = customColorHex;
+        // Color resolution according to Riot format:
+        // Custom hex color is active only if hexColorEnabled (b;1) is set
+        if (cfg.hexColorEnabled && cfg.hexColorValue) {
+            cfg.color = '#' + cfg.hexColorValue;
+        } else if (cfg.colorIdx !== undefined && VAL_COLOR_MAP[cfg.colorIdx]) {
+            cfg.color = VAL_COLOR_MAP[cfg.colorIdx];
+        } else {
+            cfg.color = '#FFFFFF';
         }
+
+        if (!cfg.innerIndependent) cfg.innerLenV = cfg.innerLenH;
+        if (!cfg.outerIndependent) cfg.outerLenV = cfg.outerLenH;
+
+        cfg.showOuterLines = (explicitOuterToggle !== null) ? explicitOuterToggle : hasOuterParams;
 
         return cfg;
     }
@@ -1336,13 +1349,22 @@ document.addEventListener('DOMContentLoaded', () => {
             coreSvg += `<rect x="${rx}" y="${ry}" width="${rw}" height="${rh}" fill="${cfg.color}" fill-opacity="${r.opacity}" />`;
         });
 
+        // Shooting Range Target backdrop provides high contrast for all colors (black, white, green, cyan)
         container.innerHTML = `
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${width} ${height}" width="100%" height="100%" shape-rendering="crispEdges">
-              <rect width="${width}" height="${height}" fill="#1b2028" />
-              <line x1="0" y1="${cy}" x2="${width}" y2="${cy}" stroke="rgba(255,255,255,0.07)" stroke-width="1" />
-              <line x1="${cx}" y1="0" x2="${cx}" y2="${height}" stroke="rgba(255,255,255,0.07)" stroke-width="1" />
-              <circle cx="${cx}" cy="${cy}" r="40" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
-              <circle cx="${cx}" cy="${cy}" r="20" fill="none" stroke="rgba(255,255,255,0.04)" stroke-width="1" />
+              <defs>
+                <radialGradient id="valRangeBg" cx="50%" cy="50%" r="70%">
+                  <stop offset="0%" stop-color="#475163" />
+                  <stop offset="50%" stop-color="#2a3240" />
+                  <stop offset="100%" stop-color="#181e28" />
+                </radialGradient>
+              </defs>
+              <rect width="${width}" height="${height}" fill="url(#valRangeBg)" />
+              <circle cx="${cx}" cy="${cy}" r="60" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
+              <circle cx="${cx}" cy="${cy}" r="40" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
+              <circle cx="${cx}" cy="${cy}" r="20" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1" />
+              <line x1="0" y1="${cy}" x2="${width}" y2="${cy}" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="2,4" />
+              <line x1="${cx}" y1="0" x2="${cx}" y2="${height}" stroke="rgba(255,255,255,0.12)" stroke-width="1" stroke-dasharray="2,4" />
               <g id="outlines">${outlinesSvg}</g>
               <g id="core">${coreSvg}</g>
             </svg>
