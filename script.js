@@ -813,14 +813,14 @@ async function loadNews() {
             }
             if (news.important) {
                 newsContainer.innerHTML += `
-                <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid var(--val-red); padding: 2rem; transition: transform 0.2s; box-shadow: 0 0 15px rgba(255, 70, 85, 0.2);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div class="news-card" style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid var(--val-red); padding: 2rem; transition: transform 0.2s; box-shadow: 0 0 15px rgba(255, 70, 85, 0.2);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">${displayDate}</span>
                     <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${tTitle}</h3>
                     <p style="color: var(--val-grey); line-height: 1.6;">${tContent}</p>
                 </div>`;
             } else {
                 newsContainer.innerHTML += `
-                <div style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid rgba(255, 70, 85, 0.2); padding: 2rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
+                <div class="news-card" style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid rgba(255, 70, 85, 0.2); padding: 2rem; transition: transform 0.2s;" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
                     <span style="color: var(--val-red); font-weight: bold; font-size: 0.9rem; letter-spacing: 1px;">${displayDate}</span>
                     <h3 style="font-family: var(--font-heading); font-size: 2rem; margin: 1rem 0; color: var(--val-white); text-transform: uppercase;">${tTitle}</h3>
                     <p style="color: var(--val-grey); line-height: 1.6;">${tContent}</p>
@@ -842,6 +842,9 @@ async function loadNews() {
             });
             newsContainer.appendChild(btnContainer);
             btnContainer.appendChild(btn);
+        }
+        if (typeof window.observeNewsCards === 'function') {
+            window.observeNewsCards();
         }
     }
     renderNews();
@@ -1591,8 +1594,9 @@ document.addEventListener('DOMContentLoaded', () => {
         el.style.transitionDelay = `${delay}s`;
     });
 
+    let revealObserver = null;
     if ('IntersectionObserver' in window) {
-        const revealObserver = new IntersectionObserver((entries, observer) => {
+        revealObserver = new IntersectionObserver((entries, observer) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
                     entry.target.classList.add('in-view');
@@ -1611,16 +1615,19 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
     // Also observe dynamically generated news articles
-    const observeNews = () => {
-        const newsItems = document.querySelectorAll('#news-container > div:not(.scroll-reveal)');
+    window.observeNewsCards = () => {
+        const newsItems = document.querySelectorAll('#news-container .news-card:not(.in-view)');
         newsItems.forEach((el, index) => {
             el.classList.add('scroll-reveal');
             el.style.transitionDelay = `${(index % 3) * 0.1}s`;
-            if (revealObserver) revealObserver.observe(el);
-            else el.classList.add('in-view');
+            if (revealObserver) {
+                revealObserver.observe(el);
+            } else {
+                el.classList.add('in-view');
+            }
         });
     };
-    // Call it after a short delay to ensure news are loaded
-    setTimeout(observeNews, 500);
-
+    
+    window.observeNewsCards();
+    setTimeout(window.observeNewsCards, 300);
 });
