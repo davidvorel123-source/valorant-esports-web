@@ -6,7 +6,6 @@
       <stop offset="100%" stop-color="#181e28" />
     </radialGradient>
   </defs>
-  <!-- Valorant Shooting Range Target Backdrop -->
   <rect width="160" height="160" fill="url(#valRangeBg)" />
   <circle cx="80" cy="80" r="60" fill="none" stroke="rgba(255,255,255,0.08)" stroke-width="1" />
   <circle cx="80" cy="80" r="40" fill="none" stroke="rgba(255,255,255,0.12)" stroke-width="1" />
@@ -16,9 +15,9 @@
   <g id="outlines">
   </g>
   <g id="core">
-    <rect x="74" y="38" width="12" height="24" fill="#000000" fill-opacity="1" />
-    <rect x="74" y="98" width="12" height="24" fill="#000000" fill-opacity="1" />
-    <rect x="38" y="74" width="24" height="12" fill="#000000" fill-opacity="1" />
-    <rect x="98" y="74" width="24" height="12" fill="#000000" fill-opacity="1" />
+    <rect x="78" y="66" width="4" height="8" fill="#000000" fill-opacity="1" />
+    <rect x="78" y="86" width="4" height="8" fill="#000000" fill-opacity="1" />
+    <rect x="66" y="78" width="8" height="4" fill="#000000" fill-opacity="1" />
+    <rect x="86" y="78" width="8" height="4" fill="#000000" fill-opacity="1" />
   </g>
 </svg>

@@ -1293,7 +1293,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         const width = 160;
         const height = 160;
-        const scale = 6;
+        const scale = 2;
         const cx = width / 2;
         const cy = height / 2;
         const ot = cfg.outlineThickness;
