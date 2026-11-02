@@ -961,7 +961,21 @@ document.addEventListener('DOMContentLoaded', () => {
                     
                     document.getElementById('modal-name').innerText = cleanName;
                     document.getElementById('modal-role').innerText = roleEl ? roleEl.innerText : '';
-                    document.getElementById('modal-img').style.backgroundImage = imgEl.style.backgroundImage;
+                    const modalImg = document.getElementById('modal-img');
+                    if (modalImg && imgEl) {
+                        modalImg.style.backgroundImage = imgEl.style.backgroundImage;
+                        if (imgEl.classList.contains('vinfo-logo-placeholder')) {
+                            modalImg.style.backgroundSize = '45%';
+                            modalImg.style.backgroundRepeat = 'no-repeat';
+                            modalImg.style.backgroundPosition = 'center';
+                            modalImg.style.backgroundColor = '#121820';
+                        } else {
+                            modalImg.style.backgroundSize = 'cover';
+                            modalImg.style.backgroundRepeat = 'no-repeat';
+                            modalImg.style.backgroundPosition = imgEl.style.backgroundPosition || 'center 20%';
+                            modalImg.style.backgroundColor = '#1a1a1a';
+                        }
+                    }
                     
                                         if (hiddenData) {
                         const realName = hiddenData.getAttribute('data-realname');
@@ -1620,7 +1634,10 @@ document.addEventListener('DOMContentLoaded', () => {
         newsItems.forEach((el, index) => {
             el.classList.add('scroll-reveal');
             el.style.transitionDelay = `${(index % 3) * 0.1}s`;
-            if (revealObserver) {
+            const rect = el.getBoundingClientRect();
+            if (rect.top < window.innerHeight && rect.bottom > 0) {
+                el.classList.add('in-view');
+            } else if (revealObserver) {
                 revealObserver.observe(el);
             } else {
                 el.classList.add('in-view');
