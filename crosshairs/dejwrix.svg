@@ -18,8 +18,6 @@
     <rect x="78" y="76" width="8" height="8" fill="#000000" fill-opacity="1" />
   </g>
   <g id="core">
-    <rect x="78" y="78" width="4" height="4" fill="#00FF44" fill-opacity="1" />
-    <rect x="76" y="78" width="4" height="4" fill="#00FF44" fill-opacity="1" />
-    <rect x="80" y="78" width="4" height="4" fill="#00FF44" fill-opacity="1" />
+    <rect x="78" y="78" width="4" height="4" fill="#FFFFFF" fill-opacity="1" />
   </g>
 </svg>

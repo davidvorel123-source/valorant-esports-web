@@ -1220,7 +1220,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const v = tokens[i + 1];
             if (v === undefined) continue;
 
-            if (section === 'global' || section === 'P') {
+            // Primary crosshair settings only exist in section P
+            if (section === 'P') {
                 if (k === 'c') {
                     cfg.colorIdx = parseInt(v, 10);
                 } else if (k === 'u') {
@@ -1315,7 +1316,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const rects = [];
         if (cfg.centerDot) {
             const s = cfg.centerDotThickness;
-            rects.push({ x: -s / 2, y: -s / 2, w: s, h: s, opacity: cfg.centerDotOpacity });
+            rects.push({ x: -s / 2, y: -s / 2, w: s, h: s, opacity: cfg.centerDotOpacity, isDot: true });
         }
         if (cfg.showInnerLines) {
             const off = cfg.innerOffset;
@@ -1358,7 +1359,12 @@ document.addEventListener('DOMContentLoaded', () => {
         }
 
         let coreSvg = '';
-        rects.forEach(r => {
+        // If center dot is active with 0-offset horizontal inner lines (e.g. Dejwrix/RieNs hybrid dot-box),
+        // Valorant's core is the prominent white center dot, while inner lines define the wide outline frame.
+        const isHybridDotBox = cfg.centerDot && cfg.innerOffset === 0 && cfg.innerLenV === 0 && cfg.innerLenH > 0;
+        const visibleRects = isHybridDotBox ? rects.filter(r => r.isDot) : rects;
+
+        visibleRects.forEach(r => {
             const rx = cx + r.x * scale;
             const ry = cy + r.y * scale;
             const rw = r.w * scale;
