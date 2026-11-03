@@ -1,3 +1,6 @@
+// English-only experience: clear legacy language preference
+try { localStorage.removeItem('vinfo_lang'); localStorage.removeItem('gcz_lang'); } catch (e) {}
+
 document.addEventListener('DOMContentLoaded', () => {
 
     // Mobile menu toggle
@@ -119,8 +122,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // Typewriter effect for hero subtitle
-    let subtitleTexts = [];
+    // Typewriter effect for hero subtitle (English Slogans)
+    const subtitleTexts = [
+        '"SILENCE THE NOISE. DOMINATE THE SERVER."',
+        '"WE DON\'T ADAPT TO THE META. WE DICTATE IT."',
+        '"WINNING IS A MINDSET, NOT A PLAN."',
+        '"EVERY BULLET CALCULATED. EVERY ROUND OURS."',
+        '"THE HERD SHOWS NO MERCY."',
+        '"FROM LOCAL LOBBIES TO EUROPEAN DOMINANCE."',
+        '"NO EXCUSES. JUST HEADSHOTS."',
+        '"ONE TEAM. ONE GOAL. CHAMPIONS."'
+    ];
     let currentSubtitleIndex = 0;
     
     function startTypewriter() {
@@ -129,22 +141,6 @@ document.addEventListener('DOMContentLoaded', () => {
         
         if (subtitle.typingTimeout) {
             clearTimeout(subtitle.typingTimeout);
-        }
-        
-        let fullText = subtitle.getAttribute('data-full-text');
-        let currentRaw = subtitle.textContent.replace(/<span.*<\/span>/, '').trim();
-        
-        // If translation changed the text or first load
-        if (!fullText || currentRaw.includes('|') || currentRaw !== fullText) {
-            if (currentRaw.includes('|')) {
-                 subtitleTexts = currentRaw.split('|');
-                 subtitle.setAttribute('data-full-texts', JSON.stringify(subtitleTexts));
-                 currentSubtitleIndex = 0;
-            } else if (subtitle.hasAttribute('data-full-texts')) {
-                 subtitleTexts = JSON.parse(subtitle.getAttribute('data-full-texts'));
-            } else {
-                 subtitleTexts = [currentRaw];
-            }
         }
         
         if (subtitleTexts.length === 0) return;
@@ -210,25 +206,20 @@ document.addEventListener('DOMContentLoaded', () => {
             const diffMs = matchDateZero - nowZero;
             const diffDays = Math.round(diffMs / (1000 * 60 * 60 * 24));
             
-            const lang = localStorage.getItem('vinfo_lang') || 'en';
+            
             let text;
 
             if (diffDays < 0 || isTodayButOver) {
-                text = lang === 'cz' ? 'ODEHRÁNO' : 'PLAYED';
+                text = 'PLAYED';
             } else if (diffDays === 0) {
-                text = lang === 'cz' ? 'DNES' : 'TODAY';
+                text = 'TODAY';
             } else if (diffDays === 1) {
-                text = lang === 'cz' ? 'ZÍTRA' : 'TOMORROW';
+                text = 'TOMORROW';
             } else if (diffDays < 7) {
-                if (lang === 'cz') {
-                    const daysCz = ['TUTO NEDĚLI', 'TOTO PONDĚLÍ', 'TUTO ÚTERÝ', 'TUTO STŘEDU', 'TENTO ČTVRTEK', 'TENTO PÁTEK', 'TUTO SOBOTU'];
-                    text = daysCz[matchDate.getDay()];
-                } else {
-                    const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
-                    text = 'THIS ' + days[matchDate.getDay()];
-                }
+                const days = ['SUNDAY', 'MONDAY', 'TUESDAY', 'WEDNESDAY', 'THURSDAY', 'FRIDAY', 'SATURDAY'];
+                text = 'THIS ' + days[matchDate.getDay()];
             } else {
-                text = lang === 'cz' ? 'ZA ' + diffDays + ' DNÍ' : 'IN ' + diffDays + ' DAYS';
+                text = 'IN ' + diffDays + ' DAYS';
             }
             
             el.textContent = text;
@@ -243,7 +234,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function updateMatchCountdowns() {
         const countdowns = document.querySelectorAll('.match-countdown');
         const now = new Date().getTime();
-        const lang = localStorage.getItem('vinfo_lang') || 'en';
+        
         
         countdowns.forEach(el => {
             const targetStr = el.getAttribute('data-target');
@@ -255,14 +246,14 @@ document.addEventListener('DOMContentLoaded', () => {
             if (distance < 0) {
                 const threeHoursMs = 3 * 60 * 60 * 1000;
                 if (Math.abs(distance) < threeHoursMs) {
-                    el.innerHTML = `<span style="color: var(--val-red); font-weight: bold; font-size: 1.5rem; letter-spacing: 2px;">${lang === 'cz' ? 'PRÁVĚ PROBÍHÁ' : 'LIVE NOW'}</span>`;
+                    el.innerHTML = '<span style="color: var(--val-red); font-weight: bold; font-size: 1.5rem; letter-spacing: 2px;">LIVE NOW</span>';
                     const liveBarTitle = document.getElementById('live-bar-title');
-                    if (liveBarTitle) liveBarTitle.textContent = lang === 'cz' ? 'ŽIVĚ PRÁVĚ TEĎ:' : 'LIVE NOW:';
+                    if (liveBarTitle) liveBarTitle.textContent = 'LIVE NOW:';
                     if (card && card.style.display === 'none') {
                         card.style.display = 'inline-block';
                     }
                 } else {
-                    el.innerHTML = `<span style="color: var(--val-grey); font-weight: bold; font-size: 1.5rem; letter-spacing: 2px;">${lang === 'cz' ? 'ZÁPAS DOKONČEN' : 'MATCH COMPLETED'}</span>`;
+                    el.innerHTML = '<span style="color: var(--val-grey); font-weight: bold; font-size: 1.5rem; letter-spacing: 2px;">MATCH COMPLETED</span>';
                     if (card && card.style.display === 'none') {
                         card.style.display = 'inline-block';
                     }
@@ -279,10 +270,10 @@ document.addEventListener('DOMContentLoaded', () => {
             const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
             const seconds = Math.floor((distance % (1000 * 60)) / 1000);
             
-            const daysLabel = lang === 'cz' ? 'DNÍ' : 'DAYS';
-            const hoursLabel = lang === 'cz' ? 'HOD' : 'HRS';
-            const minLabel = lang === 'cz' ? 'MIN' : 'MIN';
-            const secLabel = lang === 'cz' ? 'SEK' : 'SEC';
+            const daysLabel = 'DAYS';
+            const hoursLabel = 'HRS';
+            const minLabel = 'MIN';
+            const secLabel = 'SEC';
 
             el.innerHTML = `
                 <div class="countdown-wrapper">
@@ -339,9 +330,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 } else {
                     noMatchesMsg.style.display = 'block';
                 }
-                noMatchesMsg.innerHTML = lang === 'cz' ? 
-                    `📅 <span>ZŮSTAŇTE S NÁMI — DALŠÍ ZÁPASY BUDOU BRZY OZNÁMENY</span>` : 
-                    `📅 <span>STAY TUNED — UPCOMING MATCHES TO BE ANNOUNCED</span>`;
+                noMatchesMsg.innerHTML = `📅 <span>STAY TUNED — UPCOMING MATCHES TO BE ANNOUNCED</span>`;
             } else {
                 if (noMatchesMsg) {
                     noMatchesMsg.style.display = 'none';
@@ -583,234 +572,119 @@ document.addEventListener('DOMContentLoaded', () => {
 
 async function loadNews() {
     const newsContainer = document.getElementById('news-container');
-    if (!newsContainer) return;
-
-    const lang = localStorage.getItem('vinfo_lang') || 'en';
-
-        const simulatedNews = [
+    if (!newsContainer) return;        const simulatedNews = [
         {
             date: "OCTOBER 30, 2026",
-            title: {
-                en: "COMPETING IN VCT EMEA KICKOFF QUALIFIER 1",
-                cz: "STARTUJEME VE VCT EMEA KICKOFF KVALIFIKACI 1"
-            },
-            content: {
-                en: "The journey begins! 🚀 VINFO Esports is officially competing in the VCT EMEA Kickoff - Europe Qualifier 1 from Nov 5 - Nov 8. Time to show what this roster can do on the big stage! 🔥",
-                cz: "Cesta začíná! 🚀 VINFO Esports oficiálně nastupuje do prestižní kvalifikace VCT EMEA Kickoff - Europe Qualifier 1, která se hraje 5. - 8. listopadu. Čas ukázat, co tato sestava dokáže! 🔥"
-            },
+            title: "COMPETING IN VCT EMEA KICKOFF QUALIFIER 1",
+            content: "The journey begins! 🚀 VINFO Esports is officially competing in the VCT EMEA Kickoff - Europe Qualifier 1 from Nov 5 - Nov 8. Time to show what this roster can do on the big stage! 🔥",
             important: true
         },
         {
             date: "OCTOBER 30, 2026",
-            title: {
-                en: "REBUILDING: LOOKING FOR HEAD COACH (LFC)",
-                cz: "HLEDÁME HLAVNÍHO TRENÉRA (LFC) PRO DLOUHODOBÝ PROJEKT"
-            },
-            content: {
-                en: "VINFO Esports is recruiting a dedicated Coach (LFC) for our Invite East / International roster. Requirements: tactics, in-depth VOD reviews, fluent English, and team experience. DM Discord: xdlamborghini with your VLR profile & portfolio!",
-                cz: "VINFO Esports hledá oddaného hlavního trenéra (LFC) pro mezinárodní tým hrající Invite East. Požadavky: taktika, VOD reviews, plynulá angličtina a zkušenosti s týmem. Napište na Discord: xdlamborghini s portfoliem a VLR!"
-            },
+            title: "REBUILDING: LOOKING FOR HEAD COACH (LFC)",
+            content: "VINFO Esports is recruiting a dedicated Coach (LFC) for our Invite East / International roster. Requirements: tactics, in-depth VOD reviews, fluent English, and team experience. DM Discord: xdlamborghini with your VLR profile & portfolio!",
             important: true
         },
         {
             date: "OCTOBER 28, 2026",
-            title: {
-                en: "ROSTER LOCKED: EMEA QUALIFIERS SQUAD ANNOUNCED",
-                cz: "SESTAVA UZAVŘENA: PŘEDSTAVUJEME EMEA ROSTER"
-            },
-            content: {
-                en: "After a FULL MONTH of intense trials and grinding, our starting five is officially locked! Welcome 🎯 Dejwrix (Entry), 🏹 MusX (IGL), 🛡️ Waiz (Flex), 🎱 SarrZ (Controller/2nd caller), and 🎯 bozzi (2nd Duelist). Time to dominate the EMEA qualifiers! 😈⚔️",
-                cz: "Po celém měsíci náročných tryoutů máme oficiálně uzamčenou základní pětku! Vítejte 🎯 Dejwrix (Entry), 🏹 MusX (IGL), 🛡️ Waiz (Flex), 🎱 SarrZ (Controller/2nd caller) a 🎯 bozzi (2nd Duelist). Čas ovládnout EMEA kvalifikace! 😈⚔️"
-            },
+            title: "ROSTER LOCKED: EMEA QUALIFIERS SQUAD ANNOUNCED",
+            content: "After a FULL MONTH of intense trials and grinding, our starting five is officially locked! Welcome 🎯 Dejwrix (Entry), 🏹 MusX (IGL), 🛡️ Waiz (Flex), 🎱 SarrZ (Controller/2nd caller), and 🎯 bozzi (2nd Duelist). Time to dominate the EMEA qualifiers! 😈⚔️",
             important: true
         },
         {
             date: "SEPTEMBER 21, 2026",
-            title: {
-                en: "ROSTER REBUILD IN PROGRESS",
-                cz: "PROBÍHÁ REBUILD SESTAVY"
-            },
-            content: {
-                en: "VINFO Esports is officially entering a rebuild phase. As we look towards the future of Valorant Premier, we are scouting for fresh Immortal+ talent to join our core roster. We thank our departing players for their dedication and wish them the best.",
-                cz: "VINFO Esports oficiálně zahajuje fázi rebuildu. Při pohledu na budoucnost ve Valorant Premier hledáme nové talenty s rankem Immortal+, kteří by doplnili naše jádro. Děkujeme odcházejícím hráčům za jejich úsilí a přejeme jim to nejlepší."
-            },
+            title: "ROSTER REBUILD IN PROGRESS",
+            content: "VINFO Esports is officially entering a rebuild phase. As we look towards the future of Valorant Premier, we are scouting for fresh Immortal+ talent to join our core roster. We thank our departing players for their dedication and wish them the best.",
             important: true
         },
         {
             date: "SEPTEMBER 5, 2026",
-            title: {
-                en: "REBRAND, PREMIER #5 & BACK-TO-BACK WINS!",
-                cz: "REBRAND, 5. MÍSTO V PREMIERU A 2 VÝHRY V ŘADĚ!"
-            },
-            content: {
-                en: "A new era begins! We have officially rebranded to VINFO Esports. We're celebrating our new identity with back-to-back victories against SOP UNSEEN (15-13) and ASHBORN (13-7), bringing us to the 5th place in the Premier Invite division!",
-                cz: "Nová éra začíná! Oficiálně jsme se rebrandovali na VINFO Esports. Naši novou identitu slavíme dvěma výhrami v řadě proti SOP UNSEEN (15:13) a ASHBORN (13:7), což nás posouvá na úžasné 5. místo v divizi Premier Invite!"
-            },
+            title: "REBRAND, PREMIER #5 & BACK-TO-BACK WINS!",
+            content: "A new era begins! We have officially rebranded to VINFO Esports. We're celebrating our new identity with back-to-back victories against SOP UNSEEN (15-13) and ASHBORN (13-7), bringing us to the 5th place in the Premier Invite division!",
             important: true
         },
         {
             date: "AUGUST 15, 2026",
-            title: {
-                en: "PREMIER PLAYOFFS RUN CONCLUDES",
-                cz: "CESTA V PREMIER PLAY-OFF KONČÍ"
-            },
-            content: {
-                en: "Our Premier season has come to an end. Despite a strong effort, the team fell 9-13 on Lotus in the first round of the Playoffs against чм vinEgret. We are proud of the team's effort and will be back stronger next season!",
-                cz: "Naše cesta v play-off turnaji Premier bohužel končí v prvním kole. Po vyrovnaném boji kluci podlehli soupeři чм винЕгрет 9:13 na mapě Lotus. Děkujeme všem za podporu v této sezóně!"
-            },
+            title: "PREMIER PLAYOFFS RUN CONCLUDES",
+            content: "Our Premier season has come to an end. Despite a strong effort, the team fell 9-13 on Lotus in the first round of the Playoffs against чм vinEgret. We are proud of the team's effort and will be back stronger next season!",
             important: true
         },
         {
             date: "AUGUST 13, 2026",
-            title: {
-                en: "CHAMPIONS OF VOLT VALORANT OPEN #1!",
-                cz: "ŠAMPIONI VOLT VALORANT OPEN #1!"
-            },
-            content: {
-                en: "VINFO Esports are the champions! After an incredible tournament run, the team took down N2xt valorant 2-0 in the Grand Finals to secure 1st place in the VOLT Valorant Open #1!",
-                cz: "VINFO Esports jsou šampioni! Po neuvěřitelném průchodu turnajem kluci ve finále porazili N2xt valorant 2:0 a odvážejí si zasloužené 1. místo z VOLT Valorant Open #1!"
-            },
+            title: "CHAMPIONS OF VOLT VALORANT OPEN #1!",
+            content: "VINFO Esports are the champions! After an incredible tournament run, the team took down N2xt valorant 2-0 in the Grand Finals to secure 1st place in the VOLT Valorant Open #1!",
             important: true
         },
         {
             date: "JULY 19, 2026",
-            title: {
-                en: "2ND PLACE AT 3V3 RETAKE LAN & €200 CASHED!",
-                cz: "2. MÍSTO NA 3V3 RETAKE LAN A VÝHRA 200€!"
-            },
-            content: {
-                en: "Woody, Dejwrix, and Yuki represented VINFO Esports today in a local 3v3 Retake LAN tournament. After an intense battle in the brackets, the team finished 2nd and cashed €200!",
-                cz: "Trio Woody, Dejwrix a Yuki reprezentovali VINFO Esports na dnešním 3v3 Retake LAN turnaji. Po napínavých zápasech si kluci odvážejí skvělé 2. místo a finanční výhru 200€!"
-            },
+            title: "2ND PLACE AT 3V3 RETAKE LAN & €200 CASHED!",
+            content: "Woody, Dejwrix, and Yuki represented VINFO Esports today in a local 3v3 Retake LAN tournament. After an intense battle in the brackets, the team finished 2nd and cashed €200!",
             important: true
         },
         {
             date: "JULY 4, 2026",
-            title: {
-                en: "2-0 DAY IN PREMIER, WE ARE 7TH!",
-                cz: "2-0 DEN V PREMIERU, JSME 7.!"
-            },
-            content: {
-                en: "An incredibly successful day for VINFO Esports! We took down We Love Goths 13:9 and crushed Team Nocturnals 13:6, securing our 7th place in the Premier standings.",
-                cz: "Neuvěřitelně úspěšný den pro VINFO! Porazili jsme We Love Goths 13:9 a přejeli Team Nocturnals 13:6, čímž jsme si zajistili 7. místo v tabulce Premier."
-            },
+            title: "2-0 DAY IN PREMIER, WE ARE 7TH!",
+            content: "An incredibly successful day for VINFO Esports! We took down We Love Goths 13:9 and crushed Team Nocturnals 13:6, securing our 7th place in the Premier standings.",
             important: true
         },
         {
             date: "JULY 1, 2026",
-            title: {
-                en: "100% CZECH ROSTER: WELCOME ADENY AND SNDR",
-                cz: "100% ČESKÁ SESTAVA: VÍTEJTE ADENY A SNDR"
-            },
-            content: {
-                en: "We are returning to our roots! We are now a 100% Czech roster once again. Woody and Rabadon are back in the main roster, joined by Adeny (Flex) and Sndr (Sub). The herd is ready to dominate.",
-                cz: "Vracíme se ke kořenům! Znovu jsme 100% česká sestava. Woody a Rabadon jsou zpět v hlavní sestavě, ke kterým se přidávají Adeny (Flex) a Sndr (Sub). VINFO je připraveno dominovat."
-            },
+            title: "100% CZECH ROSTER: WELCOME ADENY AND SNDR",
+            content: "We are returning to our roots! We are now a 100% Czech roster once again. Woody and Rabadon are back in the main roster, joined by Adeny (Flex) and Sndr (Sub). The herd is ready to dominate.",
             important: false
         },
         {
             date: "JUNE 27, 2026",
-            title: {
-                en: "THE HERD IS REBUILDING: LFP",
-                cz: "PŘESTAVBA TÝMU: HLEDÁME HRÁČE"
-            },
-            content: {
-                en: "We are officially entering a rebuilding phase. Only Dejwrix and Teikov remain on the active roster. We are currently scouting for an Initiator, Smoker, and Sentinel to complete the new era of VINFO Esports.",
-                cz: "Oficiálně vstupujeme do fáze přestavby. V aktivní sestavě zůstávají pouze Dejwrix a Teikov. Momentálně hledáme Initiatora, Smokera a Sentinela, kteří s námi odstartují novou éru VINFO Esports."
-            },
+            title: "THE HERD IS REBUILDING: LFP",
+            content: "We are officially entering a rebuilding phase. Only Dejwrix and Teikov remain on the active roster. We are currently scouting for an Initiator, Smoker, and Sentinel to complete the new era of VINFO Esports.",
             important: false
         },
         {
             date: "JUNE 25, 2026",
-            title: {
-                en: "ROSTER UPDATE: WETRIX LEAVES, KILLUA JOINS",
-                cz: "ZMĚNA V SESTAVĚ: WETRIX KONČÍ, PŘICHÁZÍ KILLUA"
-            },
-            content: {
-                en: "Wetrix has stepped down from the main roster. We thank him for his efforts and wish him the best. Taking his place as our Sentinel is Killua, who brings incredible firepower and tactical prowess to the team.",
-                cz: "Wetrix se rozhodl opustit hlavní sestavu. Děkujeme mu za jeho čas a přejeme mu hodně štěstí. Jeho místo Sentinela zaujme Killua, který do týmu přináší obrovskou palebnou sílu a taktické uvažování."
-            },
+            title: "ROSTER UPDATE: WETRIX LEAVES, KILLUA JOINS",
+            content: "Wetrix has stepped down from the main roster. We thank him for his efforts and wish him the best. Taking his place as our Sentinel is Killua, who brings incredible firepower and tactical prowess to the team.",
             important: false
         },
         {
             date: "JUNE 13, 2026",
-            title: {
-                en: "ADVANCING TO THE PLAYOFFS!",
-                cz: "POSTUP DO PLAYOFFS!"
-            },
-            content: {
-                en: "After a tough 8:13 loss against biele zaby, we bounced back with a 13:8 victory over suai52 to secure our spot in the Premier Playoffs! The final showdown takes place next Saturday.",
-                cz: "Po těžké prohře 8:13 proti biele zaby jsme se vrátili zpět výhrou 13:8 nad suai52 a zajistili si tak místo v Premier Playoffs! Rozhodující bitva nás čeká příští sobotu."
-            },
+            title: "ADVANCING TO THE PLAYOFFS!",
+            content: "After a tough 8:13 loss against biele zaby, we bounced back with a 13:8 victory over suai52 to secure our spot in the Premier Playoffs! The final showdown takes place next Saturday.",
             important: false
         },
         {
             date: "JUNE 5, 2026",
-            title: {
-                en: "14th PLACE IN PREMIER",
-                cz: "14. MÍSTO V PREMIER"
-            },
-            content: {
-                en: "We proudly secured the 14th spot in the Premier Contender Division! A huge thanks to the fans for their continued support as we climb our way to the top.",
-                cz: "Hrdě jsme obsadili 14. místo v Premier Contender Divizi! Obrovské díky patří fanouškům za jejich neustálou podporu na naší cestě vzhůru."
-            },
+            title: "14th PLACE IN PREMIER",
+            content: "We proudly secured the 14th spot in the Premier Contender Division! A huge thanks to the fans for their continued support as we climb our way to the top.",
             important: true
         },
         {
             date: "JUNE 4, 2026",
-            title: {
-                en: "ROSTER UPDATE: WOODY JOINS, R1VVO LEAVES",
-                cz: "ZTRÁTY A NÁLEZY: WOODY PŘICHÁZÍ, R1VVO ODCHÁZÍ"
-            },
-            content: {
-                en: "We are parting ways with R1VVO and wish him the best in his future endeavors. At the same time, we welcome Woody to our active roster as Sentinel, with Luky moving to the sub position alongside Tezzy.",
-                cz: "Loučíme se s R1VVO a přejeme mu to nejlepší. Zároveň vítáme Woodyho do naší aktivní sestavy na pozici Sentinel, přičemž Luky se přesouvá na pozici náhradníka k Tezzymu."
-            },
+            title: "ROSTER UPDATE: WOODY JOINS, R1VVO LEAVES",
+            content: "We are parting ways with R1VVO and wish him the best in his future endeavors. At the same time, we welcome Woody to our active roster as Sentinel, with Luky moving to the sub position alongside Tezzy.",
             important: false
         },
         {
             date: "JUNE 4, 2026",
-            title: {
-                en: "WEBSITE REVAMPED",
-                cz: "NOVÝ WEB SPUŠTĚN"
-            },
-            content: {
-                en: "VINFO Esports officially launched a brand new website complete with dynamic forms, improved SEO, and full bilingual support.",
-                cz: "VINFO Esports oficiálně spustili zbrusu nový web s dynamickými formuláři, lepším SEO a kompletní dvojjazyčnou podporou."
-            },
+            title: "WEBSITE REVAMPED",
+            content: "VINFO Esports officially launched a brand new website complete with dynamic forms, improved SEO, and full bilingual support.",
             important: false
         },
         {
             date: "MAY 22, 2026",
-            title: {
-                en: "ROSTER LOCKED IN",
-                cz: "SESTAVA UZAMČENA"
-            },
-            content: {
-                en: "The new VINFO Esports roster is officially locked in for the upcoming season. Weeks of tryouts and intense practice have forged a deadly core.",
-                cz: "Nová sestava VINFO Esports je oficiálně uzamčena pro nadcházející sezónu. Týdny zkoušek a intenzivního tréninku vykovaly smrtící jádro."
-            },
+            title: "ROSTER LOCKED IN",
+            content: "The new VINFO Esports roster is officially locked in for the upcoming season. Weeks of tryouts and intense practice have forged a deadly core.",
             important: false
         }
     ];
 
-    const monthsCz = { 'JANUARY': 'LEDNA', 'FEBRUARY': 'ÚNORA', 'MARCH': 'BŘEZNA', 'APRIL': 'DUBNA', 'MAY': 'KVĚTNA', 'JUNE': 'ČERVNA', 'JULY': 'ČERVENCE', 'AUGUST': 'SRPNA', 'SEPTEMBER': 'ZÁŘÍ', 'OCTOBER': 'ŘÍJNA', 'NOVEMBER': 'LISTOPADU', 'DECEMBER': 'PROSINCE' };
     let isShowingAllNews = false;
     function renderNews() {
         newsContainer.innerHTML = '';
         const itemsToShow = isShowingAllNews ? simulatedNews : simulatedNews.slice(0, 3);
         itemsToShow.forEach(news => {
-            const tTitle = news.title[lang] || news.title.en;
-            const tContent = news.content[lang] || news.content.en;
-            let displayDate = news.date;
-            if (lang === 'cz' || lang === 'cs') {
-                for (const [en, cz] of Object.entries(monthsCz)) {
-                    if (displayDate.includes(en)) {
-                        displayDate = displayDate.replace(en, cz);
-                        break;
-                    }
-                }
-            }
+            const tTitle = news.title;
+            const tContent = news.content;
+            const displayDate = news.date;
             if (news.important) {
                 newsContainer.innerHTML += `
                 <div class="news-card" style="flex: 1 1 400px; background-color: var(--val-dark); border: 1px solid var(--val-red); padding: 2rem; transition: transform 0.2s; box-shadow: 0 0 15px rgba(255, 70, 85, 0.2);" onmouseover="this.style.transform='translateY(-5px)'" onmouseout="this.style.transform='translateY(0)'">
@@ -835,7 +709,7 @@ async function loadNews() {
             const btn = document.createElement('button');
             btn.className = 'cta-button';
             btn.style.margin = '0 auto';
-            btn.innerText = isShowingAllNews ? ((lang === 'cz' || lang === 'cs') ? 'ZOBRAZIT MÉNĚ' : 'SHOW LESS') : ((lang === 'cz' || lang === 'cs') ? 'ZOBRAZIT VÍCE' : 'LOAD MORE');
+            btn.innerText = isShowingAllNews ? 'SHOW LESS' : 'LOAD MORE';
             btn.addEventListener('click', () => {
                 isShowingAllNews = !isShowingAllNews;
                 renderNews();
@@ -902,13 +776,10 @@ document.addEventListener('DOMContentLoaded', () => {
         toggleBtn.addEventListener('click', () => {
             const container = document.querySelector('.timeline-container');
             const isShowingAll = container.classList.toggle('show-all');
-            const lang = localStorage.getItem('vinfo_lang') || 'en';
             
-            let textEn = isShowingAll ? 'SHOW LESS' : 'SHOW MORE MATCHES';
-            let textCs = isShowingAll ? 'ZOBRAZIT MÉNĚ' : 'ZOBRAZIT DALŠÍ ZÁPASY';
-            let key = isShowingAll ? 'legacy.showLess' : 'legacy.showAll';
             
-            toggleBtn.innerHTML = `<span data-i18n="${key}">${lang === 'cz' ? textCs : textEn}</span> <i class="fa-solid fa-chevron-${isShowingAll ? 'up' : 'down'}"></i>`;
+            const textEn = isShowingAll ? 'SHOW LESS' : 'SHOW MORE MATCHES';
+            toggleBtn.innerHTML = `<span>${textEn}</span> <i class="fa-solid fa-chevron-${isShowingAll ? 'up' : 'down'}"></i>`;
         });
     }
 
@@ -987,13 +858,10 @@ document.addEventListener('DOMContentLoaded', () => {
                             realNameEl.style.display = realName ? 'block' : 'none';
                         }
                         
-                        const modalLang = localStorage.getItem('vinfo_lang') || 'en';
-                        
                         const countryContainer = document.getElementById('modal-country-container');
                         if (countryContainer) {
                             if (country) {
-                                const countryLabel = (modalLang === 'cz' || modalLang === 'cs') ? 'Země:' : 'Country:';
-                                countryContainer.innerHTML = '<strong>' + countryLabel + '</strong> <span>' + country + '</span>';
+                                countryContainer.innerHTML = '<strong>Country:</strong> <span>' + country + '</span>';
                                 countryContainer.style.display = 'block';
                             } else {
                                 countryContainer.style.display = 'none';
@@ -1001,8 +869,7 @@ document.addEventListener('DOMContentLoaded', () => {
                         }
 
                         if (age) {
-                            const ageLabel = (modalLang === 'cz' || modalLang === 'cs') ? 'Věk:' : 'Age:';
-                            document.getElementById('modal-age-container').innerHTML = '<strong>' + ageLabel + '</strong> <span>' + age + '</span>';
+                            document.getElementById('modal-age-container').innerHTML = '<strong>Age:</strong> <span>' + age + '</span>';
                             document.getElementById('modal-age-container').style.display = 'block';
                         } else {
                             document.getElementById('modal-age-container').style.display = 'none';
