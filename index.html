@@ -10,7 +10,7 @@
     <meta property="og:url" content="https://vinfoesports.com">
     <meta name="twitter:card" content="summary_large_image">
     <title>VINFO Esports | VINFO - Valorant Esports Team</title>
-    <link rel="stylesheet" href="styles.css?v=74">
+    <link rel="stylesheet" href="styles.css?v=75">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -73,8 +73,9 @@
     <!-- Live Match Command Center (Hidden by Default) -->
     <div id="live-bar" style="display: flex; position: sticky; top: 0; z-index: 100000; background: var(--val-red); color: white; padding: 0.75rem 2rem; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; align-items: center; justify-content: center; gap: 1rem; box-shadow: 0 4px 15px rgba(255, 70, 85, 0.4); flex-wrap: wrap;">
         <div class="live-pulse" style="width: 10px; height: 10px; background: white; border-radius: 50%; animation: blink 1s infinite;"></div>
-        <strong id="live-bar-title" data-i18n="live.title">NEXT TOURNAMENT:</strong> <span id="live-bar-text" data-i18n="live.text">VCT EMEA KICKOFF &bull; NOV 5 17:00</span>
-        <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="background: white; color: var(--val-red); padding: 0.3rem 1.2rem; font-size: 1rem; text-decoration: none; border-radius: 2px; font-weight: 700; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'" data-i18n="live.action">JOIN DISCORD</a>
+        <strong id="live-bar-title">NEXT MATCH:</strong> <span id="live-bar-text">VCT EMEA KICKOFF (R1) &bull; vs Engines Stuttgart &bull; TODAY 19:30 CET</span>
+        <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="background: #53fc18; color: black; padding: 0.3rem 1.2rem; font-size: 1rem; text-decoration: none; border-radius: 2px; font-weight: 800; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><i class="fa-solid fa-play"></i> WATCH STREAM</a>
+        <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="background: white; color: var(--val-red); padding: 0.3rem 1.2rem; font-size: 1rem; text-decoration: none; border-radius: 2px; font-weight: 700; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">JOIN DISCORD</a>
     </div>
     <a href="#home" class="skip-link">Skip to main content</a>
     <div class="crt-overlay"></div>
@@ -150,16 +151,18 @@
             <div class="section-line"></div>
         </div>
         <div style="max-width: 1000px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 2rem; align-items: center;">
-                        <!-- Match 1 (Upcoming: VCT EMEA KICKOFF) -->
-            <div class="match-card" style="background: linear-gradient(135deg, rgba(255, 70, 85, 0.15) 0%, rgba(15, 25, 35, 0.95) 100%); padding: 2.5rem 4rem; border: 2px solid var(--val-red); display: inline-block; text-align: center; box-shadow: 0 10px 40px rgba(255, 70, 85, 0.3); border-radius: 4px; width: 100%; max-width: 800px; margin-bottom: 1.5rem; position: relative;">
-                <div style="position: absolute; top: 12px; right: 15px; background: var(--val-red); color: white; font-weight: 900; font-size: 0.75rem; letter-spacing: 2px; padding: 4px 10px; border-radius: 3px; text-transform: uppercase;">UPCOMING &bull; 5.11. 17:00</div>
-                <span style="color: var(--val-red); font-size: 1.2rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 0.5rem; text-transform: uppercase;"><span data-i18n="schedule.upcoming">UPCOMING TOURNAMENT</span> | <span class="dynamic-date" data-match-date="2026-11-05T17:00:00" style="color: #53fc18;">5.11. 17:00</span></span>
-                <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3.5rem; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 2px 2px 0 var(--val-red);" data-i18n="schedule.vct_kickoff">VCT EMEA KICKOFF</h3>
-                <span style="color: #ffd700; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem; font-size: 1.1rem;" data-i18n="schedule.vct_sub">EUROPE QUALIFIER 1 &bull; NOV 5 - NOV 8</span>
-                <div class="match-countdown" data-target="2026-11-05T17:00:00" style="margin-bottom: 1.5rem;"></div>
+                        <!-- Match 1 (Upcoming: VCT EMEA KICKOFF R1 vs Engines Stuttgart) -->
+            <div class="match-card" style="background: linear-gradient(135deg, rgba(255, 70, 85, 0.15) 0%, rgba(15, 25, 35, 0.95) 100%); padding: 2.5rem 3rem; border: 2px solid var(--val-red); display: inline-block; text-align: center; box-shadow: 0 10px 40px rgba(255, 70, 85, 0.3); border-radius: 4px; width: 100%; max-width: 800px; margin-bottom: 1.5rem; position: relative;">
+                <div style="position: absolute; top: 12px; right: 15px; background: var(--val-red); color: white; font-weight: 900; font-size: 0.75rem; letter-spacing: 2px; padding: 4px 10px; border-radius: 3px; text-transform: uppercase;">ROUND 1 &bull; TODAY 19:30</div>
+                <span style="color: var(--val-red); font-size: 1.1rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 0.5rem; text-transform: uppercase;">VCT EMEA KICKOFF QUALIFIER 1 &bull; <span class="dynamic-date" data-match-date="2026-11-05T19:30:00" style="color: #53fc18;">TODAY</span> 19:30</span>
+                <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 2.8rem; letter-spacing: 2px; margin-bottom: 0.5rem; text-shadow: 2px 2px 0 var(--val-red); line-height: 1.2;">
+                    VINFO ESPORTS <span style="color: var(--val-red); font-size: 1.8rem; margin: 0 8px;">VS</span> ENGINES STUTTGART
+                </h3>
+                <span style="color: #ffd700; font-weight: bold; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.5rem; font-size: 1.1rem;">MAIN BRACKET &bull; ROUND 1 &bull; NOV 5 &bull; 19:30 CET</span>
+                <div class="match-countdown" data-target="2026-11-05T19:30:00" style="margin-bottom: 1.5rem;"></div>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
-                    <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #53fc18; font-weight: bold; text-decoration: none; font-size: 1.1rem; letter-spacing: 1.5px; background: rgba(83, 252, 24, 0.15); padding: 10px 22px; border-radius: 4px; border: 2px solid rgba(83, 252, 24, 0.6); transition: all 0.3s;" onmouseover="this.style.background='rgba(83, 252, 24, 0.3)'; this.style.boxShadow='0 0 20px rgba(83, 252, 24, 0.3)'; this.style.transform='scale(1.05)';" onmouseout="this.style.background='rgba(83, 252, 24, 0.15)'; this.style.boxShadow='none'; this.style.transform='scale(1)';"><i class="fa-solid fa-play"></i> <span data-i18n="schedule.watch">WATCH LIVE ON KICK</span></a>
-                    <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: white; font-weight: bold; text-decoration: none; font-size: 1.1rem; letter-spacing: 1.5px; background: #5865F2; padding: 10px 22px; border-radius: 4px; border: 2px solid #5865F2; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><i class="fa-brands fa-discord"></i> <span data-i18n="schedule.premier_lf1">JOIN DISCORD</span></a>
+                    <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #53fc18; font-weight: bold; text-decoration: none; font-size: 1.1rem; letter-spacing: 1.5px; background: rgba(83, 252, 24, 0.15); padding: 10px 22px; border-radius: 4px; border: 2px solid rgba(83, 252, 24, 0.6); transition: all 0.3s;" onmouseover="this.style.background='rgba(83, 252, 24, 0.3)'; this.style.boxShadow='0 0 20px rgba(83, 252, 24, 0.3)'; this.style.transform='scale(1.05)';" onmouseout="this.style.background='rgba(83, 252, 24, 0.15)'; this.style.boxShadow='none'; this.style.transform='scale(1)';"><i class="fa-solid fa-play"></i> WATCH LIVE ON KICK</a>
+                    <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: white; font-weight: bold; text-decoration: none; font-size: 1.1rem; letter-spacing: 1.5px; background: #5865F2; padding: 10px 22px; border-radius: 4px; border: 2px solid #5865F2; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><i class="fa-brands fa-discord"></i> JOIN DISCORD</a>
                 </div>
             </div>
 
@@ -1228,7 +1231,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=74"></script>
+    <script src="script.js?v=75"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js?v=2"></script>
     <script>
         // Init Lenis smooth scroll
