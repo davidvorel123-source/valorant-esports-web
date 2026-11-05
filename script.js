@@ -577,8 +577,8 @@ async function loadNews() {
     const simulatedNews = [
         {
             date: "NOVEMBER 5, 2026",
-            title: "VCT EMEA QUALIFIER 1: ROUND 1 VS ENGINES STUTTGART",
-            content: "Game day is here! 🚀 VINFO Esports takes on German squad Engines Stuttgart tonight at 19:30 CET in Round 1 of the VCT EMEA Kickoff Europe Qualifier 1 Main Bracket. Catch the action live on Dejwrix's Kick stream! 🔥⚔️",
+            title: "VCT EMEA QUALIFIER 1: 1-2 VS ENGINES STUTTGART",
+            content: "A hard-fought 3-map thriller in Round 1 of the VCT EMEA Kickoff Qualifier 1 against Engines Stuttgart ends in a close 1-2 defeat. Proud of the squad's fight and resilience in their first official international tournament showing. GGWP to Engines Stuttgart — we will bounce back stronger! ⚔️🔥",
             important: true
         },
         {
