@@ -577,6 +577,12 @@ async function loadNews() {
     const simulatedNews = [
         {
             date: "NOVEMBER 7, 2026",
+            title: "DOMINANT 2-0 IN PREMIER: CLIMBING TO #3 IN INVITE!",
+            content: "What a match day on Sunset! VINFO Esports secures a clean 2-0 sweep with a commanding 13-8 victory over Ashborn followed by a 13-0 forfeit win. With these back-to-back victories, VINFO claims the #3 spot in the Premier standings! GGWP to the boys! 🚀🔥",
+            important: true
+        },
+        {
+            date: "NOVEMBER 7, 2026",
             title: "ROSTER UPDATE: TEIKOV RETURNS, WAIZ & SARRZ DEPART",
             content: "Following our VCT EMEA Kickoff qualifier run, VINFO Esports announces a roster update. We bid farewell to Waiz and SarrZ and thank them for their dedication and competitive drive. Making his return to the active starting lineup is Czech prodigy Teikov! Welcome back home. 🇨🇿⚡",
             important: true
