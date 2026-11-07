@@ -576,6 +576,12 @@ async function loadNews() {
 
     const simulatedNews = [
         {
+            date: "NOVEMBER 7, 2026",
+            title: "ROSTER UPDATE: TEIKOV RETURNS, WAIZ & SARRZ DEPART",
+            content: "Following our VCT EMEA Kickoff qualifier run, VINFO Esports announces a roster update. We bid farewell to Waiz and SarrZ and thank them for their dedication and competitive drive. Making his return to the active starting lineup is Czech prodigy Teikov! Welcome back home. 🇨🇿⚡",
+            important: true
+        },
+        {
             date: "NOVEMBER 5, 2026",
             title: "VCT EMEA QUALIFIER 1: 1-2 VS ENGINES STUTTGART",
             content: "A hard-fought 3-map thriller in Round 1 of the VCT EMEA Kickoff Qualifier 1 against Engines Stuttgart ends in a close 1-2 defeat. Proud of the squad's fight and resilience in their first official international tournament showing. GGWP to Engines Stuttgart — we will bounce back stronger! ⚔️🔥",
@@ -1026,9 +1032,8 @@ document.addEventListener('DOMContentLoaded', () => {
         'Dejwrix': { crosshair: '0;c;1;s;1;P;o;1;d;1;f;0;0l;2;0v;0;0g;1;0o;0;0a;1;0f;0;1b;0;S;d;0', crosshairImg: 'crosshairs/dejwrix.svg', mouse: 'Razer Viper V3 Pro', dpi: '1600', sens: '0.135', monitor: 'ZOWIE XL2546K 240Hz', stats: [95, 88, 78, 92, 98, 70] },
         'dejwrix': { crosshair: '0;c;1;s;1;P;o;1;d;1;f;0;0l;2;0v;0;0g;1;0o;0;0a;1;0f;0;1b;0;S;d;0', crosshairImg: 'crosshairs/dejwrix.svg', mouse: 'Razer Viper V3 Pro', dpi: '1600', sens: '0.135', monitor: 'ZOWIE XL2546K 240Hz', stats: [95, 88, 78, 92, 98, 70] },
         'MusX': { crosshair: '0;s;1;P;c;1;h;0;0t;1;0l;3;0v;3;0a;1;0f;0;1b;0', crosshairImg: 'crosshairs/musx.svg', mouse: 'Razer DeathAdder V3 Pro', dpi: '800', sens: '0.31', monitor: 'ZOWIE XL2566K 360Hz', stats: [90, 88, 85, 95, 80, 85] },
-        'Waiz': { crosshair: '0;P;c;8;u;000000FF;h;0;b;1;0l;4;0v;4;0g;1;0a;1;0f;0;1b;0', crosshairImg: 'crosshairs/waiz.svg', mouse: 'Logitech G Pro X Superlight 2', dpi: '800', sens: '0.27', monitor: 'ZOWIE XL2546K 240Hz', stats: [84, 82, 80, 92, 70, 95] },
-        'SarrZ': { crosshair: '0;s;1;P;c;5;u;000000FF;h;0;0l;3;0v;3;0o;1;0a;1;0f;0;1b;0;S;c;5', crosshairImg: 'crosshairs/sarrz.svg', mouse: 'Logitech G Pro X Superlight 2', dpi: '400', sens: '0.365', monitor: 'AOC 25G3ZM 240Hz', stats: [88, 85, 84, 94, 75, 90] },
-        'sarrz': { crosshair: '0;s;1;P;c;5;u;000000FF;h;0;0l;3;0v;3;0o;1;0a;1;0f;0;1b;0;S;c;5', crosshairImg: 'crosshairs/sarrz.svg', mouse: 'Logitech G Pro X Superlight 2', dpi: '400', sens: '0.365', monitor: 'AOC 25G3ZM 240Hz', stats: [88, 85, 84, 94, 75, 90] },
+        'Teikov': { crosshair: '0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0', crosshairImg: 'crosshairs/teikov.svg', mouse: 'Razer DeathAdder V3 Pro', dpi: '400', sens: '0.45', monitor: 'ZOWIE XL2566K 360Hz', stats: [95, 80, 85, 60, 95, 50] },
+        'teikov': { crosshair: '0;s;1;P;c;5;h;0;m;1;0l;4;0o;2;0a;1;0f;0;1b;0', crosshairImg: 'crosshairs/teikov.svg', mouse: 'Razer DeathAdder V3 Pro', dpi: '400', sens: '0.45', monitor: 'ZOWIE XL2566K 360Hz', stats: [95, 80, 85, 60, 95, 50] },
         'bozzi': { crosshair: '0;s;1;P;c;1;o;1;0l;5;0v;5;0a;1;0f;0;1b;0;S;s;1.002', crosshairImg: 'crosshairs/bozzi.svg', mouse: 'Razer Viper V3 Pro', dpi: '3200', sens: '0.03', monitor: 'Samsung Odyssey G4 240Hz', stats: [92, 86, 88, 80, 95, 75] },
         'Bozzi': { crosshair: '0;s;1;P;c;1;o;1;0l;5;0v;5;0a;1;0f;0;1b;0;S;s;1.002', crosshairImg: 'crosshairs/bozzi.svg', mouse: 'Razer Viper V3 Pro', dpi: '3200', sens: '0.03', monitor: 'Samsung Odyssey G4 240Hz', stats: [92, 86, 88, 80, 95, 75] },
         'spotnik': { crosshair: '0;s;1;P;c;1;u;000000FF;h;0;f;0;0l;3;0v;3;0o;2;0a;1;0f;0;1b;0;S;c;0;o;1', crosshairImg: 'crosshairs/spotnik.svg', mouse: 'Logitech G Pro X Superlight 2', dpi: '800', sens: '0.22', monitor: 'Acer Nitro XV272U W2 (240Hz)', stats: [82, 85, 80, 88, 74, 86] },
