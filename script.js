@@ -577,6 +577,12 @@ async function loadNews() {
     const simulatedNews = [
         {
             date: "NOVEMBER 11, 2026",
+            title: "NEXT MATCH SET: VS 3TAY IN VCT EMEA KICKOFF Q2 ROUND 2",
+            content: "Bracket update! Fresh off our 2-1 thriller against West Taiwan, VINFO Esports has drawn 3tay for Round 2 of the VCT EMEA Kickoff Europe Qualifier 2. The BO3 clash takes place tomorrow, November 12 at 19:00 CET. Tune in live on stream and rally behind the herd! ⚔️🔥",
+            important: true
+        },
+        {
+            date: "NOVEMBER 11, 2026",
             title: "VICTORY IN VCT EMEA KICKOFF Q2: 2-1 VS WEST TAIWAN!",
             content: "WHAT A CLUTCH SERIES! 🔥 VINFO Esports captures a massive 2-1 victory over West Taiwan in Round 1 of the VCT EMEA Kickoff Europe Qualifier 2! With ice in their veins and relentless executes, the boys advance to Main Bracket Round 2. Huge GGWP to West Taiwan! The European journey marches on! 🚀⚔️",
             important: true
