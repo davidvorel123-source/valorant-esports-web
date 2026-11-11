@@ -576,6 +576,12 @@ async function loadNews() {
 
     const simulatedNews = [
         {
+            date: "NOVEMBER 11, 2026",
+            title: "VICTORY IN VCT EMEA KICKOFF Q2: 2-1 VS WEST TAIWAN!",
+            content: "WHAT A CLUTCH SERIES! 🔥 VINFO Esports captures a massive 2-1 victory over West Taiwan in Round 1 of the VCT EMEA Kickoff Europe Qualifier 2! With ice in their veins and relentless executes, the boys advance to Main Bracket Round 2. Huge GGWP to West Taiwan! The European journey marches on! 🚀⚔️",
+            important: true
+        },
+        {
             date: "NOVEMBER 8, 2026",
             title: "OFFICIAL: COMPETING IN VCT EMEA KICKOFF - EUROPE QUALIFIER 2",
             content: "The journey continues! 🚀 VINFO Esports has officially registered for the VCT EMEA Kickoff - Europe Qualifier 2, running from November 11 to November 15, 2026. After our dominant 2-0 sweep on Sunset and securing the #3 spot in Premier Invite, the boys are locked in to take on Europe's best. Keep an eye on Discord for live brackets and stream links! 🔥⚔️",
