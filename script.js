@@ -232,6 +232,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Match Countdown System
     function updateMatchCountdowns() {
+        updateLiveBar();
         const countdowns = document.querySelectorAll('.match-countdown');
         const now = new Date().getTime();
         
@@ -339,6 +340,50 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
+    
+    // Live Bar Auto-Management System (Auto hides when match is finished)
+    function updateLiveBar() {
+        const liveBar = document.getElementById('live-bar');
+        if (!liveBar) return;
+
+        const targetStr = liveBar.getAttribute('data-target');
+        if (!targetStr) return;
+
+        const targetDate = new Date(targetStr).getTime();
+        const now = new Date().getTime();
+        const durationHours = parseFloat(liveBar.getAttribute('data-duration-hours') || '2.5');
+        const endMatchTime = targetDate + (durationHours * 60 * 60 * 1000);
+
+        const timeUntilMatch = targetDate - now;
+        const timeSinceEnd = now - endMatchTime;
+
+        // When match has finished (after match duration), completely hide the live bar!
+        if (timeSinceEnd > 0) {
+            liveBar.style.display = 'none';
+            return;
+        }
+
+        // When match is currently live (between start and end time)
+        if (now >= targetDate && now <= endMatchTime) {
+            liveBar.style.display = 'flex';
+            const liveTitle = document.getElementById('live-bar-title');
+            if (liveTitle) {
+                liveTitle.innerHTML = '<span style="color: #53fc18;">● LIVE NOW:</span>';
+            }
+            return;
+        }
+
+        // When match is upcoming (within 12 hours)
+        if (timeUntilMatch > 0 && timeUntilMatch <= 12 * 60 * 60 * 1000) {
+            liveBar.style.display = 'flex';
+            return;
+        }
+
+        // Otherwise (more than 12h away or concluded), hide!
+        liveBar.style.display = 'none';
+    }
+    updateLiveBar();
+
     updateMatchCountdowns();
     window.updateMatchCountdowns = updateMatchCountdowns;
     setInterval(updateMatchCountdowns, 1000);
@@ -575,6 +620,12 @@ async function loadNews() {
     if (!newsContainer) return;
 
     const simulatedNews = [
+        {
+            date: "NOVEMBER 16, 2026",
+            title: "ROSTER REBUILD & TONIGHT: WOLVESDEN AT 19:00 CET",
+            content: "Roster update: VINFO Esports enters a rebuild phase as we bid farewell to MusX, bozzi, spotnik, and kuriqs. We thank them for their dedication in VCT EMEA Kickoff and Premier! Dejwrix and Teikov remain the foundation as trials open for 3 new starters. Meanwhile, catch the squad in action tonight at 19:00 CET in Wolvesden! ⚔️🔥",
+            important: true
+        },
         {
             date: "NOVEMBER 11, 2026",
             title: "NEXT MATCH SET: VS 3TAY IN VCT EMEA KICKOFF Q2 ROUND 2",
@@ -852,6 +903,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
                 const nameEl = card.querySelector('.player-name');
                 const roleEl = card.querySelector('.player-role');
+                if (card.classList.contains('trial-card')) return;
                 const imgEl = card.querySelector('.player-image');
                 const hiddenData = card.querySelector('.hidden-data');
                 
