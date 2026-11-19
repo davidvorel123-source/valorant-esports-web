@@ -622,6 +622,12 @@ async function loadNews() {
     const simulatedNews = [
         {
             date: "NOVEMBER 16, 2026",
+            title: "WOLVESDEN INVITATIONAL: 13-3 OVER BONDZIORNO & 7-13 VS FRG X TSE",
+            content: "VINFO Esports put up a fierce fight in the Wolvesden Valorant Invitational! Opening the tournament with a crushing 13-3 stomp over BONDZIORNO, the squad advanced to face #1 seed FRG x TSE, bowing out 7-13 after intense rounds. Proud of the team's grit during our rebuild phase! 🐺🔥",
+            important: true
+        },
+        {
+            date: "NOVEMBER 16, 2026",
             title: "ROSTER REBUILD & TONIGHT: WOLVESDEN AT 19:00 CET",
             content: "Roster update: VINFO Esports enters a rebuild phase as we bid farewell to MusX, bozzi, spotnik, and kuriqs. We thank them for their dedication in VCT EMEA Kickoff and Premier! Dejwrix and Teikov remain the foundation as trials open for 3 new starters. Meanwhile, catch the squad in action tonight at 19:00 CET in Wolvesden! ⚔️🔥",
             important: true
