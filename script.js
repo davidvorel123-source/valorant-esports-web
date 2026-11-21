@@ -621,6 +621,12 @@ async function loadNews() {
 
     const simulatedNews = [
         {
+            date: "NOVEMBER 21, 2026",
+            title: "PREMIER MATCH DAY: DEFENDING #3 IN INVITE TONIGHT AT 19:00 CET",
+            content: "Match day is here! 🚀 VINFO Esports enters the server tonight at 19:00 CET for official Valorant Premier action. Currently holding the #3 spot in the Invite Division, the squad is locked in for another high-stakes battle. Tune in live on Kick and join our Discord to support the herd! 🔥⚔️",
+            important: true
+        },
+        {
             date: "NOVEMBER 16, 2026",
             title: "WOLVESDEN INVITATIONAL: 13-3 OVER BONDZIORNO & 7-13 VS FRG X TSE",
             content: "VINFO Esports put up a fierce fight in the Wolvesden Valorant Invitational! Opening the tournament with a crushing 13-3 stomp over BONDZIORNO, the squad advanced to face #1 seed FRG x TSE, bowing out 7-13 after intense rounds. Proud of the team's grit during our rebuild phase! 🐺🔥",
