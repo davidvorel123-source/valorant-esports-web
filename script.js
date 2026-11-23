@@ -622,6 +622,12 @@ async function loadNews() {
     const simulatedNews = [
         {
             date: "NOVEMBER 23, 2026",
+            title: "QUALIFIED FOR WOLVESDEN FINAL TOURNAMENT! 2-0 RUN INTO GRAND FINAL",
+            content: "WE ARE IN THE MAIN EVENT! 🔥 VINFO Esports delivers an electrifying 2-0 sweep tonight in the Wolvesden Valorant Invitational, taking down Maślarze 13-5 and defeating #2 seed Ashborn 13-11! With qualification secured, the squad moves into the Grand Final playing for the top seed. Huge GGWP to the team! 🐺⚔️🚀",
+            important: true
+        },
+        {
+            date: "NOVEMBER 23, 2026",
             title: "MATCH DAY: COMPETING IN WOLVESDEN INVITATIONAL TONIGHT AT 19:00 CET",
             content: "Back in the tournament arena! 🐺 VINFO Esports is set to battle in tonight's Wolvesden Valorant Invitational starting at 19:00 CET. Catch Dejwrix and the squad live on stream and join Discord to support the herd! 🔥⚔️",
             important: true
