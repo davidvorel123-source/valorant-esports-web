@@ -13,7 +13,7 @@
     <meta property="og:url" content="https://vinfoesports.com">
     <meta name="twitter:card" content="summary_large_image">
     <title>VINFO Esports | VINFO - Valorant Esports Team</title>
-    <link rel="stylesheet" href="styles.css?v=87">
+    <link rel="stylesheet" href="styles.css?v=88">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800;900&family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
@@ -69,9 +69,9 @@
 </head>
 <body>
     <!-- Live Match Command Center (Auto-managed by script.js) -->
-    <div id="live-bar" data-target="2026-11-23T21:30:00" data-duration-hours="2.0" style="display: flex; position: sticky; top: 0; z-index: 100000; background: var(--val-dark); border-bottom: 2px solid #53fc18; color: white; padding: 0.75rem 2rem; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; align-items: center; justify-content: center; gap: 1rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); flex-wrap: wrap;">
+    <div id="live-bar" data-target="2026-11-27T17:00:00" data-duration-hours="3.0" style="display: flex; position: sticky; top: 0; z-index: 100000; background: var(--val-dark); border-bottom: 2px solid #53fc18; color: white; padding: 0.75rem 2rem; font-family: var(--font-heading); font-size: 1.2rem; letter-spacing: 1px; align-items: center; justify-content: center; gap: 1rem; box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5); flex-wrap: wrap;">
         <div class="live-pulse" style="width: 10px; height: 10px; background: #53fc18; border-radius: 50%; animation: blink 1s infinite;"></div>
-        <strong id="live-bar-title" style="color: #53fc18;">GRAND FINAL:</strong> <span id="live-bar-text">WOLVESDEN INVITATIONAL (SEEDING) &bull; LIVE NOW</span>
+        <strong id="live-bar-title" style="color: #53fc18;">MATCH DAY:</strong> <span id="live-bar-text">WOLVESDEN FINAL TOURNAMENT &bull; TODAY 17:00 CET</span>
         <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="background: #53fc18; color: black; padding: 0.3rem 1.2rem; font-size: 1rem; text-decoration: none; border-radius: 2px; font-weight: 800; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><i class="fa-solid fa-play"></i> WATCH STREAM</a>
         <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="background: white; color: var(--val-red); padding: 0.3rem 1.2rem; font-size: 1rem; text-decoration: none; border-radius: 2px; font-weight: 700; transition: transform 0.2s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'">JOIN DISCORD</a>
     </div>
@@ -150,15 +150,16 @@
             <div class="section-line"></div>
         </div>
         <div style="max-width: 1000px; margin: 0 auto; text-align: center; display: flex; flex-direction: column; gap: 2rem; align-items: center;">
-            <!-- Match Today: Wolvesden Valorant Invitational Grand Final -->
+            <!-- Match Today: Wolvesden Final Tournament (Main Event) -->
             <div class="match-card" style="background: linear-gradient(135deg, rgba(83, 252, 24, 0.15) 0%, rgba(15, 25, 35, 0.98) 100%); padding: 2.5rem 3rem; border: 2px solid #53fc18; display: inline-block; text-align: center; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5); border-radius: 4px; width: 100%; max-width: 800px; margin-bottom: 0.5rem; position: relative;">
-                <div style="position: absolute; top: 12px; right: 15px; background: #53fc18; color: black; font-weight: 900; font-size: 0.75rem; letter-spacing: 2px; padding: 4px 10px; border-radius: 3px; text-transform: uppercase;">QUALIFIED &bull; GRAND FINAL</div>
-                <span style="color: #53fc18; font-size: 1rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 0.5rem; text-transform: uppercase;">WOLVESDEN INVITATIONAL &bull; <span style="color: #ffd700;">FINAL TOURNAMENT QUALIFIED</span></span>
-                <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 2.8rem; letter-spacing: 2px; margin-bottom: 0.3rem; text-shadow: 2px 2px 0 rgba(83, 252, 24, 0.3); line-height: 1.1;">
-                    SEEDING GRAND FINAL: VS TBD
+                <div style="position: absolute; top: 12px; right: 15px; background: #53fc18; color: black; font-weight: 900; font-size: 0.75rem; letter-spacing: 2px; padding: 4px 10px; border-radius: 3px; text-transform: uppercase;">TODAY &bull; 17:00 CET</div>
+                <span style="color: #53fc18; font-size: 1rem; font-weight: 800; letter-spacing: 4px; display: block; margin-bottom: 0.5rem; text-transform: uppercase;">WOLVESDEN &bull; <span class="dynamic-date" data-match-date="2026-11-27T17:00:00" style="color: #53fc18;">TODAY 17:00</span></span>
+                <h3 style="color: var(--val-white); font-family: var(--font-heading); font-size: 3rem; letter-spacing: 2px; margin-bottom: 0.3rem; text-shadow: 2px 2px 0 rgba(83, 252, 24, 0.3); line-height: 1.1;">
+                    WOLVESDEN FINAL TOURNAMENT
                 </h3>
-                <span style="color: #ffd700; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.2rem; font-size: 1rem;"><i class="fa-solid fa-trophy" style="margin-right: 6px;"></i> BACK-TO-BACK WINS (13-5 & 13-11) &bull; PLAYING FOR TOP SEED</span>
-                <p style="color: var(--val-grey); max-width: 580px; margin: 0 auto 1.5rem; font-size: 0.95rem; line-height: 1.6;">VINFO Esports runs the gauntlet tonight with a clean 2-0 sweep over Maślarze (13-5) and #2 seed Ashborn (13-11), officially punching our ticket to the Wolvesden Final Tournament! Grand Final seeding match underway!</p>
+                <span style="color: #ffd700; font-weight: 800; letter-spacing: 2px; text-transform: uppercase; display: block; margin-bottom: 1.2rem; font-size: 1rem;"><i class="fa-solid fa-trophy" style="margin-right: 6px;"></i> OFFICIAL MAIN EVENT &bull; COMPETING FOR THE CHAMPIONSHIP</span>
+                <div class="match-countdown" data-target="2026-11-27T17:00:00" style="margin-bottom: 1.5rem;"></div>
+                <p style="color: var(--val-grey); max-width: 580px; margin: 0 auto 1.5rem; font-size: 0.95rem; line-height: 1.6;">VINFO Esports enters the server for the Wolvesden Final Tournament! Following our dominant 2-0 qualification sweep, the squad battles in today's main championship bracket starting at 17:00 CET. Catch the player POVs live on stream!</p>
                 <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
                     <a href="https://kick.com/vinfodejwrix" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: #53fc18; font-weight: bold; text-decoration: none; font-size: 1rem; letter-spacing: 1.5px; background: rgba(83, 252, 24, 0.15); padding: 10px 22px; border-radius: 4px; border: 2px solid rgba(83, 252, 24, 0.6); transition: all 0.3s;" onmouseover="this.style.background='rgba(83, 252, 24, 0.3)';" onmouseout="this.style.background='rgba(83, 252, 24, 0.15)';"><i class="fa-solid fa-play"></i> WATCH STREAM</a>
                     <a href="https://discord.gg/9kUvFVUeXs" target="_blank" rel="noopener noreferrer" style="display: inline-block; color: white; font-weight: bold; text-decoration: none; font-size: 1rem; letter-spacing: 1.5px; background: #5865F2; padding: 10px 22px; border-radius: 4px; border: 2px solid #5865F2; transition: all 0.3s;" onmouseover="this.style.transform='scale(1.05)'" onmouseout="this.style.transform='scale(1)'"><i class="fa-brands fa-discord"></i> JOIN DISCORD</a>
@@ -1358,7 +1359,7 @@
         </div>
     </footer>
 
-    <script src="script.js?v=87"></script>
+    <script src="script.js?v=88"></script>
     <script src="https://unpkg.com/@studio-freight/lenis@1.0.39/dist/lenis.min.js?v=2"></script>
     <script>
         // Init Lenis smooth scroll
